@@ -8,6 +8,7 @@ package gui;
 import controller.LeerlingController;
 import domein.Leerling;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
@@ -16,12 +17,17 @@ import javafx.scene.layout.GridPane;
  * @author simon
  */
 public class HoofdMenu extends BorderPane{
-    
+    //objecten en controllers
     private Leerling lln;
     private LeerlingController llnController;
     private LeerlingInfoHouder lih;
-    
+    //top
     private TextField opmerkingen;
+    //Left
+    private ImageView schakelaarsImg, vloeistoffenImg, bandenImg;
+    //right
+    //center
+    //bottom
     
     public HoofdMenu(Leerling lln, LeerlingController llnController){
         //Top of the borderpane
@@ -36,11 +42,28 @@ public class HoofdMenu extends BorderPane{
         top.add(opmerkingen, 0, 0);
         top.add(lih, 1, 0);
         
+        //Left side borderpane
+        GridPane left = new GridPane();
+            //de nodes
+        schakelaarsImg = new ImageView("resource/Hoofdmenu/schakelaarsNeutraal.png");
+        vloeistoffenImg = new ImageView("resource/Hoofdmenu/vloeistoffenNeutraal.png");
+        bandenImg = new ImageView("resource/Hoofdmenu/bandenNeutraal.png");
+            //de nodes toevoegen
+        left.add(schakelaarsImg, 0, 0);
+        left.add(vloeistoffenImg, 0, 1);
+        left.add(bandenImg, 0, 2);
+        
+        
+        //Right side borderpane
+        
+        //Center borderpane
+        
         //Bottom of the borderpane
         
         
         //alle onderdelen toevoegen aan de borderpane
         this.setTop(top);
+        this.setLeft(left);
     }
     
 }
