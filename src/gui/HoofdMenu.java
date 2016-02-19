@@ -103,12 +103,12 @@ public class HoofdMenu extends BorderPane{
         stuur2 = new ImageView("resource/Hoofdmenu/stuur2Neutraal.png");
         stuur3 = new ImageView("resource/Hoofdmenu/stuur3Neutraal.png");
                 //nodes toevoegen
-        evaluatieMid1.add(stuur1, 0, 0);
+        evaluatieMid1.add(stuur1, 0, 0, 2, 1);
         evaluatieMid1.add(stuur2, 0, 1);
         evaluatieMid1.add(stuur3, 1, 1);
         evaluatieMid2.add(pijl1, 0, 0);
         evaluatieMid2.add(pijl2, 1, 0);
-        evaluatieMid2.add(pijl3, 0, 1);
+        evaluatieMid2.add(pijl3, 0, 1, 2, 1);
             //attitude onder
         attitude = new GridPane();
                 //de nodes
