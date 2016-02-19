@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  * @author Matthias
  */
 public class MainApp extends Application{
-
+ 
     @Override
     public void start(Stage stage) throws Exception {
         Leerling lln = new Leerling("Jo De Wit", "2016-02-18-1", "Paul", new Date(), "Rijbewijs B", new Image("resource/man-icon.png"));
@@ -22,7 +22,10 @@ public class MainApp extends Application{
         InfoScherm scherm = new InfoScherm(lln, controller);
         LeerlingInfoHouder houder = new LeerlingInfoHouder(lln, controller);
         
-        Scene scene = new Scene(scherm);
+        Veld4Evolutie evo = new Veld4Evolutie();
+        VeldOpmerkingen opm = new VeldOpmerkingen("- AANDACHT\n- EIGEN RIT\n- CRUISE CONTROL");
+        
+        Scene scene = new Scene(opm);
         
         stage.setScene(scene);
         stage.show();

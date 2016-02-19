@@ -5,13 +5,7 @@ import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Border;
-import javafx.scene.layout.BorderStroke;
-import javafx.scene.layout.BorderStrokeStyle;
-import javafx.scene.layout.BorderWidths;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 /**
  *
@@ -19,11 +13,11 @@ import javafx.scene.paint.Color;
  */
 public class LeerlingInfoHouder extends VBox implements View {
     
-    private ImageView imgView;
-    private Label lblNaam;
+    private final ImageView imgView;
+    private final Label lblNaam;
     
-    private Leerling lln;
-    private LeerlingController llnController;
+    private final Leerling lln;
+    private final LeerlingController llnController;
     
     public LeerlingInfoHouder(Leerling lln, LeerlingController controller){
         setPadding(new Insets(10));
