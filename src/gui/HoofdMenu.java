@@ -22,17 +22,23 @@ public class HoofdMenu extends BorderPane{
     private LeerlingController llnController;
     private LeerlingInfoHouder lih;
     //top
+    private GridPane top;
     private TextField opmerkingen;
     //Left
+    private GridPane left;
     private ImageView schakelaarsImg, vloeistoffenImg, bandenImg;
-    private ImageView gpsImg, stopImg, tankenImg;
     //right
+    private GridPane right;
+    private ImageView gpsImg, stopImg, tankenImg;
     //center
+    private GridPane center;
     //bottom
+    private GridPane bottom, evaluatie, gekend;
+    private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, graphImg, gekendImg1, gekendImg2, gekendImg3;
     
     public HoofdMenu(Leerling lln, LeerlingController llnController){
         //Top of the borderpane
-        GridPane top = new GridPane();
+        top = new GridPane();
             //De leerlingen en controller toewijzen           
         this.llnController = llnController;
         this.lln = lln;
@@ -44,7 +50,7 @@ public class HoofdMenu extends BorderPane{
         top.add(lih, 1, 0);
         
         //Left side borderpane
-        GridPane left = new GridPane();
+        left = new GridPane();
             //de nodes
         schakelaarsImg = new ImageView("resource/Hoofdmenu/schakelaarsNeutraal.png");
         vloeistoffenImg = new ImageView("resource/Hoofdmenu/vloeistoffenNeutraal.png");
@@ -56,26 +62,52 @@ public class HoofdMenu extends BorderPane{
         
         
         //Right side borderpane
-        GridPane right = new GridPane();
+        right = new GridPane();
             //de nodes
         tankenImg = new ImageView("resource/Hoofdmenu/tankenNeutraal.png");
-        gpsImg = new ImageView("resource/Hoofdmenu/gpsneutraal.png");
-        stopImg = new ImageView("resource/Hoofmenu/stopNeutraal.png");
+        gpsImg = new ImageView("resource/Hoofdmenu/gpsNeutraal.png");
+        stopImg = new ImageView("resource/Hoofdmenu/stopNeutraal.png");
             //de nodes toevoegen
         right.add(tankenImg, 0, 0);
-        right.add(gpsImg, 0, 0);
-        right.add(stopImg, 0, 0);
-        
-        
+        right.add(gpsImg, 0, 1);
+        right.add(stopImg, 0, 2);    
         
         //Center borderpane
+        center = new GridPane();
         
         //Bottom of the borderpane
+        bottom = new GridPane();
+        gekend = new GridPane();
+        evaluatie = new GridPane();
+            //de nodes
+        graphImg = new ImageView("resource/Hoofdmenu/dummyGraph.png");
+        gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
+        gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
+        gekendImg3 = new ImageView("resource/Hoofdmenu/gekendRood.png");
+        evaluatieImg1 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
+        evaluatieImg2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
+        evaluatieImg3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
+            //de nodes toevoegen
+        gekend.add(gekendImg1, 0, 0);
+        gekend.add(gekendImg2, 1, 0);
+        gekend.add(gekendImg3, 2, 0);
+        
+        evaluatie.add(evaluatieImg1, 0, 0);
+        evaluatie.add(evaluatieImg2, 0, 1);
+        evaluatie.add(evaluatieImg3, 0, 2);
+        
+        bottom.add(evaluatie, 0, 0);
+        bottom.add(gekend, 1, 0);
+        bottom.add(graphImg, 2, 0);
+        
         
         
         //alle onderdelen toevoegen aan de borderpane
         this.setTop(top);
         this.setLeft(left);
+        this.setRight(right);
+        this.setBottom(bottom);
+        this.setCenter(center);
     }
     
 }
