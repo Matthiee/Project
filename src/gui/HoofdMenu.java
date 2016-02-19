@@ -25,6 +25,7 @@ public class HoofdMenu extends BorderPane{
     private TextField opmerkingen;
     //Left
     private ImageView schakelaarsImg, vloeistoffenImg, bandenImg;
+    private ImageView gpsImg, stopImg, tankenImg;
     //right
     //center
     //bottom
@@ -55,6 +56,17 @@ public class HoofdMenu extends BorderPane{
         
         
         //Right side borderpane
+        GridPane right = new GridPane();
+            //de nodes
+        tankenImg = new ImageView("resource/Hoofdmenu/tankenNeutraal.png");
+        gpsImg = new ImageView("resource/Hoofdmenu/gpsneutraal.png");
+        stopImg = new ImageView("resource/Hoofmenu/stopNeutraal.png");
+            //de nodes toevoegen
+        right.add(tankenImg, 0, 0);
+        right.add(gpsImg, 0, 0);
+        right.add(stopImg, 0, 0);
+        
+        
         
         //Center borderpane
         
