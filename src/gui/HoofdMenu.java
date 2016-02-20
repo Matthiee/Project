@@ -244,7 +244,35 @@ public class HoofdMenu extends BorderPane{
         evaluatieImg2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         evaluatieImg3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
             //de opmaak
-        
+        graphImg.setFitHeight(80);
+        graphImg.setFitWidth(200);
+        graphImg.minWidth(300);
+        graphImg.maxWidth(300);
+        graphImg.setTranslateX(50);
+        gekendImg1.setFitHeight(50);
+        gekendImg1.setFitWidth(100);
+        gekendImg2.setFitHeight(50);
+        gekendImg2.setFitWidth(100);
+        gekendImg3.setFitHeight(50);
+        gekendImg3.setFitWidth(100);
+        gekendImg1.setFitHeight(50);
+        evaluatieImg1.setFitWidth(30);
+        evaluatieImg1.setFitHeight(30);
+        evaluatieImg2.setFitWidth(30);
+        evaluatieImg2.setFitHeight(30);
+        evaluatieImg3.setFitWidth(30);
+        evaluatieImg3.setFitHeight(30);
+        gekend.setMinWidth(300);
+        gekend.setMaxWidth(300);
+        gekend.setAlignment(Pos.CENTER);
+        gekend.setTranslateX(-40);
+        evaluatie.setAlignment(Pos.CENTER);
+        evaluatie.setMinWidth(300);
+        evaluatie.setMaxWidth(300);
+        evaluatie.setTranslateX(-120);
+        evaluatie.setTranslateY(-20);
+        evaluatie.setVgap(5);
+        bottom.setAlignment(Pos.CENTER);
             //de nodes toevoegen
         gekend.add(gekendImg1, 0, 0);
         gekend.add(gekendImg2, 1, 0);
