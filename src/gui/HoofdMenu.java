@@ -57,22 +57,22 @@ public class HoofdMenu extends BorderPane{
         profileImg = new ImageView(lln.getImage());
         profileLbl = new Label(lln.getNaam());
             //de opmaak
-        opmerkingenTxt.setMaxHeight(90);
-        opmerkingenTxt.setMinHeight(90);
+        opmerkingenTxt.setMaxHeight(60);
+        opmerkingenTxt.setMinHeight(60);
         opmerkingenTxt.setMaxWidth(200);
         opmerkingenTxt.setMinWidth(200);
         profile.setMaxHeight(100);
         profile.setMinHeight(100);
-        profileImg.maxHeight(80);
-        profileImg.minHeight(80);
-        profileImg.setFitHeight(80);
-        profileImg.setFitWidth(80);
+        profileImg.maxHeight(50);
+        profileImg.minHeight(50);
+        profileImg.setFitHeight(50);
+        profileImg.setFitWidth(50);
         profileLbl.maxHeight(20);
         profileLbl.minHeight(20);
-        top.setPadding(new Insets(20, 20, 20, 20));
+        top.setPadding(new Insets(30, 20, 5, 20));
+        top.setHgap(400);
             //nodes toevoegen
         profile.getChildren().addAll(profileImg, profileLbl);
-        top.setHgap(400);
         top.add(opmerkingenTxt, 0, 0);
         top.add(profile, 1, 0);
         
@@ -94,8 +94,8 @@ public class HoofdMenu extends BorderPane{
         bandenImg.setTranslateX(20);
         left.setVgap(30);
         left.setPadding(new Insets(20, 20, 20, 50));
-        left.setMaxHeight(500);
-        left.setMinHeight(500);
+        left.setMaxHeight(400);
+        left.setMinHeight(400);
         left.setMaxWidth(120);
         left.setMinWidth(120);
             //de nodes toevoegen
@@ -121,8 +121,8 @@ public class HoofdMenu extends BorderPane{
         stopImg.setTranslateX(-20);
         right.setVgap(30);
         right.setPadding(new Insets(20, 50, 20, 20));
-        right.setMaxHeight(500);
-        right.setMinHeight(500);
+        right.setMaxHeight(400);
+        right.setMinHeight(400);
         right.setMaxWidth(120);
         right.setMinWidth(120);
             //de nodes toevoegen
@@ -133,6 +133,9 @@ public class HoofdMenu extends BorderPane{
         
         //Center borderpane
         center = new GridPane();
+            //opmaak center
+        center.setHgap(100);
+        center.setVgap(50);
             //Deze is opgedeeld in 3 onderdelen: iconen(boven), evaluatie(midden) en attitude(onderaan)
             //iconen boven
         iconen = new GridPane();
@@ -141,6 +144,22 @@ public class HoofdMenu extends BorderPane{
         snelwegImg = new ImageView("resource/Hoofdmenu/snelwegNeutraal.png");
         rotondeImg = new ImageView("resource/Hoofdmenu/rotondeNeutraal.png");
         rijstrokenImg = new ImageView("resource/Hoofdmenu/rijstrokenNeutraal.png");
+                //opmaak
+        stadImg.setFitHeight(60);
+        stadImg.setFitWidth(60);
+        snelwegImg.setFitHeight(60);
+        snelwegImg.setFitWidth(60);
+        snelwegImg.setTranslateY(-20);
+        rotondeImg.setFitHeight(60);
+        rotondeImg.setFitWidth(60);
+        rotondeImg.setTranslateY(-20);
+        rijstrokenImg.setFitHeight(60);
+        rijstrokenImg.setFitWidth(60);
+        iconen.setAlignment(Pos.CENTER);
+        iconen.setMaxSize(800, 80);
+        iconen.setMinSize(800, 80);
+        iconen.setPadding(new Insets(5, 5, 5, 5));
+        iconen.setHgap(30);
                 //nodes toevoegen aan iconen
         iconen.add(stadImg, 0, 0);
         iconen.add(snelwegImg, 1, 0);
@@ -156,6 +175,30 @@ public class HoofdMenu extends BorderPane{
         stuur1 = new ImageView("resource/Hoofdmenu/stuur1Neutraal.png");
         stuur2 = new ImageView("resource/Hoofdmenu/stuur2Neutraal.png");
         stuur3 = new ImageView("resource/Hoofdmenu/stuur3Neutraal.png");
+                //opmaak
+        pijl1.setFitHeight(80);
+        pijl1.setFitWidth(80);
+        pijl2.setFitHeight(80);
+        pijl2.setFitWidth(80);
+        pijl3.setFitHeight(80);
+        pijl3.setFitWidth(160);
+        stuur1.setFitHeight(80);
+        stuur1.setFitWidth(160);
+        stuur2.setFitHeight(80);
+        stuur2.setFitWidth(80);
+        stuur3.setFitHeight(80);
+        stuur3.setFitWidth(80);
+        evaluatieMid1.setMaxHeight(160);
+        evaluatieMid1.setMinHeight(160);
+        evaluatieMid1.setPadding(new Insets(5, 5, 5, 5));
+        evaluatieMid1.setAlignment(Pos.CENTER);
+        evaluatieMid1.setTranslateX(200);
+        evaluatieMid2.setMaxHeight(160);
+        evaluatieMid2.setMinHeight(160);
+        evaluatieMid2.setPadding(new Insets(5, 5, 5, 5));
+        evaluatieMid2.setAlignment(Pos.CENTER);
+        evaluatieMid2.setTranslateX(10);
+        
                 //nodes toevoegen
         evaluatieMid1.add(stuur1, 0, 0, 2, 1);
         evaluatieMid1.add(stuur2, 0, 1);
@@ -168,14 +211,24 @@ public class HoofdMenu extends BorderPane{
                 //de nodes
         attitudeImg = new ImageView("resource/Hoofdmenu/attitude.png");
         attitudeTxt = new TextField("Attitude dummy text!");
+                //opmaak
+        attitudeImg.setFitHeight(50);
+        attitudeImg.setFitWidth(50);
+        attitudeTxt.setMaxSize(200, 50);
+        attitudeTxt.setMinSize(200, 50);
+        attitude.setAlignment(Pos.CENTER);
+        attitude.setMaxSize(800, 80);
+        attitude.setMinSize(800, 80);
+        attitude.setPadding(new Insets(10, 10, 10, 10));
+        attitude.setHgap(50);
                 //nodes toevoegen aan attitude
         attitude.add(attitudeImg, 0, 0);
         attitude.add(attitudeTxt, 1, 0);
             //alle 3 de onderdelen toevoegen aan center
-        center.add(iconen, 0, 0);
+        center.add(iconen, 0, 0, 2, 1);
         center.add(evaluatieMid1, 0, 1);
         center.add(evaluatieMid2, 1, 1);
-        center.add(attitude, 0, 2);
+        center.add(attitude, 0, 2, 2, 1);
         
         
         //Bottom of the borderpane
@@ -190,6 +243,8 @@ public class HoofdMenu extends BorderPane{
         evaluatieImg1 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         evaluatieImg2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         evaluatieImg3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
+            //de opmaak
+        
             //de nodes toevoegen
         gekend.add(gekendImg1, 0, 0);
         gekend.add(gekendImg2, 1, 0);
