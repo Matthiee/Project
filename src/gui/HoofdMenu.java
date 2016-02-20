@@ -63,7 +63,6 @@ public class HoofdMenu extends BorderPane{
         opmerkingenTxt.setMinWidth(200);
         profile.setMaxHeight(100);
         profile.setMinHeight(100);
-        profile.setPadding(new Insets(0, 0, 0, 600));
         profileImg.maxHeight(80);
         profileImg.minHeight(80);
         profileImg.setFitHeight(80);
@@ -73,6 +72,7 @@ public class HoofdMenu extends BorderPane{
         top.setPadding(new Insets(20, 20, 20, 20));
             //nodes toevoegen
         profile.getChildren().addAll(profileImg, profileLbl);
+        top.setHgap(400);
         top.add(opmerkingenTxt, 0, 0);
         top.add(profile, 1, 0);
         
@@ -83,6 +83,21 @@ public class HoofdMenu extends BorderPane{
         schakelaarsImg = new ImageView("resource/Hoofdmenu/schakelaarsNeutraal.png");
         vloeistoffenImg = new ImageView("resource/Hoofdmenu/vloeistoffenNeutraal.png");
         bandenImg = new ImageView("resource/Hoofdmenu/bandenNeutraal.png");
+            //opmaak
+        schakelaarsImg.setFitHeight(60);
+        schakelaarsImg.setFitWidth(60);
+        schakelaarsImg.setTranslateX(20);
+        vloeistoffenImg.setFitHeight(60);
+        vloeistoffenImg.setFitWidth(60);
+        bandenImg.setFitHeight(60);
+        bandenImg.setFitWidth(60);
+        bandenImg.setTranslateX(20);
+        left.setVgap(30);
+        left.setPadding(new Insets(20, 20, 20, 20));
+        left.setMaxHeight(500);
+        left.setMinHeight(500);
+        left.setMaxWidth(80);
+        left.setMinWidth(80);
             //de nodes toevoegen
         left.add(schakelaarsImg, 0, 0);
         left.add(vloeistoffenImg, 0, 1);
@@ -98,7 +113,7 @@ public class HoofdMenu extends BorderPane{
             //de nodes toevoegen
         right.add(tankenImg, 0, 0);
         right.add(gpsImg, 0, 1);
-        right.add(stopImg, 0, 2);   
+        right.add(stopImg, 0, 2);
         
         
         //Center borderpane
