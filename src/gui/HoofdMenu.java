@@ -93,11 +93,11 @@ public class HoofdMenu extends BorderPane{
         bandenImg.setFitWidth(60);
         bandenImg.setTranslateX(20);
         left.setVgap(30);
-        left.setPadding(new Insets(20, 20, 20, 20));
+        left.setPadding(new Insets(20, 20, 20, 50));
         left.setMaxHeight(500);
         left.setMinHeight(500);
-        left.setMaxWidth(80);
-        left.setMinWidth(80);
+        left.setMaxWidth(120);
+        left.setMinWidth(120);
             //de nodes toevoegen
         left.add(schakelaarsImg, 0, 0);
         left.add(vloeistoffenImg, 0, 1);
@@ -110,6 +110,21 @@ public class HoofdMenu extends BorderPane{
         tankenImg = new ImageView("resource/Hoofdmenu/tankenNeutraal.png");
         gpsImg = new ImageView("resource/Hoofdmenu/gpsNeutraal.png");
         stopImg = new ImageView("resource/Hoofdmenu/stopNeutraal.png");
+            //opmaak
+        tankenImg.setFitHeight(60);
+        tankenImg.setFitWidth(60);
+        tankenImg.setTranslateX(-20);
+        gpsImg.setFitHeight(60);
+        gpsImg.setFitWidth(60);
+        stopImg.setFitHeight(60);
+        stopImg.setFitWidth(60);
+        stopImg.setTranslateX(-20);
+        right.setVgap(30);
+        right.setPadding(new Insets(20, 50, 20, 20));
+        right.setMaxHeight(500);
+        right.setMinHeight(500);
+        right.setMaxWidth(120);
+        right.setMinWidth(120);
             //de nodes toevoegen
         right.add(tankenImg, 0, 0);
         right.add(gpsImg, 0, 1);
