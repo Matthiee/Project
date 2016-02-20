@@ -2,7 +2,6 @@ package gui;
 
 import controller.LeerlingController;
 import domein.Leerling;
-import java.io.File;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -19,12 +18,12 @@ import javafx.scene.layout.VBox;
  */
 public class InfoScherm extends VBox implements View {
 
-    private Button btnAfmelden, btnTerug;
-    private Label lblNaam, lblInschrijving, lblInstructeur, lblVerval, lblType;
-    private ImageView imgView;
+    private final Button btnAfmelden, btnTerug;
+    private final Label lblNaam, lblInschrijving, lblInstructeur, lblVerval, lblType;
+    private final ImageView imgView;
 
-    private Leerling lln;
-    private LeerlingController llnController;
+    private final Leerling lln;
+    private final LeerlingController llnController;
 
     public InfoScherm(Leerling lln, LeerlingController controller) {
         setPadding(new Insets(10));
