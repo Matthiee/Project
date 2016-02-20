@@ -7,10 +7,14 @@ package gui;
 
 import controller.LeerlingController;
 import domein.Leerling;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -20,10 +24,12 @@ public class HoofdMenu extends BorderPane{
     //objecten en controllers
     private Leerling lln;
     private LeerlingController llnController;
-    private LeerlingInfoHouder lih;
     //top
     private GridPane top;
+    private VBox profile;
     private TextField opmerkingenTxt;
+    private ImageView profileImg;
+    private Label profileLbl;
     //Left
     private GridPane left;
     private ImageView schakelaarsImg, vloeistoffenImg, bandenImg;
@@ -42,15 +48,33 @@ public class HoofdMenu extends BorderPane{
         
         //Top of the borderpane
         top = new GridPane();
+        profile = new VBox();
             //De leerlingen en controller toewijzen           
         this.llnController = llnController;
         this.lln = lln;
             //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
-        lih = new LeerlingInfoHouder(lln, llnController);
+        profileImg = new ImageView(lln.getImage());
+        profileLbl = new Label(lln.getNaam());
+            //de opmaak
+        opmerkingenTxt.setMaxHeight(90);
+        opmerkingenTxt.setMinHeight(90);
+        opmerkingenTxt.setMaxWidth(200);
+        opmerkingenTxt.setMinWidth(200);
+        profile.setMaxHeight(100);
+        profile.setMinHeight(100);
+        profile.setPadding(new Insets(0, 0, 0, 600));
+        profileImg.maxHeight(80);
+        profileImg.minHeight(80);
+        profileImg.setFitHeight(80);
+        profileImg.setFitWidth(80);
+        profileLbl.maxHeight(20);
+        profileLbl.minHeight(20);
+        top.setPadding(new Insets(20, 20, 20, 20));
             //nodes toevoegen
+        profile.getChildren().addAll(profileImg, profileLbl);
         top.add(opmerkingenTxt, 0, 0);
-        top.add(lih, 1, 0);
+        top.add(profile, 1, 0);
         
         
         //Left side borderpane
@@ -145,9 +169,7 @@ public class HoofdMenu extends BorderPane{
         evaluatie.add(evaluatieImg3, 0, 2);
         bottom.add(evaluatie, 0, 0);
         bottom.add(gekend, 1, 0);
-        bottom.add(graphImg, 2, 0);
-        
-        
+        bottom.add(graphImg, 2, 0);        
         
         //alle onderdelen toevoegen aan de borderpane
         this.setTop(top);
@@ -155,6 +177,14 @@ public class HoofdMenu extends BorderPane{
         this.setRight(right);
         this.setBottom(bottom);
         this.setCenter(center);
+        //opmaak
+        this.maxHeight(800);
+        this.maxWidth(1200);
+        top.setAlignment(Pos.CENTER);
+        left.setAlignment(Pos.CENTER);
+        right.setAlignment(Pos.CENTER);
+        bottom.setAlignment(Pos.CENTER);
+        center.setAlignment(Pos.CENTER);
     }
     
 }
