@@ -42,10 +42,15 @@ public class KleurKiezerHouder extends Pane {
         
         hbox.setStyle("-fx-border-color: black;");
         
-        rectWit.setOnMouseClicked((e)->ctrl.setStatus(Onderdeel.NEUTRAAL));
-        rectGroen.setOnMouseClicked((e)->ctrl.setStatus(Onderdeel.GEKEND));
-        rectOrangje.setOnMouseClicked((e)->ctrl.setStatus(Onderdeel.GEZIEN_NIET_GEKEND));
-        rectRood.setOnMouseClicked((e)->ctrl.setStatus(Onderdeel.NIET_GEKEND));
+        rectWit.setOnMouseClicked((e)->setStatus(Onderdeel.NEUTRAAL));
+        rectGroen.setOnMouseClicked((e)->setStatus(Onderdeel.GEKEND));
+        rectOrangje.setOnMouseClicked((e)->setStatus(Onderdeel.GEZIEN_NIET_GEKEND));
+        rectRood.setOnMouseClicked((e)->setStatus(Onderdeel.NIET_GEKEND));
+    }
+    
+    private void setStatus(int status){
+        ctrl.setStatus(status);
+        getPane().getChildren().remove(this);
     }
 
     public Pane getPane() {
