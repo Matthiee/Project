@@ -300,7 +300,8 @@ public class HoofdMenu extends BorderPane{
         bottom.setAlignment(Pos.CENTER);
         center.setAlignment(Pos.CENTER);
         
-        gpsImg.setOnMousePressed((e) -> KleurKiezerHouder.show(this, gpsImg));
+        gpsImg.setOnMousePressed((e) -> KleurKiezerHouder.show(right, gpsImg));
+        bandenImg.setOnMousePressed((e)->KleurKiezerHouder.show(left, bandenImg));
     }
     
 }

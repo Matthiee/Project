@@ -17,15 +17,14 @@ public class KleurKiezerHouder extends Pane {
     private Pane pane;
     private ImageView ctrl;
     
-    private double SIZE = 25;
+    private double SIZE = 30;
     
     public KleurKiezerHouder(Pane p, ImageView v){
     
         pane=p;
         ctrl=v;
         
-        
-        setPadding(new Insets(10));
+        setPadding(new Insets(2));
         
         Rectangle rectWit, rectGroen, rectOrangje, rectRood;
         
@@ -35,8 +34,8 @@ public class KleurKiezerHouder extends Pane {
         rectRood = new Rectangle(SIZE,SIZE, Color.RED);
         
         HBox hbox = new HBox(rectWit, rectGroen, rectOrangje, rectRood);
-        hbox.setSpacing(10);
-        hbox.setPadding(new Insets(10));
+        hbox.setSpacing(5);
+        hbox.setPadding(new Insets(5));
         getChildren().add(hbox);
         
         hbox.getChildren().forEach((Node n) -> n.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
@@ -55,8 +54,13 @@ public class KleurKiezerHouder extends Pane {
     public static void show(Pane pane, ImageView ctrl){
         KleurKiezerHouder houder = new KleurKiezerHouder(pane, ctrl);
         
-        houder.setLayoutX(ctrl.getLayoutX()+ctrl.getBoundsInParent().getWidth());
-        houder.setLayoutY(ctrl.getLayoutY());
+//        System.out.println("TranslateX: " + ctrl.getLayoutX());
+//        System.out.println("TranslateY: " + ctrl.getLayoutY());
+//        System.out.println("Hoogte: "+ ctrl.getBoundsInLocal().getHeight());
+//        System.out.println("Hoogte: "+ ctrl.getBoundsInParent().getHeight());
+        
+        houder.setTranslateX(ctrl.getLayoutX());
+        houder.setTranslateY(ctrl.getLayoutY()- ctrl.getBoundsInParent().getHeight());
         
         pane.getChildren().add(houder);
     }
