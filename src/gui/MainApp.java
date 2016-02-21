@@ -25,7 +25,9 @@ public class MainApp extends Application{
         Veld4Evolutie evo = new Veld4Evolutie();
         VeldOpmerkingen opm = new VeldOpmerkingen("- AANDACHT\n- EIGEN RIT\n- CRUISE CONTROL");
         
-        Scene scene = new Scene(opm);
+        HoofdMenu menu = new HoofdMenu(lln, controller);
+        
+        Scene scene = new Scene(menu);
         
         stage.setScene(scene);
         stage.show();

@@ -9,6 +9,7 @@ import controller.LeerlingController;
 import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -298,6 +299,8 @@ public class HoofdMenu extends BorderPane{
         right.setAlignment(Pos.CENTER);
         bottom.setAlignment(Pos.CENTER);
         center.setAlignment(Pos.CENTER);
+        
+        gpsImg.setOnMousePressed((e) -> KleurKiezerHouder.show(this, gpsImg));
     }
     
 }
