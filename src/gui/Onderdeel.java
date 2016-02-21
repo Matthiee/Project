@@ -13,10 +13,10 @@ import javafx.scene.image.ImageView;
  */
 public class Onderdeel extends ImageView {
     
-    private static final int NEUTRAAL =0;
-    private static final int GEKEND =1;
-    private static final int GEZIEN_NIET_GEKEND =2;
-    private static final int NIET_GEKEND =3;
+    public static final int NEUTRAAL =0;
+    public static final int GEKEND =1;
+    public static final int GEZIEN_NIET_GEKEND =2;
+    public static final int NIET_GEKEND =3;
     
     private final IntegerProperty statusProperty = new SimpleIntegerProperty(NEUTRAAL);
     

@@ -15,11 +15,11 @@ import javafx.scene.shape.Rectangle;
 public class KleurKiezerHouder extends Pane {
     
     private Pane pane;
-    private ImageView ctrl;
+    private Onderdeel ctrl;
     
     private double SIZE = 30;
     
-    public KleurKiezerHouder(Pane p, ImageView v){
+    public KleurKiezerHouder(Pane p, Onderdeel v){
     
         pane=p;
         ctrl=v;
@@ -41,17 +41,22 @@ public class KleurKiezerHouder extends Pane {
         hbox.getChildren().forEach((Node n) -> n.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
         
         hbox.setStyle("-fx-border-color: black;");
+        
+        rectWit.setOnMouseClicked((e)->ctrl.setStatus(Onderdeel.NEUTRAAL));
+        rectGroen.setOnMouseClicked((e)->ctrl.setStatus(Onderdeel.GEKEND));
+        rectOrangje.setOnMouseClicked((e)->ctrl.setStatus(Onderdeel.GEZIEN_NIET_GEKEND));
+        rectRood.setOnMouseClicked((e)->ctrl.setStatus(Onderdeel.NIET_GEKEND));
     }
 
     public Pane getPane() {
         return pane;
     }
 
-    public ImageView getCtrl() {
+    public Onderdeel getCtrl() {
         return ctrl;
     }
     
-    public static void show(Pane pane, ImageView ctrl){
+    public static void show(Pane pane, Onderdeel ctrl){
         KleurKiezerHouder houder = new KleurKiezerHouder(pane, ctrl);
         
 //        System.out.println("TranslateX: " + ctrl.getLayoutX());
