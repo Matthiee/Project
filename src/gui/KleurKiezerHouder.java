@@ -17,7 +17,7 @@ public class KleurKiezerHouder extends Pane {
     private Pane pane;
     private Onderdeel ctrl;
     
-    private double SIZE = 30;
+    private double SIZE = 20;
     
     public KleurKiezerHouder(Pane p, Onderdeel v){
     
@@ -34,8 +34,8 @@ public class KleurKiezerHouder extends Pane {
         rectRood = new Rectangle(SIZE,SIZE, Color.RED);
         
         HBox hbox = new HBox(rectWit, rectGroen, rectOrangje, rectRood);
-        hbox.setSpacing(5);
-        hbox.setPadding(new Insets(5));
+        hbox.setSpacing(2);
+        hbox.setPadding(new Insets(2));
         getChildren().add(hbox);
         
         hbox.getChildren().forEach((Node n) -> n.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
@@ -69,7 +69,7 @@ public class KleurKiezerHouder extends Pane {
 //        System.out.println("Hoogte: "+ ctrl.getBoundsInLocal().getHeight());
 //        System.out.println("Hoogte: "+ ctrl.getBoundsInParent().getHeight());
         
-        houder.setTranslateX(ctrl.getLayoutX());
+        houder.setTranslateX(ctrl.getLayoutX()-50);
         houder.setTranslateY(ctrl.getLayoutY()- ctrl.getBoundsInParent().getHeight());
         
         pane.getChildren().add(houder);

@@ -314,7 +314,7 @@ public class HoofdMenu extends BorderPane {
                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(right, (Onderdeel)c));
         });
         
-        center.getChildren().forEach(c -> {
+        iconen.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel)c));
         });
