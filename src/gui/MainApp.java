@@ -27,9 +27,6 @@ public class MainApp extends Application{
         
         HoofdMenu menu = new HoofdMenu(lln, controller);
         
-        Onderdeel deel = new Onderdeel("resource/Hoofdmenu/attitude.png", "", "", "");
-        
-        
         Scene scene = new Scene(menu);
         
         stage.setScene(scene);

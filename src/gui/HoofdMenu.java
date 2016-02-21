@@ -34,17 +34,14 @@ public class HoofdMenu extends BorderPane {
     private Label profileLbl;
     //Left
     private GridPane left;
-    private ImageView schakelaarsImg, vloeistoffenImg, bandenImg;
+    private Onderdeel schakelaars, vloeistoffen, banden;
     //right
     private GridPane right;
-    private ImageView gpsImg, stopImg, tankenImg;
-    private Onderdeel gps = new Onderdeel("resource/Hoofdmenu/gpsNeutraal.png",
-            "resource/Hoofdmenu/gpsGroen.png",
-            "resource/Hoofdmenu/gpsOranje.png",
-            "resource/Hoofdmenu/gpsRood.png");
+    private Onderdeel gps, stop, tanken;
     //center
     private GridPane center, iconen, evaluatieMid1, evaluatieMid2, attitude;
-    private ImageView rotondeImg, rijstrokenImg, stadImg, snelwegImg, attitudeImg, pijl1, pijl2, pijl3, stuur1, stuur2, stuur3;
+    private Onderdeel rotonde, rijstroken, stad, snelweg; 
+    private ImageView attitudeImg, pijl1, pijl2, pijl3, stuur1, stuur2, stuur3;
     private TextField attitudeTxt;
     //bottom
     private GridPane bottom, evaluatie, gekend;
@@ -85,18 +82,21 @@ public class HoofdMenu extends BorderPane {
         //Left side borderpane
         left = new GridPane();
         //de nodes
-        schakelaarsImg = new ImageView("resource/Hoofdmenu/schakelaarsNeutraal.png");
-        vloeistoffenImg = new ImageView("resource/Hoofdmenu/vloeistoffenNeutraal.png");
-        bandenImg = new ImageView("resource/Hoofdmenu/bandenNeutraal.png");
+        schakelaars = new Onderdeel("resource/Hoofdmenu/schakelaars");
+
+        vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen");
+
+        banden = new Onderdeel("resource/Hoofdmenu/banden");
+        
         //opmaak
-        schakelaarsImg.setFitHeight(60);
-        schakelaarsImg.setFitWidth(60);
-        schakelaarsImg.setTranslateX(20);
-        vloeistoffenImg.setFitHeight(60);
-        vloeistoffenImg.setFitWidth(60);
-        bandenImg.setFitHeight(60);
-        bandenImg.setFitWidth(60);
-        bandenImg.setTranslateX(20);
+        schakelaars.setFitHeight(60);
+        schakelaars.setFitWidth(60);
+        schakelaars.setTranslateX(20);
+        vloeistoffen.setFitHeight(60);
+        vloeistoffen.setFitWidth(60);
+        banden.setFitHeight(60);
+        banden.setFitWidth(60);
+        banden.setTranslateX(20);
         left.setVgap(30);
         left.setPadding(new Insets(20, 20, 20, 50));
         left.setMaxHeight(400);
@@ -104,26 +104,28 @@ public class HoofdMenu extends BorderPane {
         left.setMaxWidth(120);
         left.setMinWidth(120);
         //de nodes toevoegen
-        left.add(schakelaarsImg, 0, 0);
-        left.add(vloeistoffenImg, 0, 1);
-        left.add(bandenImg, 0, 2);
+        left.add(schakelaars, 0, 0);
+        left.add(vloeistoffen, 0, 1);
+        left.add(banden, 0, 2);
 
         //Right side borderpane
         right = new GridPane();
         //de nodes
-        tankenImg = new ImageView("resource/Hoofdmenu/tankenNeutraal.png");
-        gpsImg = new ImageView("resource/Hoofdmenu/gpsNeutraal.png");
-        stopImg = new ImageView("resource/Hoofdmenu/stopNeutraal.png");
+        tanken = new Onderdeel("resource/Hoofdmenu/tanken");
+
+        gps = new Onderdeel("resource/Hoofdmenu/gps");
+
+        stop = new Onderdeel("resource/Hoofdmenu/stop");
         //opmaak
-        tankenImg.setFitHeight(60);
-        tankenImg.setFitWidth(60);
-        tankenImg.setTranslateX(-20);
+        tanken.setFitHeight(60);
+        tanken.setFitWidth(60);
+        tanken.setTranslateX(-20);
         gps.setFitHeight(60);
         gps.setFitWidth(60);
-        
-        stopImg.setFitHeight(60);
-        stopImg.setFitWidth(60);
-        stopImg.setTranslateX(-20);
+
+        stop.setFitHeight(60);
+        stop.setFitWidth(60);
+        stop.setTranslateX(-20);
         right.setVgap(30);
         right.setPadding(new Insets(20, 50, 20, 20));
         right.setMaxHeight(400);
@@ -131,9 +133,9 @@ public class HoofdMenu extends BorderPane {
         right.setMaxWidth(120);
         right.setMinWidth(120);
         //de nodes toevoegen
-        right.add(tankenImg, 0, 0);
+        right.add(tanken, 0, 0);
         right.add(gps, 0, 1);
-        right.add(stopImg, 0, 2);
+        right.add(stop, 0, 2);
 
         //Center borderpane
         center = new GridPane();
@@ -144,31 +146,31 @@ public class HoofdMenu extends BorderPane {
         //iconen boven
         iconen = new GridPane();
         //de nodes
-        stadImg = new ImageView("resource/Hoofdmenu/stadNeutraal.png");
-        snelwegImg = new ImageView("resource/Hoofdmenu/snelwegNeutraal.png");
-        rotondeImg = new ImageView("resource/Hoofdmenu/rotondeNeutraal.png");
-        rijstrokenImg = new ImageView("resource/Hoofdmenu/rijstrokenNeutraal.png");
+        stad = new Onderdeel("resource/Hoofdmenu/stad");
+        snelweg = new Onderdeel("resource/Hoofdmenu/snelweg");
+        rotonde = new Onderdeel("resource/Hoofdmenu/rotonde");
+        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken");
         //opmaak
-        stadImg.setFitHeight(60);
-        stadImg.setFitWidth(60);
-        snelwegImg.setFitHeight(60);
-        snelwegImg.setFitWidth(60);
-        snelwegImg.setTranslateY(-20);
-        rotondeImg.setFitHeight(60);
-        rotondeImg.setFitWidth(60);
-        rotondeImg.setTranslateY(-20);
-        rijstrokenImg.setFitHeight(60);
-        rijstrokenImg.setFitWidth(60);
+        stad.setFitHeight(60);
+        stad.setFitWidth(60);
+        snelweg.setFitHeight(60);
+        snelweg.setFitWidth(60);
+        snelweg.setTranslateY(-20);
+        rotonde.setFitHeight(60);
+        rotonde.setFitWidth(60);
+        rotonde.setTranslateY(-20);
+        rijstroken.setFitHeight(60);
+        rijstroken.setFitWidth(60);
         iconen.setAlignment(Pos.CENTER);
         iconen.setMaxSize(800, 80);
         iconen.setMinSize(800, 80);
         iconen.setPadding(new Insets(5, 5, 5, 5));
         iconen.setHgap(30);
         //nodes toevoegen aan iconen
-        iconen.add(stadImg, 0, 0);
-        iconen.add(snelwegImg, 1, 0);
-        iconen.add(rotondeImg, 2, 0);
-        iconen.add(rijstrokenImg, 3, 0);
+        iconen.add(stad, 0, 0);
+        iconen.add(snelweg, 1, 0);
+        iconen.add(rotonde, 2, 0);
+        iconen.add(rijstroken, 3, 0);
         //evaluatie midden
         evaluatieMid1 = new GridPane();
         evaluatieMid2 = new GridPane();
@@ -302,8 +304,23 @@ public class HoofdMenu extends BorderPane {
         bottom.setAlignment(Pos.CENTER);
         center.setAlignment(Pos.CENTER);
 
-        gps.setOnMouseClicked((e) -> KleurKiezerHouder.show(right, gps));
-       //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
+        left.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(left, (Onderdeel)c));
+        });
+        
+        right.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(right, (Onderdeel)c));
+        });
+        
+        center.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel)c));
+        });
+        
+        
+        //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
 
 }
