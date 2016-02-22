@@ -35,14 +35,15 @@ public class MainApp extends Application{
         
         HoofdMenu menu = new HoofdMenu(lln, controller, schermenCtrl);
         InfoScherm info = new InfoScherm(lln, controller, schermenCtrl);
+        LoginScherm login = new LoginScherm(schermenCtrl);
         
+        schermenCtrl.addScherm(LOGIN_ID, login);
         schermenCtrl.addScherm(HOOFDMENU_ID, menu);
         schermenCtrl.addScherm(INFO_LLN_ID, info);
         
-        schermenCtrl.setScherm(HOOFDMENU_ID);
+        schermenCtrl.setScherm(LOGIN_ID);
         
         Group root = new Group(schermenCtrl);
-        
         Scene scene = new Scene(root);
         
         stage.setScene(scene);

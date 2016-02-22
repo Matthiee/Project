@@ -69,6 +69,8 @@ public class InfoScherm extends VBox implements View {
         placeHolder.setPrefSize(1000, 500);
 
         btnAfmelden = new Button("Afmelden");
+        btnAfmelden.setOnAction(e->schermController.setScherm(MainApp.LOGIN_ID));
+        
         btnTerug = new Button("Terug");
         btnTerug.setAlignment(Pos.BASELINE_RIGHT);
 
