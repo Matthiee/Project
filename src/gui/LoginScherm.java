@@ -1,5 +1,6 @@
 package gui;
 
+import controller.SchermController;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,13 +11,17 @@ import javafx.scene.layout.VBox;
  *
  * @author Kenzo
  */
-public class LoginScherm 
+public class LoginScherm extends VBox
 {
+    private final SchermController schermController;
     
-    public void loginscherm() 
+    public LoginScherm(SchermController schermCtrl) 
     {
-        VBox vBox = new VBox();
-        vBox.setMinSize(450, 180);
+        schermController = schermCtrl;
+        this.setMinSize(450, 180);
+        this.maxHeight(800);
+        this.maxWidth(1200);
+        this.setPrefSize(1200, 800);
         HBox hBox1 = new HBox();
         HBox hBox2 = new HBox();
         HBox hBox3 = new HBox();
@@ -39,11 +44,13 @@ public class LoginScherm
         Button btnNieuw = new Button("Nieuw");
         btnNieuw.setTranslateX(10);
         Button btnGaDoor = new Button("Ga door");
+        btnGaDoor.setOnAction(e-> schermController.setScherm(MainApp.HOOFDMENU_ID));
+        
         btnGaDoor.setTranslateX(20);
         hBox3.getChildren().addAll(btnZoek,btnNieuw,btnGaDoor);
         hBox3.setTranslateX(15);
         hBox3.setTranslateY(60);
         
-        vBox.getChildren().addAll(hBox1,hBox2,hBox3);
+        this.getChildren().addAll(hBox1,hBox2,hBox3);
     }    
 }
