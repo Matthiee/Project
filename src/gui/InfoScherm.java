@@ -1,6 +1,7 @@
 package gui;
 
 import controller.LeerlingController;
+import controller.SchermController;
 import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -24,15 +25,16 @@ public class InfoScherm extends VBox implements View {
 
     private final Leerling lln;
     private final LeerlingController llnController;
-
-    public InfoScherm(Leerling lln, LeerlingController controller) {
+    private final SchermController schermController;
+    
+    public InfoScherm(Leerling lln, LeerlingController controller, SchermController schermCtrl) {
         setPadding(new Insets(10));
         setSpacing(10);
 
         this.lln = lln;
         this.llnController = controller;
         this.lln.addView(this);
-        
+        this.schermController=schermCtrl;
 
         imgView = new ImageView();
         imgView.maxHeight(128);
@@ -70,6 +72,8 @@ public class InfoScherm extends VBox implements View {
         btnTerug = new Button("Terug");
         btnTerug.setAlignment(Pos.BASELINE_RIGHT);
 
+        btnTerug.setOnAction(e->schermController.setScherm(MainApp.HOOFDMENU_ID));
+        
         HBox knopHouder = new HBox(btnAfmelden, btnTerug);
         HBox.setHgrow(knopHouder, Priority.ALWAYS);
         knopHouder.setPadding(new Insets(10));

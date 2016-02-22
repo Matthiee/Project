@@ -6,6 +6,7 @@
 package gui;
 
 import controller.LeerlingController;
+import controller.SchermController;
 import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -26,6 +27,8 @@ public class HoofdMenu extends BorderPane {
     //objecten en controllers
     private Leerling lln;
     private LeerlingController llnController;
+    private final SchermController schermController;
+    
     //top
     private GridPane top;
     private VBox profile;
@@ -47,7 +50,7 @@ public class HoofdMenu extends BorderPane {
     private GridPane bottom, evaluatie, gekend;
     private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, graphImg, gekendImg1, gekendImg2, gekendImg3;
 
-    public HoofdMenu(Leerling lln, LeerlingController llnController) {
+    public HoofdMenu(Leerling lln, LeerlingController llnController, SchermController schermCtrl) {
 
         //Top of the borderpane
         top = new GridPane();
@@ -55,10 +58,14 @@ public class HoofdMenu extends BorderPane {
         //De leerlingen en controller toewijzen           
         this.llnController = llnController;
         this.lln = lln;
+        this.schermController=schermCtrl;
+       
         //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
         profileImg = new ImageView(lln.getImage());
         profileLbl = new Label(lln.getNaam());
+        
+        profileImg.setOnMouseClicked((e)->schermController.setScherm(MainApp.INFO_LLN_ID));
         //de opmaak
         opmerkingenTxt.setMaxHeight(60);
         opmerkingenTxt.setMinHeight(60);
