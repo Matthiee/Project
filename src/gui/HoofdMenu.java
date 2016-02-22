@@ -9,6 +9,7 @@ import controller.LeerlingController;
 import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -20,7 +21,8 @@ import javafx.scene.layout.VBox;
  *
  * @author simon
  */
-public class HoofdMenu extends BorderPane{
+public class HoofdMenu extends BorderPane {
+
     //objecten en controllers
     private Leerling lln;
     private LeerlingController llnController;
@@ -32,31 +34,32 @@ public class HoofdMenu extends BorderPane{
     private Label profileLbl;
     //Left
     private GridPane left;
-    private ImageView schakelaarsImg, vloeistoffenImg, bandenImg;
+    private Onderdeel schakelaars, vloeistoffen, banden;
     //right
     private GridPane right;
-    private ImageView gpsImg, stopImg, tankenImg;
+    private Onderdeel gps, stop, tanken;
     //center
     private GridPane center, iconen, evaluatieMid1, evaluatieMid2, attitude;
-    private ImageView rotondeImg, rijstrokenImg, stadImg, snelwegImg, attitudeImg, pijl1, pijl2, pijl3, stuur1, stuur2, stuur3;
+    private Onderdeel rotonde, rijstroken, stad, snelweg; 
+    private ImageView attitudeImg, pijl1, pijl2, pijl3, stuur1, stuur2, stuur3;
     private TextField attitudeTxt;
     //bottom
     private GridPane bottom, evaluatie, gekend;
     private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, graphImg, gekendImg1, gekendImg2, gekendImg3;
-    
-    public HoofdMenu(Leerling lln, LeerlingController llnController){
-        
+
+    public HoofdMenu(Leerling lln, LeerlingController llnController) {
+
         //Top of the borderpane
         top = new GridPane();
         profile = new VBox();
-            //De leerlingen en controller toewijzen           
+        //De leerlingen en controller toewijzen           
         this.llnController = llnController;
         this.lln = lln;
-            //de nodes
+        //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
         profileImg = new ImageView(lln.getImage());
         profileLbl = new Label(lln.getNaam());
-            //de opmaak
+        //de opmaak
         opmerkingenTxt.setMaxHeight(60);
         opmerkingenTxt.setMinHeight(60);
         opmerkingenTxt.setMaxWidth(200);
@@ -71,111 +74,114 @@ public class HoofdMenu extends BorderPane{
         profileLbl.minHeight(20);
         top.setPadding(new Insets(30, 20, 5, 20));
         top.setHgap(400);
-            //nodes toevoegen
+        //nodes toevoegen
         profile.getChildren().addAll(profileImg, profileLbl);
         top.add(opmerkingenTxt, 0, 0);
         top.add(profile, 1, 0);
-        
-        
+
         //Left side borderpane
         left = new GridPane();
-            //de nodes
-        schakelaarsImg = new ImageView("resource/Hoofdmenu/schakelaarsNeutraal.png");
-        vloeistoffenImg = new ImageView("resource/Hoofdmenu/vloeistoffenNeutraal.png");
-        bandenImg = new ImageView("resource/Hoofdmenu/bandenNeutraal.png");
-            //opmaak
-        schakelaarsImg.setFitHeight(60);
-        schakelaarsImg.setFitWidth(60);
-        schakelaarsImg.setTranslateX(20);
-        vloeistoffenImg.setFitHeight(60);
-        vloeistoffenImg.setFitWidth(60);
-        bandenImg.setFitHeight(60);
-        bandenImg.setFitWidth(60);
-        bandenImg.setTranslateX(20);
+        //de nodes
+        schakelaars = new Onderdeel("resource/Hoofdmenu/schakelaars");
+
+        vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen");
+
+        banden = new Onderdeel("resource/Hoofdmenu/banden");
+        
+        //opmaak
+        schakelaars.setFitHeight(60);
+        schakelaars.setFitWidth(60);
+        schakelaars.setTranslateX(20);
+        vloeistoffen.setFitHeight(60);
+        vloeistoffen.setFitWidth(60);
+        banden.setFitHeight(60);
+        banden.setFitWidth(60);
+        banden.setTranslateX(20);
         left.setVgap(30);
         left.setPadding(new Insets(20, 20, 20, 50));
         left.setMaxHeight(400);
         left.setMinHeight(400);
         left.setMaxWidth(120);
         left.setMinWidth(120);
-            //de nodes toevoegen
-        left.add(schakelaarsImg, 0, 0);
-        left.add(vloeistoffenImg, 0, 1);
-        left.add(bandenImg, 0, 2);
-        
-        
+        //de nodes toevoegen
+        left.add(schakelaars, 0, 0);
+        left.add(vloeistoffen, 0, 1);
+        left.add(banden, 0, 2);
+
         //Right side borderpane
         right = new GridPane();
-            //de nodes
-        tankenImg = new ImageView("resource/Hoofdmenu/tankenNeutraal.png");
-        gpsImg = new ImageView("resource/Hoofdmenu/gpsNeutraal.png");
-        stopImg = new ImageView("resource/Hoofdmenu/stopNeutraal.png");
-            //opmaak
-        tankenImg.setFitHeight(60);
-        tankenImg.setFitWidth(60);
-        tankenImg.setTranslateX(-20);
-        gpsImg.setFitHeight(60);
-        gpsImg.setFitWidth(60);
-        stopImg.setFitHeight(60);
-        stopImg.setFitWidth(60);
-        stopImg.setTranslateX(-20);
+        //de nodes
+        tanken = new Onderdeel("resource/Hoofdmenu/tanken");
+
+        gps = new Onderdeel("resource/Hoofdmenu/gps");
+
+        stop = new Onderdeel("resource/Hoofdmenu/stop");
+        //opmaak
+        tanken.setFitHeight(60);
+        tanken.setFitWidth(60);
+        tanken.setTranslateX(-20);
+        gps.setFitHeight(60);
+        gps.setFitWidth(60);
+
+        stop.setFitHeight(60);
+        stop.setFitWidth(60);
+        stop.setTranslateX(-20);
         right.setVgap(30);
         right.setPadding(new Insets(20, 50, 20, 20));
         right.setMaxHeight(400);
         right.setMinHeight(400);
         right.setMaxWidth(120);
         right.setMinWidth(120);
-            //de nodes toevoegen
-        right.add(tankenImg, 0, 0);
-        right.add(gpsImg, 0, 1);
-        right.add(stopImg, 0, 2);
-        
-        
+        //de nodes toevoegen
+        right.add(tanken, 0, 0);
+        right.add(gps, 0, 1);
+        right.add(stop, 0, 2);
+
         //Center borderpane
         center = new GridPane();
-            //opmaak center
+        //opmaak center
         center.setHgap(100);
         center.setVgap(50);
-            //Deze is opgedeeld in 3 onderdelen: iconen(boven), evaluatie(midden) en attitude(onderaan)
-            //iconen boven
+        //Deze is opgedeeld in 3 onderdelen: iconen(boven), evaluatie(midden) en attitude(onderaan)
+        //iconen boven
         iconen = new GridPane();
-                //de nodes
-        stadImg = new ImageView("resource/Hoofdmenu/stadNeutraal.png");
-        snelwegImg = new ImageView("resource/Hoofdmenu/snelwegNeutraal.png");
-        rotondeImg = new ImageView("resource/Hoofdmenu/rotondeNeutraal.png");
-        rijstrokenImg = new ImageView("resource/Hoofdmenu/rijstrokenNeutraal.png");
-                //opmaak
-        stadImg.setFitHeight(60);
-        stadImg.setFitWidth(60);
-        snelwegImg.setFitHeight(60);
-        snelwegImg.setFitWidth(60);
-        snelwegImg.setTranslateY(-20);
-        rotondeImg.setFitHeight(60);
-        rotondeImg.setFitWidth(60);
-        rotondeImg.setTranslateY(-20);
-        rijstrokenImg.setFitHeight(60);
-        rijstrokenImg.setFitWidth(60);
+        //de nodes
+        stad = new Onderdeel("resource/Hoofdmenu/stad");
+        snelweg = new Onderdeel("resource/Hoofdmenu/snelweg");
+        rotonde = new Onderdeel("resource/Hoofdmenu/rotonde");
+        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken");
+        //opmaak
+        stad.setFitHeight(60);
+        stad.setFitWidth(60);
+        snelweg.setFitHeight(60);
+        snelweg.setFitWidth(60);
+        snelweg.setTranslateY(-20);
+        rotonde.setFitHeight(60);
+        rotonde.setFitWidth(60);
+        rotonde.setTranslateY(-20);
+        rijstroken.setFitHeight(60);
+        rijstroken.setFitWidth(60);
         iconen.setAlignment(Pos.CENTER);
         iconen.setMaxSize(800, 80);
         iconen.setMinSize(800, 80);
         iconen.setPadding(new Insets(5, 5, 5, 5));
         iconen.setHgap(30);
-                //nodes toevoegen aan iconen
-        iconen.add(stadImg, 0, 0);
-        iconen.add(snelwegImg, 1, 0);
-        iconen.add(rotondeImg, 2, 0);
-        iconen.add(rijstrokenImg, 3, 0);
-            //evaluatie midden
+        //nodes toevoegen aan iconen
+        iconen.add(stad, 0, 0);
+        iconen.add(snelweg, 1, 0);
+        iconen.add(rotonde, 2, 0);
+        iconen.add(rijstroken, 3, 0);
+        //evaluatie midden
         evaluatieMid1 = new GridPane();
         evaluatieMid2 = new GridPane();
-                //de nodes
+        //de nodes
         pijl1 = new ImageView("resource/Hoofdmenu/pijl1Neutraal.png");
         pijl2 = new ImageView("resource/Hoofdmenu/pijl2Neutraal.png");
         pijl3 = new ImageView("resource/Hoofdmenu/pijl3Neutraal.png");
         stuur1 = new ImageView("resource/Hoofdmenu/stuur1Neutraal.png");
         stuur2 = new ImageView("resource/Hoofdmenu/stuur2Neutraal.png");
         stuur3 = new ImageView("resource/Hoofdmenu/stuur3Neutraal.png");
-                //opmaak
+        //opmaak
         pijl1.setFitHeight(80);
         pijl1.setFitWidth(80);
         pijl2.setFitHeight(80);
@@ -198,20 +204,20 @@ public class HoofdMenu extends BorderPane{
         evaluatieMid2.setPadding(new Insets(5, 5, 5, 5));
         evaluatieMid2.setAlignment(Pos.CENTER);
         evaluatieMid2.setTranslateX(10);
-        
-                //nodes toevoegen
+
+        //nodes toevoegen
         evaluatieMid1.add(stuur1, 0, 0, 2, 1);
         evaluatieMid1.add(stuur2, 0, 1);
         evaluatieMid1.add(stuur3, 1, 1);
         evaluatieMid2.add(pijl1, 0, 0);
         evaluatieMid2.add(pijl2, 1, 0);
         evaluatieMid2.add(pijl3, 0, 1, 2, 1);
-            //attitude onder
+        //attitude onder
         attitude = new GridPane();
-                //de nodes
+        //de nodes
         attitudeImg = new ImageView("resource/Hoofdmenu/attitude.png");
         attitudeTxt = new TextField("Attitude dummy text!");
-                //opmaak
+        //opmaak
         attitudeImg.setFitHeight(50);
         attitudeImg.setFitWidth(50);
         attitudeTxt.setMaxSize(200, 50);
@@ -221,21 +227,20 @@ public class HoofdMenu extends BorderPane{
         attitude.setMinSize(800, 80);
         attitude.setPadding(new Insets(10, 10, 10, 10));
         attitude.setHgap(50);
-                //nodes toevoegen aan attitude
+        //nodes toevoegen aan attitude
         attitude.add(attitudeImg, 0, 0);
         attitude.add(attitudeTxt, 1, 0);
-            //alle 3 de onderdelen toevoegen aan center
+        //alle 3 de onderdelen toevoegen aan center
         center.add(iconen, 0, 0, 2, 1);
         center.add(evaluatieMid1, 0, 1);
         center.add(evaluatieMid2, 1, 1);
         center.add(attitude, 0, 2, 2, 1);
-        
-        
+
         //Bottom of the borderpane
         bottom = new GridPane();
         gekend = new GridPane();
         evaluatie = new GridPane();
-            //de nodes
+        //de nodes
         graphImg = new ImageView("resource/Hoofdmenu/dummyGraph.png");
         gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
         gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
@@ -243,7 +248,7 @@ public class HoofdMenu extends BorderPane{
         evaluatieImg1 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         evaluatieImg2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         evaluatieImg3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
-            //de opmaak
+        //de opmaak
         graphImg.setFitHeight(80);
         graphImg.setFitWidth(200);
         graphImg.minWidth(300);
@@ -273,7 +278,7 @@ public class HoofdMenu extends BorderPane{
         evaluatie.setTranslateY(-20);
         evaluatie.setVgap(5);
         bottom.setAlignment(Pos.CENTER);
-            //de nodes toevoegen
+        //de nodes toevoegen
         gekend.add(gekendImg1, 0, 0);
         gekend.add(gekendImg2, 1, 0);
         gekend.add(gekendImg3, 2, 0);
@@ -282,8 +287,8 @@ public class HoofdMenu extends BorderPane{
         evaluatie.add(evaluatieImg3, 0, 2);
         bottom.add(evaluatie, 0, 0);
         bottom.add(gekend, 1, 0);
-        bottom.add(graphImg, 2, 0);        
-        
+        bottom.add(graphImg, 2, 0);
+
         //alle onderdelen toevoegen aan de borderpane
         this.setTop(top);
         this.setLeft(left);
@@ -298,6 +303,24 @@ public class HoofdMenu extends BorderPane{
         right.setAlignment(Pos.CENTER);
         bottom.setAlignment(Pos.CENTER);
         center.setAlignment(Pos.CENTER);
+
+        left.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(left, (Onderdeel)c));
+        });
+        
+        right.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(right, (Onderdeel)c));
+        });
+        
+        iconen.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel)c));
+        });
+        
+        
+        //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
-    
+
 }

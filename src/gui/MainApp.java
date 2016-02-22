@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class MainApp extends Application{
  
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         Leerling lln = new Leerling("Jo De Wit", "2016-02-18-1", "Paul", new Date(), "Rijbewijs B", new Image("resource/man-icon.png"));
         LeerlingController controller = new LeerlingController(lln);
         
@@ -25,7 +25,9 @@ public class MainApp extends Application{
         Veld4Evolutie evo = new Veld4Evolutie();
         VeldOpmerkingen opm = new VeldOpmerkingen("- AANDACHT\n- EIGEN RIT\n- CRUISE CONTROL");
         
-        Scene scene = new Scene(opm);
+        HoofdMenu menu = new HoofdMenu(lln, controller);
+        
+        Scene scene = new Scene(menu);
         
         stage.setScene(scene);
         stage.show();
