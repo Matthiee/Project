@@ -223,6 +223,9 @@ public class HoofdMenu extends BorderPane {
         stuur1.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
         stuur2.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
         stuur3.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        pijl1.setOnMouseClicked((e)->schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+        pijl2.setOnMouseClicked((e)->schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+        pijl3.setOnMouseClicked((e)->schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
         //attitude onder
         attitude = new GridPane();
         //de nodes
