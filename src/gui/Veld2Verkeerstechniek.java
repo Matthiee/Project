@@ -44,6 +44,24 @@ public class Veld2Verkeerstechniek extends GridPane{
         pijl2Img = new ImageView("resource/Verkeerstechniek/pijl2Neutraal.png");
         pijl3Img = new ImageView("resource/Verkeerstechniek/pijl3Neutraal.png");
         
+        //GridPane links
+        links.add(openbareWegImg, 0, 0);
+        links.add(richtingaanwijzersImg, 0, 1);
+        links.add(rechtsafImg, 0, 2);
+        links.add(linksafImg, 0, 3);
+        links.add(kruisenImg, 0, 4);
+        
+        //GridPane rechts
+        rechts.add(voorrangImg, 0, 0);
+        rechts.add(verkeerstekensImg, 0, 0);
+        rechts.add(snelheidImg, 0, 0);
+        rechts.add(afstandImg, 0, 0);
+        rechts.add(inhalenImg, 0, 0);
+        
+        //GridPane pijlen
+        pijlGp.add(pijl1Img, 0, 0);
+        pijlGp.add(pijl2Img, 1, 0);
+        pijlGp.add(pijl3Img, 0, 1, 2, 1);
         
     }
     
