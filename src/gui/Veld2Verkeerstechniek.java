@@ -2,6 +2,7 @@
 package gui;
 
 import controller.SchermController;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -53,10 +54,10 @@ public class Veld2Verkeerstechniek extends GridPane{
         
         //GridPane rechts
         rechts.add(voorrangImg, 0, 0);
-        rechts.add(verkeerstekensImg, 0, 0);
-        rechts.add(snelheidImg, 0, 0);
-        rechts.add(afstandImg, 0, 0);
-        rechts.add(inhalenImg, 0, 0);
+        rechts.add(verkeerstekensImg, 0, 1);
+        rechts.add(snelheidImg, 0, 2);
+        rechts.add(afstandImg, 0, 3);
+        rechts.add(inhalenImg, 0, 4);
         
         //GridPane pijlen
         pijlGp.add(pijl1Img, 0, 0);
@@ -65,37 +66,57 @@ public class Veld2Verkeerstechniek extends GridPane{
         
         //opmaak
             //algemeen
-        this.setHgap(70);
+        this.setPadding(new Insets(50,50,50,50));
+        this.setHgap(50);
             //links
         links.setAlignment(Pos.CENTER);
+        links.setVgap(20);
         openbareWegImg.setFitHeight(80);
         openbareWegImg.setFitWidth(80);
+        openbareWegImg.setTranslateX(180);
         richtingaanwijzersImg.setFitHeight(80);
         richtingaanwijzersImg.setFitWidth(80);
+        richtingaanwijzersImg.setTranslateX(75);
+        richtingaanwijzersImg.setTranslateY(-30);
         rechtsafImg.setFitHeight(80);
         rechtsafImg.setFitWidth(80);
+        rechtsafImg.setTranslateX(10);
         linksafImg.setFitHeight(80);
         linksafImg.setFitWidth(80);
+        linksafImg.setTranslateX(75);
+        linksafImg.setTranslateY(30);
+        kruisenImg.setFitHeight(80);
+        kruisenImg.setFitWidth(80);
+        kruisenImg.setTranslateX(180);
             //rechts
         rechts.setAlignment(Pos.CENTER);
+        rechts.setVgap(20);
         voorrangImg.setFitHeight(80);
         voorrangImg.setFitWidth(80);
+        voorrangImg.setTranslateX(-180);
         verkeerstekensImg.setFitHeight(80);
         verkeerstekensImg.setFitWidth(80);
+        verkeerstekensImg.setTranslateX(-75);
+        verkeerstekensImg.setTranslateY(-30);
         snelheidImg.setFitHeight(80);
         snelheidImg.setFitWidth(80);
+        snelheidImg.setTranslateX(-10);
         afstandImg.setFitHeight(80);
         afstandImg.setFitWidth(80);
+        afstandImg.setTranslateX(-75);
+        afstandImg.setTranslateY(30);
         inhalenImg.setFitHeight(80);
         inhalenImg.setFitWidth(80);
+        inhalenImg.setTranslateX(-180);
             //pijlen center
         pijlGp.setAlignment(Pos.CENTER);
+        pijlGp.setTranslateY(10);
         pijl1Img.setFitHeight(150);
-        pijl1Img.setFitWidth(300);
+        pijl1Img.setFitWidth(150);
         pijl2Img.setFitHeight(150);
         pijl2Img.setFitWidth(150);
         pijl3Img.setFitHeight(150);
-        pijl3Img.setFitWidth(150);
+        pijl3Img.setFitWidth(300);
         
         //Exit button
         exit = new Button("ga terug");
