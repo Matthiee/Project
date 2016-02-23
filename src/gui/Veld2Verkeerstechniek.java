@@ -96,7 +96,19 @@ public class Veld2Verkeerstechniek extends GridPane{
         pijl2Img.setFitWidth(150);
         pijl3Img.setFitHeight(150);
         pijl3Img.setFitWidth(150);
-                
+        
+        //Exit button
+        exit = new Button("ga terug");
+        
+        //eventhandler
+        exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
+        
+        //Alle Gridpanes toevoegen an hoofd GridPane
+            //volgorde is belangrijk, niet aanpassen!
+        this.add(pijlGp, 2 ,0);
+        this.add(rechts, 3, 0);
+        this.add(links, 1, 0);
+        this.add(exit, 3, 1);        
         
     }
     
