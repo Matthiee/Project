@@ -63,6 +63,41 @@ public class Veld2Verkeerstechniek extends GridPane{
         pijlGp.add(pijl2Img, 1, 0);
         pijlGp.add(pijl3Img, 0, 1, 2, 1);
         
+        //opmaak
+            //algemeen
+        this.setHgap(70);
+            //links
+        links.setAlignment(Pos.CENTER);
+        openbareWegImg.setFitHeight(80);
+        openbareWegImg.setFitWidth(80);
+        richtingaanwijzersImg.setFitHeight(80);
+        richtingaanwijzersImg.setFitWidth(80);
+        rechtsafImg.setFitHeight(80);
+        rechtsafImg.setFitWidth(80);
+        linksafImg.setFitHeight(80);
+        linksafImg.setFitWidth(80);
+            //rechts
+        rechts.setAlignment(Pos.CENTER);
+        voorrangImg.setFitHeight(80);
+        voorrangImg.setFitWidth(80);
+        verkeerstekensImg.setFitHeight(80);
+        verkeerstekensImg.setFitWidth(80);
+        snelheidImg.setFitHeight(80);
+        snelheidImg.setFitWidth(80);
+        afstandImg.setFitHeight(80);
+        afstandImg.setFitWidth(80);
+        inhalenImg.setFitHeight(80);
+        inhalenImg.setFitWidth(80);
+            //pijlen center
+        pijlGp.setAlignment(Pos.CENTER);
+        pijl1Img.setFitHeight(150);
+        pijl1Img.setFitWidth(300);
+        pijl2Img.setFitHeight(150);
+        pijl2Img.setFitWidth(150);
+        pijl3Img.setFitHeight(150);
+        pijl3Img.setFitWidth(150);
+                
+        
     }
     
     
