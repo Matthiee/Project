@@ -136,12 +136,14 @@ public class Veld1Rijtechniek extends GridPane{
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
-                c.setOnMouseClicked((e)-> KleurKiezerHouder.show(links, (Onderdeel)c));
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(links, (Onderdeel)c));
         });
+        
         rechts.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
-                c.setOnMouseClicked((e)-> KleurKiezerHouder.show(links, (Onderdeel)c));
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
+        
     }
     
 }
