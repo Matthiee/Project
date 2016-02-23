@@ -129,9 +129,10 @@ public class Veld1Rijtechniek extends GridPane{
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
         
         //Alle GridPanes toevoegen aan hoofd GridPane
-        this.add(links, 1, 0);
+            //moet in deze volgorde anders werkt kleurkiezer niet!!!!
         this.add(stuurGp, 2 ,0);
         this.add(rechts, 3, 0);
+        this.add(links, 1, 0);
         this.add(exit, 3, 1);
         
         links.getChildren().forEach(c -> {
