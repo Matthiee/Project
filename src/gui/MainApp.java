@@ -20,6 +20,7 @@ public class MainApp extends Application{
     public static final String HOOFDMENU_ID = "hoofdmenu";
     public static final String INFO_LLN_ID = "info_lln";
     public static final String RIJTECHNIEK_ID = "rijtechniek";
+    public static final String VERKEERSTECHNIEK_ID = "verkerstechniek";
    
     @Override
     public void start(Stage stage) {
@@ -38,11 +39,13 @@ public class MainApp extends Application{
         InfoScherm info = new InfoScherm(lln, controller, schermenCtrl);
         LoginScherm login = new LoginScherm(schermenCtrl);
         Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl);
+        Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(schermenCtrl);
         
         schermenCtrl.addScherm(LOGIN_ID, login);
         schermenCtrl.addScherm(HOOFDMENU_ID, menu);
         schermenCtrl.addScherm(INFO_LLN_ID, info);
         schermenCtrl.addScherm(RIJTECHNIEK_ID, rijtechniek);
+        schermenCtrl.addScherm(VERKEERSTECHNIEK_ID, verkeerstechniek);
         
         schermenCtrl.setScherm(LOGIN_ID);
         
