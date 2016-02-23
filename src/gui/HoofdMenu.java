@@ -210,7 +210,7 @@ public class HoofdMenu extends BorderPane {
         evaluatieMid2.setMinHeight(160);
         evaluatieMid2.setPadding(new Insets(5, 5, 5, 5));
         evaluatieMid2.setAlignment(Pos.CENTER);
-        evaluatieMid2.setTranslateX(10);
+        evaluatieMid2.setTranslateX(0);
 
         //nodes toevoegen
         evaluatieMid1.add(stuur1, 0, 0, 2, 1);
@@ -220,7 +220,9 @@ public class HoofdMenu extends BorderPane {
         evaluatieMid2.add(pijl2, 1, 0);
         evaluatieMid2.add(pijl3, 0, 1, 2, 1);
         //eventhandler
-        evaluatieMid1.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        stuur1.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        stuur2.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        stuur3.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
         //attitude onder
         attitude = new GridPane();
         //de nodes
@@ -240,9 +242,10 @@ public class HoofdMenu extends BorderPane {
         attitude.add(attitudeImg, 0, 0);
         attitude.add(attitudeTxt, 1, 0);
         //alle 3 de onderdelen toevoegen aan center
+            //volgorde laten staan! anders werkt schermcontroller niet goed!
         center.add(iconen, 0, 0, 2, 1);
-        center.add(evaluatieMid1, 0, 1);
         center.add(evaluatieMid2, 1, 1);
+        center.add(evaluatieMid1, 0, 1);
         center.add(attitude, 0, 2, 2, 1);
 
         //Bottom of the borderpane
@@ -300,10 +303,10 @@ public class HoofdMenu extends BorderPane {
 
         //alle onderdelen toevoegen aan de borderpane
         this.setTop(top);
-        this.setLeft(left);
-        this.setRight(right);
         this.setBottom(bottom);
         this.setCenter(center);
+        this.setLeft(left);
+        this.setRight(right);
         //opmaak
         this.maxHeight(800);
         this.maxWidth(1200);
