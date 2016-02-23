@@ -2,6 +2,7 @@
 package gui;
 
 import controller.SchermController;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -67,6 +68,60 @@ public class Veld1Rijtechniek extends GridPane{
         stuurGp.add(stuur1Img, 0, 0, 2, 1);
         stuurGp.add(stuur2Img, 0, 1);
         stuurGp.add(stuur3Img, 1, 1);
+        
+        //Opmaak
+            //algemeen
+        this.setHgap(50);
+            //links
+        links.setAlignment(Pos.CENTER);
+        links.setVgap(10);
+        remImg.setFitHeight(80);
+        remImg.setFitWidth(80);
+        remImg.setTranslateX(180);
+        remImg.setTranslateY(30);
+        koppelingImg.setFitHeight(80);
+        koppelingImg.setFitWidth(80);
+        koppelingImg.setTranslateX(75);
+        houdingImg.setFitHeight(80);
+        houdingImg.setFitWidth(80);
+        hellingImg.setFitHeight(80);
+        hellingImg.setFitWidth(80);
+        stuuroefImg.setFitHeight(80);
+        stuuroefImg.setFitWidth(80);
+        stuuroefImg.setTranslateX(75);
+        achteruitImg.setFitHeight(80);
+        achteruitImg.setFitWidth(80);
+        achteruitImg.setTranslateX(180);
+        achteruitImg.setTranslateY(-30);
+            //Rechts
+        rechts.setAlignment(Pos.CENTER);
+        rechts.setVgap(10);
+        stuurImg.setFitHeight(80);
+        stuurImg.setFitWidth(80);
+        stuurImg.setTranslateX(-180);
+        stuurImg.setTranslateY(30);
+        schakelImg.setFitHeight(80);
+        schakelImg.setFitWidth(80);
+        schakelImg.setTranslateX(-75);
+        kijkImg.setFitHeight(80);
+        kijkImg.setFitWidth(80);
+        parkerenImg.setFitHeight(80);
+        parkerenImg.setFitWidth(80);
+        kerenImg.setFitHeight(80);
+        kerenImg.setFitWidth(80);
+        kerenImg.setTranslateX(-75);
+        garageImg.setFitHeight(80);
+        garageImg.setFitWidth(80);
+        garageImg.setTranslateX(-180);
+        garageImg.setTranslateY(-30);
+            //Stuur center
+        stuurGp.setAlignment(Pos.CENTER);
+        stuur1Img.setFitHeight(150);
+        stuur1Img.setFitWidth(300);
+        stuur2Img.setFitHeight(150);
+        stuur2Img.setFitWidth(150);
+        stuur3Img.setFitHeight(150);
+        stuur3Img.setFitWidth(150);
     }
     
 }
