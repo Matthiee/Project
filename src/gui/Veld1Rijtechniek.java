@@ -122,6 +122,26 @@ public class Veld1Rijtechniek extends GridPane{
         stuur2Img.setFitWidth(150);
         stuur3Img.setFitHeight(150);
         stuur3Img.setFitWidth(150);
+        
+        //exit button
+        exit = new Button("ga terug");
+        //eventhandeler
+        exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
+        
+        //Alle GridPanes toevoegen aan hoofd GridPane
+        this.add(links, 1, 0);
+        this.add(stuurGp, 2 ,0);
+        this.add(rechts, 3, 0);
+        this.add(exit, 3, 1);
+        
+        links.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e)-> KleurKiezerHouder.show(links, (Onderdeel)c));
+        });
+        rechts.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e)-> KleurKiezerHouder.show(links, (Onderdeel)c));
+        });
     }
     
 }
