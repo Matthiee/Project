@@ -219,6 +219,8 @@ public class HoofdMenu extends BorderPane {
         evaluatieMid2.add(pijl1, 0, 0);
         evaluatieMid2.add(pijl2, 1, 0);
         evaluatieMid2.add(pijl3, 0, 1, 2, 1);
+        //eventhandler
+        evaluatieMid1.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
         //attitude onder
         attitude = new GridPane();
         //de nodes
