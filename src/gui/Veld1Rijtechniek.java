@@ -2,6 +2,7 @@
 package gui;
 
 import controller.SchermController;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -72,6 +73,7 @@ public class Veld1Rijtechniek extends GridPane{
         //Opmaak
             //algemeen
         this.setHgap(50);
+        this.setPadding(new Insets(50,50,50,50));
             //links
         links.setAlignment(Pos.CENTER);
         links.setVgap(10);
