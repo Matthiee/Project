@@ -89,11 +89,11 @@ public class HoofdMenu extends BorderPane {
         //Left side borderpane
         left = new GridPane();
         //de nodes
-        schakelaars = new Onderdeel("resource/Hoofdmenu/schakelaars");
+        schakelaars = new Onderdeel("resource/Hoofdmenu/schakelaars", 10, 35);
 
-        vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen");
+        vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen", -10, 35);
 
-        banden = new Onderdeel("resource/Hoofdmenu/banden");
+        banden = new Onderdeel("resource/Hoofdmenu/banden", 10, 35);
         
         //opmaak
         schakelaars.setFitHeight(60);
@@ -118,11 +118,11 @@ public class HoofdMenu extends BorderPane {
         //Right side borderpane
         right = new GridPane();
         //de nodes
-        tanken = new Onderdeel("resource/Hoofdmenu/tanken");
+        tanken = new Onderdeel("resource/Hoofdmenu/tanken", 0, 35);
 
-        gps = new Onderdeel("resource/Hoofdmenu/gps");
+        gps = new Onderdeel("resource/Hoofdmenu/gps", 15, 35);
 
-        stop = new Onderdeel("resource/Hoofdmenu/stop");
+        stop = new Onderdeel("resource/Hoofdmenu/stop", 0, 35);
         //opmaak
         tanken.setFitHeight(60);
         tanken.setFitWidth(60);
@@ -153,10 +153,10 @@ public class HoofdMenu extends BorderPane {
         //iconen boven
         iconen = new GridPane();
         //de nodes
-        stad = new Onderdeel("resource/Hoofdmenu/stad");
-        snelweg = new Onderdeel("resource/Hoofdmenu/snelweg");
-        rotonde = new Onderdeel("resource/Hoofdmenu/rotonde");
-        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken");
+        stad = new Onderdeel("resource/Hoofdmenu/stad", 35, 125);
+        snelweg = new Onderdeel("resource/Hoofdmenu/snelweg", 35, 100);
+        rotonde = new Onderdeel("resource/Hoofdmenu/rotonde", 35, 100);
+        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken",35 ,125);
         //opmaak
         stad.setFitHeight(60);
         stad.setFitWidth(60);
