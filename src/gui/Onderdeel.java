@@ -21,6 +21,8 @@ public class Onderdeel extends ImageView {
     private final IntegerProperty statusProperty = new SimpleIntegerProperty(NEUTRAAL);
 
     private final HashMap<String, Image> imageCache = new HashMap<>(4);
+    
+    private int transX, transY;
 
     public Onderdeel(String base) {
 
@@ -28,6 +30,40 @@ public class Onderdeel extends ImageView {
         String gekend = base + "Groen.png";
         String gezien_niet_gekend = base + "Oranje.png";
         String niet_gekend = base + "Rood.png";
+        
+        transX = 0;
+        transY = 0;
+
+        statusProperty.addListener((Observable o) -> {
+            final int x = getStatus();
+            switch (x) {
+                case NEUTRAAL:
+                    setImage(neutraal);
+                    break;
+                case GEKEND:
+                    setImage(gekend);
+                    break;
+                case GEZIEN_NIET_GEKEND:
+                    setImage(gezien_niet_gekend);
+                    break;
+                case NIET_GEKEND:
+                    setImage(niet_gekend);
+                    break;
+            }
+        });
+        
+        setImage(neutraal);
+    }
+    
+    public Onderdeel(String base, int tx, int ty) {
+
+        String neutraal = base + "Neutraal.png";
+        String gekend = base + "Groen.png";
+        String gezien_niet_gekend = base + "Oranje.png";
+        String niet_gekend = base + "Rood.png";
+        
+        transX = tx;
+        transY = ty;
 
         statusProperty.addListener((Observable o) -> {
             final int x = getStatus();
@@ -80,5 +116,23 @@ public class Onderdeel extends ImageView {
     public IntegerProperty getStatusProperty() {
         return statusProperty;
     }
+
+    public int getTransX() {
+        return transX;
+    }
+
+    public void setTransX(int transX) {
+        this.transX = transX;
+    }
+
+    public int getTransY() {
+        return transY;
+    }
+
+    public void setTransY(int transY) {
+        this.transY = transY;
+    }
+    
+    
 
 }
