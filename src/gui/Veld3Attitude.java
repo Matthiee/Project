@@ -1,10 +1,14 @@
 package gui;
 
+import controller.SchermController;
 import javafx.collections.FXCollections;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -13,9 +17,10 @@ import javafx.scene.layout.VBox;
  */
 public class Veld3Attitude extends FlowPane
 {
+    private final SchermController schermController;
 
-    public Veld3Attitude(){
-       
+    public Veld3Attitude(SchermController schermController1){
+       schermController=schermController1;
 
         VBox vBox = new VBox();
         Label lbl1 = new Label("Attitude");
@@ -40,8 +45,15 @@ public class Veld3Attitude extends FlowPane
         vBox2.getChildren().addAll(attitudes);
         vBox2.setTranslateX(40);
         vBox2.setTranslateY(10);
-        this.getChildren().addAll(vBox,vBox2);
+        //Exit button
+        Button exit = new Button("ga terug");
+        exit.setTranslateX(100);
+        
+        //eventhandler
+        exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
+        this.getChildren().addAll(vBox,vBox2,exit);
 
-
+        
     }
+    
 }
