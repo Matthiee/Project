@@ -1,7 +1,9 @@
 package gui;
 
 
+import controller.SchermController;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -17,10 +19,13 @@ import javafx.scene.shape.Rectangle;
 public class Veld4Evolutie extends VBox
 {
     private int score=0;
-    private final Label scoreLabel = new Label();;
+    private final Label scoreLabel = new Label();
+    private final SchermController schermController;
     
-    public Veld4Evolutie() 
+    public Veld4Evolutie(SchermController schermController1) 
     {
+        schermController=schermController1;
+        
         Rectangle rectangle1 = new Rectangle(60, 60, Color.RED);
         Rectangle rectangle2 = new Rectangle(60, 80, Color.RED);
         Rectangle rectangle3 = new Rectangle(60, 100, Color.RED);
@@ -163,10 +168,15 @@ public class Veld4Evolutie extends VBox
         
         hbox1.getChildren().addAll(rectangle1,rectangle2,rectangle3,rectangle4,rectangle5,rectangle6,rectangle7,rectangle8,rectangle9);
         
+        Button exit = new Button("ga terug");
+        exit.setTranslateY(80);
         
         
+        //eventhandler
+        exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
         
-        this.getChildren().addAll(hbox2,hbox1);
+        
+        this.getChildren().addAll(hbox2,hbox1,exit);
     }
     private void updateScore(int inkomend)
     {

@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -231,6 +232,7 @@ public class HoofdMenu extends BorderPane {
         attitude = new GridPane();
         //de nodes
         attitudeImg = new ImageView("resource/Hoofdmenu/attitude.png");
+        attitudeImg.setOnMouseClicked((e)->schermController.setScherm(MainApp.VELD3ATTITUDE_ID));
         attitudeTxt = new TextField("Attitude dummy text!");
         //opmaak
         attitudeImg.setFitHeight(50);
@@ -258,6 +260,7 @@ public class HoofdMenu extends BorderPane {
         evaluatie = new GridPane();
         //de nodes
         graphImg = new ImageView("resource/Hoofdmenu/dummyGraph.png");
+        graphImg.setOnMouseClicked((e)->schermController.setScherm(MainApp.VELD4EVOLUTIE_ID));
         gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
         gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
         gekendImg3 = new ImageView("resource/Hoofdmenu/gekendRood.png");
