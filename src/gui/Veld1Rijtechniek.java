@@ -42,7 +42,7 @@ public class Veld1Rijtechniek extends GridPane{
         kijkImg = new ImageView("resource/Rijtechniek/kijk.png");
         parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157);
         kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155);
-        garageImg = new Onderdeel("resource/Rijtechniek/garage", 0, 0);
+        garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 127);
             //Stuur center
         stuurGp = new GridPane();
         stuur1Img = new ImageView("resource/Rijtechniek/stuur1Neutraal.png");
@@ -77,6 +77,7 @@ public class Veld1Rijtechniek extends GridPane{
             //links
         links.setAlignment(Pos.CENTER);
         links.setVgap(10);
+        links.setMaxWidth(50);
         remImg.setFitHeight(80);
         remImg.setFitWidth(80);
         remImg.setTranslateX(180);
