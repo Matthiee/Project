@@ -69,8 +69,8 @@ public class KleurKiezerHouder extends Pane {
 //        System.out.println("Hoogte: "+ ctrl.getBoundsInLocal().getHeight());
 //        System.out.println("Hoogte: "+ ctrl.getBoundsInParent().getHeight());
         
-        houder.setTranslateX(ctrl.getLayoutX()-50);
-        houder.setTranslateY(ctrl.getLayoutY()- ctrl.getBoundsInParent().getHeight());
+        houder.setTranslateX(ctrl.getLayoutX()- 50 + ctrl.getX());
+        houder.setTranslateY(ctrl.getLayoutY()- ctrl.getBoundsInParent().getHeight() + ctrl.getY());
         
         pane.getChildren().add(houder);
     }
