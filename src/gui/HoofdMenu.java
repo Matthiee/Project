@@ -23,7 +23,7 @@ import javafx.scene.layout.VBox;
  *
  * @author simon
  */
-public class HoofdMenu extends BorderPane {
+public class HoofdMenu extends BorderPane implements View {
 
     //objecten en controllers
     private Leerling lln;
@@ -34,8 +34,7 @@ public class HoofdMenu extends BorderPane {
     private GridPane top;
     private VBox profile;
     private TextField opmerkingenTxt;
-    private ImageView profileImg;
-    private Label profileLbl;
+    private LeerlingInfoHouder llnInfo;
     //Left
     private GridPane left;
     private Onderdeel schakelaars, vloeistoffen, banden;
@@ -63,10 +62,10 @@ public class HoofdMenu extends BorderPane {
        
         //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
-        profileImg = new ImageView(lln.getImage());
-        profileLbl = new Label(lln.getNaam());
+        llnInfo = new LeerlingInfoHouder(lln, llnController);
         
-        profileImg.setOnMouseClicked((e)->schermController.setScherm(MainApp.INFO_LLN_ID));
+        llnInfo.setOnMouseClicked((e)->schermController.setScherm(MainApp.INFO_LLN_ID));
+        
         //de opmaak
         opmerkingenTxt.setMaxHeight(60);
         opmerkingenTxt.setMinHeight(60);
@@ -74,16 +73,10 @@ public class HoofdMenu extends BorderPane {
         opmerkingenTxt.setMinWidth(200);
         profile.setMaxHeight(100);
         profile.setMinHeight(100);
-        profileImg.maxHeight(50);
-        profileImg.minHeight(50);
-        profileImg.setFitHeight(50);
-        profileImg.setFitWidth(50);
-        profileLbl.maxHeight(20);
-        profileLbl.minHeight(20);
         top.setPadding(new Insets(30, 20, 5, 20));
         top.setHgap(400);
         //nodes toevoegen
-        profile.getChildren().addAll(profileImg, profileLbl);
+        profile.getChildren().addAll(llnInfo);
         top.add(opmerkingenTxt, 0, 0);
         top.add(profile, 1, 0);
 
@@ -340,6 +333,11 @@ public class HoofdMenu extends BorderPane {
         
         
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

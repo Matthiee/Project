@@ -13,7 +13,6 @@ import javafx.scene.layout.VBox;
  */
 public class LeerlingInfoHouder extends VBox implements View {
     
-    private final ImageView imgView;
     private final Label lblNaam;
     
     private final Leerling lln;
@@ -28,23 +27,21 @@ public class LeerlingInfoHouder extends VBox implements View {
         this.lln.addView(this);
         
         setStyle("-fx-border-color: black;"
-                + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
+                + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);"
                 + "-fx-background-color: lightgray;"
                 + "-fx-background-radius: 5;");
         
+        lblNaam=new Label(lln.getNaam());
         
-        imgView = new ImageView();
-        lblNaam=new Label();
         
-        this.getChildren().addAll(imgView, lblNaam);
         
-        update();
+        
+        this.getChildren().addAll(lblNaam);
     }
 
     @Override
     public void update() {
         lblNaam.setText(lln.getNaam());
-        imgView.setImage(lln.getImage());
     }
     
     
