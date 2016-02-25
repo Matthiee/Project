@@ -26,28 +26,15 @@ public class LoginScherm extends VBox
         HBox hBox2 = new HBox();
         HBox hBox3 = new HBox();
         
-        Label lblNaam = new Label("Naam: ");
-        TextField fldNaam = new TextField();
-        fldNaam.setTranslateX(110);
-        hBox1.getChildren().addAll(lblNaam,fldNaam);
-        hBox1.setTranslateX(15);
-        hBox1.setTranslateY(15);
-        
-        Label lblInschrijvingsnr = new Label("Inschrijvingsnummer: ");
-        TextField fldInschrijvingsnr = new TextField();
-        fldInschrijvingsnr.setTranslateX(12);
-        hBox2.getChildren().addAll(lblInschrijvingsnr,fldInschrijvingsnr);
-        hBox2.setTranslateX(15);
-        hBox2.setTranslateY(40);
+       
         
         Button btnZoek = new Button("Zoek");
+        btnZoek.setOnAction(e-> schermController.setScherm(MainApp.ZOEKLEERLING_ID));
         Button btnNieuw = new Button("Nieuw");
+        btnNieuw.setOnAction(e-> schermController.setScherm(MainApp.NIEUWELEERLING_ID));
         btnNieuw.setTranslateX(10);
-        Button btnGaDoor = new Button("Ga door");
-        btnGaDoor.setOnAction(e-> schermController.setScherm(MainApp.HOOFDMENU_ID));
-        
-        btnGaDoor.setTranslateX(20);
-        hBox3.getChildren().addAll(btnZoek,btnNieuw,btnGaDoor);
+
+        hBox3.getChildren().addAll(btnZoek,btnNieuw);
         hBox3.setTranslateX(15);
         hBox3.setTranslateY(60);
         
