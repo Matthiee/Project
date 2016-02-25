@@ -20,6 +20,9 @@ public class Leerling implements Model{
     private Date verval;
     private String type;
     private Image image;
+    private EvaluatieMoment eva1;
+    private EvaluatieMoment eva2;
+    private EvaluatieMoment eva3;
     
     public Leerling(){
       views = new ArrayList<>();
@@ -34,6 +37,9 @@ public class Leerling implements Model{
         this.verval = verval;
         this.type = type;
         this.image = image;
+        this.eva1 = new EvaluatieMoment();
+        this.eva2 = new EvaluatieMoment();
+        this.eva3 = new EvaluatieMoment();
     }
 
     public String getNaam() {
