@@ -66,7 +66,8 @@ public class MainApp extends Application{
         stage.setScene(scene);
         stage.show();
         
-        ScenicView.show(scene);
+        // Scenic View voor GUI makkelijker te begrijpen en fouten te vinden
+        // ScenicView.show(scene);
     }
     
 }

@@ -27,13 +27,13 @@ public class LeerlingMapper {
 
     public static List<Leerling> getLeerlingen() {
         // TODO: Database
-        return leerlingen.stream().sorted().collect(Collectors.toList());
+        return leerlingen;
     }
     
-    public static List<Leerling> getLeerlingMetNaam(String naam){
+    public static List<Leerling> getLeerlingenMetNaam(String naam){
         // TODO: Database
         
-        return leerlingen.stream().filter(l -> l.getNaam().contains(naam)).sorted().collect(Collectors.toList());
+        return leerlingen.stream().filter(l -> l.getNaam().contains(naam)).collect(Collectors.toList());
         
     }
 
