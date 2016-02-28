@@ -45,7 +45,6 @@ public class MainApp extends Application{
         Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl);
         Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(schermenCtrl);
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);
-        Veld4Evolutie veld4Evolutie = new Veld4Evolutie(schermenCtrl);
         ZoekLeerling zoekLeerling = new ZoekLeerling(schermenCtrl);
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);
         
@@ -55,7 +54,6 @@ public class MainApp extends Application{
         schermenCtrl.addScherm(RIJTECHNIEK_ID, rijtechniek);
         schermenCtrl.addScherm(VERKEERSTECHNIEK_ID, verkeerstechniek);
         schermenCtrl.addScherm(VELD3ATTITUDE_ID, veld3Attitude);
-        schermenCtrl.addScherm(VELD4EVOLUTIE_ID, veld4Evolutie);
         schermenCtrl.addScherm(ZOEKLEERLING_ID, zoekLeerling);
         schermenCtrl.addScherm(NIEUWELEERLING_ID, nieuweLeerling);
         
