@@ -26,7 +26,7 @@ public class Veld4Evolutie extends VBox implements View {
     private final Button min = new Button("-");
     private final Button plus = new Button("+");
 
-    private final double SCHAAL = 1.20;
+    private final double SCHAAL = 0.20;
 
     private void maakRects() {
         for (int i = 0; i < 12; i++) {
@@ -48,10 +48,8 @@ public class Veld4Evolutie extends VBox implements View {
 
         maakRects();
 
-        Label text = new Label("Score: ");
         HBox boxRects = new HBox(rects);
-        HBox hbox2 = new HBox(10, text, lblScore, lblInfo);
-        hbox2.setPadding(new Insets(10));
+        HBox hbox2 = new HBox(10, lblInfo);
         HBox hbox3 = new HBox(10, min, boxRects, plus);
         hbox2.setPadding(new Insets(10));
         hbox3.setTranslateY(100*SCHAAL);
@@ -60,10 +58,6 @@ public class Veld4Evolutie extends VBox implements View {
         plus.setTranslateY(180*SCHAAL);
         
         this.getChildren().addAll(hbox2, hbox3);
-    }
-
-    private void updateScore() {
-        lblScore.setText("" + score);
     }
 
     private void updateLabel() {
@@ -101,8 +95,7 @@ public class Veld4Evolutie extends VBox implements View {
                 rects[i].setFill(Color.WHITE);
             }
         }
-
-        updateScore();
+        
         updateLabel();
     }
 }
