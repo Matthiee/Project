@@ -9,6 +9,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.scenicview.ScenicView;
 
 /**
  *
@@ -64,6 +65,8 @@ public class MainApp extends Application{
         
         stage.setScene(scene);
         stage.show();
+        
+        ScenicView.show(scene);
     }
     
 }
