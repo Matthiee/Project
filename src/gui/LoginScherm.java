@@ -11,32 +11,31 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 /**
  *
  * @author Kenzo
  */
-public class LoginScherm extends Pane
+public class LoginScherm extends StackPane
 {
     private final SchermController schermController;
     
-    private ImageView img;
-    private TextField txtNaam;
-    private Button btnZoek, btnDoorgaan;
-    private ListView<String> lvNamen;
-    private ObservableList<String> namen;
-    private Label lblInfo;
+    private final ImageView img;
+    private final TextField txtNaam;
+    private final Button btnZoek, btnDoorgaan;
+    private final ListView<String> lvNamen;
+    private final ObservableList<String> namen;
+    private final Label lblInfo;
     
     public LoginScherm(SchermController schermCtrl) 
     {
         setPadding(new Insets(10));
         
+        this.setMaxSize(605, 440);
+        
         schermController = schermCtrl;
-        this.maxHeight(800);
-        this.maxWidth(1200);
-        this.setPrefSize(1200, 800);
         lblInfo = new Label("");
         img = new ImageView("resource/man-icon.png");
         btnDoorgaan=new Button("Doorgaan");
@@ -60,7 +59,7 @@ public class LoginScherm extends Pane
                 + "-fx-background-color: lightgray;"
                 + "-fx-background-radius: 5;");
         
-        holder.setAlignment(Pos.CENTER);
+        this.setAlignment(Pos.CENTER);
         
         getChildren().addAll(holder);
         
