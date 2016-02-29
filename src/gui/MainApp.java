@@ -24,7 +24,6 @@ public class MainApp extends Application{
     public static final String VERKEERSTECHNIEK_ID = "verkerstechniek";
     public static final String VELD3ATTITUDE_ID = "veld3attitude";
     public static final String VELD4EVOLUTIE_ID = "veld4evolutie";
-    public static final String ZOEKLEERLING_ID = "zoekleerling";
     public static final String NIEUWELEERLING_ID = "nieuweleerling";
    
     @Override
@@ -46,7 +45,6 @@ public class MainApp extends Application{
         Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl);
         Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(schermenCtrl);
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);
-        ZoekLeerling zoekLeerling = new ZoekLeerling(schermenCtrl);
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);
         
         schermenCtrl.addScherm(LOGIN_ID, login);
@@ -55,7 +53,6 @@ public class MainApp extends Application{
         schermenCtrl.addScherm(RIJTECHNIEK_ID, rijtechniek);
         schermenCtrl.addScherm(VERKEERSTECHNIEK_ID, verkeerstechniek);
         schermenCtrl.addScherm(VELD3ATTITUDE_ID, veld3Attitude);
-        schermenCtrl.addScherm(ZOEKLEERLING_ID, zoekLeerling);
         schermenCtrl.addScherm(NIEUWELEERLING_ID, nieuweLeerling);
         
         schermenCtrl.setScherm(LOGIN_ID);

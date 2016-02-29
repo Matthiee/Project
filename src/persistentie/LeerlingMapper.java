@@ -36,5 +36,9 @@ public class LeerlingMapper {
         return leerlingen.stream().filter(l -> l.getNaam().contains(naam)).collect(Collectors.toList());
         
     }
+    
+    public static boolean voegLeerlingToe(Leerling lln){
+        return leerlingen.add(lln);
+    }
 
 }

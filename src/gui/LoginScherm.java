@@ -26,7 +26,7 @@ import persistentie.LeerlingMapper;
  *
  * @author Kenzo
  */
-public class LoginScherm extends StackPane {
+public class LoginScherm extends StackPane implements View {
 
     private final SchermController schermController;
 
@@ -83,11 +83,11 @@ public class LoginScherm extends StackPane {
         btnZoek.setOnAction(e -> zoek());
         btnNieuw.setOnAction(e-> schermController.setScherm(MainApp.NIEUWELEERLING_ID));
         
-        lvNamen.getSelectionModel().getSelectedItems().addListener((Observable o) -> update());
+        lvNamen.getSelectionModel().getSelectedItems().addListener((Observable o) -> updateItem());
 
     }
 
-    private void update() {
+    private void updateItem() {
         Leerling l = lvNamen.getSelectionModel().getSelectedItem();
         if (l != null) {
             img.setImage(l.getImage());
@@ -110,6 +110,11 @@ public class LoginScherm extends StackPane {
 
     private void login() {
 
+    }
+
+    @Override
+    public void update() {
+        
     }
 
 }
