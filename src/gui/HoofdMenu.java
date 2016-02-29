@@ -48,7 +48,8 @@ public class HoofdMenu extends BorderPane implements View {
     private TextField attitudeTxt;
     //bottom
     private GridPane bottom, evaluatie, gekend;
-    private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, graphImg, gekendImg1, gekendImg2, gekendImg3;
+    private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, gekendImg1, gekendImg2, gekendImg3;
+    private Veld4Evolutie graphImg;
 
     public HoofdMenu(Leerling lln, LeerlingController llnController, SchermController schermCtrl) {
 
@@ -252,8 +253,7 @@ public class HoofdMenu extends BorderPane implements View {
         gekend = new GridPane();
         evaluatie = new GridPane();
         //de nodes
-        graphImg = new ImageView("resource/Hoofdmenu/dummyGraph.png");
-        graphImg.setOnMouseClicked((e)->schermController.setScherm(MainApp.VELD4EVOLUTIE_ID));
+        graphImg = new Veld4Evolutie(schermController);
         gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
         gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
         gekendImg3 = new ImageView("resource/Hoofdmenu/gekendRood.png");
@@ -261,8 +261,8 @@ public class HoofdMenu extends BorderPane implements View {
         evaluatieImg2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         evaluatieImg3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         //de opmaak
-        graphImg.setFitHeight(80);
-        graphImg.setFitWidth(200);
+        //graphImg.setFitHeight(80);
+        //graphImg.setFitWidth(200);
         graphImg.minWidth(300);
         graphImg.maxWidth(300);
         graphImg.setTranslateX(50);
