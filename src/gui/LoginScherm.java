@@ -19,6 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import persistentie.LeerlingMapper;
 
 /**
@@ -31,7 +32,7 @@ public class LoginScherm extends StackPane {
 
     private final ImageView img;
     private final TextField txtNaam;
-    private final Button btnZoek, btnDoorgaan;
+    private final Button btnZoek, btnDoorgaan, btnNieuw;
     private final ListView<Leerling> lvNamen;
     private final ObservableList<Leerling> namen;
     private final Label lblInfo;
@@ -39,20 +40,24 @@ public class LoginScherm extends StackPane {
     public LoginScherm(SchermController schermCtrl) {
         setPadding(new Insets(10));
 
-        this.setMaxSize(605, 440);
+        this.setMaxSize(645, 440);
 
         schermController = schermCtrl;
         lblInfo = new Label("");
         img = new ImageView("resource/man-icon.png");
         btnDoorgaan = new Button("Doorgaan");
         btnZoek = new Button("Zoek");
+        btnNieuw=new Button("Nieuw");
+        
         txtNaam = new TextField();
         namen = FXCollections.observableArrayList();
         lvNamen = new ListView<>(namen);
 
         lvNamen.setCellFactory(e -> new LeerlingCell());
 
-        HBox hbox = new HBox(10, btnZoek, btnDoorgaan);
+        lblInfo.setTextFill(Color.RED);
+        
+        HBox hbox = new HBox(10, btnZoek, btnDoorgaan, btnNieuw);
 
         VBox vbox = new VBox(10, txtNaam, lblInfo, hbox);
         vbox.setPadding(new Insets(10));
@@ -65,6 +70,10 @@ public class LoginScherm extends StackPane {
                 + "-fx-background-color: lightgray;"
                 + "-fx-background-radius: 5;");
 
+        img.setStyle("-fx-border-color: black;"
+                + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
+                + "-fx-background-radius: 20;");
+        
         this.setAlignment(Pos.CENTER);
 
         getChildren().addAll(holder);
@@ -72,7 +81,8 @@ public class LoginScherm extends StackPane {
         // Event handlers
         btnDoorgaan.setOnAction(e -> login());
         btnZoek.setOnAction(e -> zoek());
-
+        btnNieuw.setOnAction(e-> schermController.setScherm(MainApp.NIEUWELEERLING_ID));
+        
         lvNamen.getSelectionModel().getSelectedItems().addListener((Observable o) -> update());
 
     }
