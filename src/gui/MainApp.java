@@ -40,7 +40,7 @@ public class MainApp extends Application{
         
         SchermController schermenCtrl =new SchermController();
         
-        EvaController evaController = new EvaController(lln);
+        EvaController evaController = new EvaController(controller);
         
         HoofdMenu menu = new HoofdMenu(lln, controller, schermenCtrl, evaController);
         InfoScherm info = new InfoScherm(lln, controller, schermenCtrl);
