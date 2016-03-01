@@ -3,6 +3,7 @@ package gui;
 import controller.EvaController;
 import controller.LeerlingController;
 import controller.SchermController;
+import domein.EvaluatieMoment;
 import domein.Leerling;
 import java.util.Date;
 import javafx.application.Application;
@@ -29,7 +30,10 @@ public class MainApp extends Application{
    
     @Override
     public void start(Stage stage) {
-        Leerling lln = new Leerling("Jo De Wit", "2016-02-18-1", "Paul", new Date(), "Rijbewijs B", new Image("resource/man-icon.png"));
+        EvaluatieMoment eva1 = new EvaluatieMoment();
+        EvaluatieMoment eva2 = new EvaluatieMoment();
+        EvaluatieMoment eva3 = new EvaluatieMoment();
+        Leerling lln = new Leerling("Jo De Wit", "2016-02-18-1", "Paul", new Date(), "Rijbewijs B", new Image("resource/man-icon.png"), eva1, eva2, eva3, 1);
         LeerlingController controller = new LeerlingController(lln);
         
         
