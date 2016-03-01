@@ -5,18 +5,16 @@
  */
 package gui;
 
+import controller.EvaController;
 import controller.LeerlingController;
 import controller.SchermController;
 import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -29,6 +27,7 @@ public class HoofdMenu extends BorderPane implements View {
     private Leerling lln;
     private LeerlingController llnController;
     private final SchermController schermController;
+    private EvaController evaController;
     
     //top
     private GridPane top;
@@ -51,7 +50,7 @@ public class HoofdMenu extends BorderPane implements View {
     private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, gekendImg1, gekendImg2, gekendImg3;
     private Veld4Evolutie graphImg;
 
-    public HoofdMenu(Leerling lln, LeerlingController llnController, SchermController schermCtrl) {
+    public HoofdMenu(Leerling lln, LeerlingController llnController, SchermController schermCtrl, EvaController evaController) {
 
         //Top of the borderpane
         top = new GridPane();
@@ -60,6 +59,7 @@ public class HoofdMenu extends BorderPane implements View {
         this.llnController = llnController;
         this.lln = lln;
         this.schermController=schermCtrl;
+        this.evaController = evaController; 
        
         //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
@@ -84,11 +84,11 @@ public class HoofdMenu extends BorderPane implements View {
         //Left side borderpane
         left = new GridPane();
         //de nodes
-        schakelaars = new Onderdeel("resource/Hoofdmenu/schakelaars", 10, 35);
+        schakelaars = new Onderdeel("resource/Hoofdmenu/schakelaars", 10, 35, evaController);
 
-        vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen", -10, 35);
+        vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen", -10, 35, evaController);
 
-        banden = new Onderdeel("resource/Hoofdmenu/banden", 10, 35);
+        banden = new Onderdeel("resource/Hoofdmenu/banden", 10, 35, evaController);
         
         //opmaak
         schakelaars.setFitHeight(60);
@@ -113,11 +113,11 @@ public class HoofdMenu extends BorderPane implements View {
         //Right side borderpane
         right = new GridPane();
         //de nodes
-        tanken = new Onderdeel("resource/Hoofdmenu/tanken", 0, 35);
+        tanken = new Onderdeel("resource/Hoofdmenu/tanken", 0, 35, evaController);
 
-        gps = new Onderdeel("resource/Hoofdmenu/gps", 15, 35);
+        gps = new Onderdeel("resource/Hoofdmenu/gps", 15, 35, evaController);
 
-        stop = new Onderdeel("resource/Hoofdmenu/stop", 0, 35);
+        stop = new Onderdeel("resource/Hoofdmenu/stop", 0, 35, evaController);
         //opmaak
         tanken.setFitHeight(60);
         tanken.setFitWidth(60);
@@ -148,10 +148,10 @@ public class HoofdMenu extends BorderPane implements View {
         //iconen boven
         iconen = new GridPane();
         //de nodes
-        stad = new Onderdeel("resource/Hoofdmenu/stad", 35, 125);
-        snelweg = new Onderdeel("resource/Hoofdmenu/snelweg", 35, 100);
-        rotonde = new Onderdeel("resource/Hoofdmenu/rotonde", 35, 100);
-        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken",35 ,125);
+        stad = new Onderdeel("resource/Hoofdmenu/stad", 35, 125, evaController);
+        snelweg = new Onderdeel("resource/Hoofdmenu/snelweg", 35, 100, evaController);
+        rotonde = new Onderdeel("resource/Hoofdmenu/rotonde", 35, 100, evaController);
+        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken",35 ,125, evaController);
         //opmaak
         stad.setFitHeight(60);
         stad.setFitWidth(60);
