@@ -23,6 +23,7 @@ public class Leerling implements Model{
     private EvaluatieMoment eva1;
     private EvaluatieMoment eva2;
     private EvaluatieMoment eva3;
+    private int lastSelectedEva; //1=eva1  2=eva2  3=eva3
     
     public Leerling(){
       views = new ArrayList<>();
@@ -40,7 +41,41 @@ public class Leerling implements Model{
         this.eva1 = new EvaluatieMoment();
         this.eva2 = new EvaluatieMoment();
         this.eva3 = new EvaluatieMoment();
+        this.lastSelectedEva = 0;
     }
+
+    public EvaluatieMoment getEva1() {
+        return eva1;
+    }
+
+    public void setEva1(EvaluatieMoment eva1) {
+        this.eva1 = eva1;
+    }
+
+    public EvaluatieMoment getEva2() {
+        return eva2;
+    }
+
+    public void setEva2(EvaluatieMoment eva2) {
+        this.eva2 = eva2;
+    }
+
+    public EvaluatieMoment getEva3() {
+        return eva3;
+    }
+
+    public void setEva3(EvaluatieMoment eva3) {
+        this.eva3 = eva3;
+    }
+
+    public int getLastSelectedEva() {
+        return lastSelectedEva;
+    }
+
+    public void setLastSelectedEva(int lastSelectedEva) {
+        this.lastSelectedEva = lastSelectedEva;
+    }
+   
 
     public String getNaam() {
         return naam;
