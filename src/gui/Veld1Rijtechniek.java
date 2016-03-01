@@ -1,6 +1,7 @@
 
 package gui;
 
+import controller.EvaController;
 import controller.SchermController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +13,7 @@ public class Veld1Rijtechniek extends GridPane{
     
     //de controllers
     private final SchermController schermController;
+    private EvaController evaController;
     //Afbeeldingen
     private ImageView hellingImg, houdingImg, kijkImg, koppelingImg, remImg, schakelImg, stuurImg;
     private Onderdeel stuuroefImg, achteruitImg, garageImg, kerenImg, parkerenImg;
@@ -23,8 +25,9 @@ public class Veld1Rijtechniek extends GridPane{
     //button
     private Button exit;
     
-    public Veld1Rijtechniek(SchermController schermCtrl){
+    public Veld1Rijtechniek(SchermController schermCtrl, EvaController evaCtrl){
         schermController = schermCtrl;
+        evaController = evaCtrl;
         
         //alle afbeeldingen aanmaken
             //Links
@@ -33,16 +36,16 @@ public class Veld1Rijtechniek extends GridPane{
         koppelingImg = new ImageView("resource/Rijtechniek/koppeling.png");
         houdingImg = new ImageView("resource/Rijtechniek/houding.png");
         hellingImg = new ImageView("resource/Rijtechniek/helling.png");
-        stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",120 ,157);
-        achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",225 ,127);
+        stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",120 ,157, evaController);
+        achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",225 ,127, evaController);
             //Rechts
         rechts = new GridPane();
         stuurImg = new ImageView("resource/Rijtechniek/stuur.png");
         schakelImg = new ImageView("resource/Rijtechniek/schakel.png");
         kijkImg = new ImageView("resource/Rijtechniek/kijk.png");
-        parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157);
-        kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155);
-        garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 127);
+        parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157, evaController);
+        kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155, evaController);
+        garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 127, evaController);
             //Stuur center
         stuurGp = new GridPane();
         stuur1Img = new ImageView("resource/Rijtechniek/stuur1Neutraal.png");
