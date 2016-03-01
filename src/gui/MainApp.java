@@ -9,7 +9,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import org.scenicview.ScenicView;
 
 /**
  *
@@ -27,7 +26,7 @@ public class MainApp extends Application{
     public static final String NIEUWELEERLING_ID = "nieuweleerling";
    
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws InterruptedException {
         LeerlingController controller = new LeerlingController(new Leerling("Dummy leerling", "NULL", "NULL", new Date(), "NULL", new Image("resource/man-icon.png")));
         
         SchermController schermenCtrl =new SchermController();

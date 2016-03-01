@@ -1,10 +1,8 @@
 package gui;
 
 import controller.LeerlingController;
-import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 /**

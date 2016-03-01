@@ -3,12 +3,9 @@ package gui;
 import controller.LeerlingController;
 import controller.SchermController;
 import domein.Leerling;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 import javafx.beans.Observable;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -90,7 +87,10 @@ public class LoginScherm extends StackPane implements View {
         btnNieuw.setOnAction(e-> schermController.setScherm(MainApp.NIEUWELEERLING_ID));
         
         lvNamen.getSelectionModel().getSelectedItems().addListener((Observable o) -> updateItem());
-
+        
+        // gegevens laden 
+        // TODO: multithreaden 
+        zoek("");
     }
 
     private void updateItem() {
