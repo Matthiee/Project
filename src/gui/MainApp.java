@@ -1,5 +1,6 @@
 package gui;
 
+import controller.EvaController;
 import controller.LeerlingController;
 import controller.SchermController;
 import domein.Leerling;
@@ -39,7 +40,9 @@ public class MainApp extends Application{
         
         SchermController schermenCtrl =new SchermController();
         
-        HoofdMenu menu = new HoofdMenu(lln, controller, schermenCtrl);
+        EvaController evaController = new EvaController(lln);
+        
+        HoofdMenu menu = new HoofdMenu(lln, controller, schermenCtrl, evaController);
         InfoScherm info = new InfoScherm(lln, controller, schermenCtrl);
         LoginScherm login = new LoginScherm(schermenCtrl);
         Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl);
