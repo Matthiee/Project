@@ -23,13 +23,17 @@ public class Onderdeel extends ImageView {
     private final HashMap<String, Image> imageCache = new HashMap<>(4);
     
     private int transX, transY;
+    
+    private String base;
 
     public Onderdeel(String base) {
+        
+        this.base = base;
 
-        String neutraal = base + "Neutraal.png";
-        String gekend = base + "Groen.png";
-        String gezien_niet_gekend = base + "Oranje.png";
-        String niet_gekend = base + "Rood.png";
+        String neutraal = this.base + "Neutraal.png";
+        String gekend = this.base + "Groen.png";
+        String gezien_niet_gekend = this.base + "Oranje.png";
+        String niet_gekend = this.base + "Rood.png";
         
         transX = 0;
         transY = 0;
@@ -56,11 +60,13 @@ public class Onderdeel extends ImageView {
     }
     
     public Onderdeel(String base, int tx, int ty) {
+        
+        this.base = base;
 
-        String neutraal = base + "Neutraal.png";
-        String gekend = base + "Groen.png";
-        String gezien_niet_gekend = base + "Oranje.png";
-        String niet_gekend = base + "Rood.png";
+        String neutraal = this.base + "Neutraal.png";
+        String gekend = this.base + "Groen.png";
+        String gezien_niet_gekend = this.base + "Oranje.png";
+        String niet_gekend = this.base + "Rood.png";
         
         transX = tx;
         transY = ty;
@@ -103,6 +109,14 @@ public class Onderdeel extends ImageView {
         }
 
         setImage(img);
+    }
+
+    public String getBase() {
+        return base;
+    }
+
+    public void setBase(String base) {
+        this.base = base;
     }
 
     public int getStatus() {
