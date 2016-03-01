@@ -1,5 +1,6 @@
 package gui;
 
+import controller.LeerlingController;
 import controller.SchermController;
 import domein.Leerling;
 import java.util.Collections;
@@ -36,14 +37,19 @@ public class LoginScherm extends StackPane implements View {
     private final ListView<Leerling> lvNamen;
     private final ObservableList<Leerling> namen;
     private final Label lblInfo;
-
-    public LoginScherm(SchermController schermCtrl) {
+    private final LeerlingController llnCntrl;
+    
+    public LoginScherm(LeerlingController llnController, SchermController schermCtrl) {
         setPadding(new Insets(10));
 
+        llnCntrl=llnController;
+        
         this.setMaxSize(645, 440);
 
         schermController = schermCtrl;
         lblInfo = new Label("");
+        lblInfo.setTextFill(Color.RED);
+        lblInfo.setVisible(false);
         img = new ImageView("resource/man-icon.png");
         btnDoorgaan = new Button("Doorgaan");
         btnZoek = new Button("Zoek");
@@ -90,6 +96,7 @@ public class LoginScherm extends StackPane implements View {
     private void updateItem() {
         Leerling l = lvNamen.getSelectionModel().getSelectedItem();
         if (l != null) {
+            lblInfo.setVisible(false);
             img.setImage(l.getImage());
             txtNaam.setText(l.getNaam());
         }
@@ -97,6 +104,10 @@ public class LoginScherm extends StackPane implements View {
 
     private void zoek() {
         String txt = txtNaam.getText();
+        zoek(txt);
+    }
+    
+    private void zoek(String txt) {
         List<Leerling> resultaat;
         if (txt.isEmpty()) {
             resultaat = LeerlingMapper.getLeerlingen();
@@ -109,12 +120,32 @@ public class LoginScherm extends StackPane implements View {
     }
 
     private void login() {
-
+            String txt = txtNaam.getText();
+            if (txt.isEmpty()){
+                lblInfo.setText("Geen leerling geslecteerd!");
+                lblInfo.setVisible(true);
+            } else {
+                if (LeerlingMapper.bestaat(txt)) {
+                
+                   Leerling lln = LeerlingMapper.getLeerlingenMetNaam(txt).get(0);
+                   llnCntrl.setLeerling(lln);
+                   
+                   schermController.setScherm(MainApp.HOOFDMENU_ID);
+                   
+                   lblInfo.setVisible(false);
+                   txtNaam.clear();
+                   zoek();
+                    
+                } else {
+                    lblInfo.setText("Leerling bestaat niet!");
+                    lblInfo.setVisible(true);
+                }
+            }
     }
 
     @Override
     public void update() {
-        
+        zoek("");
     }
 
 }

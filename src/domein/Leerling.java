@@ -110,4 +110,8 @@ public class Leerling implements Model{
     public void update() {
         views.forEach(View::update);
     }
+    
+    public List<View> getViews(){
+        return views;
+    }
 }

@@ -1,6 +1,8 @@
 package controller;
 
 import domein.Leerling;
+import gui.View;
+import java.util.List;
 
 /**
  *
@@ -9,8 +11,9 @@ import domein.Leerling;
 public class LeerlingController {
     private Leerling leerling;
     
-    public LeerlingController(Leerling l){
-        this.leerling=l;
+    
+    public LeerlingController(Leerling lln){
+        this.leerling=lln;
     }
 
     public Leerling getLeerling() {
@@ -18,7 +21,17 @@ public class LeerlingController {
     }
 
     public void setLeerling(Leerling leerling) {
+        
+        if (this.leerling!=null){
+            List<View> views = this.leerling.getViews();
+            
+            leerling.getViews().addAll(views);
+            this.leerling.getViews().clear();
+        }
+        
         this.leerling = leerling;
+        
+        this.leerling.update();
     }
     
     

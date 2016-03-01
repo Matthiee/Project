@@ -28,20 +28,13 @@ public class MainApp extends Application{
    
     @Override
     public void start(Stage stage) {
-        Leerling lln = new Leerling("Jo De Wit", "2016-02-18-1", "Paul", new Date(), "Rijbewijs B", new Image("resource/man-icon.png"));
-        LeerlingController controller = new LeerlingController(lln);
-        
-        
-        LeerlingInfoHouder houder = new LeerlingInfoHouder(lln, controller);
-        
-
-        VeldOpmerkingen opm = new VeldOpmerkingen("- AANDACHT\n- EIGEN RIT\n- CRUISE CONTROL");
+        LeerlingController controller = new LeerlingController(new Leerling("Dummy leerling", "NULL", "NULL", new Date(), "NULL", new Image("resource/man-icon.png")));
         
         SchermController schermenCtrl =new SchermController();
         
-        HoofdMenu menu = new HoofdMenu(lln, controller, schermenCtrl);
-        InfoScherm info = new InfoScherm(lln, controller, schermenCtrl);
-        LoginScherm login = new LoginScherm(schermenCtrl);
+        HoofdMenu menu = new HoofdMenu(controller, schermenCtrl);
+        InfoScherm info = new InfoScherm(controller, schermenCtrl);
+        LoginScherm login = new LoginScherm(controller, schermenCtrl);
         Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl);
         Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(schermenCtrl);
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);

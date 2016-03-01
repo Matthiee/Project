@@ -40,5 +40,9 @@ public class LeerlingMapper {
     public static boolean voegLeerlingToe(Leerling lln){
         return leerlingen.add(lln);
     }
+    
+    public static boolean bestaat(String lln){
+        return leerlingen.stream().anyMatch(l -> l.getNaam().equalsIgnoreCase(lln));
+    }
 
 }
