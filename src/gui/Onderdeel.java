@@ -1,5 +1,6 @@
 package gui;
 
+import controller.EvaController;
 import java.util.HashMap;
 import javafx.beans.Observable;
 import javafx.beans.property.IntegerProperty;
@@ -12,6 +13,8 @@ import javafx.scene.image.ImageView;
  * @author Matthias
  */
 public class Onderdeel extends ImageView {
+    
+    private EvaController evaController;
 
     public static final int NEUTRAAL = 0;
     public static final int GEKEND = 1;
@@ -26,9 +29,10 @@ public class Onderdeel extends ImageView {
     
     private String base;
 
-    public Onderdeel(String base) {
+    public Onderdeel(String base, EvaController evaCtrl) {
         
         this.base = base;
+        this.evaController = evaCtrl;
 
         String neutraal = this.base + "Neutraal.png";
         String gekend = this.base + "Groen.png";
@@ -59,9 +63,10 @@ public class Onderdeel extends ImageView {
         setImage(neutraal);
     }
     
-    public Onderdeel(String base, int tx, int ty) {
+    public Onderdeel(String base, int tx, int ty, EvaController evaCtrl) {
         
         this.base = base;
+        this.evaController = evaCtrl;
 
         String neutraal = this.base + "Neutraal.png";
         String gekend = this.base + "Groen.png";
@@ -125,6 +130,7 @@ public class Onderdeel extends ImageView {
 
     public void setStatus(int status) {
         this.statusProperty.setValue(status);
+        this.evaController.saveColorData(this.base);
     }
 
     public IntegerProperty getStatusProperty() {
