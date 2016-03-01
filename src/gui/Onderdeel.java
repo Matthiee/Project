@@ -130,7 +130,7 @@ public class Onderdeel extends ImageView {
 
     public void setStatus(int status) {
         this.statusProperty.setValue(status);
-        this.evaController.saveColorData(this.base);
+        this.evaController.saveColorData(this.base, status);
     }
 
     public IntegerProperty getStatusProperty() {
