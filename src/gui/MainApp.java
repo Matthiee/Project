@@ -45,7 +45,7 @@ public class MainApp extends Application{
         HoofdMenu menu = new HoofdMenu(lln, controller, schermenCtrl, evaController);
         InfoScherm info = new InfoScherm(lln, controller, schermenCtrl);
         LoginScherm login = new LoginScherm(schermenCtrl);
-        Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl);
+        Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl, evaController);
         Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(schermenCtrl);
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);
         Veld4Evolutie veld4Evolutie = new Veld4Evolutie(schermenCtrl);
