@@ -1,5 +1,6 @@
 package gui;
 
+import controller.EvaController;
 import java.util.HashMap;
 import javafx.beans.Observable;
 import javafx.beans.property.IntegerProperty;
@@ -12,6 +13,8 @@ import javafx.scene.image.ImageView;
  * @author Matthias
  */
 public class Onderdeel extends ImageView {
+    
+    private EvaController evaController;
 
     public static final int NEUTRAAL = 0;
     public static final int GEKEND = 1;
@@ -23,13 +26,18 @@ public class Onderdeel extends ImageView {
     private final HashMap<String, Image> imageCache = new HashMap<>(4);
     
     private int transX, transY;
+    
+    private String base;
 
-    public Onderdeel(String base) {
+    public Onderdeel(String base, EvaController evaCtrl) {
+        
+        this.base = base;
+        this.evaController = evaCtrl;
 
-        String neutraal = base + "Neutraal.png";
-        String gekend = base + "Groen.png";
-        String gezien_niet_gekend = base + "Oranje.png";
-        String niet_gekend = base + "Rood.png";
+        String neutraal = this.base + "Neutraal.png";
+        String gekend = this.base + "Groen.png";
+        String gezien_niet_gekend = this.base + "Oranje.png";
+        String niet_gekend = this.base + "Rood.png";
         
         transX = 0;
         transY = 0;
@@ -55,12 +63,15 @@ public class Onderdeel extends ImageView {
         setImage(neutraal);
     }
     
-    public Onderdeel(String base, int tx, int ty) {
+    public Onderdeel(String base, int tx, int ty, EvaController evaCtrl) {
+        
+        this.base = base;
+        this.evaController = evaCtrl;
 
-        String neutraal = base + "Neutraal.png";
-        String gekend = base + "Groen.png";
-        String gezien_niet_gekend = base + "Oranje.png";
-        String niet_gekend = base + "Rood.png";
+        String neutraal = this.base + "Neutraal.png";
+        String gekend = this.base + "Groen.png";
+        String gezien_niet_gekend = this.base + "Oranje.png";
+        String niet_gekend = this.base + "Rood.png";
         
         transX = tx;
         transY = ty;
@@ -105,12 +116,21 @@ public class Onderdeel extends ImageView {
         setImage(img);
     }
 
+    public String getBase() {
+        return base;
+    }
+
+    public void setBase(String base) {
+        this.base = base;
+    }
+
     public int getStatus() {
         return statusProperty.get();
     }
 
     public void setStatus(int status) {
         this.statusProperty.setValue(status);
+        this.evaController.saveColorData(this.base, status);
     }
 
     public IntegerProperty getStatusProperty() {

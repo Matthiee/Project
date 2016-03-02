@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.EvaController;
 import controller.LeerlingController;
 import controller.SchermController;
 import javafx.geometry.Insets;
@@ -13,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -24,6 +26,7 @@ public class HoofdMenu extends BorderPane implements View {
     //objecten en controllers
     private LeerlingController llnController;
     private final SchermController schermController;
+    private EvaController evaController;
     
     //top
     private GridPane top;
@@ -43,10 +46,11 @@ public class HoofdMenu extends BorderPane implements View {
     private TextField attitudeTxt;
     //bottom
     private GridPane bottom, evaluatie, gekend;
-    private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, gekendImg1, gekendImg2, gekendImg3;
+    private EvaSelector evaSelector;
+    private ImageView gekendImg1, gekendImg2, gekendImg3;
     private Veld4Evolutie graphImg;
 
-    public HoofdMenu(LeerlingController llnController, SchermController schermCtrl) {
+    public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaController) {
 
         
         //Top of the borderpane
@@ -56,6 +60,7 @@ public class HoofdMenu extends BorderPane implements View {
         this.llnController = llnController;
         this.llnController.getLeerling().addView(this);
         this.schermController=schermCtrl;
+        this.evaController = evaController; 
        
         //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
@@ -80,11 +85,11 @@ public class HoofdMenu extends BorderPane implements View {
         //Left side borderpane
         left = new GridPane();
         //de nodes
-        schakelaars = new Onderdeel("resource/Hoofdmenu/schakelaars", 10, 35);
+        schakelaars = new Onderdeel("resource/Hoofdmenu/schakelaars", 10, 35, evaController);
 
-        vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen", -10, 35);
+        vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen", -10, 35, evaController);
 
-        banden = new Onderdeel("resource/Hoofdmenu/banden", 10, 35);
+        banden = new Onderdeel("resource/Hoofdmenu/banden", 10, 35, evaController);
         
         //opmaak
         schakelaars.setFitHeight(60);
@@ -109,11 +114,11 @@ public class HoofdMenu extends BorderPane implements View {
         //Right side borderpane
         right = new GridPane();
         //de nodes
-        tanken = new Onderdeel("resource/Hoofdmenu/tanken", 0, 35);
+        tanken = new Onderdeel("resource/Hoofdmenu/tanken", 0, 35, evaController);
 
-        gps = new Onderdeel("resource/Hoofdmenu/gps", 15, 35);
+        gps = new Onderdeel("resource/Hoofdmenu/gps", 15, 35, evaController);
 
-        stop = new Onderdeel("resource/Hoofdmenu/stop", 0, 35);
+        stop = new Onderdeel("resource/Hoofdmenu/stop", 0, 35, evaController);
         //opmaak
         tanken.setFitHeight(60);
         tanken.setFitWidth(60);
@@ -144,10 +149,10 @@ public class HoofdMenu extends BorderPane implements View {
         //iconen boven
         iconen = new GridPane();
         //de nodes
-        stad = new Onderdeel("resource/Hoofdmenu/stad", 35, 125);
-        snelweg = new Onderdeel("resource/Hoofdmenu/snelweg", 35, 100);
-        rotonde = new Onderdeel("resource/Hoofdmenu/rotonde", 35, 100);
-        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken",35 ,125);
+        stad = new Onderdeel("resource/Hoofdmenu/stad", 35, 125, evaController);
+        snelweg = new Onderdeel("resource/Hoofdmenu/snelweg", 35, 100, evaController);
+        rotonde = new Onderdeel("resource/Hoofdmenu/rotonde", 35, 100, evaController);
+        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken",35 ,125, evaController);
         //opmaak
         stad.setFitHeight(60);
         stad.setFitWidth(60);
@@ -247,15 +252,13 @@ public class HoofdMenu extends BorderPane implements View {
         //Bottom of the borderpane
         bottom = new GridPane();
         gekend = new GridPane();
-        evaluatie = new GridPane();
         //de nodes
         graphImg = new Veld4Evolutie(schermController);
         gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
         gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
         gekendImg3 = new ImageView("resource/Hoofdmenu/gekendRood.png");
-        evaluatieImg1 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
-        evaluatieImg2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
-        evaluatieImg3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
+        evaSelector = new EvaSelector(evaController);
+        
         //de opmaak
         //graphImg.setFitHeight(80);
         //graphImg.setFitWidth(200);
@@ -269,33 +272,24 @@ public class HoofdMenu extends BorderPane implements View {
         gekendImg3.setFitHeight(50);
         gekendImg3.setFitWidth(100);
         gekendImg1.setFitHeight(50);
-        evaluatieImg1.setFitWidth(30);
-        evaluatieImg1.setFitHeight(30);
-        evaluatieImg2.setFitWidth(30);
-        evaluatieImg2.setFitHeight(30);
-        evaluatieImg3.setFitWidth(30);
-        evaluatieImg3.setFitHeight(30);
         gekend.setMinWidth(300);
         gekend.setMaxWidth(300);
         gekend.setAlignment(Pos.CENTER);
         gekend.setTranslateX(-40);
-        evaluatie.setAlignment(Pos.CENTER);
-        evaluatie.setMinWidth(300);
-        evaluatie.setMaxWidth(300);
-        evaluatie.setTranslateX(-120);
-        evaluatie.setTranslateY(-20);
-        evaluatie.setVgap(5);
+        evaSelector.setMaxWidth(350);
+        evaSelector.setMinWidth(350);
+        evaSelector.setTranslateX(-100);
         bottom.setAlignment(Pos.CENTER);
         //de nodes toevoegen
         gekend.add(gekendImg1, 0, 0);
         gekend.add(gekendImg2, 1, 0);
         gekend.add(gekendImg3, 2, 0);
-        evaluatie.add(evaluatieImg1, 0, 0);
-        evaluatie.add(evaluatieImg2, 0, 1);
-        evaluatie.add(evaluatieImg3, 0, 2);
-        bottom.add(evaluatie, 0, 0);
+        
+        bottom.add(evaSelector, 0, 0);
         bottom.add(gekend, 1, 0);
         bottom.add(graphImg, 2, 0);
+        //eventhandler
+        evaSelector.setOnMouseClicked((e)->updateOnderdelen());
 
         //alle onderdelen toevoegen aan de borderpane
         this.setTop(top);
@@ -327,13 +321,36 @@ public class HoofdMenu extends BorderPane implements View {
                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel)c));
         });
         
+        updateOnderdelen();
+        
         
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
+    }
+    
+    public void updateOnderdelen(){
+        //left
+        evaController.loadColorData(schakelaars);
+        evaController.loadColorData(vloeistoffen);
+        evaController.loadColorData(banden);
+        //right
+        evaController.loadColorData(gps);
+        evaController.loadColorData(stop);
+        evaController.loadColorData(tanken);
+        //center
+        evaController.loadColorData(rotonde);
+        evaController.loadColorData(rijstroken);
+        evaController.loadColorData(stad);
+        evaController.loadColorData(snelweg);
+    }
+    
+    public void updateEvaSelector(){
+        evaSelector.update();
     }
 
     @Override
     public void update() {
-        
+        updateOnderdelen();
+        updateEvaSelector();
     }
 
 }

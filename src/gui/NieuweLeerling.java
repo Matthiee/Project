@@ -146,5 +146,9 @@ public class NieuweLeerling extends StackPane {
             }
         }
     }
+    
+    public void update(){
+        
+    }
 
 }

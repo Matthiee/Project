@@ -133,5 +133,9 @@ public class Veld2Verkeerstechniek extends GridPane{
         
     }
     
+    public void update(){
+        
+    }
+    
     
 }

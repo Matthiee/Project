@@ -1,7 +1,9 @@
 package gui;
 
+import controller.EvaController;
 import controller.LeerlingController;
 import controller.SchermController;
+import domein.EvaluatieMoment;
 import domein.Leerling;
 import java.util.Date;
 import javafx.application.Application;
@@ -27,14 +29,15 @@ public class MainApp extends Application{
    
     @Override
     public void start(Stage stage) throws InterruptedException {
+        EvaluatieMoment eva = new EvaluatieMoment();
         LeerlingController controller = new LeerlingController(new Leerling("Dummy leerling", "NULL", "NULL", new Date(), "NULL", new Image("resource/man-icon.png")));
-        
+        EvaController evaController = new EvaController(controller);
         SchermController schermenCtrl =new SchermController();
         
-        HoofdMenu menu = new HoofdMenu(controller, schermenCtrl);
+        HoofdMenu menu = new HoofdMenu(controller, schermenCtrl, evaController);
         InfoScherm info = new InfoScherm(controller, schermenCtrl);
         LoginScherm login = new LoginScherm(controller, schermenCtrl);
-        Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl);
+        Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl, evaController);
         Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(schermenCtrl);
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);

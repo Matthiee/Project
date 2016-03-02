@@ -54,4 +54,8 @@ public class Veld3Attitude extends FlowPane
         
     }
     
+    public void update(){
+        
+    }
+    
 }

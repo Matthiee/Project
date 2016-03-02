@@ -1,17 +1,20 @@
 
 package gui;
 
+import controller.EvaController;
 import controller.SchermController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 public class Veld1Rijtechniek extends GridPane{
     
     //de controllers
     private final SchermController schermController;
+    private EvaController evaController;
     //Afbeeldingen
     private ImageView hellingImg, houdingImg, kijkImg, koppelingImg, remImg, schakelImg, stuurImg;
     private Onderdeel stuuroefImg, achteruitImg, garageImg, kerenImg, parkerenImg;
@@ -22,9 +25,12 @@ public class Veld1Rijtechniek extends GridPane{
     private GridPane rechts;
     //button
     private Button exit;
+    //evaSelector
+    private EvaSelector evaSelector;
     
-    public Veld1Rijtechniek(SchermController schermCtrl){
+    public Veld1Rijtechniek(SchermController schermCtrl, EvaController evaCtrl){
         schermController = schermCtrl;
+        evaController = evaCtrl;
         
         //alle afbeeldingen aanmaken
             //Links
@@ -33,16 +39,16 @@ public class Veld1Rijtechniek extends GridPane{
         koppelingImg = new ImageView("resource/Rijtechniek/koppeling.png");
         houdingImg = new ImageView("resource/Rijtechniek/houding.png");
         hellingImg = new ImageView("resource/Rijtechniek/helling.png");
-        stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",120 ,157);
-        achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",225 ,127);
+        stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",120 ,157, evaController);
+        achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",225 ,127, evaController);
             //Rechts
         rechts = new GridPane();
         stuurImg = new ImageView("resource/Rijtechniek/stuur.png");
         schakelImg = new ImageView("resource/Rijtechniek/schakel.png");
         kijkImg = new ImageView("resource/Rijtechniek/kijk.png");
-        parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157);
-        kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155);
-        garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 127);
+        parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157, evaController);
+        kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155, evaController);
+        garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 127, evaController);
             //Stuur center
         stuurGp = new GridPane();
         stuur1Img = new ImageView("resource/Rijtechniek/stuur1Neutraal.png");
@@ -126,8 +132,9 @@ public class Veld1Rijtechniek extends GridPane{
         stuur3Img.setFitHeight(150);
         stuur3Img.setFitWidth(150);
         
-        //exit button
+        //exit button + evaSelector
         exit = new Button("ga terug");
+        evaSelector = new EvaSelector(evaController);
         //eventhandeler
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
         
@@ -137,6 +144,7 @@ public class Veld1Rijtechniek extends GridPane{
         this.add(rechts, 3, 0);
         this.add(links, 1, 0);
         this.add(exit, 3, 1);
+        this.add(evaSelector, 1, 1);
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
@@ -147,7 +155,26 @@ public class Veld1Rijtechniek extends GridPane{
             if (c instanceof Onderdeel)
                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
+        evaSelector.setOnMouseClicked((e)->updateOnderdelen());
         
+        updateOnderdelen();
+    }
+    
+    public void updateOnderdelen(){
+        evaController.loadColorData(stuuroefImg);
+        evaController.loadColorData(kerenImg);
+        evaController.loadColorData(achteruitImg);
+        evaController.loadColorData(parkerenImg);
+        evaController.loadColorData(garageImg);
+    }
+    
+    public void updateEvaSelector(){
+        evaSelector.update();
+    }
+    
+    public void update(){
+        updateOnderdelen();
+        updateEvaSelector();
     }
     
 }
