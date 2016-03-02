@@ -7,16 +7,12 @@ package gui;
 
 import controller.LeerlingController;
 import controller.SchermController;
-import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -26,7 +22,6 @@ import javafx.scene.layout.VBox;
 public class HoofdMenu extends BorderPane implements View {
 
     //objecten en controllers
-    private Leerling lln;
     private LeerlingController llnController;
     private final SchermController schermController;
     
@@ -51,19 +46,20 @@ public class HoofdMenu extends BorderPane implements View {
     private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, gekendImg1, gekendImg2, gekendImg3;
     private Veld4Evolutie graphImg;
 
-    public HoofdMenu(Leerling lln, LeerlingController llnController, SchermController schermCtrl) {
+    public HoofdMenu(LeerlingController llnController, SchermController schermCtrl) {
 
+        
         //Top of the borderpane
         top = new GridPane();
         profile = new VBox();
         //De leerlingen en controller toewijzen           
         this.llnController = llnController;
-        this.lln = lln;
+        this.llnController.getLeerling().addView(this);
         this.schermController=schermCtrl;
        
         //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
-        llnInfo = new LeerlingInfoHouder(lln, llnController);
+        llnInfo = new LeerlingInfoHouder(llnController);
         
         llnInfo.setOnMouseClicked((e)->schermController.setScherm(MainApp.INFO_LLN_ID));
         
@@ -337,7 +333,7 @@ public class HoofdMenu extends BorderPane implements View {
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 }
