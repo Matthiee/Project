@@ -8,6 +8,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
 public class Veld1Rijtechniek extends GridPane{
     
@@ -24,6 +25,8 @@ public class Veld1Rijtechniek extends GridPane{
     private GridPane rechts;
     //button
     private Button exit;
+    //evaSelector
+    private HBox evaSelector;
     
     public Veld1Rijtechniek(SchermController schermCtrl, EvaController evaCtrl){
         schermController = schermCtrl;
@@ -129,8 +132,9 @@ public class Veld1Rijtechniek extends GridPane{
         stuur3Img.setFitHeight(150);
         stuur3Img.setFitWidth(150);
         
-        //exit button
+        //exit button + evaSelector
         exit = new Button("ga terug");
+        evaSelector = new EvaSelector(evaController);
         //eventhandeler
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
         
@@ -140,6 +144,7 @@ public class Veld1Rijtechniek extends GridPane{
         this.add(rechts, 3, 0);
         this.add(links, 1, 0);
         this.add(exit, 3, 1);
+        this.add(evaSelector, 1, 1);
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
@@ -150,7 +155,17 @@ public class Veld1Rijtechniek extends GridPane{
             if (c instanceof Onderdeel)
                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
+        evaSelector.setOnMouseClicked((e)->updateOnderdelen());
         
+        updateOnderdelen();
+    }
+    
+    public void updateOnderdelen(){
+        evaController.loadColorData(stuuroefImg);
+        evaController.loadColorData(kerenImg);
+        evaController.loadColorData(achteruitImg);
+        evaController.loadColorData(parkerenImg);
+        evaController.loadColorData(garageImg);
     }
     
 }
