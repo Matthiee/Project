@@ -1,8 +1,7 @@
 
 package controller;
 
-import domein.EvaluatieMoment;
-import domein.Leerling;
+import gui.Onderdeel;
 
 public class EvaController {
     
@@ -22,6 +21,99 @@ public class EvaController {
         this.selectedEva = selectedEva;
         leerlingController.setLastSelectedEva(selectedEva);
     }
+    public void loadColorData(Onderdeel onderdeel){
+        
+        String base = onderdeel.getBase();
+        int status = 0;
+        
+        //Hoofdmenu
+            //links
+        if(base.equals("resource/Hoofdmenu/schakelaars")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getSchakelaars();
+            if(selectedEva == 2) status = leerlingController.getEva2().getSchakelaars();
+            if(selectedEva == 3) status = leerlingController.getEva3().getSchakelaars();
+        }     
+        if(base.equals("resource/Hoofdmenu/vloeistoffen")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getVloeistoffen();
+            if(selectedEva == 2) status = leerlingController.getEva2().getVloeistoffen();
+            if(selectedEva == 3) status = leerlingController.getEva3().getVloeistoffen();
+        }
+        if(base.equals("resource/Hoofdmenu/banden")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getBanden();
+            if(selectedEva == 2) status = leerlingController.getEva2().getBanden();
+            if(selectedEva == 3) status = leerlingController.getEva3().getBanden();
+        }
+        
+            //rechts
+        if(base.equals("resource/Hoofdmenu/tanken")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getTanken();
+            if(selectedEva == 2) status = leerlingController.getEva2().getTanken();
+            if(selectedEva == 3) status = leerlingController.getEva3().getTanken();
+        }     
+        if(base.equals("resource/Hoofdmenu/gps")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getGps();
+            if(selectedEva == 2) status = leerlingController.getEva2().getGps();
+            if(selectedEva == 3) status = leerlingController.getEva3().getGps();
+        }
+        
+        if(base.equals("resource/Hoofdmenu/stop")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getNoodstop();
+            if(selectedEva == 2) status = leerlingController.getEva2().getNoodstop();
+            if(selectedEva == 3) status = leerlingController.getEva3().getNoodstop();
+        }
+        
+            //top
+        if(base.equals("resource/Hoofdmenu/stad")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getStad();
+            if(selectedEva == 2) status = leerlingController.getEva2().getStad();
+            if(selectedEva == 3) status = leerlingController.getEva3().getStad();
+        }
+        if(base.equals("resource/Hoofdmenu/snelweg")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getAutosnelweg();
+            if(selectedEva == 2) status = leerlingController.getEva2().getAutosnelweg();
+            if(selectedEva == 3) status = leerlingController.getEva3().getAutosnelweg();
+        }
+        if(base.equals("resource/Hoofdmenu/rotonde")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getRotonde();
+            if(selectedEva == 2) status = leerlingController.getEva2().getRotonde();
+            if(selectedEva == 3) status = leerlingController.getEva3().getRotonde();
+        }
+        if(base.equals("resource/Hoofdmenu/rijstroken")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getRijstroken();
+            if(selectedEva == 2) status = leerlingController.getEva2().getRijstroken();
+            if(selectedEva == 3) status = leerlingController.getEva3().getRijstroken();
+        }
+        
+        //rijtechniek
+        if(base.equals("resource/Hoofdmenu/stuuroef")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getStuuroef();
+            if(selectedEva == 2) status = leerlingController.getEva2().getStuuroef();
+            if(selectedEva == 3) status = leerlingController.getEva3().getStuuroef();
+        }
+        if(base.equals("resource/Hoofdmenu/keren")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getKeren();
+            if(selectedEva == 2) status = leerlingController.getEva2().getKeren();
+            if(selectedEva == 3) status = leerlingController.getEva3().getKeren();
+        }
+        if(base.equals("resource/Hoofdmenu/garage")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getGarage();
+            if(selectedEva == 2) status = leerlingController.getEva2().getGarage();
+            if(selectedEva == 3) status = leerlingController.getEva3().getGarage();
+        }
+        if(base.equals("resource/Hoofdmenu/parkeren")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getParkeren();
+            if(selectedEva == 2) status = leerlingController.getEva2().getParkeren();
+            if(selectedEva == 3) status = leerlingController.getEva3().getParkeren();
+        }
+        if(base.equals("resource/Hoofdmenu/achteruit")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getAchteruit();
+            if(selectedEva == 2) status = leerlingController.getEva2().getAchteruit();
+            if(selectedEva == 3) status = leerlingController.getEva3().getAchteruit();
+        }
+        
+        onderdeel.setStatus(status);
+    }
+    
     
     public void saveColorData(String base, int status){
         //hoofdmenu
@@ -108,9 +200,6 @@ public class EvaController {
             if(selectedEva == 2) leerlingController.getEva2().setAchteruit(status);
             if(selectedEva == 3) leerlingController.getEva3().setAchteruit(status);
         }
-        
-        
-        
     }
     
 }
