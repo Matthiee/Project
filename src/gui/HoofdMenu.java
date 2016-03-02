@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 /**
@@ -47,7 +48,7 @@ public class HoofdMenu extends BorderPane implements View {
     private TextField attitudeTxt;
     //bottom
     private GridPane bottom, evaluatie, gekend;
-    private VBox evaSelector;
+    private HBox evaSelector;
     private ImageView gekendImg1, gekendImg2, gekendImg3;
     private Veld4Evolutie graphImg;
 
