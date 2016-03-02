@@ -23,17 +23,15 @@ public class InfoScherm extends VBox implements View {
     private final Label lblNaam, lblInschrijving, lblInstructeur, lblVerval, lblType;
     private final ImageView imgView;
 
-    private final Leerling lln;
     private final LeerlingController llnController;
     private final SchermController schermController;
     
-    public InfoScherm(Leerling lln, LeerlingController controller, SchermController schermCtrl) {
+    public InfoScherm(LeerlingController controller, SchermController schermCtrl) {
         setPadding(new Insets(10));
         setSpacing(10);
 
-        this.lln = lln;
         this.llnController = controller;
-        this.lln.addView(this);
+        this.llnController.getLeerling().addView(this);
         this.schermController=schermCtrl;
 
         imgView = new ImageView();
@@ -89,6 +87,7 @@ public class InfoScherm extends VBox implements View {
 
     @Override
     public void update() {
+        Leerling lln = llnController.getLeerling();
         lblNaam.setText("Naam: " + lln.getNaam());
         lblInschrijving.setText("Inschrijvingnr: " + lln.getInschrijvingsnr());
         lblInstructeur.setText("Instructeur: " + lln.getInstructeur());

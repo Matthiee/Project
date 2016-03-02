@@ -8,7 +8,6 @@ package gui;
 import controller.EvaController;
 import controller.LeerlingController;
 import controller.SchermController;
-import domein.Leerling;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
@@ -25,7 +24,6 @@ import javafx.scene.layout.VBox;
 public class HoofdMenu extends BorderPane implements View {
 
     //objecten en controllers
-    private Leerling lln;
     private LeerlingController llnController;
     private final SchermController schermController;
     private EvaController evaController;
@@ -48,24 +46,25 @@ public class HoofdMenu extends BorderPane implements View {
     private TextField attitudeTxt;
     //bottom
     private GridPane bottom, evaluatie, gekend;
-    private HBox evaSelector;
+    private EvaSelector evaSelector;
     private ImageView gekendImg1, gekendImg2, gekendImg3;
     private Veld4Evolutie graphImg;
 
-    public HoofdMenu(Leerling lln, LeerlingController llnController, SchermController schermCtrl, EvaController evaController) {
+    public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaController) {
 
+        
         //Top of the borderpane
         top = new GridPane();
         profile = new VBox();
         //De leerlingen en controller toewijzen           
         this.llnController = llnController;
-        this.lln = lln;
+        this.llnController.getLeerling().addView(this);
         this.schermController=schermCtrl;
         this.evaController = evaController; 
        
         //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
-        llnInfo = new LeerlingInfoHouder(lln, llnController);
+        llnInfo = new LeerlingInfoHouder(llnController);
         
         llnInfo.setOnMouseClicked((e)->schermController.setScherm(MainApp.INFO_LLN_ID));
         
@@ -343,10 +342,15 @@ public class HoofdMenu extends BorderPane implements View {
         evaController.loadColorData(stad);
         evaController.loadColorData(snelweg);
     }
+    
+    public void updateEvaSelector(){
+        evaSelector.update();
+    }
 
     @Override
     public void update() {
-        
+        updateOnderdelen();
+        updateEvaSelector();
     }
 
 }

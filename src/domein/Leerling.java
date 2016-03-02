@@ -44,6 +44,21 @@ public class Leerling implements Model{
         this.eva3 = eva3;
         this.lastSelectedEva = lastSelectedEva;
     }
+    
+    public Leerling(String naam, String inschrijvingsnr, String instructeur, Date verval, String type, Image image) {
+        this();
+        
+        this.naam = naam;
+        this.inschrijvingsnr = inschrijvingsnr;
+        this.instructeur = instructeur;
+        this.verval = verval;
+        this.type = type;
+        this.image = image;
+        this.eva1 = new EvaluatieMoment();
+        this.eva2 = new EvaluatieMoment();
+        this.eva3 = new EvaluatieMoment();
+        this.lastSelectedEva = 1;
+    }
 
     public EvaluatieMoment getEva1() {
         return eva1;
@@ -145,5 +160,9 @@ public class Leerling implements Model{
     @Override
     public void update() {
         views.forEach(View::update);
+    }
+    
+    public List<View> getViews(){
+        return views;
     }
 }

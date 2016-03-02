@@ -16,6 +16,11 @@ public class SchermController extends StackPane {
         super();
         
         schermen =new HashMap<>();
+        this.setMaxHeight(800);
+        this.setMaxWidth(1200);
+        this.setMinHeight(800);
+        this.setMinWidth(1200);
+        this.setPrefSize(1200, 800);
     }
     
     public void addScherm(String id, Node scherm){

@@ -2,13 +2,11 @@ package gui;
 
 import controller.SchermController;
 import javafx.collections.FXCollections;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -53,6 +51,10 @@ public class Veld3Attitude extends FlowPane
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
         this.getChildren().addAll(vBox,vBox2,exit);
 
+        
+    }
+    
+    public void update(){
         
     }
     

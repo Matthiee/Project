@@ -25,35 +25,21 @@ public class MainApp extends Application{
     public static final String VERKEERSTECHNIEK_ID = "verkerstechniek";
     public static final String VELD3ATTITUDE_ID = "veld3attitude";
     public static final String VELD4EVOLUTIE_ID = "veld4evolutie";
-    public static final String ZOEKLEERLING_ID = "zoekleerling";
     public static final String NIEUWELEERLING_ID = "nieuweleerling";
    
     @Override
-    public void start(Stage stage) {
-        EvaluatieMoment eva1 = new EvaluatieMoment();
-        EvaluatieMoment eva2 = new EvaluatieMoment();
-        EvaluatieMoment eva3 = new EvaluatieMoment();
-        Leerling lln = new Leerling("Jo De Wit", "2016-02-18-1", "Paul", new Date(), "Rijbewijs B", new Image("resource/man-icon.png"), eva1, eva2, eva3, 1);
-        LeerlingController controller = new LeerlingController(lln);
-        
-        
-        LeerlingInfoHouder houder = new LeerlingInfoHouder(lln, controller);
-        
-
-        VeldOpmerkingen opm = new VeldOpmerkingen("- AANDACHT\n- EIGEN RIT\n- CRUISE CONTROL");
-        
+    public void start(Stage stage) throws InterruptedException {
+        EvaluatieMoment eva = new EvaluatieMoment();
+        LeerlingController controller = new LeerlingController(new Leerling("Dummy leerling", "NULL", "NULL", new Date(), "NULL", new Image("resource/man-icon.png")));
+        EvaController evaController = new EvaController(controller);
         SchermController schermenCtrl =new SchermController();
         
-        EvaController evaController = new EvaController(controller);
-        
-        HoofdMenu menu = new HoofdMenu(lln, controller, schermenCtrl, evaController);
-        InfoScherm info = new InfoScherm(lln, controller, schermenCtrl);
-        LoginScherm login = new LoginScherm(schermenCtrl);
+        HoofdMenu menu = new HoofdMenu(controller, schermenCtrl, evaController);
+        InfoScherm info = new InfoScherm(controller, schermenCtrl);
+        LoginScherm login = new LoginScherm(controller, schermenCtrl);
         Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(schermenCtrl, evaController);
         Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(schermenCtrl);
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);
-        Veld4Evolutie veld4Evolutie = new Veld4Evolutie(schermenCtrl);
-        ZoekLeerling zoekLeerling = new ZoekLeerling(schermenCtrl);
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);
         
         schermenCtrl.addScherm(LOGIN_ID, login);
@@ -62,8 +48,6 @@ public class MainApp extends Application{
         schermenCtrl.addScherm(RIJTECHNIEK_ID, rijtechniek);
         schermenCtrl.addScherm(VERKEERSTECHNIEK_ID, verkeerstechniek);
         schermenCtrl.addScherm(VELD3ATTITUDE_ID, veld3Attitude);
-        schermenCtrl.addScherm(VELD4EVOLUTIE_ID, veld4Evolutie);
-        schermenCtrl.addScherm(ZOEKLEERLING_ID, zoekLeerling);
         schermenCtrl.addScherm(NIEUWELEERLING_ID, nieuweLeerling);
         
         schermenCtrl.setScherm(LOGIN_ID);
@@ -73,6 +57,9 @@ public class MainApp extends Application{
         
         stage.setScene(scene);
         stage.show();
+        
+        // Scenic View voor GUI makkelijker te begrijpen en fouten te vinden
+        // ScenicView.show(scene);
     }
     
 }

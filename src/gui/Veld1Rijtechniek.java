@@ -26,7 +26,7 @@ public class Veld1Rijtechniek extends GridPane{
     //button
     private Button exit;
     //evaSelector
-    private HBox evaSelector;
+    private EvaSelector evaSelector;
     
     public Veld1Rijtechniek(SchermController schermCtrl, EvaController evaCtrl){
         schermController = schermCtrl;
@@ -166,6 +166,15 @@ public class Veld1Rijtechniek extends GridPane{
         evaController.loadColorData(achteruitImg);
         evaController.loadColorData(parkerenImg);
         evaController.loadColorData(garageImg);
+    }
+    
+    public void updateEvaSelector(){
+        evaSelector.update();
+    }
+    
+    public void update(){
+        updateOnderdelen();
+        updateEvaSelector();
     }
     
 }
