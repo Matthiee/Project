@@ -3,12 +3,11 @@ package gui;
 
 import controller.EvaController;
 import controller.LeerlingController;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 
-public class EvaSelector extends VBox{
+public class EvaSelector extends HBox{
     
     LeerlingController llnCtrl;
     EvaController evaCtrl;
