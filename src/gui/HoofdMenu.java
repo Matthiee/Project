@@ -47,7 +47,8 @@ public class HoofdMenu extends BorderPane implements View {
     private TextField attitudeTxt;
     //bottom
     private GridPane bottom, evaluatie, gekend;
-    private ImageView evaluatieImg1, evaluatieImg2, evaluatieImg3, gekendImg1, gekendImg2, gekendImg3;
+    private VBox evaSelector;
+    private ImageView gekendImg1, gekendImg2, gekendImg3;
     private Veld4Evolutie graphImg;
 
     public HoofdMenu(Leerling lln, LeerlingController llnController, SchermController schermCtrl, EvaController evaController) {
@@ -257,9 +258,8 @@ public class HoofdMenu extends BorderPane implements View {
         gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
         gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
         gekendImg3 = new ImageView("resource/Hoofdmenu/gekendRood.png");
-        evaluatieImg1 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
-        evaluatieImg2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
-        evaluatieImg3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
+        evaSelector = new EvaSelector(evaController);
+        
         //de opmaak
         //graphImg.setFitHeight(80);
         //graphImg.setFitWidth(200);
@@ -273,31 +273,20 @@ public class HoofdMenu extends BorderPane implements View {
         gekendImg3.setFitHeight(50);
         gekendImg3.setFitWidth(100);
         gekendImg1.setFitHeight(50);
-        evaluatieImg1.setFitWidth(30);
-        evaluatieImg1.setFitHeight(30);
-        evaluatieImg2.setFitWidth(30);
-        evaluatieImg2.setFitHeight(30);
-        evaluatieImg3.setFitWidth(30);
-        evaluatieImg3.setFitHeight(30);
         gekend.setMinWidth(300);
         gekend.setMaxWidth(300);
         gekend.setAlignment(Pos.CENTER);
         gekend.setTranslateX(-40);
-        evaluatie.setAlignment(Pos.CENTER);
-        evaluatie.setMinWidth(300);
-        evaluatie.setMaxWidth(300);
-        evaluatie.setTranslateX(-120);
-        evaluatie.setTranslateY(-20);
-        evaluatie.setVgap(5);
+        evaSelector.setMaxWidth(350);
+        evaSelector.setMinWidth(350);
+        evaSelector.setTranslateX(-100);
         bottom.setAlignment(Pos.CENTER);
         //de nodes toevoegen
         gekend.add(gekendImg1, 0, 0);
         gekend.add(gekendImg2, 1, 0);
         gekend.add(gekendImg3, 2, 0);
-        evaluatie.add(evaluatieImg1, 0, 0);
-        evaluatie.add(evaluatieImg2, 0, 1);
-        evaluatie.add(evaluatieImg3, 0, 2);
-        bottom.add(evaluatie, 0, 0);
+        
+        bottom.add(evaSelector, 0, 0);
         bottom.add(gekend, 1, 0);
         bottom.add(graphImg, 2, 0);
 
