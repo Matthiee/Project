@@ -175,27 +175,27 @@ public class EvaController {
             if(selectedEva == 3) leerlingController.getEva3().setRijstroken(status);
         }
         //rijtechniek
-        if(base.equals("resource/Hoofdmenu/stuuroef")){
+        if(base.equals("resource/Rijtechniek/stuuroef")){
             if(selectedEva == 1) leerlingController.getEva1().setStuuroef(status);
             if(selectedEva == 2) leerlingController.getEva2().setStuuroef(status);
             if(selectedEva == 3) leerlingController.getEva3().setStuuroef(status);
         }
-        if(base.equals("resource/Hoofdmenu/keren")){
+        if(base.equals("resource/Rijtechniek/keren")){
             if(selectedEva == 1) leerlingController.getEva1().setKeren(status);
             if(selectedEva == 2) leerlingController.getEva2().setKeren(status);
             if(selectedEva == 3) leerlingController.getEva3().setKeren(status);
         }
-        if(base.equals("resource/Hoofdmenu/garage")){
+        if(base.equals("resource/Rijtechniek/garage")){
             if(selectedEva == 1) leerlingController.getEva1().setGarage(status);
             if(selectedEva == 2) leerlingController.getEva2().setGarage(status);
             if(selectedEva == 3) leerlingController.getEva3().setGarage(status);
         }
-        if(base.equals("resource/Hoofdmenu/parkeren")){
+        if(base.equals("resource/Rijtechniek/parkeren")){
             if(selectedEva == 1) leerlingController.getEva1().setParkeren(status);
             if(selectedEva == 2) leerlingController.getEva2().setParkeren(status);
             if(selectedEva == 3) leerlingController.getEva3().setParkeren(status);
         }
-        if(base.equals("resource/Hoofdmenu/achteruit")){
+        if(base.equals("resource/Rijtechniek/achteruit")){
             if(selectedEva == 1) leerlingController.getEva1().setAchteruit(status);
             if(selectedEva == 2) leerlingController.getEva2().setAchteruit(status);
             if(selectedEva == 3) leerlingController.getEva3().setAchteruit(status);
