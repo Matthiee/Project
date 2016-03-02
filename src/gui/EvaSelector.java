@@ -9,9 +9,9 @@ import javafx.scene.layout.HBox;
 
 public class EvaSelector extends HBox{
     
-    LeerlingController llnCtrl;
-    EvaController evaCtrl;
-    Label lbl1, lbl2, lbl3;
+    private LeerlingController llnCtrl;
+    private EvaController evaCtrl;
+    private Label lbl1, lbl2, lbl3;
     
     public EvaSelector(EvaController evaCtrl){
         this.evaCtrl = evaCtrl;
