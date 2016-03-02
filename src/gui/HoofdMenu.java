@@ -252,7 +252,6 @@ public class HoofdMenu extends BorderPane implements View {
         //Bottom of the borderpane
         bottom = new GridPane();
         gekend = new GridPane();
-        evaluatie = new GridPane();
         //de nodes
         graphImg = new Veld4Evolutie(schermController);
         gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
@@ -289,6 +288,8 @@ public class HoofdMenu extends BorderPane implements View {
         bottom.add(evaSelector, 0, 0);
         bottom.add(gekend, 1, 0);
         bottom.add(graphImg, 2, 0);
+        //eventhandler
+        evaSelector.setOnMouseClicked((e)->updateOnderdelen());
 
         //alle onderdelen toevoegen aan de borderpane
         this.setTop(top);
@@ -320,13 +321,31 @@ public class HoofdMenu extends BorderPane implements View {
                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel)c));
         });
         
+        updateOnderdelen();
+        
         
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
+    }
+    
+    public void updateOnderdelen(){
+        //left
+        evaController.loadColorData(schakelaars);
+        evaController.loadColorData(vloeistoffen);
+        evaController.loadColorData(banden);
+        //right
+        evaController.loadColorData(gps);
+        evaController.loadColorData(stop);
+        evaController.loadColorData(tanken);
+        //center
+        evaController.loadColorData(rotonde);
+        evaController.loadColorData(rijstroken);
+        evaController.loadColorData(stad);
+        evaController.loadColorData(snelweg);
     }
 
     @Override
     public void update() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
 }
