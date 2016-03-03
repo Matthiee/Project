@@ -1,61 +1,142 @@
 package gui;
 
 import controller.SchermController;
+import domein.Attitude;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 
 /**
  *
  * @author Kenzo
  */
-public class Veld3Attitude extends FlowPane
-{
+public class Veld3Attitude extends Pane {
+
+    //toonTable is de table die moet getoond worden
     private final SchermController schermController;
+    private Button exit;
+    private TableView<String> list = new TableView<String>();
+    private ObservableList<String> attitudes = FXCollections.observableArrayList();
+    private ObservableList<String> toonAttitudes = FXCollections.observableArrayList();
 
-    public Veld3Attitude(SchermController schermController1){
-       schermController=schermController1;
+    private VBox vBox1 = new VBox();
+    private VBox vBox2 = new VBox();
+    private HBox hBox1 = new HBox();
 
-        VBox vBox = new VBox();
-        Label lbl1 = new Label("Attitude");
-        Label lbl2 = new Label("Vul in of selecteer:");
+    private TableView<Attitude> table = new TableView<Attitude>();
+    private ObservableList<Attitude> data
+            = FXCollections.observableArrayList(
+                    new Attitude("Zenuwachtig"),
+                    new Attitude("Concentratie"),
+                    new Attitude("Schrik"),
+                    new Attitude("Asociaal"),
+                    new Attitude("Verkeersgevaarlijk"),
+                    new Attitude("Ongeduldig"),
+                    new Attitude("Agressief rijgedrag"),
+                    new Attitude("Goede inzet"),
+                    new Attitude("Verstrooid"),
+                    new Attitude("Eigenwijs")
+            );
+    private ListView<String> toonTable = new ListView<String>();
+    private ObservableList<String> toonData
+            = FXCollections.observableArrayList();
 
-        TextField test1 = new TextField("");
-        TextField test2 = new TextField("");
-        TextField test3 = new TextField("");
-        TextField test4 = new TextField("");
-        TextField test5 = new TextField("");
-        TextField test6 = new TextField("");
-        TextField test7 = new TextField("");
-        TextField test8 = new TextField("");
-        TextField test9= new TextField("");
-        vBox.getChildren().addAll(lbl1,lbl2,test1,test2,test3,test4,test5,test6,test7,test8,test9);
-        vBox.setTranslateX(40);
-        //---
-         
-        VBox vBox2 = new VBox();  
-        ListView attitudes = new ListView(FXCollections.
-                observableArrayList("Zenuwachtig","rustig","Geconcentreerd","Afgeleid","Bang","Zelfzeker","Ongeduldig","Geduldig")); 
-        vBox2.getChildren().addAll(attitudes);
-        vBox2.setTranslateX(40);
-        vBox2.setTranslateY(10);
-        //Exit button
-        Button exit = new Button("ga terug");
-        exit.setTranslateX(100);
-        
-        //eventhandler
+    public Veld3Attitude(SchermController schermCtrl) {
+        schermController = schermCtrl;
+
+        attitudes.addAll("Zenuwachtig", "Concentratie", "Schrik", "Asociaal", "Verkeersgevaarlijk",
+                "Ongeduldig", "Agressief rijgedrag", "Goede inzet", "Verstrooid", "Eigenwijs");
+
+        TableColumn algemeenCol = new TableColumn("Attitude");
+        algemeenCol.setMinWidth(250);
+        algemeenCol.setCellValueFactory(
+                new PropertyValueFactory<Attitude, String>("attitude"));
+        algemeenCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        algemeenCol.setOnEditCommit(
+                new EventHandler<CellEditEvent<Attitude, String>>() {
+            @Override
+            public void handle(CellEditEvent<Attitude, String> t) {
+                ((Attitude) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())).setAttitude(t.getNewValue());
+            }
+        }
+        );
+        TableColumn<String, String> toonCol = new TableColumn<>("Gekozen");
+        toonCol.setCellFactory(new Callback<TableColumn<String, String>, TableCell<String, String>>() {
+            @Override
+            public TableCell<String, String> call(TableColumn<String, String> param) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        });
+        toonCol.setMinWidth(250);
+
+        table.setItems(data);
+        table.getColumns().addAll(algemeenCol);
+
+        toonTable.setItems(toonData);
+
+        TextField addAttitude = new TextField();
+        addAttitude.setPromptText("Attitude");
+        addAttitude.setMaxWidth(250);
+
+        final Button addButton = new Button("Voeg toe");
+        addButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                data.add(new Attitude(
+                        addAttitude.getText()
+                ));
+                addAttitude.clear();
+
+            }
+        });
+        addButton.setTranslateY(17);
+
+        table.setItems(data);
+        table.setOnMouseClicked(e -> doorgaanAlsGeselecteerd());
+        table.setEditable(true);
+        table.setMaxHeight(250);
+        toonTable.setMaxHeight(250);
+
+        vBox2.getChildren().addAll(table, addAttitude, addButton);
+        exit = new Button("ga terug");
+        exit.setTranslateY(0);
+
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
-        this.getChildren().addAll(vBox,vBox2,exit);
+        hBox1.getChildren().addAll(exit);
 
-        
+        toonTable.setMinWidth(150);
+        vBox2.setTranslateX(300);
+        hBox1.setTranslateY(300);
+        vBox1.getChildren().addAll(toonTable);
+        vBox1.setTranslateX(10);
+
+        toonTable.setOnMouseClicked(e -> verwijder());
+        this.getChildren().addAll(vBox1, vBox2, hBox1);
+        this.setMinWidth(600);
     }
-    
-    public void update(){
-        
+
+    private void doorgaanAlsGeselecteerd() {
+        toonData.addAll(table.getSelectionModel().getSelectedItem().getAttitude());
+        toonTable.setItems(toonData);
     }
-    
+
+    private void verwijder() {
+        toonData.remove(toonTable.getSelectionModel().getSelectedItem());
+    }
 }
