@@ -22,10 +22,17 @@ public class MainApp extends Application{
     public static final String HOOFDMENU_ID = "hoofdmenu";
     public static final String INFO_LLN_ID = "info_lln";
     public static final String RIJTECHNIEK_ID = "rijtechniek";
-    public static final String VERKEERSTECHNIEK_ID = "verkerstechniek";
+    public static final String VERKEERSTECHNIEK_ID = "verkeerstechniek";
     public static final String VELD3ATTITUDE_ID = "veld3attitude";
     public static final String VELD4EVOLUTIE_ID = "veld4evolutie";
     public static final String NIEUWELEERLING_ID = "nieuweleerling";
+    
+    public static final String VELD1RIJTECHNIEKHOUDING_ID = "veld1rijtechniekhouding";
+    public static final String VELD1RIJTECHNIEKKIJKTECHNIEK_ID = "veld1rijtechniekkijktechniek";
+    public static final String VELD1RIJTECHNIEKKOPPELING_ID = "veld1rijtechniekkoppeling";
+    public static final String VELD1RIJTECHNIEKREMTECHNIEK_ID = "veld1rijtechniekremtechniek";
+    public static final String VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID = "veld1rijtechniekschakeltechniek";
+    public static final String VELD1RIJTECHNIEKSTUURTECHNIEK_ID = "veld1rijtechniekstuurtechniek";
    
     @Override
     public void start(Stage stage) throws InterruptedException {
@@ -42,6 +49,13 @@ public class MainApp extends Application{
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);
         
+        Veld1RijtechniekHouding veld1RijtechniekHouding = new Veld1RijtechniekHouding(schermenCtrl);
+        Veld1RijtechniekKijktechniek veld1RijtechniekKijktechniek = new Veld1RijtechniekKijktechniek(schermenCtrl);
+        Veld1RijtechniekKoppeling veld1RijtechniekKoppeling = new Veld1RijtechniekKoppeling(schermenCtrl);
+        Veld1RijtechniekRemtechniek veld1RijtechniekRemtechniek = new Veld1RijtechniekRemtechniek(schermenCtrl);
+        Veld1RijtechniekSchakeltechniek veld1RijtechniekSchakeltechniek = new Veld1RijtechniekSchakeltechniek(schermenCtrl);
+        Veld1RijtechniekStuurtechniek veld1RijtechniekStuurtechniek = new Veld1RijtechniekStuurtechniek(schermenCtrl);
+        
         schermenCtrl.addScherm(LOGIN_ID, login);
         schermenCtrl.addScherm(HOOFDMENU_ID, menu);
         schermenCtrl.addScherm(INFO_LLN_ID, info);
@@ -49,6 +63,13 @@ public class MainApp extends Application{
         schermenCtrl.addScherm(VERKEERSTECHNIEK_ID, verkeerstechniek);
         schermenCtrl.addScherm(VELD3ATTITUDE_ID, veld3Attitude);
         schermenCtrl.addScherm(NIEUWELEERLING_ID, nieuweLeerling);
+        
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKHOUDING_ID, veld1RijtechniekHouding);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKKIJKTECHNIEK_ID, veld1RijtechniekKijktechniek);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKKOPPELING_ID, veld1RijtechniekKoppeling);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKREMTECHNIEK_ID, veld1RijtechniekRemtechniek);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID, veld1RijtechniekSchakeltechniek);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKSTUURTECHNIEK_ID, veld1RijtechniekStuurtechniek);
         
         schermenCtrl.setScherm(LOGIN_ID);
         
