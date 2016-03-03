@@ -29,7 +29,7 @@ public class EvaOnderdeel extends HBox{
         rect2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         rect3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         
-        icon = new ImageView(base + "Neutraal.png");
+        icon = new ImageView(base);
         
         //opmaak nodes
         icon.setFitHeight(60);
@@ -40,7 +40,7 @@ public class EvaOnderdeel extends HBox{
         rect2.setFitWidth(15);
         rect3.setFitHeight(15);
         rect3.setFitWidth(15);
-        rectGP.setVgap(17.5);
+        rectGP.setVgap(5);
         rectGP.setMinSize(15, 80);
         rectGP.setMaxSize(15, 80);
         rectGP.setAlignment(Pos.CENTER);
@@ -51,8 +51,8 @@ public class EvaOnderdeel extends HBox{
         
         //nodes laden in GridPane
         rectGP.add(rect1, 0, 0);
-        rectGP.add(rect2, 1, 0);
-        rectGP.add(rect3, 2, 0);
+        rectGP.add(rect2, 0, 1);
+        rectGP.add(rect3, 0, 2);
         //nodes toevoegen aan HBox
         this.getChildren().addAll(icon, rectGP);        
     }
