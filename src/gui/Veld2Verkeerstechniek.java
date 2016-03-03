@@ -8,7 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
-public class Veld2Verkeerstechniek extends GridPane{
+public class Veld2Verkeerstechniek extends GridPane implements View {
     
     //de controllers
     private final SchermController schermController;
@@ -133,6 +133,7 @@ public class Veld2Verkeerstechniek extends GridPane{
         
     }
     
+    @Override
     public void update(){
         
     }
