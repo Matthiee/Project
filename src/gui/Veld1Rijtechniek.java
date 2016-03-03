@@ -36,16 +36,22 @@ public class Veld1Rijtechniek extends GridPane{
             //Links
         links = new GridPane();
         remImg = new ImageView("resource/Rijtechniek/rem.png");
+        remImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKREMTECHNIEK_ID));
         koppelingImg = new ImageView("resource/Rijtechniek/koppeling.png");
+        koppelingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKOPPELING_ID));
         houdingImg = new ImageView("resource/Rijtechniek/houding.png");
+        houdingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKHOUDING_ID));
         hellingImg = new ImageView("resource/Rijtechniek/helling.png");
         stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",120 ,157, evaController);
         achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",225 ,127, evaController);
             //Rechts
         rechts = new GridPane();
         stuurImg = new ImageView("resource/Rijtechniek/stuur.png");
+        stuurImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSTUURTECHNIEK_ID));
         schakelImg = new ImageView("resource/Rijtechniek/schakel.png");
+        schakelImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID));
         kijkImg = new ImageView("resource/Rijtechniek/kijk.png");
+        kijkImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID));
         parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157, evaController);
         kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155, evaController);
         garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 127, evaController);
