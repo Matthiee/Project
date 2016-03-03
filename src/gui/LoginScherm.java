@@ -127,7 +127,7 @@ public class LoginScherm extends StackPane implements View {
             } else {
                 if (LeerlingMapper.bestaat(txt)) {
                 
-                   Leerling lln = LeerlingMapper.getLeerlingenMetNaam(txt).get(0);
+                   Leerling lln = LeerlingMapper.getLeerling(txt);
                    llnCntrl.setLeerling(lln);
                    
                    schermController.setScherm(MainApp.HOOFDMENU_ID);
