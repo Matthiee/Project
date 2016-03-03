@@ -13,8 +13,8 @@ public class EvaluatieMoment {
         //Niet gekend           = 3     Rood
     
     //gegevens rijtechniek
-    private int parkeren, garage, helling, stuuroef, achteruit;
-    private int [] keren, houding, remmen, koppeling,schakelen, sturen, kijken;
+    private int parkeren, garage, stuuroef, achteruit, keren;
+    private int [] houding, remmen, koppeling,schakelen, sturen, kijken, helling;
     private ObservableList houdingOpm, koppelingOpm, remmenOpm, schakelenOpm,
             sturenOpm, kijkenOpm, hellingOpm;
     //gegevens verkeerstechniek
@@ -42,10 +42,10 @@ public class EvaluatieMoment {
         this.schakelen = array;
         this.sturen = array;
         this.kijken = array;
-        this.keren = array;
+        this.keren = 0;
         this.parkeren = 0;
         this.garage = 0;
-        this.helling = 0;
+        this.helling = array;
         this.stuuroef = 0;
         this.achteruit = 0;
         this.houdingOpm = FXCollections.observableArrayList();
@@ -92,7 +92,7 @@ public class EvaluatieMoment {
     
 
     public EvaluatieMoment(int[] houding, int[] koppeling, int[] remmen, int[] schakelen, int[] sturen, int[] kijken, 
-            int[] keren, int parkeren, int garage, int helling, int stuuroef, int achteruit, ObservableList houdingOpm, 
+            int keren, int parkeren, int garage, int[] helling, int stuuroef, int achteruit, ObservableList houdingOpm, 
             ObservableList koppelingOpm, ObservableList remmenOpm, ObservableList schakelenOpm, ObservableList sturenOpm, ObservableList kijkenOpm, 
             ObservableList hellingOpm, int[] richtingaanwijzers, int[] voorrang, int[] openbareWeg, int[] verkeerstekens, 
             int[] snelheid, int[] afstand, int[] inhalen, int[] kruisen, int[] linksaf, int[] rechtsaf, ObservableList richtingaanwijzersOpm, 
@@ -204,11 +204,11 @@ public class EvaluatieMoment {
         this.kijken = kijken;
     }
 
-    public int[] getKeren() {
+    public int getKeren() {
         return keren;
     }
 
-    public void setKeren(int[] keren) {
+    public void setKeren(int keren) {
         this.keren = keren;
     }
 
@@ -228,11 +228,11 @@ public class EvaluatieMoment {
         this.garage = garage;
     }
 
-    public int getHelling() {
+    public int[] getHelling() {
         return helling;
     }
 
-    public void setHelling(int helling) {
+    public void setHelling(int[] helling) {
         this.helling = helling;
     }
 
