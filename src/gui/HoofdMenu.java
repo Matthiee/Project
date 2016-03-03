@@ -265,6 +265,7 @@ public class HoofdMenu extends BorderPane implements View {
         graphImg.minWidth(300);
         graphImg.maxWidth(300);
         graphImg.setTranslateX(50);
+        graphImg.setTranslateY(-50);
         gekendImg1.setFitHeight(50);
         gekendImg1.setFitWidth(100);
         gekendImg2.setFitHeight(50);

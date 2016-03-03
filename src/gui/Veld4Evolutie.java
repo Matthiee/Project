@@ -18,7 +18,7 @@ public class Veld4Evolutie extends VBox implements View {
 
     private int score = 0;
     private final Label lblScore = new Label("0");
-    private final Label lblInfo = new Label("");
+    private final Label lblInfo = new Label("Begonnen. \nGeeft de evolutie weer.");
     private final SchermController schermController;
 
     private final Rectangle[] rects = new Rectangle[12];
@@ -57,18 +57,22 @@ public class Veld4Evolutie extends VBox implements View {
         min.setTranslateY(180*SCHAAL);
         plus.setTranslateY(180*SCHAAL);
         
+        lblInfo.setMinWidth(100);
+        lblInfo.setMaxHeight(100);
+        lblInfo.setTranslateX(0);
+        lblInfo.setTranslateY(0);
         this.getChildren().addAll(hbox2, hbox3);
     }
 
     private void updateLabel() {
         if (score < 3) {
-            lblInfo.setText("");
+            lblInfo.setText("Begonnen. \nGeeft de evolutie weer.");
         } else if (score < 9) {
-            lblInfo.setText("Klaar om met een begeleider te oefenen in de stageperiode.");
+            lblInfo.setText(("Klaar om met een begeleider \nte oefenen in de stageperiode."));
         } else if (score < 12) {
-            lblInfo.setText("Klaar om alleen te oefenen in de stageperiode.");
+            lblInfo.setText(("Klaar om alleen te oefenen \nin de stageperiode."));
         } else if (score == 12) {
-            lblInfo.setText("Klaar voor praktisch examen.");
+            lblInfo.setText(("Klaar voor \npraktisch examen."));
         }
     }
 
@@ -97,5 +101,9 @@ public class Veld4Evolutie extends VBox implements View {
         }
         
         updateLabel();
+    }
+    
+    private String verkort(String s) {
+        return s.replaceAll("(.{30})", "$1\n");
     }
 }
