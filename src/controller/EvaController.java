@@ -6,25 +6,26 @@ import gui.Onderdeel;
 public class EvaController {
     
     private LeerlingController leerlingController;
-    private int selectedEva; //eva1=1  eva2=2  eva3=3
+     //eva1=1  eva2=2  eva3=3
     
     public EvaController(LeerlingController llnCtrl){
         leerlingController = llnCtrl;
-        selectedEva = leerlingController.getLastSelectedEva();
+        getSelectedEva();
     }
 
     public int getSelectedEva() {
-        return selectedEva;
+        return leerlingController.getLastSelectedEva();
     }
 
     public void setSelectedEva(int selectedEva) {
-        this.selectedEva = selectedEva;
         leerlingController.setLastSelectedEva(selectedEva);
     }
     public void loadColorData(Onderdeel onderdeel){
         
         String base = onderdeel.getBase();
         int status = 0;
+        
+        int selectedEva = getSelectedEva();
         
         //Hoofdmenu
             //links
@@ -118,6 +119,8 @@ public class EvaController {
     public void saveColorData(String base, int status){
         //hoofdmenu
             //links
+            int selectedEva = getSelectedEva();
+            
         if(base.equals("resource/Hoofdmenu/schakelaars")){
             if(selectedEva == 1) leerlingController.getEva1().setSchakelaars(status);
             if(selectedEva == 2) leerlingController.getEva2().setSchakelaars(status);

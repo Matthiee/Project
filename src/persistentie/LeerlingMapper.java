@@ -31,7 +31,7 @@ public class LeerlingMapper {
     public static List<Leerling> getLeerlingenMetNaam(String naam){
         // TODO: Database
         
-        return leerlingen.stream().filter(l -> l.getNaam().contains(naam)).collect(Collectors.toList());
+        return leerlingen.stream().filter(l -> l.getNaam().toLowerCase().contains(naam.toLowerCase())).collect(Collectors.toList());
         
     }
     

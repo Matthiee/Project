@@ -66,6 +66,7 @@ public class Leerling implements Model{
 
     public void setEva1(EvaluatieMoment eva1) {
         this.eva1 = eva1;
+        update();
     }
 
     public EvaluatieMoment getEva2() {
@@ -74,14 +75,17 @@ public class Leerling implements Model{
 
     public void setEva2(EvaluatieMoment eva2) {
         this.eva2 = eva2;
+        update();
     }
 
     public EvaluatieMoment getEva3() {
         return eva3;
+        
     }
 
     public void setEva3(EvaluatieMoment eva3) {
         this.eva3 = eva3;
+        update();
     }
 
     public int getLastSelectedEva() {
@@ -90,6 +94,7 @@ public class Leerling implements Model{
 
     public void setLastSelectedEva(int lastSelectedEva) {
         this.lastSelectedEva = lastSelectedEva;
+        update();
     }
    
 

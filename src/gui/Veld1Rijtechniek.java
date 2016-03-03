@@ -2,18 +2,19 @@
 package gui;
 
 import controller.EvaController;
+import controller.LeerlingController;
 import controller.SchermController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 
-public class Veld1Rijtechniek extends GridPane{
+public class Veld1Rijtechniek extends GridPane implements View {
     
     //de controllers
     private final SchermController schermController;
+    private final LeerlingController llnController;
     private EvaController evaController;
     //Afbeeldingen
     private ImageView hellingImg, houdingImg, kijkImg, koppelingImg, remImg, schakelImg, stuurImg;
@@ -28,9 +29,12 @@ public class Veld1Rijtechniek extends GridPane{
     //evaSelector
     private EvaSelector evaSelector;
     
-    public Veld1Rijtechniek(SchermController schermCtrl, EvaController evaCtrl){
+    public Veld1Rijtechniek(LeerlingController llnCntrl, SchermController schermCtrl, EvaController evaCtrl){
+        
         schermController = schermCtrl;
         evaController = evaCtrl;
+        llnController=llnCntrl;
+        llnController.getLeerling().addView(this);
         
         //alle afbeeldingen aanmaken
             //Links
@@ -178,6 +182,7 @@ public class Veld1Rijtechniek extends GridPane{
         evaSelector.update();
     }
     
+    @Override
     public void update(){
         updateOnderdelen();
         updateEvaSelector();
