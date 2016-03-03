@@ -50,7 +50,7 @@ public class Veld1Rijtechniek extends GridPane{
         stuurImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSTUURTECHNIEK_ID));
         schakelImg = new ImageView("resource/Rijtechniek/schakel.png");
         schakelImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID));
-        kijkImg = new ImageView("resource/Rijtechniek/kijk.png");
+        kijkImg = new ImageView("resource/Rijtechniek/kijken.png");
         kijkImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID));
         parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157, evaController);
         kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155, evaController);
