@@ -35,6 +35,10 @@ public class LeerlingMapper {
         
     }
     
+    public static Leerling getLeerling(String naam){
+        return leerlingen.stream().filter(l -> l.getNaam().equalsIgnoreCase(naam)).collect(Collectors.toList()).get(0);
+    }
+    
     public static boolean voegLeerlingToe(Leerling lln){
         return leerlingen.add(lln);
     }
