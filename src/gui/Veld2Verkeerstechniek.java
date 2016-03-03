@@ -1,6 +1,7 @@
 
 package gui;
 
+import controller.EvaController;
 import controller.SchermController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,8 +13,9 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
     
     //de controllers
     private final SchermController schermController;
+    private final EvaController evaController;
     //Afbeeldingen
-    private ImageView afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
+    private EvaOnderdeel afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
             richtingaanwijzersImg, snelheidImg, verkeerstekensImg, voorrangImg;
     private ImageView pijl1Img, pijl2Img, pijl3Img;
     //GridPanes
@@ -21,24 +23,25 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
     //button
     private Button exit;
     
-    public Veld2Verkeerstechniek(SchermController schermCtrl){
+    public Veld2Verkeerstechniek(SchermController schermCtrl, EvaController evaCtrl){
+        evaController = evaCtrl;
         schermController = schermCtrl;
         
         //alle afbeeldingen
             //Links
         links = new GridPane();
-        openbareWegImg = new ImageView("resource/Verkeerstechniek/openbareWeg.png");
-        richtingaanwijzersImg = new ImageView("resource/Verkeerstechniek/richtingaanwijzers.png");
-        rechtsafImg = new ImageView("resource/Verkeerstechniek/rechtsaf.png");
-        linksafImg = new ImageView("resource/Verkeerstechniek/linksaf.png");
-        kruisenImg = new ImageView("resource/Verkeerstechniek/kruisen.png");
+        openbareWegImg = new EvaOnderdeel("resource/Verkeerstechniek/openbareWeg.png", evaController);
+        richtingaanwijzersImg = new EvaOnderdeel("resource/Verkeerstechniek/richtingaanwijzers.png", evaController);
+        rechtsafImg = new EvaOnderdeel("resource/Verkeerstechniek/rechtsaf.png", evaController);
+        linksafImg = new EvaOnderdeel("resource/Verkeerstechniek/linksaf.png", evaController);
+        kruisenImg = new EvaOnderdeel("resource/Verkeerstechniek/kruisen.png", evaController);
             //Rechts
         rechts = new GridPane();
-        voorrangImg = new ImageView("resource/Verkeerstechniek/voorrang.png");
-        verkeerstekensImg = new ImageView("resource/Verkeerstechniek/verkeerstekens.png");
-        snelheidImg = new ImageView("resource/Verkeerstechniek/snelheid.png");
-        afstandImg = new ImageView("resource/Verkeerstechniek/afstand.png");
-        inhalenImg = new ImageView("resource/Verkeerstechniek/inhalen.png");
+        voorrangImg = new EvaOnderdeel("resource/Verkeerstechniek/voorrang.png", evaController);
+        verkeerstekensImg = new EvaOnderdeel("resource/Verkeerstechniek/verkeerstekens.png", evaController);
+        snelheidImg = new EvaOnderdeel("resource/Verkeerstechniek/snelheid.png", evaController);
+        afstandImg = new EvaOnderdeel("resource/Verkeerstechniek/afstand.png", evaController);
+        inhalenImg = new EvaOnderdeel("resource/Verkeerstechniek/inhalen.png", evaController);
             //pijlen center
         pijlGp = new GridPane();
         pijl1Img = new ImageView("resource/Verkeerstechniek/pijl1Neutraal.png");
@@ -71,42 +74,42 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
             //links
         links.setAlignment(Pos.CENTER);
         links.setVgap(20);
-        openbareWegImg.setFitHeight(80);
-        openbareWegImg.setFitWidth(80);
+        openbareWegImg.setMinSize(80, 80);
+        openbareWegImg.setMaxSize(80, 80);
         openbareWegImg.setTranslateX(180);
-        richtingaanwijzersImg.setFitHeight(80);
-        richtingaanwijzersImg.setFitWidth(80);
+        richtingaanwijzersImg.setMinSize(80, 80);
+        richtingaanwijzersImg.setMaxSize(80, 80);
         richtingaanwijzersImg.setTranslateX(75);
         richtingaanwijzersImg.setTranslateY(-30);
-        rechtsafImg.setFitHeight(80);
-        rechtsafImg.setFitWidth(80);
+        rechtsafImg.setMinSize(80, 80);
+        rechtsafImg.setMaxSize(80, 80);
         rechtsafImg.setTranslateX(10);
-        linksafImg.setFitHeight(80);
-        linksafImg.setFitWidth(80);
+        linksafImg.setMinSize(80, 80);
+        linksafImg.setMaxSize(80, 80);
         linksafImg.setTranslateX(75);
         linksafImg.setTranslateY(30);
-        kruisenImg.setFitHeight(80);
-        kruisenImg.setFitWidth(80);
+        kruisenImg.setMinSize(80, 80);
+        kruisenImg.setMaxSize(80, 80);
         kruisenImg.setTranslateX(180);
             //rechts
         rechts.setAlignment(Pos.CENTER);
         rechts.setVgap(20);
-        voorrangImg.setFitHeight(80);
-        voorrangImg.setFitWidth(80);
+        voorrangImg.setMinSize(80, 80);
+        voorrangImg.setMaxSize(80, 80);
         voorrangImg.setTranslateX(-180);
-        verkeerstekensImg.setFitHeight(80);
-        verkeerstekensImg.setFitWidth(80);
+        verkeerstekensImg.setMinSize(80, 80);
+        verkeerstekensImg.setMaxSize(80, 80);
         verkeerstekensImg.setTranslateX(-75);
         verkeerstekensImg.setTranslateY(-30);
-        snelheidImg.setFitHeight(80);
-        snelheidImg.setFitWidth(80);
+        snelheidImg.setMinSize(80, 80);
+        snelheidImg.setMaxSize(80, 80);
         snelheidImg.setTranslateX(-10);
-        afstandImg.setFitHeight(80);
-        afstandImg.setFitWidth(80);
+        afstandImg.setMinSize(80, 80);
+        afstandImg.setMaxSize(80, 80);
         afstandImg.setTranslateX(-75);
         afstandImg.setTranslateY(30);
-        inhalenImg.setFitHeight(80);
-        inhalenImg.setFitWidth(80);
+        inhalenImg.setMinSize(80, 80);
+        inhalenImg.setMaxSize(80, 80);
         inhalenImg.setTranslateX(-180);
             //pijlen center
         pijlGp.setAlignment(Pos.CENTER);
