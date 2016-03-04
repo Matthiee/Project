@@ -1,5 +1,6 @@
 package gui;
 
+import controller.LeerlingController;
 import controller.SchermController;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -20,6 +21,7 @@ public class Veld4Evolutie extends VBox implements View {
     private final Label lblScore = new Label("0");
     private final Label lblInfo = new Label("Begonnen. \nGeeft de evolutie weer.");
     private final SchermController schermController;
+    private LeerlingController leerlingController;
 
     private final Rectangle[] rects = new Rectangle[12];
 
@@ -38,9 +40,10 @@ public class Veld4Evolutie extends VBox implements View {
         }
     }
 
-    public Veld4Evolutie(SchermController schermController1) {
+    public Veld4Evolutie(SchermController schermController1, LeerlingController llnCtrl) {
 
         schermController = schermController1;
+        leerlingController = llnCtrl;
 
         min.setOnMouseClicked(e -> verminder());
 
@@ -79,6 +82,7 @@ public class Veld4Evolutie extends VBox implements View {
     private void verminder() {
         if (score > 0) {
             score--;
+            leerlingController.setGrafiek(score);
             update();
         }
     }
@@ -86,12 +90,14 @@ public class Veld4Evolutie extends VBox implements View {
     private void vermeerder() {
         if (score < 12) {
             score++;
+            leerlingController.setGrafiek(score);
             update();
         }
     }
 
     @Override
     public void update() {
+        score = leerlingController.getGrafiek();
         for (int i = 0; i < 12; i++) {
             if (i < score) {
                 rects[i].setFill(Color.GREEN);
