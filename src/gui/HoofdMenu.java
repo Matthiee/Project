@@ -253,7 +253,7 @@ public class HoofdMenu extends BorderPane implements View {
         bottom = new GridPane();
         gekend = new GridPane();
         //de nodes
-        graphImg = new Veld4Evolutie(schermController,evaController);
+        graphImg = new Veld4Evolutie(schermController, this.llnController);
         gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
         gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
         gekendImg3 = new ImageView("resource/Hoofdmenu/gekendRood.png");
