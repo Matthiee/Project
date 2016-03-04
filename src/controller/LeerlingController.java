@@ -37,7 +37,13 @@ public class LeerlingController {
         this.leerling.update();
     }
     
+    public int getGrafiek(){
+        return leerling.getGrafiek();
+    }
     
+    public void setGrafiek(int grafiek){
+        leerling.setGrafiek(grafiek);
+    }
     
     public EvaluatieMoment getEva1() {
         return leerling.getEva1();
