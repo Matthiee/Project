@@ -347,11 +347,17 @@ public class HoofdMenu extends BorderPane implements View {
     public void updateEvaSelector(){
         evaSelector.update();
     }
+    
+    public void updateGrafiek(){
+        graphImg.update();
+    }
 
     @Override
     public void update() {
         updateOnderdelen();
         updateEvaSelector();
+        updateGrafiek();
+        
     }
 
 }
