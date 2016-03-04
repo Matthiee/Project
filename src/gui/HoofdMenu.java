@@ -50,7 +50,7 @@ public class HoofdMenu extends BorderPane implements View {
     private ImageView gekendImg1, gekendImg2, gekendImg3;
     private Veld4Evolutie graphImg;
 
-    public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaController) {
+    public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaCtrl) {
 
         
         //Top of the borderpane
@@ -60,7 +60,7 @@ public class HoofdMenu extends BorderPane implements View {
         this.llnController = llnController;
         this.llnController.getLeerling().addView(this);
         this.schermController=schermCtrl;
-        this.evaController = evaController; 
+        this.evaController = evaCtrl; 
        
         //de nodes
         opmerkingenTxt = new TextField("Test text voor de opmerkingen");
@@ -253,7 +253,7 @@ public class HoofdMenu extends BorderPane implements View {
         bottom = new GridPane();
         gekend = new GridPane();
         //de nodes
-        graphImg = new Veld4Evolutie(schermController);
+        graphImg = new Veld4Evolutie(schermController,evaController);
         gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
         gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
         gekendImg3 = new ImageView("resource/Hoofdmenu/gekendRood.png");
