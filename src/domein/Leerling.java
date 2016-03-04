@@ -47,7 +47,7 @@ public class Leerling implements Model{
         this.lastSelectedEva = lastSelectedEva;
     }
     
-    public Leerling(String naam, String inschrijvingsnr, String instructeur, Date verval, String type, Image image, int grafiek) {
+    public Leerling(String naam, String inschrijvingsnr, String instructeur, Date verval, String type, Image image) {
         this();
         
         this.naam = naam;
@@ -56,7 +56,7 @@ public class Leerling implements Model{
         this.verval = verval;
         this.type = type;
         this.image = image;
-        this.grafiek = grafiek;
+        this.grafiek = 0;
         this.eva1 = new EvaluatieMoment();
         this.eva2 = new EvaluatieMoment();
         this.eva3 = new EvaluatieMoment();
