@@ -11,8 +11,8 @@ import javafx.scene.layout.StackPane;
 public class SchermController extends StackPane {
 
     private final HashMap<String, Node> schermen;
-    private int hoogte = 800;
-    private int breedte = 1200;
+    private int hoogte = 768;
+    private int breedte = 1024;
     
     public SchermController() {
         super();
