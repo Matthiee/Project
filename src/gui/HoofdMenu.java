@@ -21,12 +21,14 @@ import javafx.scene.layout.VBox;
  *
  * @author simon
  */
-public class HoofdMenu extends BorderPane implements View {
+public class HoofdMenu extends HBox implements View {
 
     //objecten en controllers
     private LeerlingController llnController;
     private final SchermController schermController;
     private EvaController evaController;
+    
+    private BorderPane bp;
     
     //top
     private GridPane top;
@@ -293,14 +295,18 @@ public class HoofdMenu extends BorderPane implements View {
         evaSelector.setOnMouseClicked((e)->updateOnderdelen());
 
         //alle onderdelen toevoegen aan de borderpane
-        this.setTop(top);
-        this.setBottom(bottom);
-        this.setCenter(center);
-        this.setLeft(left);
-        this.setRight(right);
+        bp = new BorderPane();
+        bp.setTop(top);
+        bp.setBottom(bottom);
+        bp.setCenter(center);
+        bp.setLeft(left);
+        bp.setRight(right);
+        this.getChildren().add(bp);
         //opmaak
-        this.maxHeight(800);
-        this.maxWidth(1200);
+        this.maxHeight(schermCtrl.getHoogte());
+        this.maxWidth(schermCtrl.getBreedte());
+        this.setAlignment(Pos.CENTER);
+        
         top.setAlignment(Pos.CENTER);
         left.setAlignment(Pos.CENTER);
         right.setAlignment(Pos.CENTER);
