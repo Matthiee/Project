@@ -11,17 +11,36 @@ import javafx.scene.layout.StackPane;
 public class SchermController extends StackPane {
 
     private final HashMap<String, Node> schermen;
+    private int hoogte = 800;
+    private int breedte = 1200;
     
     public SchermController() {
         super();
         
         schermen =new HashMap<>();
-        this.setMaxHeight(800);
-        this.setMaxWidth(1200);
-        this.setMinHeight(800);
-        this.setMinWidth(1200);
-        this.setPrefSize(1200, 800);
+        this.setMaxHeight(hoogte);
+        this.setMaxWidth(breedte);
+        this.setMinHeight(hoogte);
+        this.setMinWidth(breedte);
+        this.setPrefSize(breedte, hoogte);
     }
+
+    public int getHoogte() {
+        return hoogte;
+    }
+
+    public void setHoogte(int hoogte) {
+        this.hoogte = hoogte;
+    }
+
+    public int getBreedte() {
+        return breedte;
+    }
+
+    public void setBreedte(int breedte) {
+        this.breedte = breedte;
+    }
+    
     
     public void addScherm(String id, Node scherm){
         if (!schermen.containsKey(id))
