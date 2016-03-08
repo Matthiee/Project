@@ -22,8 +22,6 @@ public class EvaluatieMoment {
             afstand, inhalen, kruisen, linksaf, rechtsaf;
     private ObservableList richtingaanwijzersOpm, voorrangOpm, openbareWegOpm, verkeerstekensOpm, 
             snelheidOpm, afstandOpm, inhalenOpm, kruisenOpm, linksafOpm, rechtsafOpm;
-    //gegevens grafiek
-    private int grafiek;
     //gegevens attitude
     private ObservableList attitudeOpm;
     //gegevens hoofdmenu;
@@ -65,18 +63,17 @@ public class EvaluatieMoment {
         this.kruisen = array;
         this.linksaf = array;
         this.rechtsaf = array;
-        this.richtingaanwijzersOpm = FXCollections.observableArrayList();;
-        this.voorrangOpm = FXCollections.observableArrayList();;
-        this.openbareWegOpm = FXCollections.observableArrayList();;
-        this.verkeerstekensOpm = FXCollections.observableArrayList();;
-        this.snelheidOpm = FXCollections.observableArrayList();;
-        this.afstandOpm = FXCollections.observableArrayList();;
-        this.inhalenOpm = FXCollections.observableArrayList();;
-        this.kruisenOpm = FXCollections.observableArrayList();;
-        this.linksafOpm = FXCollections.observableArrayList();;
-        this.rechtsafOpm = FXCollections.observableArrayList();;
-        this.grafiek = 0;
-        this.attitudeOpm = FXCollections.observableArrayList();;
+        this.richtingaanwijzersOpm = FXCollections.observableArrayList();
+        this.voorrangOpm = FXCollections.observableArrayList();
+        this.openbareWegOpm = FXCollections.observableArrayList();
+        this.verkeerstekensOpm = FXCollections.observableArrayList();
+        this.snelheidOpm = FXCollections.observableArrayList();
+        this.afstandOpm = FXCollections.observableArrayList();
+        this.inhalenOpm = FXCollections.observableArrayList();
+        this.kruisenOpm = FXCollections.observableArrayList();
+        this.linksafOpm = FXCollections.observableArrayList();
+        this.rechtsafOpm = FXCollections.observableArrayList();
+        this.attitudeOpm = FXCollections.observableArrayList();
         this.rotonde = 0;
         this.rijstroken = 0;
         this.stad = 0;
@@ -139,7 +136,6 @@ public class EvaluatieMoment {
         this.kruisenOpm = kruisenOpm;
         this.linksafOpm = linksafOpm;
         this.rechtsafOpm = rechtsafOpm;
-        this.grafiek = grafiek;
         this.attitudeOpm = attitudeOpm;
         this.rotonde = rotonde;
         this.rijstroken = rijstroken;
@@ -467,15 +463,7 @@ public class EvaluatieMoment {
     public void setRechtsafOpm(ObservableList rechtsafOpm) {
         this.rechtsafOpm = rechtsafOpm;
     }
-
-    public int getGrafiek() {
-        return grafiek;
-    }
-
-    public void setGrafiek(int grafiek) {
-        this.grafiek = grafiek;
-    }
-
+    
     public ObservableList getAttitudeOpm() {
         return attitudeOpm;
     }

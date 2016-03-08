@@ -6,11 +6,12 @@ import gui.Onderdeel;
 public class EvaController {
     
     private LeerlingController leerlingController;
+    private int selectedEva;
      //eva1=1  eva2=2  eva3=3
     
     public EvaController(LeerlingController llnCtrl){
         leerlingController = llnCtrl;
-        getSelectedEva();
+        selectedEva = getSelectedEva();
     }
 
     public int getSelectedEva() {
@@ -18,14 +19,13 @@ public class EvaController {
     }
 
     public void setSelectedEva(int selectedEva) {
+        this.selectedEva = selectedEva;
         leerlingController.setLastSelectedEva(selectedEva);
-    }
+    }    
     public void loadColorData(Onderdeel onderdeel){
         
         String base = onderdeel.getBase();
         int status = 0;
-        
-        int selectedEva = getSelectedEva();
         
         //Hoofdmenu
             //links

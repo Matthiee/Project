@@ -20,6 +20,7 @@ public class Leerling implements Model{
     private Date verval;
     private String type;
     private Image image;
+    private int grafiek;
     private EvaluatieMoment eva1;
     private EvaluatieMoment eva2;
     private EvaluatieMoment eva3;
@@ -29,7 +30,7 @@ public class Leerling implements Model{
       views = new ArrayList<>();
     }
 
-    public Leerling(String naam, String inschrijvingsnr, String instructeur, Date verval, String type, Image image, 
+    public Leerling(String naam, String inschrijvingsnr, String instructeur, Date verval, String type, Image image, int grafiek, 
             EvaluatieMoment eva1, EvaluatieMoment eva2, EvaluatieMoment eva3, int lastSelectedEva) {
         this();
         
@@ -39,6 +40,7 @@ public class Leerling implements Model{
         this.verval = verval;
         this.type = type;
         this.image = image;
+        this.grafiek = grafiek;
         this.eva1 = eva1;
         this.eva2 = eva2;
         this.eva3 = eva3;
@@ -54,11 +56,21 @@ public class Leerling implements Model{
         this.verval = verval;
         this.type = type;
         this.image = image;
+        this.grafiek = 0;
         this.eva1 = new EvaluatieMoment();
         this.eva2 = new EvaluatieMoment();
         this.eva3 = new EvaluatieMoment();
         this.lastSelectedEva = 1;
     }
+
+    public int getGrafiek() {
+        return grafiek;
+    }
+
+    public void setGrafiek(int grafiek) {
+        this.grafiek = grafiek;
+    }
+   
 
     public EvaluatieMoment getEva1() {
         return eva1;
