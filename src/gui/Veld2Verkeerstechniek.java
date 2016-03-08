@@ -132,7 +132,9 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         this.add(pijlGp, 2 ,0);
         this.add(rechts, 3, 0);
         this.add(links, 1, 0);
-        this.add(exit, 3, 1);        
+        this.add(exit, 3, 1);
+        this.setAlignment(Pos.CENTER);
+        this.setTranslateX(-15);
         
     }
     
