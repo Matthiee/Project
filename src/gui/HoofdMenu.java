@@ -28,7 +28,11 @@ public class HoofdMenu extends HBox implements View {
     private final SchermController schermController;
     private EvaController evaController;
     
+    //main borderpane
     private BorderPane bp;
+    
+    //hoogte en breedte van het venster
+    private int hoogte, breedte;
     
     //top
     private GridPane top;
@@ -53,7 +57,10 @@ public class HoofdMenu extends HBox implements View {
     private Veld4Evolutie graphImg;
 
     public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaCtrl) {
-
+        
+        //hoogte en breedte
+        hoogte = schermCtrl.getHoogte();
+        breedte = schermCtrl.getBreedte();
         
         //Top of the borderpane
         top = new GridPane();
@@ -303,8 +310,8 @@ public class HoofdMenu extends HBox implements View {
         bp.setRight(right);
         this.getChildren().add(bp);
         //opmaak
-        this.maxHeight(schermCtrl.getHoogte());
-        this.maxWidth(schermCtrl.getBreedte());
+        this.maxHeight(hoogte);
+        this.maxWidth(breedte);
         this.setAlignment(Pos.CENTER);
         
         top.setAlignment(Pos.CENTER);
