@@ -33,7 +33,8 @@ public class HoofdMenu extends HBox implements View {
     
     //hoogte en breedte van het venster
     private int hoogte, breedte;
-    
+    //achtergrond
+    private ImageView achtergrond;
     //top
     private GridPane top;
     private VBox profile;
@@ -300,6 +301,8 @@ public class HoofdMenu extends HBox implements View {
         bottom.add(graphImg, 2, 0);
         //eventhandler
         evaSelector.setOnMouseClicked((e)->updateOnderdelen());
+        //achtergrond
+        this.setStyle("-fx-background-image: url('resource/Hoofdmenu/achtergrondHoofdmenu.jpg')");
 
         //alle onderdelen toevoegen aan de borderpane
         bp = new BorderPane();
