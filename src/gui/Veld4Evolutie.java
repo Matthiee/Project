@@ -64,6 +64,7 @@ public class Veld4Evolutie extends VBox implements View {
         lblInfo.setMaxHeight(100);
         lblInfo.setTranslateX(0);
         lblInfo.setTranslateY(0);
+        lblInfo.setTextFill(Color.WHITE);
         this.getChildren().addAll(hbox2, hbox3);
     }
 

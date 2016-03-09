@@ -141,6 +141,7 @@ public class Veld1Rijtechniek extends GridPane implements View {
         stuur2Img.setFitWidth(150);
         stuur3Img.setFitHeight(150);
         stuur3Img.setFitWidth(150);
+        stuurGp.setTranslateX(-15);
         
         //exit button + evaSelector
         exit = new Button("ga terug");
@@ -155,6 +156,11 @@ public class Veld1Rijtechniek extends GridPane implements View {
         this.add(links, 1, 0);
         this.add(exit, 3, 1);
         this.add(evaSelector, 1, 1);
+        this.setAlignment(Pos.CENTER);
+        this.setMaxSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
+        this.setMinSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
+        this.setTranslateX(-20);
+        this.setStyle("-fx-background-color: #003399");
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)

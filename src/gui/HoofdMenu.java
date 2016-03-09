@@ -21,13 +21,20 @@ import javafx.scene.layout.VBox;
  *
  * @author simon
  */
-public class HoofdMenu extends BorderPane implements View {
+public class HoofdMenu extends HBox implements View {
 
     //objecten en controllers
     private LeerlingController llnController;
     private final SchermController schermController;
     private EvaController evaController;
     
+    //main borderpane
+    private BorderPane bp;
+    
+    //hoogte en breedte van het venster
+    private int hoogte, breedte;
+    //achtergrond
+    private ImageView achtergrond;
     //top
     private GridPane top;
     private VBox profile;
@@ -45,13 +52,15 @@ public class HoofdMenu extends BorderPane implements View {
     private ImageView attitudeImg, pijl1, pijl2, pijl3, stuur1, stuur2, stuur3;
     private TextField attitudeTxt;
     //bottom
-    private GridPane bottom, evaluatie, gekend;
+    private GridPane bottom;
     private EvaSelector evaSelector;
-    private ImageView gekendImg1, gekendImg2, gekendImg3;
     private Veld4Evolutie graphImg;
 
     public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaCtrl) {
-
+        
+        //hoogte en breedte
+        hoogte = schermCtrl.getHoogte();
+        breedte = schermCtrl.getBreedte();
         
         //Top of the borderpane
         top = new GridPane();
@@ -73,6 +82,7 @@ public class HoofdMenu extends BorderPane implements View {
         opmerkingenTxt.setMinHeight(60);
         opmerkingenTxt.setMaxWidth(200);
         opmerkingenTxt.setMinWidth(200);
+        opmerkingenTxt.setTranslateY(-20);
         profile.setMaxHeight(100);
         profile.setMinHeight(100);
         top.setPadding(new Insets(30, 20, 5, 20));
@@ -135,6 +145,7 @@ public class HoofdMenu extends BorderPane implements View {
         right.setMinHeight(400);
         right.setMaxWidth(120);
         right.setMinWidth(120);
+        right.setTranslateX(8);
         //de nodes toevoegen
         right.add(tanken, 0, 0);
         right.add(gps, 0, 1);
@@ -228,20 +239,14 @@ public class HoofdMenu extends BorderPane implements View {
         //de nodes
         attitudeImg = new ImageView("resource/Hoofdmenu/attitude.png");
         attitudeImg.setOnMouseClicked((e)->schermController.setScherm(MainApp.VELD3ATTITUDE_ID));
-        attitudeTxt = new TextField("Attitude dummy text!");
         //opmaak
-        attitudeImg.setFitHeight(50);
-        attitudeImg.setFitWidth(50);
-        attitudeTxt.setMaxSize(200, 50);
-        attitudeTxt.setMinSize(200, 50);
         attitude.setAlignment(Pos.CENTER);
         attitude.setMaxSize(800, 80);
         attitude.setMinSize(800, 80);
         attitude.setPadding(new Insets(10, 10, 10, 10));
-        attitude.setHgap(50);
+        attitude.setTranslateY(15);
         //nodes toevoegen aan attitude
         attitude.add(attitudeImg, 0, 0);
-        attitude.add(attitudeTxt, 1, 0);
         //alle 3 de onderdelen toevoegen aan center
             //volgorde laten staan! anders werkt schermcontroller niet goed!
         center.add(iconen, 0, 0, 2, 1);
@@ -251,56 +256,56 @@ public class HoofdMenu extends BorderPane implements View {
 
         //Bottom of the borderpane
         bottom = new GridPane();
-        gekend = new GridPane();
         //de nodes
         graphImg = new Veld4Evolutie(schermController, this.llnController);
-        gekendImg1 = new ImageView("resource/Hoofdmenu/gekendGroen.png");
-        gekendImg2 = new ImageView("resource/Hoofdmenu/gekendOranje.png");
-        gekendImg3 = new ImageView("resource/Hoofdmenu/gekendRood.png");
         evaSelector = new EvaSelector(evaController);
+        attitudeTxt = new TextField("Attitude dummy text!");
         
         //de opmaak
         //graphImg.setFitHeight(80);
         //graphImg.setFitWidth(200);
         graphImg.minWidth(300);
         graphImg.maxWidth(300);
-        graphImg.setTranslateX(50);
-        graphImg.setTranslateY(-50);
-        gekendImg1.setFitHeight(50);
-        gekendImg1.setFitWidth(100);
-        gekendImg2.setFitHeight(50);
-        gekendImg2.setFitWidth(100);
-        gekendImg3.setFitHeight(50);
-        gekendImg3.setFitWidth(100);
-        gekendImg1.setFitHeight(50);
-        gekend.setMinWidth(300);
-        gekend.setMaxWidth(300);
-        gekend.setAlignment(Pos.CENTER);
-        gekend.setTranslateX(-40);
-        evaSelector.setMaxWidth(350);
-        evaSelector.setMinWidth(350);
+        graphImg.setTranslateX(170);
+        graphImg.setTranslateY(-75);
         evaSelector.setTranslateX(-100);
+        evaSelector.setTranslateY(-60);
+        attitudeImg.setFitHeight(50);
+        attitudeImg.setFitWidth(50);
+        attitudeTxt.setMaxSize(200, 50);
+        attitudeTxt.setMinSize(200, 50);
+        attitudeTxt.setTranslateX(55);
         bottom.setAlignment(Pos.CENTER);
         //de nodes toevoegen
-        gekend.add(gekendImg1, 0, 0);
-        gekend.add(gekendImg2, 1, 0);
-        gekend.add(gekendImg3, 2, 0);
         
         bottom.add(evaSelector, 0, 0);
-        bottom.add(gekend, 1, 0);
+        bottom.add(attitudeTxt, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
         evaSelector.setOnMouseClicked((e)->updateOnderdelen());
+        //achtergrond
+            //this.setStyle("-fx-background-image: url('resource/Hoofdmenu/achtergrondHoofdmenu.jpg')");
+        achtergrond = new ImageView("resource/Hoofdmenu/achtergrondHoofdmenu.jpg");
+        achtergrond.setFitHeight(hoogte);
+        achtergrond.setFitWidth(breedte);
+        achtergrond.setTranslateX(breedte/2+8);
 
         //alle onderdelen toevoegen aan de borderpane
-        this.setTop(top);
-        this.setBottom(bottom);
-        this.setCenter(center);
-        this.setLeft(left);
-        this.setRight(right);
+        bp = new BorderPane();
+        bp.setTop(top);
+        bp.setBottom(bottom);
+        bp.setCenter(center);
+        bp.setLeft(left);
+        bp.setRight(right);
+        bp.setTranslateX(-breedte/2);
+        
+        this.getChildren().add(achtergrond);
+        this.getChildren().add(bp);
         //opmaak
-        this.maxHeight(800);
-        this.maxWidth(1200);
+        this.maxHeight(hoogte);
+        this.maxWidth(breedte);
+        this.setAlignment(Pos.CENTER);
+        
         top.setAlignment(Pos.CENTER);
         left.setAlignment(Pos.CENTER);
         right.setAlignment(Pos.CENTER);
