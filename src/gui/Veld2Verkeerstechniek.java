@@ -135,6 +135,7 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         this.add(exit, 3, 1);
         this.setAlignment(Pos.CENTER);
         this.setTranslateX(-15);
+        this.setStyle("-fx-background-color: #003399");
         
     }
     
