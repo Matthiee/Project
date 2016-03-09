@@ -160,6 +160,7 @@ public class Veld1Rijtechniek extends GridPane implements View {
         this.setMaxSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
         this.setMinSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
         this.setTranslateX(-20);
+        this.setStyle("-fx-background-color: #003399");
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
