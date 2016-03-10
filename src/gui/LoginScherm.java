@@ -41,16 +41,20 @@ public class LoginScherm extends StackPane implements View {
 
         llnCntrl=llnController;
         
-        this.setMaxSize(645, 440);
+        this.setMaxSize(665, 440);
 
         schermController = schermCtrl;
         lblInfo = new Label("");
         lblInfo.setTextFill(Color.RED);
-        lblInfo.setVisible(false);
+        lblInfo.setVisible(false); 
         img = new ImageView("resource/man-icon.png");
         btnDoorgaan = new Button("Doorgaan");
         btnZoek = new Button("Zoek");
         btnNieuw=new Button("Nieuw");
+        
+        btnDoorgaan.setMinWidth(90);
+        btnZoek.setMinWidth(90);
+        btnNieuw.setMinWidth(90);
         
         txtNaam = new TextField();
         namen = FXCollections.observableArrayList();
