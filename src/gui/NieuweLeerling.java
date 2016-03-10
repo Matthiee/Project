@@ -38,8 +38,10 @@ public class NieuweLeerling extends StackPane {
     public NieuweLeerling(SchermController schermController1) {
         setPadding(new Insets(10));
 
-        this.setMaxSize(645, 440);
-
+        
+        
+        this.setMaxSize(665, 440); 
+ 
         schermController = schermController1;
 
         lblNaam = new Label("Naam: ");
