@@ -81,12 +81,12 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane {
 
         TextField addAlgemeen = new TextField();
         addAlgemeen.setPromptText("Algemeen");
-        addAlgemeen.setTranslateX(53);
+        addAlgemeen.setTranslateX(65);
         addAlgemeen.setMaxWidth(150);
         TextField addCommentaar = new TextField();
         addCommentaar.setMaxWidth(400);
         addCommentaar.setPromptText("Commentaar");
-        addCommentaar.setTranslateX(53);
+        addCommentaar.setTranslateX(65);
 
         final Button addButton = new Button("Voeg toe");
         addButton.setOnAction(new EventHandler<ActionEvent>() {
