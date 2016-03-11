@@ -10,12 +10,11 @@ import controller.LeerlingController;
 import controller.SchermController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 /**
  *
@@ -27,18 +26,17 @@ public class HoofdMenu extends HBox implements View {
     private LeerlingController llnController;
     private final SchermController schermController;
     private EvaController evaController;
-    
+
     //main borderpane
     private BorderPane bp;
-    
+
     //hoogte en breedte van het venster
     private int hoogte, breedte;
     //achtergrond
     private ImageView achtergrond;
     //top
     private GridPane top;
-    private VBox profile;
-    private TextField opmerkingenTxt;
+    private TextArea opmerkingenTxt;
     private LeerlingInfoHouder llnInfo;
     //Left
     private GridPane left;
@@ -47,50 +45,44 @@ public class HoofdMenu extends HBox implements View {
     private GridPane right;
     private Onderdeel gps, stop, tanken;
     //center
-    private GridPane center, iconen, evaluatieMid1, evaluatieMid2, attitude;
-    private Onderdeel rotonde, rijstroken, stad, snelweg; 
+    private GridPane center, iconen, evaluatieMid1, evaluatieMid2;
+    private Onderdeel rotonde, rijstroken, stad, snelweg;
     private ImageView attitudeImg, pijl1, pijl2, pijl3, stuur1, stuur2, stuur3;
-    private TextField attitudeTxt;
     //bottom
     private GridPane bottom;
     private EvaSelector evaSelector;
     private Veld4Evolutie graphImg;
 
     public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaCtrl) {
-        
+
         //hoogte en breedte
         hoogte = schermCtrl.getHoogte();
         breedte = schermCtrl.getBreedte();
-        
+
         //Top of the borderpane
         top = new GridPane();
-        profile = new VBox();
         //De leerlingen en controller toewijzen           
         this.llnController = llnController;
         this.llnController.getLeerling().addView(this);
-        this.schermController=schermCtrl;
-        this.evaController = evaCtrl; 
-       
+        this.schermController = schermCtrl;
+        this.evaController = evaCtrl;
+
         //de nodes
-        opmerkingenTxt = new TextField("Test text voor de opmerkingen");
         llnInfo = new LeerlingInfoHouder(llnController);
-        
-        llnInfo.setOnMouseClicked((e)->schermController.setScherm(MainApp.INFO_LLN_ID));
-        
+
+        llnInfo.setOnMouseClicked((e) -> schermController.setScherm(MainApp.INFO_LLN_ID));
+
+        attitudeImg = new ImageView("resource/Hoofdmenu/attitude.png");
+        attitudeImg.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VELD3ATTITUDE_ID));
+
         //de opmaak
-        opmerkingenTxt.setMaxHeight(60);
-        opmerkingenTxt.setMinHeight(60);
-        opmerkingenTxt.setMaxWidth(200);
-        opmerkingenTxt.setMinWidth(200);
-        opmerkingenTxt.setTranslateY(-20);
-        profile.setMaxHeight(100);
-        profile.setMinHeight(100);
         top.setPadding(new Insets(30, 20, 5, 20));
-        top.setHgap(400);
+        top.setHgap(650);
+        top.setMinHeight(140);
         //nodes toevoegen
-        profile.getChildren().addAll(llnInfo);
-        top.add(opmerkingenTxt, 0, 0);
-        top.add(profile, 1, 0);
+
+        top.add(attitudeImg, 0, 0);
+        top.add(llnInfo, 1, 0);
 
         //Left side borderpane
         left = new GridPane();
@@ -100,7 +92,7 @@ public class HoofdMenu extends HBox implements View {
         vloeistoffen = new Onderdeel("resource/Hoofdmenu/vloeistoffen", -10, 35, evaController);
 
         banden = new Onderdeel("resource/Hoofdmenu/banden", 10, 35, evaController);
-        
+
         //opmaak
         schakelaars.setFitHeight(60);
         schakelaars.setFitWidth(60);
@@ -163,7 +155,7 @@ public class HoofdMenu extends HBox implements View {
         stad = new Onderdeel("resource/Hoofdmenu/stad", 35, 125, evaController);
         snelweg = new Onderdeel("resource/Hoofdmenu/snelweg", 35, 100, evaController);
         rotonde = new Onderdeel("resource/Hoofdmenu/rotonde", 35, 100, evaController);
-        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken",35 ,125, evaController);
+        rijstroken = new Onderdeel("resource/Hoofdmenu/rijstroken", 35, 125, evaController);
         //opmaak
         stad.setFitHeight(60);
         stad.setFitWidth(60);
@@ -227,68 +219,56 @@ public class HoofdMenu extends HBox implements View {
         evaluatieMid2.add(pijl2, 1, 0);
         evaluatieMid2.add(pijl3, 0, 1, 2, 1);
         //eventhandler
-        stuur1.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
-        stuur2.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
-        stuur3.setOnMouseClicked((e)->schermController.setScherm(MainApp.RIJTECHNIEK_ID));
-        pijl1.setOnMouseClicked((e)->schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
-        pijl2.setOnMouseClicked((e)->schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
-        pijl3.setOnMouseClicked((e)->schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
-        evaluatieMid2.setOnMouseClicked((e)->schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
-        //attitude onder
-        attitude = new GridPane();
-        //de nodes
-        attitudeImg = new ImageView("resource/Hoofdmenu/attitude.png");
-        attitudeImg.setOnMouseClicked((e)->schermController.setScherm(MainApp.VELD3ATTITUDE_ID));
-        //opmaak
-        attitude.setAlignment(Pos.CENTER);
-        attitude.setMaxSize(800, 80);
-        attitude.setMinSize(800, 80);
-        attitude.setPadding(new Insets(10, 10, 10, 10));
-        attitude.setTranslateY(15);
-        //nodes toevoegen aan attitude
-        attitude.add(attitudeImg, 0, 0);
+        stuur1.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        stuur2.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        stuur3.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        pijl1.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+        pijl2.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+        pijl3.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+        evaluatieMid2.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+
         //alle 3 de onderdelen toevoegen aan center
-            //volgorde laten staan! anders werkt schermcontroller niet goed!
+        //volgorde laten staan! anders werkt schermcontroller niet goed!
         center.add(iconen, 0, 0, 2, 1);
         center.add(evaluatieMid2, 1, 1);
         center.add(evaluatieMid1, 0, 1);
-        center.add(attitude, 0, 2, 2, 1);
 
         //Bottom of the borderpane
         bottom = new GridPane();
         //de nodes
         graphImg = new Veld4Evolutie(schermController, this.llnController);
         evaSelector = new EvaSelector(evaController);
-        attitudeTxt = new TextField("Attitude dummy text!");
-        
+        opmerkingenTxt = new TextArea();
+        opmerkingenTxt.setPrefRowCount(10);
+        opmerkingenTxt.setWrapText(true);
+
         //de opmaak
-        //graphImg.setFitHeight(80);
-        //graphImg.setFitWidth(200);
         graphImg.minWidth(300);
         graphImg.maxWidth(300);
-        graphImg.setTranslateX(170);
-        graphImg.setTranslateY(-75);
+        graphImg.setTranslateX(110);
+        graphImg.setTranslateY(-20);
         evaSelector.setTranslateX(-100);
         evaSelector.setTranslateY(-60);
         attitudeImg.setFitHeight(50);
         attitudeImg.setFitWidth(50);
-        attitudeTxt.setMaxSize(200, 50);
-        attitudeTxt.setMinSize(200, 50);
-        attitudeTxt.setTranslateX(55);
+        opmerkingenTxt.setMaxSize(350, 200);
+        opmerkingenTxt.setMinSize(350, 200);
+        opmerkingenTxt.setTranslateX(65);
+        opmerkingenTxt.setTranslateY(-20);
         bottom.setAlignment(Pos.CENTER);
-        //de nodes toevoegen
-        
+
+        //de nodes toevoegen      
         bottom.add(evaSelector, 0, 0);
-        bottom.add(attitudeTxt, 1, 0);
+        bottom.add(opmerkingenTxt, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
-        evaSelector.setOnMouseClicked((e)->updateOnderdelen());
+        evaSelector.setOnMouseClicked((e) -> updateOnderdelen());
         //achtergrond
-            //this.setStyle("-fx-background-image: url('resource/Hoofdmenu/achtergrondHoofdmenu.jpg')");
+        //this.setStyle("-fx-background-image: url('resource/Hoofdmenu/achtergrondHoofdmenu.jpg')");
         achtergrond = new ImageView("resource/Hoofdmenu/achtergrondHoofdmenu.jpg");
         achtergrond.setFitHeight(hoogte);
         achtergrond.setFitWidth(breedte);
-        achtergrond.setTranslateX(breedte/2+8);
+        achtergrond.setTranslateX(breedte / 2 + 8);
 
         //alle onderdelen toevoegen aan de borderpane
         bp = new BorderPane();
@@ -297,43 +277,46 @@ public class HoofdMenu extends HBox implements View {
         bp.setCenter(center);
         bp.setLeft(left);
         bp.setRight(right);
-        bp.setTranslateX(-breedte/2);
-        
+        bp.setTranslateX(-breedte / 2);
+
         this.getChildren().add(achtergrond);
         this.getChildren().add(bp);
         //opmaak
         this.maxHeight(hoogte);
         this.maxWidth(breedte);
         this.setAlignment(Pos.CENTER);
-        
+
         top.setAlignment(Pos.CENTER);
         left.setAlignment(Pos.CENTER);
         right.setAlignment(Pos.CENTER);
         bottom.setAlignment(Pos.CENTER);
         center.setAlignment(Pos.CENTER);
+        center.setTranslateY(-30);
 
         left.getChildren().forEach(c -> {
-            if (c instanceof Onderdeel)
-                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(left, (Onderdeel)c));
+            if (c instanceof Onderdeel) {
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(left, (Onderdeel) c));
+            }
         });
-        
+
         right.getChildren().forEach(c -> {
-            if (c instanceof Onderdeel)
-                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(right, (Onderdeel)c));
+            if (c instanceof Onderdeel) {
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(right, (Onderdeel) c));
+            }
         });
-        
+
         iconen.getChildren().forEach(c -> {
-            if (c instanceof Onderdeel)
-                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel)c));
+            if (c instanceof Onderdeel) {
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel) c));
+            }
         });
-        
+
         updateOnderdelen();
-        
-        
+
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
-    
-    public void updateOnderdelen(){
+
+    public void updateOnderdelen() {
         //left
         evaController.loadColorData(schakelaars);
         evaController.loadColorData(vloeistoffen);
@@ -348,12 +331,12 @@ public class HoofdMenu extends HBox implements View {
         evaController.loadColorData(stad);
         evaController.loadColorData(snelweg);
     }
-    
-    public void updateEvaSelector(){
+
+    public void updateEvaSelector() {
         evaSelector.update();
     }
-    
-    public void updateGrafiek(){
+
+    public void updateGrafiek() {
         graphImg.update();
     }
 
@@ -362,7 +345,7 @@ public class HoofdMenu extends HBox implements View {
         updateOnderdelen();
         updateEvaSelector();
         updateGrafiek();
-        
+
     }
 
 }
