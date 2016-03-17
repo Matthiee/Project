@@ -16,7 +16,7 @@ public class KleurKiezerHouder extends Pane {
     private Pane pane;
     private Onderdeel ctrl;
     
-    private double SIZE = 20;
+    private double SIZE = 30;
     
     public KleurKiezerHouder(Pane p, Onderdeel v){
     
@@ -68,7 +68,7 @@ public class KleurKiezerHouder extends Pane {
 //        System.out.println("Hoogte: "+ ctrl.getBoundsInLocal().getHeight());
 //        System.out.println("Hoogte: "+ ctrl.getBoundsInParent().getHeight());
         
-        houder.setTranslateX(ctrl.getLayoutX()- 50 + ctrl.getTransX());
+        houder.setTranslateX(ctrl.getLayoutX()- 50 + ctrl.getTransX() - 20);
         houder.setTranslateY(ctrl.getLayoutY()- ctrl.getBoundsInParent().getHeight() + ctrl.getTransY());
         
         pane.getChildren().add(houder);
