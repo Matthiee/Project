@@ -59,10 +59,10 @@ public class Veld4Evolutie extends VBox implements View {
 
         min.setTranslateY(140*SCHAAL);
         plus.setTranslateY(140*SCHAAL);
-        min.setMinSize(30, 30);
-        min.setMaxSize(30, 30);
-        plus.setMinSize(30, 30);
-        plus.setMaxSize(30, 30);
+        min.setMinSize(35, 35);
+        min.setMaxSize(35, 35);
+        plus.setMinSize(35, 35);
+        plus.setMaxSize(35, 35);
         
         lblInfo.setMinWidth(100);
         lblInfo.setMaxHeight(100);
