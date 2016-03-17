@@ -17,7 +17,7 @@ public class Veld1Rijtechniek extends GridPane implements View {
     private final LeerlingController llnController;
     private EvaController evaController;
     //Afbeeldingen
-    private EvaOnderdeel hellingImg, houdingImg, kijkImg, koppelingImg, remImg, schakelImg, stuurImg;
+    private Onderdeel hellingImg, houdingImg, kijkImg, koppelingImg, remImg, schakelImg, stuurImg;
     private Onderdeel stuuroefImg, achteruitImg, garageImg, kerenImg, parkerenImg;
     private ImageView stuur1Img, stuur2Img, stuur3Img;
     //GridPanes
@@ -28,6 +28,8 @@ public class Veld1Rijtechniek extends GridPane implements View {
     private Button exit;
     //evaSelector
     private EvaSelector evaSelector;
+    //achtergrond
+    private ImageView achtergrond;
     
     public Veld1Rijtechniek(LeerlingController llnCntrl, SchermController schermCtrl, EvaController evaCtrl){
         
@@ -39,22 +41,22 @@ public class Veld1Rijtechniek extends GridPane implements View {
         //alle afbeeldingen aanmaken
             //Links
         links = new GridPane();
-        remImg = new EvaOnderdeel("resource/Rijtechniek/rem.png", evaController);
+        remImg = new Onderdeel("resource/Rijtechniek/rem", 0, 0, evaController);
         remImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKREMTECHNIEK_ID));
-        koppelingImg = new EvaOnderdeel("resource/Rijtechniek/koppeling.png", evaController);
+        koppelingImg = new Onderdeel("resource/Rijtechniek/koppeling", 0, 0, evaController);
         koppelingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKOPPELING_ID));
-        houdingImg = new EvaOnderdeel("resource/Rijtechniek/houding.png", evaController);
+        houdingImg = new Onderdeel("resource/Rijtechniek/houding", 0, 0, evaController);
         houdingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKHOUDING_ID));
-        hellingImg = new EvaOnderdeel("resource/Rijtechniek/helling.png", evaController);
+        hellingImg = new Onderdeel("resource/Rijtechniek/helling", 0, 0, evaController);
         stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",120 ,157, evaController);
         achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",225 ,127, evaController);
             //Rechts
         rechts = new GridPane();
-        stuurImg = new EvaOnderdeel("resource/Rijtechniek/stuur.png", evaController);
+        stuurImg = new Onderdeel("resource/Rijtechniek/stuur", 0, 0, evaController);
         stuurImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSTUURTECHNIEK_ID));
-        schakelImg = new EvaOnderdeel("resource/Rijtechniek/schakel.png", evaController);
+        schakelImg = new Onderdeel("resource/Rijtechniek/schakel", 0, 0, evaController);
         schakelImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID));
-        kijkImg = new EvaOnderdeel("resource/Rijtechniek/kijk.png", evaController);
+        kijkImg = new Onderdeel("resource/Rijtechniek/kijk", 0, 0, evaController);
         kijkImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID));
         parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157, evaController);
         kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155, evaController);
@@ -94,17 +96,17 @@ public class Veld1Rijtechniek extends GridPane implements View {
         links.setAlignment(Pos.CENTER);
         links.setVgap(10);
         links.setMaxWidth(50);
-        remImg.setMinSize(80, 80);
-        remImg.setMaxSize(80, 80);
+        remImg.setFitHeight(80);
+        remImg.setFitWidth(80);
         remImg.setTranslateX(180);
         remImg.setTranslateY(30);
-        koppelingImg.setMinSize(80, 80);
-        koppelingImg.setMaxSize(80, 80);
+        koppelingImg.setFitHeight(80);
+        koppelingImg.setFitWidth(80);
         koppelingImg.setTranslateX(75);
-        houdingImg.setMinSize(80, 80);
-        houdingImg.setMaxSize(80, 80);
-        hellingImg.setMinSize(80, 80);
-        hellingImg.setMaxSize(80, 80);
+        houdingImg.setFitHeight(80);
+        houdingImg.setFitWidth(80);
+        hellingImg.setFitHeight(80);
+        hellingImg.setFitWidth(80);
         stuuroefImg.setFitHeight(80);
         stuuroefImg.setFitWidth(80);
         stuuroefImg.setTranslateX(75);
@@ -115,15 +117,15 @@ public class Veld1Rijtechniek extends GridPane implements View {
             //Rechts
         rechts.setAlignment(Pos.CENTER);
         rechts.setVgap(10);
-        stuurImg.setMinSize(80, 80);
-        stuurImg.setMaxSize(80, 80);
+        stuurImg.setFitHeight(80);
+        stuurImg.setFitWidth(80);
         stuurImg.setTranslateX(-180);
         stuurImg.setTranslateY(30);
-        schakelImg.setMinSize(80, 80);
-        schakelImg.setMaxSize(80, 80);
+        schakelImg.setFitHeight(80);
+        schakelImg.setFitWidth(80);
         schakelImg.setTranslateX(-75);
-        kijkImg.setMinSize(80, 80);
-        kijkImg.setMaxSize(80, 80);
+        kijkImg.setFitHeight(80);
+        kijkImg.setFitWidth(80);
         parkerenImg.setFitHeight(80);
         parkerenImg.setFitWidth(80);
         kerenImg.setFitHeight(80);
@@ -149,8 +151,12 @@ public class Veld1Rijtechniek extends GridPane implements View {
         //eventhandeler
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
         
+        //Achtergrond
+        //achtergrond = new ImageView("resource/Rijtechniek/achtergrondRijtechniek.png");
+        
         //Alle GridPanes toevoegen aan hoofd GridPane
             //moet in deze volgorde anders werkt kleurkiezer niet!!!!
+        this.add(achtergrond, 0, 0);
         this.add(stuurGp, 2 ,0);
         this.add(rechts, 3, 0);
         this.add(links, 1, 0);
