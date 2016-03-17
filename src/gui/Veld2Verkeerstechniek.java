@@ -15,7 +15,7 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
     private final SchermController schermController;
     private final EvaController evaController;
     //Afbeeldingen
-    private EvaOnderdeel afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
+    private Onderdeel afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
             richtingaanwijzersImg, snelheidImg, verkeerstekensImg, voorrangImg;
     private ImageView pijl1Img, pijl2Img, pijl3Img;
     //GridPanes
@@ -30,27 +30,27 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         //alle afbeeldingen
             //Links
         links = new GridPane();
-        openbareWegImg = new EvaOnderdeel("resource/Verkeerstechniek/openbareWeg.png", evaController);
+        openbareWegImg = new Onderdeel("resource/Verkeerstechniek/openbareWeg", 0, 0, evaController);
         openbareWegImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKPLAATS_ID));
-        richtingaanwijzersImg = new EvaOnderdeel("resource/Verkeerstechniek/richtingaanwijzers.png", evaController);
+        richtingaanwijzersImg = new Onderdeel("resource/Verkeerstechniek/richtingaanwijzers", 0, 0, evaController);
         richtingaanwijzersImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRICHTINGAANWIJZERS_ID));
-        rechtsafImg = new EvaOnderdeel("resource/Verkeerstechniek/rechtsaf.png", evaController);
+        rechtsafImg = new Onderdeel("resource/Verkeerstechniek/rechtsaf", 0, 0, evaController);
         rechtsafImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRECHTSAF_ID));
-        linksafImg = new EvaOnderdeel("resource/Verkeerstechniek/linksaf.png", evaController);
+        linksafImg = new Onderdeel("resource/Verkeerstechniek/linksaf", 0, 0, evaController);
         linksafImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKLINKSAF_ID));
-        kruisenImg = new EvaOnderdeel("resource/Verkeerstechniek/kruisen.png", evaController);
+        kruisenImg = new Onderdeel("resource/Verkeerstechniek/kruisen", 0, 0, evaController);
         kruisenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKKRUISEN_ID));
             //Rechts
         rechts = new GridPane();
-        voorrangImg = new EvaOnderdeel("resource/Verkeerstechniek/voorrang.png", evaController);
+        voorrangImg = new Onderdeel("resource/Verkeerstechniek/voorrang", 0, 0, evaController);
         voorrangImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVOORRANG_ID));
-        verkeerstekensImg = new EvaOnderdeel("resource/Verkeerstechniek/verkeerstekens.png", evaController);
+        verkeerstekensImg = new Onderdeel("resource/Verkeerstechniek/verkeerstekens", 0, 0, evaController);
         verkeerstekensImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVERKEERSTEKENS_ID));
-        snelheidImg = new EvaOnderdeel("resource/Verkeerstechniek/snelheid.png", evaController);
+        snelheidImg = new Onderdeel("resource/Verkeerstechniek/snelheid", 0, 0, evaController);
         snelheidImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKSNELHEID_ID));
-        afstandImg = new EvaOnderdeel("resource/Verkeerstechniek/afstand.png", evaController);
+        afstandImg = new Onderdeel("resource/Verkeerstechniek/afstand", 0, 0, evaController);
         afstandImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKAFSTAND_ID));
-        inhalenImg = new EvaOnderdeel("resource/Verkeerstechniek/inhalen.png", evaController);
+        inhalenImg = new Onderdeel("resource/Verkeerstechniek/inhalen", 0, 0, evaController);
         inhalenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKINHALEN_ID));
             //pijlen center
         pijlGp = new GridPane();
@@ -84,42 +84,42 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
             //links
         links.setAlignment(Pos.CENTER);
         links.setVgap(20);
-        openbareWegImg.setMinSize(80, 80);
-        openbareWegImg.setMaxSize(80, 80);
+        openbareWegImg.setFitHeight(80);
+        openbareWegImg.setFitWidth(80);
         openbareWegImg.setTranslateX(180);
-        richtingaanwijzersImg.setMinSize(80, 80);
-        richtingaanwijzersImg.setMaxSize(80, 80);
+        richtingaanwijzersImg.setFitHeight(80);
+        richtingaanwijzersImg.setFitWidth(80);
         richtingaanwijzersImg.setTranslateX(75);
         richtingaanwijzersImg.setTranslateY(-30);
-        rechtsafImg.setMinSize(80, 80);
-        rechtsafImg.setMaxSize(80, 80);
+        rechtsafImg.setFitHeight(80);
+        rechtsafImg.setFitWidth(80);
         rechtsafImg.setTranslateX(10);
-        linksafImg.setMinSize(80, 80);
-        linksafImg.setMaxSize(80, 80);
+        linksafImg.setFitHeight(80);
+        linksafImg.setFitWidth(80);
         linksafImg.setTranslateX(75);
         linksafImg.setTranslateY(30);
-        kruisenImg.setMinSize(80, 80);
-        kruisenImg.setMaxSize(80, 80);
+        kruisenImg.setFitHeight(80);
+        kruisenImg.setFitWidth(80);
         kruisenImg.setTranslateX(180);
             //rechts
         rechts.setAlignment(Pos.CENTER);
         rechts.setVgap(20);
-        voorrangImg.setMinSize(80, 80);
-        voorrangImg.setMaxSize(80, 80);
+        voorrangImg.setFitHeight(80);
+        voorrangImg.setFitWidth(80);
         voorrangImg.setTranslateX(-180);
-        verkeerstekensImg.setMinSize(80, 80);
-        verkeerstekensImg.setMaxSize(80, 80);
+        verkeerstekensImg.setFitHeight(80);
+        verkeerstekensImg.setFitWidth(80);
         verkeerstekensImg.setTranslateX(-75);
         verkeerstekensImg.setTranslateY(-30);
-        snelheidImg.setMinSize(80, 80);
-        snelheidImg.setMaxSize(80, 80);
+        snelheidImg.setFitHeight(80);
+        snelheidImg.setFitWidth(80);
         snelheidImg.setTranslateX(-10);
-        afstandImg.setMinSize(80, 80);
-        afstandImg.setMaxSize(80, 80);
+        afstandImg.setFitHeight(80);
+        afstandImg.setFitWidth(80);
         afstandImg.setTranslateX(-75);
         afstandImg.setTranslateY(30);
-        inhalenImg.setMinSize(80, 80);
-        inhalenImg.setMaxSize(80, 80);
+        inhalenImg.setFitHeight(80);
+        inhalenImg.setFitWidth(80);
         inhalenImg.setTranslateX(-180);
             //pijlen center
         pijlGp.setAlignment(Pos.CENTER);
