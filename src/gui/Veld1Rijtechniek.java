@@ -9,8 +9,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
-public class Veld1Rijtechniek extends GridPane implements View {
+public class Veld1Rijtechniek extends HBox implements View {
     
     //de controllers
     private final SchermController schermController;
@@ -24,12 +25,15 @@ public class Veld1Rijtechniek extends GridPane implements View {
     private GridPane stuurGp;
     private GridPane links;
     private GridPane rechts;
+    private GridPane mainGP;
     //button
     private Button exit;
     //evaSelector
     private EvaSelector evaSelector;
     //achtergrond
     private ImageView achtergrond;
+    //hoogte en breedte scherm
+    private int hoogte, breedte;
     
     public Veld1Rijtechniek(LeerlingController llnCntrl, SchermController schermCtrl, EvaController evaCtrl){
         
@@ -37,30 +41,33 @@ public class Veld1Rijtechniek extends GridPane implements View {
         evaController = evaCtrl;
         llnController=llnCntrl;
         llnController.getLeerling().addView(this);
+        hoogte = schermController.getHoogte();
+        breedte = schermController.getBreedte();
+        mainGP = new GridPane();
         
         //alle afbeeldingen aanmaken
             //Links
         links = new GridPane();
-        remImg = new Onderdeel("resource/Rijtechniek/rem", 0, 0, evaController);
+        remImg = new Onderdeel("resource/Rijtechniek/rem", 215, 170, evaController);
         remImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKREMTECHNIEK_ID));
-        koppelingImg = new Onderdeel("resource/Rijtechniek/koppeling", 0, 0, evaController);
+        koppelingImg = new Onderdeel("resource/Rijtechniek/koppeling", 110, 147, evaController);
         koppelingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKOPPELING_ID));
-        houdingImg = new Onderdeel("resource/Rijtechniek/houding", 0, 0, evaController);
+        houdingImg = new Onderdeel("resource/Rijtechniek/houding", 30, 147, evaController);
         houdingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKHOUDING_ID));
-        hellingImg = new Onderdeel("resource/Rijtechniek/helling", 0, 0, evaController);
-        stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",120 ,157, evaController);
-        achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",225 ,127, evaController);
+        hellingImg = new Onderdeel("resource/Rijtechniek/helling", 30, 147, evaController);
+        stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",110 ,147, evaController);
+        achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",215 ,117, evaController);
             //Rechts
         rechts = new GridPane();
-        stuurImg = new Onderdeel("resource/Rijtechniek/stuur", 0, 0, evaController);
+        stuurImg = new Onderdeel("resource/Rijtechniek/stuur", -135, 170, evaController);
         stuurImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSTUURTECHNIEK_ID));
-        schakelImg = new Onderdeel("resource/Rijtechniek/schakel", 0, 0, evaController);
+        schakelImg = new Onderdeel("resource/Rijtechniek/schakel", -25, 147, evaController);
         schakelImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID));
-        kijkImg = new Onderdeel("resource/Rijtechniek/kijk", 0, 0, evaController);
+        kijkImg = new Onderdeel("resource/Rijtechniek/kijk", 40, 147, evaController);
         kijkImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID));
-        parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 45, 157, evaController);
-        kerenImg = new Onderdeel("resource/Rijtechniek/keren", -30, 155, evaController);
-        garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 127, evaController);
+        parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 40, 147, evaController);
+        kerenImg = new Onderdeel("resource/Rijtechniek/keren", -25, 147, evaController);
+        garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 117, evaController);
             //Stuur center
         stuurGp = new GridPane();
         stuur1Img = new ImageView("resource/Rijtechniek/stuur1Neutraal.png");
@@ -90,83 +97,93 @@ public class Veld1Rijtechniek extends GridPane implements View {
         
         //Opmaak
             //algemeen
-        this.setHgap(50);
-        this.setPadding(new Insets(50,50,50,50));
+        mainGP.setHgap(50);
+        
+        mainGP.setPadding(new Insets(50,50,50,50));
             //links
         links.setAlignment(Pos.CENTER);
-        links.setVgap(10);
+        links.setVgap(30);
         links.setMaxWidth(50);
-        remImg.setFitHeight(80);
-        remImg.setFitWidth(80);
+        remImg.setFitHeight(70);
+        remImg.setFitWidth(70);
         remImg.setTranslateX(180);
         remImg.setTranslateY(30);
-        koppelingImg.setFitHeight(80);
-        koppelingImg.setFitWidth(80);
+        koppelingImg.setFitHeight(70);
+        koppelingImg.setFitWidth(70);
         koppelingImg.setTranslateX(75);
-        houdingImg.setFitHeight(80);
-        houdingImg.setFitWidth(80);
-        hellingImg.setFitHeight(80);
-        hellingImg.setFitWidth(80);
-        stuuroefImg.setFitHeight(80);
-        stuuroefImg.setFitWidth(80);
+        houdingImg.setFitHeight(70);
+        houdingImg.setFitWidth(70);
+        hellingImg.setFitHeight(70);
+        hellingImg.setFitWidth(70);
+        stuuroefImg.setFitHeight(70);
+        stuuroefImg.setFitWidth(70);
         stuuroefImg.setTranslateX(75);
-        achteruitImg.setFitHeight(80);
-        achteruitImg.setFitWidth(80);
+        achteruitImg.setFitHeight(70);
+        achteruitImg.setFitWidth(70);
         achteruitImg.setTranslateX(180);
         achteruitImg.setTranslateY(-30);
             //Rechts
         rechts.setAlignment(Pos.CENTER);
-        rechts.setVgap(10);
-        stuurImg.setFitHeight(80);
-        stuurImg.setFitWidth(80);
+        rechts.setVgap(30);
+        rechts.setMaxWidth(50);
+        stuurImg.setFitHeight(70);
+        stuurImg.setFitWidth(70);
         stuurImg.setTranslateX(-180);
         stuurImg.setTranslateY(30);
-        schakelImg.setFitHeight(80);
-        schakelImg.setFitWidth(80);
+        schakelImg.setFitHeight(70);
+        schakelImg.setFitWidth(70);
         schakelImg.setTranslateX(-75);
-        kijkImg.setFitHeight(80);
-        kijkImg.setFitWidth(80);
-        parkerenImg.setFitHeight(80);
-        parkerenImg.setFitWidth(80);
-        kerenImg.setFitHeight(80);
-        kerenImg.setFitWidth(80);
+        kijkImg.setFitHeight(70);
+        kijkImg.setFitWidth(70);
+        parkerenImg.setFitHeight(70);
+        parkerenImg.setFitWidth(70);
+        kerenImg.setFitHeight(70);
+        kerenImg.setFitWidth(70);
         kerenImg.setTranslateX(-75);
-        garageImg.setFitHeight(80);
-        garageImg.setFitWidth(80);
+        garageImg.setFitHeight(70);
+        garageImg.setFitWidth(70);
         garageImg.setTranslateX(-180);
         garageImg.setTranslateY(-30);
             //Stuur center
         stuurGp.setAlignment(Pos.CENTER);
-        stuur1Img.setFitHeight(150);
-        stuur1Img.setFitWidth(300);
-        stuur2Img.setFitHeight(150);
-        stuur2Img.setFitWidth(150);
-        stuur3Img.setFitHeight(150);
-        stuur3Img.setFitWidth(150);
+        stuur1Img.setFitHeight(125);
+        stuur1Img.setFitWidth(250);
+        stuur2Img.setFitHeight(125);
+        stuur2Img.setFitWidth(125);
+        stuur3Img.setFitHeight(125);
+        stuur3Img.setFitWidth(125);
         stuurGp.setTranslateX(-15);
         
         //exit button + evaSelector
         exit = new Button("ga terug");
         evaSelector = new EvaSelector(evaController);
+        evaSelector.setTranslateX(-50);
+        exit.setTranslateX(50);
         //eventhandeler
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
         
         //Achtergrond
-        //achtergrond = new ImageView("resource/Rijtechniek/achtergrondRijtechniek.png");
+        achtergrond = new ImageView("resource/Rijtechniek/achtergrondRijtechniek.png");
         
         //Alle GridPanes toevoegen aan hoofd GridPane
             //moet in deze volgorde anders werkt kleurkiezer niet!!!!
-        this.add(achtergrond, 0, 0);
-        this.add(stuurGp, 2 ,0);
-        this.add(rechts, 3, 0);
-        this.add(links, 1, 0);
-        this.add(exit, 3, 1);
-        this.add(evaSelector, 1, 1);
-        this.setAlignment(Pos.CENTER);
-        this.setMaxSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
-        this.setMinSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
-        this.setTranslateX(-20);
-        this.setStyle("-fx-background-color: #003399");
+        
+        mainGP.add(stuurGp, 2 ,0);
+        mainGP.add(rechts, 3, 0);
+        mainGP.add(links, 1, 0);
+        mainGP.add(exit, 3, 1);
+        mainGP.add(evaSelector, 1, 1);
+        mainGP.setAlignment(Pos.CENTER);
+        mainGP.setMaxSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
+        mainGP.setMinSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
+        mainGP.setTranslateX(-20);
+        
+        achtergrond.setTranslateX(breedte/2);
+        mainGP.setTranslateX(-breedte/2 -30);
+        mainGP.setTranslateY(15);
+        
+        this.getChildren().add(achtergrond);
+        this.getChildren().add(mainGP);
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
@@ -188,6 +205,13 @@ public class Veld1Rijtechniek extends GridPane implements View {
         evaController.loadColorData(achteruitImg);
         evaController.loadColorData(parkerenImg);
         evaController.loadColorData(garageImg);
+        evaController.loadColorData(remImg);
+        evaController.loadColorData(koppelingImg);
+        evaController.loadColorData(houdingImg);
+        evaController.loadColorData(hellingImg);
+        evaController.loadColorData(stuurImg);
+        evaController.loadColorData(schakelImg);
+        evaController.loadColorData(kijkImg);
     }
     
     public void updateEvaSelector(){
