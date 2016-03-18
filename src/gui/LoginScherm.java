@@ -35,15 +35,17 @@ public class LoginScherm extends StackPane implements View {
     private final ObservableList<Leerling> namen;
     private final Label lblInfo;
     private final LeerlingController llnCntrl;
+    private int hoogte, breedte;
     
     public LoginScherm(LeerlingController llnController, SchermController schermCtrl) {
         setPadding(new Insets(10));
 
         llnCntrl=llnController;
         
-        this.setMaxSize(665, 440);
 
         schermController = schermCtrl;
+        hoogte = schermController.getHoogte();
+        breedte = schermController.getBreedte();
         lblInfo = new Label("");
         lblInfo.setTextFill(Color.RED);
         lblInfo.setVisible(false); 
@@ -71,6 +73,7 @@ public class LoginScherm extends StackPane implements View {
 
         HBox holder = new HBox(10, img, vbox, lvNamen);
         holder.setPadding(new Insets(10));
+        holder.setMaxSize(665, 440);
 
         holder.setStyle("-fx-border-color: black;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
@@ -82,8 +85,10 @@ public class LoginScherm extends StackPane implements View {
                 + "-fx-background-radius: 20;");
         
         this.setAlignment(Pos.CENTER);
-
-        getChildren().addAll(holder);
+        this.setStyle("-fx-background-image: url('resource/achtergrondStandaard.png')");
+        this.setMinSize(breedte, hoogte);
+        this.setMinSize(breedte, hoogte);
+        this.getChildren().addAll(holder);
 
         // Event handlers
         btnDoorgaan.setOnAction(e -> login());
