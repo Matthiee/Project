@@ -7,9 +7,11 @@ import controller.SchermController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 
 public class Veld1Rijtechniek extends HBox implements View {
     
@@ -34,6 +36,10 @@ public class Veld1Rijtechniek extends HBox implements View {
     private ImageView achtergrond;
     //hoogte en breedte scherm
     private int hoogte, breedte;
+    //labels
+    private Label kleur, venster;
+    private int labelSelected;
+    private HBox labels;
     
     public Veld1Rijtechniek(LeerlingController llnCntrl, SchermController schermCtrl, EvaController evaCtrl){
         
@@ -43,31 +49,55 @@ public class Veld1Rijtechniek extends HBox implements View {
         llnController.getLeerling().addView(this);
         hoogte = schermController.getHoogte();
         breedte = schermController.getBreedte();
-        mainGP = new GridPane();
+        mainGP = new GridPane();       
+        
+        //labels
+        kleur = new Label("Kleur kiezen");
+        venster = new Label("Extra vensters");
+        
+        kleur.setMinSize(80, 30);
+        kleur.setMaxSize(80, 30);
+        venster.setMinSize(80, 30);
+        venster.setMaxSize(80, 30);
+        
+        
+        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        kleur.setAlignment(Pos.CENTER);
+        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        venster.setAlignment(Pos.CENTER);
+        
+        kleur.setOnMouseClicked(e -> selecteerKleur());
+        venster.setOnMouseClicked(e -> selecteerVenster());
+        
+        labels = new HBox();
+        labels.setSpacing(15);
+        labels.setTranslateY(-hoogte*0.83);
+        labels.setTranslateX(21);
+        labels.getChildren().addAll(kleur, venster);
         
         //alle afbeeldingen aanmaken
             //Links
         links = new GridPane();
         remImg = new Onderdeel("resource/Rijtechniek/rem", 215, 170, evaController);
-        remImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKREMTECHNIEK_ID));
         koppelingImg = new Onderdeel("resource/Rijtechniek/koppeling", 110, 147, evaController);
-        koppelingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKOPPELING_ID));
         houdingImg = new Onderdeel("resource/Rijtechniek/houding", 30, 147, evaController);
-        houdingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKHOUDING_ID));
         hellingImg = new Onderdeel("resource/Rijtechniek/helling", 30, 147, evaController);
         stuuroefImg = new Onderdeel("resource/Rijtechniek/stuuroef",110 ,147, evaController);
         achteruitImg = new Onderdeel("resource/Rijtechniek/achteruit",215 ,117, evaController);
+        remImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKREMTECHNIEK_ID));
+        koppelingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKOPPELING_ID));
+        houdingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKHOUDING_ID));
             //Rechts
         rechts = new GridPane();
         stuurImg = new Onderdeel("resource/Rijtechniek/stuur", -135, 170, evaController);
-        stuurImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSTUURTECHNIEK_ID));
         schakelImg = new Onderdeel("resource/Rijtechniek/schakel", -25, 147, evaController);
-        schakelImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID));
         kijkImg = new Onderdeel("resource/Rijtechniek/kijk", 40, 147, evaController);
-        kijkImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID));
         parkerenImg = new Onderdeel("resource/Rijtechniek/parkeren", 40, 147, evaController);
         kerenImg = new Onderdeel("resource/Rijtechniek/keren", -25, 147, evaController);
         garageImg = new Onderdeel("resource/Rijtechniek/garage", -135, 117, evaController);
+        stuurImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSTUURTECHNIEK_ID));
+        schakelImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID));
+        kijkImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID));
             //Stuur center
         stuurGp = new GridPane();
         stuur1Img = new ImageView("resource/Rijtechniek/stuur1Neutraal.png");
@@ -173,6 +203,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         mainGP.add(links, 1, 0);
         mainGP.add(exit, 3, 1);
         mainGP.add(evaSelector, 1, 1);
+        mainGP.add(labels, 2, 1);
         mainGP.setAlignment(Pos.CENTER);
         mainGP.setMaxSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
         mainGP.setMinSize(schermCtrl.getBreedte(), schermCtrl.getHoogte());
@@ -191,12 +222,62 @@ public class Veld1Rijtechniek extends HBox implements View {
         });
         
         rechts.getChildren().forEach(c -> {
-            if (c instanceof Onderdeel)
-                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
+            if (c instanceof Onderdeel && labelSelected == 0)
+                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
         evaSelector.setOnMouseClicked((e)->updateOnderdelen());
         
         updateOnderdelen();
+    }
+    
+    public void selecteerKleur(){
+        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+        labelSelected = 0;
+        System.out.println(labelSelected);
+        
+        links.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(links, (Onderdeel)c));
+        });
+        
+        rechts.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel && labelSelected == 0)
+                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
+        });
+        evaSelector.setOnMouseClicked((e)->updateOnderdelen());
+        
+        stuuroefImg.setVisible(true);
+        achteruitImg.setVisible(true);
+        garageImg.setVisible(true);
+        kerenImg.setVisible(true);
+        parkerenImg.setVisible(true);
+    }
+    
+    public void selecteerVenster(){
+        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        labelSelected = 1;
+        System.out.println(labelSelected);
+        
+        remImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKREMTECHNIEK_ID));
+        koppelingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKOPPELING_ID));
+        houdingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKHOUDING_ID));
+        stuurImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSTUURTECHNIEK_ID));
+        schakelImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID));
+        kijkImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID));
+        
+        stuuroefImg.setVisible(false);
+        achteruitImg.setVisible(false);
+        garageImg.setVisible(false);
+        kerenImg.setVisible(false);
+        parkerenImg.setVisible(false);
+    }
+    
+    public void updateLabels(){
+        if(labelSelected == 0)selecteerKleur();
+        if(labelSelected == 1)selecteerVenster();
+        
     }
     
     public void updateOnderdelen(){
@@ -222,6 +303,7 @@ public class Veld1Rijtechniek extends HBox implements View {
     public void update(){
         updateOnderdelen();
         updateEvaSelector();
+        updateLabels();
     }
     
 }
