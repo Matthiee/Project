@@ -235,7 +235,6 @@ public class Veld1Rijtechniek extends HBox implements View {
         venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
         kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
         labelSelected = 0;
-        System.out.println(labelSelected);
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
@@ -259,7 +258,6 @@ public class Veld1Rijtechniek extends HBox implements View {
         venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
         kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
         labelSelected = 1;
-        System.out.println(labelSelected);
         
         remImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKREMTECHNIEK_ID));
         koppelingImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKOPPELING_ID));
