@@ -227,7 +227,8 @@ public class Veld1Rijtechniek extends HBox implements View {
         });
         evaSelector.setOnMouseClicked((e)->updateOnderdelen());
         
-        updateOnderdelen();
+        selecteerKleur();
+        update();
     }
     
     public void selecteerKleur(){
