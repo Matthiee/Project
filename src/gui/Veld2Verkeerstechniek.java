@@ -11,7 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
-public class Veld2Verkeerstechniek extends GridPane implements View {
+public class Veld2Verkeerstechniek extends HBox implements View {
     
     //de controllers
     private final SchermController schermController;
@@ -19,9 +19,9 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
     //Afbeeldingen
     private Onderdeel afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
             richtingaanwijzersImg, snelheidImg, verkeerstekensImg, voorrangImg;
-    private ImageView pijl1Img, pijl2Img, pijl3Img;
+    private ImageView pijl1Img, pijl2Img, pijl3Img, achtergrond;
     //GridPanes
-    private GridPane pijlGp, links, rechts;
+    private GridPane pijlGp, links, rechts, mainGP;
     //button
     private Button exit;
     //evaselector
@@ -39,6 +39,7 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         schermController = schermCtrl;
         hoogte = schermController.getHoogte();
         breedte = schermController.getBreedte();
+        mainGP = new GridPane();
         
         //evaSelector
         eva = new EvaSelector(evaController);
@@ -64,7 +65,7 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         labels = new HBox();
         labels.setSpacing(15);
         labels.setTranslateY(-hoogte*0.75);
-        labels.setTranslateX(21);
+        labels.setTranslateX(60);
         labels.getChildren().addAll(kleur, venster);
         
         //alle afbeeldingen
@@ -119,11 +120,11 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         
         //opmaak
             //algemeen
-        this.setPadding(new Insets(50,50,50,50));
-        this.setHgap(50);
+        mainGP.setHgap(50);
             //links
         links.setAlignment(Pos.CENTER);
         links.setVgap(20);
+        links.setMaxWidth(80);
         openbareWegImg.setFitHeight(80);
         openbareWegImg.setFitWidth(80);
         openbareWegImg.setTranslateX(180);
@@ -144,6 +145,7 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
             //rechts
         rechts.setAlignment(Pos.CENTER);
         rechts.setVgap(20);
+        rechts.setMaxWidth(80);
         voorrangImg.setFitHeight(80);
         voorrangImg.setFitWidth(80);
         voorrangImg.setTranslateX(-180);
@@ -173,6 +175,11 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         
         //Exit button
         exit = new Button("ga terug");
+        exit.setTranslateX(50);
+        exit.setTranslateY(75);
+        
+        eva.setTranslateX(-50);
+        eva.setTranslateY(75);
         
         //eventhandler
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
@@ -188,17 +195,29 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         });
         eva.setOnMouseClicked((e)->updateOnderdelen());
         
+        //achtergrond
+        achtergrond = new ImageView("resource/Verkeerstechniek/achtergrondVerkeerstechniek.png");
+        achtergrond.setTranslateX(breedte/2);
+        mainGP.setTranslateX(-breedte*0.53);
+        mainGP.setTranslateY(5);
+        mainGP.setMinWidth(breedte);
+        mainGP.setMaxWidth(breedte);
+       
         //Alle Gridpanes toevoegen an hoofd GridPane
             //volgorde is belangrijk, niet aanpassen!
-        this.add(pijlGp, 2 ,0);
-        this.add(rechts, 3, 0);
-        this.add(links, 1, 0);
-        this.add(exit, 3, 1);
-        this.add(labels, 2, 1);
-        this.add(eva, 1, 1);
+        mainGP.add(pijlGp, 2 ,0);
+        mainGP.add(rechts, 3, 0);
+        mainGP.add(links, 1, 0);
+        mainGP.add(exit, 3, 1);
+        mainGP.add(labels, 2, 1);
+        mainGP.add(eva, 1, 1);
+        mainGP.setAlignment(Pos.CENTER);
+        //mainGP.setStyle("-fx-background-color: #003399");
+        
+        
+        this.getChildren().add(achtergrond);
+        this.getChildren().add(mainGP);
         this.setAlignment(Pos.CENTER);
-        this.setTranslateX(-15);
-        this.setStyle("-fx-background-color: #003399");
         
         selecteerKleur();
         update();
@@ -209,7 +228,6 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
         kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
         labelSelected = 0;
-        System.out.println(labelSelected);
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
@@ -227,7 +245,6 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
         kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
         labelSelected = 1;
-        System.out.println(labelSelected);
         
         openbareWegImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKPLAATS_ID));
         richtingaanwijzersImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRICHTINGAANWIJZERS_ID));
