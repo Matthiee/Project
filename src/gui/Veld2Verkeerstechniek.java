@@ -71,27 +71,27 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         //alle afbeeldingen
             //Links
         links = new GridPane();
-        openbareWegImg = new Onderdeel("resource/Verkeerstechniek/openbareWeg", 0, 0, evaController);
+        openbareWegImg = new Onderdeel("resource/Verkeerstechniek/openbareWeg", 220, 160, evaController);
         openbareWegImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKPLAATS_ID));
-        richtingaanwijzersImg = new Onderdeel("resource/Verkeerstechniek/richtingaanwijzers", 0, 0, evaController);
+        richtingaanwijzersImg = new Onderdeel("resource/Verkeerstechniek/richtingaanwijzers", 120, 140, evaController);
         richtingaanwijzersImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRICHTINGAANWIJZERS_ID));
-        rechtsafImg = new Onderdeel("resource/Verkeerstechniek/rechtsaf", 0, 0, evaController);
+        rechtsafImg = new Onderdeel("resource/Verkeerstechniek/rechtsaf", 60, 155, evaController);
         rechtsafImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRECHTSAF_ID));
-        linksafImg = new Onderdeel("resource/Verkeerstechniek/linksaf", 0, 0, evaController);
+        linksafImg = new Onderdeel("resource/Verkeerstechniek/linksaf", 120, 190, evaController);
         linksafImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKLINKSAF_ID));
-        kruisenImg = new Onderdeel("resource/Verkeerstechniek/kruisen", 0, 0, evaController);
+        kruisenImg = new Onderdeel("resource/Verkeerstechniek/kruisen", 220, 160, evaController);
         kruisenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKKRUISEN_ID));
             //Rechts
         rechts = new GridPane();
-        voorrangImg = new Onderdeel("resource/Verkeerstechniek/voorrang", 0, 0, evaController);
+        voorrangImg = new Onderdeel("resource/Verkeerstechniek/voorrang", -140, 160, evaController);
         voorrangImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVOORRANG_ID));
-        verkeerstekensImg = new Onderdeel("resource/Verkeerstechniek/verkeerstekens", 0, 0, evaController);
+        verkeerstekensImg = new Onderdeel("resource/Verkeerstechniek/verkeerstekens", -25, 140, evaController);
         verkeerstekensImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVERKEERSTEKENS_ID));
-        snelheidImg = new Onderdeel("resource/Verkeerstechniek/snelheid", 0, 0, evaController);
+        snelheidImg = new Onderdeel("resource/Verkeerstechniek/snelheid", 30, 155, evaController);
         snelheidImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKSNELHEID_ID));
-        afstandImg = new Onderdeel("resource/Verkeerstechniek/afstand", 0, 0, evaController);
+        afstandImg = new Onderdeel("resource/Verkeerstechniek/afstand", -25, 190, evaController);
         afstandImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKAFSTAND_ID));
-        inhalenImg = new Onderdeel("resource/Verkeerstechniek/inhalen", 0, 0, evaController);
+        inhalenImg = new Onderdeel("resource/Verkeerstechniek/inhalen", -140, 160, evaController);
         inhalenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKINHALEN_ID));
             //pijlen center
         pijlGp = new GridPane();
