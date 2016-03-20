@@ -327,6 +327,58 @@ public class EvaController {
             if(selectedEva == 2) leerlingController.getEva2().setHouding(status);
             if(selectedEva == 3) leerlingController.getEva3().setHouding(status);
         }
+        
+        //verkeerstechniek
+        if(base.equals("resource/Rijtechniek/openbareWeg")){
+            if(selectedEva == 1) leerlingController.getEva1().setOpenbareWeg(status);
+            if(selectedEva == 2) leerlingController.getEva2().setOpenbareWeg(status);
+            if(selectedEva == 3) leerlingController.getEva3().setOpenbareWeg(status);
+        }
+        if(base.equals("resource/Rijtechniek/richtingaanwijzers")){
+            if(selectedEva == 1) leerlingController.getEva1().setRichtingaanwijzers(status);
+            if(selectedEva == 2) leerlingController.getEva2().setRichtingaanwijzers(status);
+            if(selectedEva == 3) leerlingController.getEva3().setRichtingaanwijzers(status);
+        }
+        if(base.equals("resource/Rijtechniek/rechtsaf")){
+            if(selectedEva == 1) leerlingController.getEva1().setRechtsaf(status);
+            if(selectedEva == 2) leerlingController.getEva2().setRechtsaf(status);
+            if(selectedEva == 3) leerlingController.getEva3().setRechtsaf(status);
+        }
+        if(base.equals("resource/Rijtechniek/linksaf")){
+            if(selectedEva == 1) leerlingController.getEva1().setLinksaf(status);
+            if(selectedEva == 2) leerlingController.getEva2().setLinksaf(status);
+            if(selectedEva == 3) leerlingController.getEva3().setLinksaf(status);
+        }
+        if(base.equals("resource/Rijtechniek/kruisen")){
+            if(selectedEva == 1) leerlingController.getEva1().setKruisen(status);
+            if(selectedEva == 2) leerlingController.getEva2().setKruisen(status);
+            if(selectedEva == 3) leerlingController.getEva3().setKruisen(status);
+        }
+        if(base.equals("resource/Rijtechniek/voorrang")){
+            if(selectedEva == 1) leerlingController.getEva1().setVoorrang(status);
+            if(selectedEva == 2) leerlingController.getEva2().setVoorrang(status);
+            if(selectedEva == 3) leerlingController.getEva3().setVoorrang(status);
+        }
+        if(base.equals("resource/Rijtechniek/verkeerstekens")){
+            if(selectedEva == 1) leerlingController.getEva1().setVerkeerstekens(status);
+            if(selectedEva == 2) leerlingController.getEva2().setVerkeerstekens(status);
+            if(selectedEva == 3) leerlingController.getEva3().setVerkeerstekens(status);
+        }
+        if(base.equals("resource/Rijtechniek/snelheid")){
+            if(selectedEva == 1) leerlingController.getEva1().setSnelheid(status);
+            if(selectedEva == 2) leerlingController.getEva2().setSnelheid(status);
+            if(selectedEva == 3) leerlingController.getEva3().setSnelheid(status);
+        }
+        if(base.equals("resource/Rijtechniek/afstand")){
+            if(selectedEva == 1) leerlingController.getEva1().setAfstand(status);
+            if(selectedEva == 2) leerlingController.getEva2().setAfstand(status);
+            if(selectedEva == 3) leerlingController.getEva3().setAfstand(status);
+        }
+        if(base.equals("resource/Rijtechniek/inhalen")){
+            if(selectedEva == 1) leerlingController.getEva1().setInhalen(status);
+            if(selectedEva == 2) leerlingController.getEva2().setInhalen(status);
+            if(selectedEva == 3) leerlingController.getEva3().setInhalen(status);
+        }
     }
     
 }
