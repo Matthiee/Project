@@ -22,6 +22,7 @@ public class EvaController {
         this.selectedEva = selectedEva;
         leerlingController.setLastSelectedEva(selectedEva);
     }    
+    
     public void loadColorData(Onderdeel onderdeel){
         
         String base = onderdeel.getBase();
@@ -147,6 +148,8 @@ public class EvaController {
             if(selectedEva == 3) status = leerlingController.getEva3().getHouding();
         }
         
+        //verkeerstechniek
+        
         onderdeel.setStatus(status);
     }
     
@@ -237,6 +240,41 @@ public class EvaController {
             if(selectedEva == 1) leerlingController.getEva1().setAchteruit(status);
             if(selectedEva == 2) leerlingController.getEva2().setAchteruit(status);
             if(selectedEva == 3) leerlingController.getEva3().setAchteruit(status);
+        }
+        if(base.equals("resource/Rijtechniek/rem")){
+            if(selectedEva == 1) leerlingController.getEva1().setRemmen(status);
+            if(selectedEva == 2) leerlingController.getEva2().setRemmen(status);
+            if(selectedEva == 3) leerlingController.getEva3().setRemmen(status);
+        }
+        if(base.equals("resource/Rijtechniek/koppeling")){
+            if(selectedEva == 1) leerlingController.getEva1().setKoppeling(status);
+            if(selectedEva == 2) leerlingController.getEva2().setKoppeling(status);
+            if(selectedEva == 3) leerlingController.getEva3().setKoppeling(status);
+        }
+        if(base.equals("resource/Rijtechniek/helling")){
+            if(selectedEva == 1) leerlingController.getEva1().setHelling(status);
+            if(selectedEva == 2) leerlingController.getEva2().setHelling(status);
+            if(selectedEva == 3) leerlingController.getEva3().setHelling(status);
+        }
+        if(base.equals("resource/Rijtechniek/kijk")){
+            if(selectedEva == 1) leerlingController.getEva1().setKijken(status);
+            if(selectedEva == 2) leerlingController.getEva2().setKijken(status);
+            if(selectedEva == 3) leerlingController.getEva3().setKijken(status);
+        }
+        if(base.equals("resource/Rijtechniek/schakel")){
+            if(selectedEva == 1) leerlingController.getEva1().setSchakelen(status);
+            if(selectedEva == 2) leerlingController.getEva2().setSchakelen(status);
+            if(selectedEva == 3) leerlingController.getEva3().setSchakelen(status);
+        }
+        if(base.equals("resource/Rijtechniek/stuur")){
+            if(selectedEva == 1) leerlingController.getEva1().setSturen(status);
+            if(selectedEva == 2) leerlingController.getEva2().setSturen(status);
+            if(selectedEva == 3) leerlingController.getEva3().setSturen(status);
+        }
+        if(base.equals("resource/Rijtechniek/houding")){
+            if(selectedEva == 1) leerlingController.getEva1().setHouding(status);
+            if(selectedEva == 2) leerlingController.getEva2().setHouding(status);
+            if(selectedEva == 3) leerlingController.getEva3().setHouding(status);
         }
     }
     
