@@ -111,6 +111,41 @@ public class EvaController {
             if(selectedEva == 2) status = leerlingController.getEva2().getAchteruit();
             if(selectedEva == 3) status = leerlingController.getEva3().getAchteruit();
         }
+        if(base.equals("resource/Rijtechniek/rem")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getRemmen();
+            if(selectedEva == 2) status = leerlingController.getEva2().getRemmen();
+            if(selectedEva == 3) status = leerlingController.getEva3().getRemmen();
+        }
+        if(base.equals("resource/Rijtechniek/koppeling")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getKoppeling();
+            if(selectedEva == 2) status = leerlingController.getEva2().getKoppeling();
+            if(selectedEva == 3) status = leerlingController.getEva3().getKoppeling();
+        }
+        if(base.equals("resource/Rijtechniek/helling")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getHelling();
+            if(selectedEva == 2) status = leerlingController.getEva2().getHelling();
+            if(selectedEva == 3) status = leerlingController.getEva3().getHelling();
+        }
+        if(base.equals("resource/Rijtechniek/kijk")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getKijken();
+            if(selectedEva == 2) status = leerlingController.getEva2().getKijken();
+            if(selectedEva == 3) status = leerlingController.getEva3().getKijken();
+        }
+        if(base.equals("resource/Rijtechniek/schakel")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getSchakelen();
+            if(selectedEva == 2) status = leerlingController.getEva2().getSchakelen();
+            if(selectedEva == 3) status = leerlingController.getEva3().getSchakelen();
+        }
+        if(base.equals("resource/Rijtechniek/stuur")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getSturen();
+            if(selectedEva == 2) status = leerlingController.getEva2().getSturen();
+            if(selectedEva == 3) status = leerlingController.getEva3().getSturen();
+        }
+        if(base.equals("resource/Rijtechniek/houding")){
+            if(selectedEva == 1) status = leerlingController.getEva1().getHouding();
+            if(selectedEva == 2) status = leerlingController.getEva2().getHouding();
+            if(selectedEva == 3) status = leerlingController.getEva3().getHouding();
+        }
         
         onderdeel.setStatus(status);
     }
