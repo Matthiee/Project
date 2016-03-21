@@ -25,6 +25,7 @@ public class InfoScherm extends VBox implements View {
 
     private final LeerlingController llnController;
     private final SchermController schermController;
+    private int breedte, hoogte;
     
     public InfoScherm(LeerlingController controller, SchermController schermCtrl) {
         setPadding(new Insets(10));
@@ -33,7 +34,10 @@ public class InfoScherm extends VBox implements View {
         this.llnController = controller;
         this.llnController.getLeerling().addView(this);
         this.schermController=schermCtrl;
-
+        
+        breedte = schermController.getBreedte();
+        hoogte = schermController.getHoogte();
+        
         imgView = new ImageView();
         imgView.maxHeight(128);
         imgView.maxWidth(128);
@@ -80,7 +84,8 @@ public class InfoScherm extends VBox implements View {
         knopHouder.setSpacing(10);
 
         getChildren().addAll(placeHolder, knopHouder);
-        this.setPrefSize(1000, 500);
+        this.setPrefSize(breedte, hoogte);
+        this.setStyle("-fx-background-image: url('resource/achtergrondStandaard.png')");
         
         update();
     }

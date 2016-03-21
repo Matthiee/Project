@@ -265,7 +265,7 @@ public class HoofdMenu extends HBox implements View {
         evaSelector.setOnMouseClicked((e) -> updateOnderdelen());
         //achtergrond
         //this.setStyle("-fx-background-image: url('resource/Hoofdmenu/achtergrondHoofdmenu.jpg')");
-        achtergrond = new ImageView("resource/Hoofdmenu/achtergrondHoofdmenu.jpg");
+        achtergrond = new ImageView("resource/Hoofdmenu/achtergrondHoofdmenu.png");
         achtergrond.setFitHeight(hoogte);
         achtergrond.setFitWidth(breedte);
         achtergrond.setTranslateX(breedte / 2 + 8);

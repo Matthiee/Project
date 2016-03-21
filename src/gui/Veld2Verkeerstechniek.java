@@ -6,51 +6,92 @@ import controller.SchermController;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
-public class Veld2Verkeerstechniek extends GridPane implements View {
+public class Veld2Verkeerstechniek extends HBox implements View {
     
     //de controllers
     private final SchermController schermController;
     private final EvaController evaController;
     //Afbeeldingen
-    private EvaOnderdeel afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
+    private Onderdeel afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
             richtingaanwijzersImg, snelheidImg, verkeerstekensImg, voorrangImg;
-    private ImageView pijl1Img, pijl2Img, pijl3Img;
+    private ImageView pijl1Img, pijl2Img, pijl3Img, achtergrond;
     //GridPanes
-    private GridPane pijlGp, links, rechts;
+    private GridPane pijlGp, links, rechts, mainGP;
     //button
     private Button exit;
+    //evaselector
+    private EvaSelector eva;
+    //labels
+    private Label kleur, venster;
+    private HBox labels;
+    private int labelSelected;
+    //hoogte breedte scherm
+    private int hoogte, breedte;
+    
     
     public Veld2Verkeerstechniek(SchermController schermCtrl, EvaController evaCtrl){
         evaController = evaCtrl;
         schermController = schermCtrl;
+        hoogte = schermController.getHoogte();
+        breedte = schermController.getBreedte();
+        mainGP = new GridPane();
+        
+        //evaSelector
+        eva = new EvaSelector(evaController);
+        
+        //labels
+        kleur = new Label("Kleur kiezen");
+        venster = new Label("Extra vensters");
+        
+        kleur.setMinSize(80, 30);
+        kleur.setMaxSize(80, 30);
+        venster.setMinSize(80, 30);
+        venster.setMaxSize(80, 30);
+        
+        
+        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        kleur.setAlignment(Pos.CENTER);
+        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        venster.setAlignment(Pos.CENTER);
+        
+        kleur.setOnMouseClicked(e -> selecteerKleur());
+        venster.setOnMouseClicked(e -> selecteerVenster());
+        
+        labels = new HBox();
+        labels.setSpacing(15);
+        labels.setTranslateY(-hoogte*0.75);
+        labels.setTranslateX(60);
+        labels.getChildren().addAll(kleur, venster);
         
         //alle afbeeldingen
             //Links
         links = new GridPane();
-        openbareWegImg = new EvaOnderdeel("resource/Verkeerstechniek/openbareWeg.png", evaController);
+        openbareWegImg = new Onderdeel("resource/Verkeerstechniek/openbareWeg", 220, 160, evaController);
         openbareWegImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKPLAATS_ID));
-        richtingaanwijzersImg = new EvaOnderdeel("resource/Verkeerstechniek/richtingaanwijzers.png", evaController);
+        richtingaanwijzersImg = new Onderdeel("resource/Verkeerstechniek/richtingaanwijzers", 120, 140, evaController);
         richtingaanwijzersImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRICHTINGAANWIJZERS_ID));
-        rechtsafImg = new EvaOnderdeel("resource/Verkeerstechniek/rechtsaf.png", evaController);
+        rechtsafImg = new Onderdeel("resource/Verkeerstechniek/rechtsaf", 60, 155, evaController);
         rechtsafImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRECHTSAF_ID));
-        linksafImg = new EvaOnderdeel("resource/Verkeerstechniek/linksaf.png", evaController);
+        linksafImg = new Onderdeel("resource/Verkeerstechniek/linksaf", 120, 190, evaController);
         linksafImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKLINKSAF_ID));
-        kruisenImg = new EvaOnderdeel("resource/Verkeerstechniek/kruisen.png", evaController);
+        kruisenImg = new Onderdeel("resource/Verkeerstechniek/kruisen", 220, 160, evaController);
         kruisenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKKRUISEN_ID));
             //Rechts
         rechts = new GridPane();
-        voorrangImg = new EvaOnderdeel("resource/Verkeerstechniek/voorrang.png", evaController);
+        voorrangImg = new Onderdeel("resource/Verkeerstechniek/voorrang", -140, 160, evaController);
         voorrangImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVOORRANG_ID));
-        verkeerstekensImg = new EvaOnderdeel("resource/Verkeerstechniek/verkeerstekens.png", evaController);
+        verkeerstekensImg = new Onderdeel("resource/Verkeerstechniek/verkeerstekens", -25, 140, evaController);
         verkeerstekensImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVERKEERSTEKENS_ID));
-        snelheidImg = new EvaOnderdeel("resource/Verkeerstechniek/snelheid.png", evaController);
+        snelheidImg = new Onderdeel("resource/Verkeerstechniek/snelheid", 30, 155, evaController);
         snelheidImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKSNELHEID_ID));
-        afstandImg = new EvaOnderdeel("resource/Verkeerstechniek/afstand.png", evaController);
+        afstandImg = new Onderdeel("resource/Verkeerstechniek/afstand", -25, 190, evaController);
         afstandImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKAFSTAND_ID));
-        inhalenImg = new EvaOnderdeel("resource/Verkeerstechniek/inhalen.png", evaController);
+        inhalenImg = new Onderdeel("resource/Verkeerstechniek/inhalen", -140, 160, evaController);
         inhalenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKINHALEN_ID));
             //pijlen center
         pijlGp = new GridPane();
@@ -79,47 +120,48 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         
         //opmaak
             //algemeen
-        this.setPadding(new Insets(50,50,50,50));
-        this.setHgap(50);
+        mainGP.setHgap(50);
             //links
         links.setAlignment(Pos.CENTER);
         links.setVgap(20);
-        openbareWegImg.setMinSize(80, 80);
-        openbareWegImg.setMaxSize(80, 80);
+        links.setMaxWidth(80);
+        openbareWegImg.setFitHeight(80);
+        openbareWegImg.setFitWidth(80);
         openbareWegImg.setTranslateX(180);
-        richtingaanwijzersImg.setMinSize(80, 80);
-        richtingaanwijzersImg.setMaxSize(80, 80);
+        richtingaanwijzersImg.setFitHeight(80);
+        richtingaanwijzersImg.setFitWidth(80);
         richtingaanwijzersImg.setTranslateX(75);
         richtingaanwijzersImg.setTranslateY(-30);
-        rechtsafImg.setMinSize(80, 80);
-        rechtsafImg.setMaxSize(80, 80);
+        rechtsafImg.setFitHeight(80);
+        rechtsafImg.setFitWidth(80);
         rechtsafImg.setTranslateX(10);
-        linksafImg.setMinSize(80, 80);
-        linksafImg.setMaxSize(80, 80);
+        linksafImg.setFitHeight(80);
+        linksafImg.setFitWidth(80);
         linksafImg.setTranslateX(75);
         linksafImg.setTranslateY(30);
-        kruisenImg.setMinSize(80, 80);
-        kruisenImg.setMaxSize(80, 80);
+        kruisenImg.setFitHeight(80);
+        kruisenImg.setFitWidth(80);
         kruisenImg.setTranslateX(180);
             //rechts
         rechts.setAlignment(Pos.CENTER);
         rechts.setVgap(20);
-        voorrangImg.setMinSize(80, 80);
-        voorrangImg.setMaxSize(80, 80);
+        rechts.setMaxWidth(80);
+        voorrangImg.setFitHeight(80);
+        voorrangImg.setFitWidth(80);
         voorrangImg.setTranslateX(-180);
-        verkeerstekensImg.setMinSize(80, 80);
-        verkeerstekensImg.setMaxSize(80, 80);
+        verkeerstekensImg.setFitHeight(80);
+        verkeerstekensImg.setFitWidth(80);
         verkeerstekensImg.setTranslateX(-75);
         verkeerstekensImg.setTranslateY(-30);
-        snelheidImg.setMinSize(80, 80);
-        snelheidImg.setMaxSize(80, 80);
+        snelheidImg.setFitHeight(80);
+        snelheidImg.setFitWidth(80);
         snelheidImg.setTranslateX(-10);
-        afstandImg.setMinSize(80, 80);
-        afstandImg.setMaxSize(80, 80);
+        afstandImg.setFitHeight(80);
+        afstandImg.setFitWidth(80);
         afstandImg.setTranslateX(-75);
         afstandImg.setTranslateY(30);
-        inhalenImg.setMinSize(80, 80);
-        inhalenImg.setMaxSize(80, 80);
+        inhalenImg.setFitHeight(80);
+        inhalenImg.setFitWidth(80);
         inhalenImg.setTranslateX(-180);
             //pijlen center
         pijlGp.setAlignment(Pos.CENTER);
@@ -133,25 +175,115 @@ public class Veld2Verkeerstechniek extends GridPane implements View {
         
         //Exit button
         exit = new Button("ga terug");
+        exit.setTranslateX(50);
+        exit.setTranslateY(75);
+        
+        eva.setTranslateX(-50);
+        eva.setTranslateY(75);
         
         //eventhandler
         exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
         
+        links.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(links, (Onderdeel)c));
+        });
+        
+        rechts.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel && labelSelected == 0)
+                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
+        });
+        eva.setOnMouseClicked((e)->updateOnderdelen());
+        
+        //achtergrond
+        achtergrond = new ImageView("resource/Verkeerstechniek/achtergrondVerkeerstechniek.png");
+        achtergrond.setTranslateX(breedte/2);
+        mainGP.setTranslateX(-breedte*0.53);
+        mainGP.setTranslateY(5);
+        mainGP.setMinWidth(breedte);
+        mainGP.setMaxWidth(breedte);
+       
         //Alle Gridpanes toevoegen an hoofd GridPane
             //volgorde is belangrijk, niet aanpassen!
-        this.add(pijlGp, 2 ,0);
-        this.add(rechts, 3, 0);
-        this.add(links, 1, 0);
-        this.add(exit, 3, 1);
-        this.setAlignment(Pos.CENTER);
-        this.setTranslateX(-15);
-        this.setStyle("-fx-background-color: #003399");
+        mainGP.add(pijlGp, 2 ,0);
+        mainGP.add(rechts, 3, 0);
+        mainGP.add(links, 1, 0);
+        mainGP.add(exit, 3, 1);
+        mainGP.add(labels, 2, 1);
+        mainGP.add(eva, 1, 1);
+        mainGP.setAlignment(Pos.CENTER);
+        //mainGP.setStyle("-fx-background-color: #003399");
         
+        
+        this.getChildren().add(achtergrond);
+        this.getChildren().add(mainGP);
+        this.setAlignment(Pos.CENTER);
+        
+        selecteerKleur();
+        update();
+        
+    }
+    
+    public void selecteerKleur(){
+        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+        labelSelected = 0;
+        
+        links.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel)
+                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(links, (Onderdeel)c));
+        });
+        
+        rechts.getChildren().forEach(c -> {
+            if (c instanceof Onderdeel && labelSelected == 0)
+                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
+        });
+        eva.setOnMouseClicked((e)->updateOnderdelen());
+    }
+    
+    public void selecteerVenster(){
+        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        labelSelected = 1;
+        
+        openbareWegImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKPLAATS_ID));
+        richtingaanwijzersImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRICHTINGAANWIJZERS_ID));
+        rechtsafImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRECHTSAF_ID));
+        linksafImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKLINKSAF_ID));   
+        kruisenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKKRUISEN_ID));               
+        voorrangImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVOORRANG_ID));      
+        verkeerstekensImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVERKEERSTEKENS_ID));    snelheidImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKSNELHEID_ID));    
+        afstandImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKAFSTAND_ID));      
+        inhalenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKINHALEN_ID));
+    }
+    
+    public void updateLabels(){
+        if(labelSelected == 0)selecteerKleur();
+        if(labelSelected == 1)selecteerVenster();
+        
+    }
+    
+    public void updateOnderdelen(){
+        evaController.loadColorData(openbareWegImg);
+        evaController.loadColorData(richtingaanwijzersImg);
+        evaController.loadColorData(rechtsafImg);
+        evaController.loadColorData(linksafImg);
+        evaController.loadColorData(kruisenImg);
+        evaController.loadColorData(voorrangImg);
+        evaController.loadColorData(verkeerstekensImg);
+        evaController.loadColorData(afstandImg);
+        evaController.loadColorData(inhalenImg);
+    }
+    
+    public void updateEvaSelector(){
+        eva.update();
     }
     
     @Override
     public void update(){
-        
+        updateOnderdelen();
+        updateLabels();
+        updateEvaSelector();
     }
     
     
