@@ -269,8 +269,6 @@ public class Veld1Rijtechniek extends HBox implements View {
         garageImg.setVisible(true);
         kerenImg.setVisible(true);
         parkerenImg.setVisible(true);
-        
-        update();
     }
     
     public void selecteerVenster(){
@@ -290,8 +288,6 @@ public class Veld1Rijtechniek extends HBox implements View {
         garageImg.setVisible(false);
         kerenImg.setVisible(false);
         parkerenImg.setVisible(false);
-        
-        update();
     }
     
     public void updateStuur(){
