@@ -262,7 +262,7 @@ public class HoofdMenu extends HBox implements View {
         bottom.add(opmerkingenTxt, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
-        evaSelector.setOnMouseClicked((e) -> updateOnderdelen());
+        evaSelector.setOnMouseClicked((e) -> update());
         //achtergrond
         //this.setStyle("-fx-background-image: url('resource/Hoofdmenu/achtergrondHoofdmenu.jpg')");
         achtergrond = new ImageView("resource/Hoofdmenu/achtergrondHoofdmenu.png");
@@ -312,8 +312,28 @@ public class HoofdMenu extends HBox implements View {
         });
 
         updateOnderdelen();
+        updateStuur();
 
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
+    }
+    
+    public void updateStuur(){
+        int stuur [] = evaController.loadStuur();
+        //stuur1
+        if(stuur[0] == 0) stuur1 = new ImageView("resource/Hoofdmenu/stuur1Neutraal.png");
+        if(stuur[0] == 1) stuur1 = new ImageView("resource/Hoofdmenu/stuur1Groen.png");
+        if(stuur[0] == 2) stuur1 = new ImageView("resource/Hoofdmenu/stuur1Oranje.png");
+        if(stuur[0] == 3) stuur1 = new ImageView("resource/Hoofdmenu/stuur1Rood.png");
+        //stuur2
+        if(stuur[1] == 0) stuur2 = new ImageView("resource/Hoofdmenu/stuur2Neutraal.png");
+        if(stuur[1] == 1) stuur2 = new ImageView("resource/Hoofdmenu/stuur2Groen.png");
+        if(stuur[1] == 2) stuur2 = new ImageView("resource/Hoofdmenu/stuur2Oranje.png");
+        if(stuur[1] == 3) stuur2 = new ImageView("resource/Hoofdmenu/stuur2Rood.png");
+        //stuur3
+        if(stuur[2] == 0) stuur3 = new ImageView("resource/Hoofdmenu/stuur3Neutraal.png");
+        if(stuur[2] == 1) stuur3 = new ImageView("resource/Hoofdmenu/stuur3Groen.png");
+        if(stuur[2] == 2) stuur3 = new ImageView("resource/Hoofdmenu/stuur3Oranje.png");
+        if(stuur[2] == 3) stuur3 = new ImageView("resource/Hoofdmenu/stuur3Rood.png");
     }
 
     public void updateOnderdelen() {
@@ -345,6 +365,7 @@ public class HoofdMenu extends HBox implements View {
         updateOnderdelen();
         updateEvaSelector();
         updateGrafiek();
+        updateStuur();
 
     }
 
