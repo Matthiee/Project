@@ -242,7 +242,7 @@ public class Veld1Rijtechniek extends HBox implements View {
             if (c instanceof Onderdeel && labelSelected == 0)
                  c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
-        evaSelector.setOnMouseClicked((e)->updateOnderdelen());
+        evaSelector.setOnMouseClicked((e)->update());
         
         selecteerKleur();
         update();
