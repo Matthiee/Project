@@ -7,11 +7,28 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 public class Veld2Verkeerstechniek extends HBox implements View {
+    
+    //Images voor pijlen
+    Image pijl1Neutraal = new Image("resource/Verkeerstechniek/stuur1Neutraal.png");
+    Image pijl1Groen = new Image("resource/Verkeerstechniek/stuur1Groen.png");
+    Image pijl1Oranje = new Image("resource/Verkeerstechniek/stuur1Oranje.png");
+    Image pijl1Rood = new Image("resource/Verkeerstechniek/stuur1Rood.png");
+        
+    Image pijl2Neutraal = new Image("resource/Verkeerstechniek/stuur2Neutraal.png");
+    Image pijl2Groen = new Image("resource/Verkeerstechniek/stuur2Groen.png");
+    Image pijl2Oranje = new Image("resource/Verkeerstechniek/stuur2Oranje.png");
+    Image pijl2Rood = new Image("resource/Verkeerstechniek/stuur2Rood.png");
+        
+    Image pijl3Neutraal = new Image("resource/Verkeerstechniek/stuur3Neutraal.png");
+    Image pijl3Groen = new Image("resource/Verkeerstechniek/stuur3Groen.png");
+    Image pijl3Oranje = new Image("resource/Verkeerstechniek/stuur3Oranje.png");
+    Image pijl3Rood = new Image("resource/Verkeerstechniek/stuur3Rood.png");
     
     //de controllers
     private final SchermController schermController;
@@ -238,7 +255,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
             if (c instanceof Onderdeel && labelSelected == 0)
                  c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
-        eva.setOnMouseClicked((e)->updateOnderdelen());
+        eva.setOnMouseClicked((e)->update());
     }
     
     public void selecteerVenster(){
@@ -255,6 +272,26 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         verkeerstekensImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKVERKEERSTEKENS_ID));    snelheidImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKSNELHEID_ID));    
         afstandImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKAFSTAND_ID));      
         inhalenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKINHALEN_ID));
+    }
+    
+    public void updatePijlen(){
+        int pijl [] = evaController.loadPijlen();
+                
+        //stuur1
+        if(pijl[0] == 0) pijl1Img.setImage(pijl1Neutraal);
+        if(pijl[0] == 1) pijl1Img.setImage(pijl1Groen);
+        if(pijl[0] == 2) pijl1Img.setImage(pijl1Oranje);
+        if(pijl[0] == 3) pijl1Img.setImage(pijl1Rood);
+        //stuur2
+        if(pijl[1] == 0) pijl2Img.setImage(pijl2Neutraal);
+        if(pijl[1] == 1) pijl2Img.setImage(pijl2Groen);
+        if(pijl[1] == 2) pijl2Img.setImage(pijl2Oranje);
+        if(pijl[1] == 3) pijl2Img.setImage(pijl2Rood);
+        //stuur3
+        if(pijl[2] == 0) pijl3Img.setImage(pijl3Neutraal);
+        if(pijl[2] == 1) pijl3Img.setImage(pijl3Groen);
+        if(pijl[2] == 2) pijl3Img.setImage(pijl3Oranje);
+        if(pijl[2] == 3) pijl3Img.setImage(pijl3Rood);
     }
     
     public void updateLabels(){
@@ -284,6 +321,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         updateOnderdelen();
         updateLabels();
         updateEvaSelector();
+        updatePijlen();
     }
     
     
