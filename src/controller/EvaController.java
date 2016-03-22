@@ -22,6 +22,96 @@ public class EvaController {
         this.selectedEva = selectedEva;
         leerlingController.setLastSelectedEva(selectedEva);
     }
+    
+    public int[] loadPijlen(){
+        int [] pijl = {0, 0, 0};
+        int value1 = 0;
+        int value2 = 0; 
+        int value3 = 0; 
+        int value4 = 0; 
+        int value5 = 0; 
+        int value6 = 0; 
+        int value7 = 0; 
+        int value8 = 0; 
+        int value9 = 0; 
+        int value10 = 0;
+        
+        //inlezen van waarden
+        if(selectedEva == 1){
+            value1 = leerlingController.getEva1().getRechtsaf();
+            value2 = leerlingController.getEva1().getRichtingaanwijzers();
+            value3 = leerlingController.getEva1().getOpenbareWeg();
+            value4 = leerlingController.getEva1().getVoorrang();
+            value5 = leerlingController.getEva1().getVerkeerstekens();
+            value6 = leerlingController.getEva1().getSnelheid();
+            value7 = leerlingController.getEva1().getAfstand();
+            value8 = leerlingController.getEva1().getInhalen();
+            value9 = leerlingController.getEva1().getKruisen();
+            value10 = leerlingController.getEva1().getLinksaf();
+        }
+        if(selectedEva == 2){
+            value1 = leerlingController.getEva2().getRechtsaf();
+            value2 = leerlingController.getEva2().getRichtingaanwijzers();
+            value3 = leerlingController.getEva2().getOpenbareWeg();
+            value4 = leerlingController.getEva2().getVoorrang();
+            value5 = leerlingController.getEva2().getVerkeerstekens();
+            value6 = leerlingController.getEva2().getSnelheid();
+            value7 = leerlingController.getEva2().getAfstand();
+            value8 = leerlingController.getEva2().getInhalen();
+            value9 = leerlingController.getEva2().getKruisen();
+            value10 = leerlingController.getEva2().getLinksaf();
+        }
+        if(selectedEva == 3){
+            value1 = leerlingController.getEva3().getRechtsaf();
+            value2 = leerlingController.getEva3().getRichtingaanwijzers();
+            value3 = leerlingController.getEva3().getOpenbareWeg();
+            value4 = leerlingController.getEva3().getVoorrang();
+            value5 = leerlingController.getEva3().getVerkeerstekens();
+            value6 = leerlingController.getEva3().getSnelheid();
+            value7 = leerlingController.getEva3().getAfstand();
+            value8 = leerlingController.getEva3().getInhalen();
+            value9 = leerlingController.getEva3().getKruisen();
+            value10 = leerlingController.getEva3().getLinksaf();
+        }
+        
+        //pijl 1 value 1-3
+            //neutraal check 1
+        if(value1 == 0 || value2 == 0 || value3 == 0) pijl[0] = 0;
+            //oranje
+        if(value1 == 2 || value2 == 2 || value3 == 2) pijl[0] = 2;
+            //rood
+        if(value1 == 3 || value2 == 3 || value3 == 3) pijl[0] = 3;
+            //neutraal check 2
+        if(value1 == 0 && value2 == 0 && value3 == 0) pijl[0] = 0;
+            //Groen
+        if(value1 == 1 && value2 == 1 && value3 == 1) pijl[0] = 1;
+        
+        //pijl 2 value 4-6
+            //neutraal check 1
+        if(value4 == 0 || value5 == 0 || value6 == 0) pijl[1] = 0;
+            //oranje
+        if(value4 == 2 || value5 == 2 || value6 == 2) pijl[1] = 2;
+            //rood
+        if(value4 == 3 || value5 == 3 || value6 == 3) pijl[1] = 3;
+            //neutraal
+        if(value4 == 0 && value5 == 0 && value6 == 0) pijl[1] = 0;
+            //groen
+        if(value4 == 1 && value5 == 1 && value6 == 1) pijl[1] = 1;
+        
+        //pijl 3 value 7-10
+            //neutraal check 1
+        if(value7 == 0 || value8 == 0 || value9 == 0 || value10 == 0) pijl[2] = 0;
+            //oranje
+        if(value7 == 2 || value8 == 2 || value9 == 2 || value10 == 2) pijl[2] = 2;
+            //rood
+        if(value7 == 3 || value8 == 3 || value9 == 3 || value10 == 3) pijl[2] = 3;
+            //neutraal
+        if(value7 == 0 && value8 == 0 && value9 == 0 && value10 == 0) pijl[2] = 0;
+            //groen
+        if(value7 == 1 && value8 == 1 && value9 == 1 && value10 == 1) pijl[2] = 1;
+        
+        return pijl;
+    }
 
     public int[] loadStuur(){
         int [] stuur = {0, 0, 0};
@@ -81,29 +171,37 @@ public class EvaController {
             value12 = leerlingController.getEva3().getHelling();
         }
         //stuur 1 value 1-6
+            //neutraal check 1
+        if(value1 == 0 || value2 == 0 || value3 == 0 || value4 == 0 || value5 == 0 || value6 == 0) stuur[0] = 0;
             //oranje
         if(value1 == 2 || value2 == 2 || value3 == 2 || value4 == 2 || value5 == 2 || value6 == 2) stuur[0] = 2;
             //rood
         if(value1 == 3 || value2 == 3 || value3 == 3 || value4 == 3 || value5 == 3 || value6 == 3) stuur[0] = 3;
-            //neutraal
+            //neutraal check 2
         if(value1 == 0 && value2 == 0 && value3 == 0 && value4 == 0 && value5 == 0 && value6 == 0) stuur[0] = 0;
             //Groen
         if(value1 == 1 && value2 == 1 && value3 == 1 && value4 == 1 && value5 == 1 && value6 == 1) stuur[0] = 1;
+        
         //stuur 2 value 10-12
+            //neutraal check 1
+        if(value10 == 0 || value11 == 0 || value12 == 0) stuur[1] = 0;
             //oranje
         if(value10 == 2 || value11 == 2 || value12 == 2) stuur[1] = 2;
             //rood
         if(value10 == 3 || value11 == 3 || value12 == 3) stuur[1] = 3;
-            //neutraal
+            //neutraal check 2
         if(value10 == 0 && value11 == 0 && value12 == 0) stuur[1] = 0;
             //groen
         if(value10 == 1 && value11 == 1 && value12 == 1) stuur[1] = 1;
+        
         //stuur 3 value 7-9
+            //neutraal check 1
+        if(value7 == 0 || value8 == 0 || value9 == 0) stuur[2] = 0;
             //oranje
         if(value7 == 2 || value8 == 2 || value9 == 2) stuur[2] = 2;
             //rood
         if(value7 == 3 || value8 == 3 || value9 == 3) stuur[2] = 3;
-            //neutraal
+            //neutraal check 2
         if(value7 == 0 && value8 == 0 && value9 == 0) stuur[2] = 0;
             //groen
         if(value7 == 1 && value8 == 1 && value9 == 1) stuur[2] = 1;
