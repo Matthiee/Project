@@ -107,7 +107,6 @@ public class EvaController {
         if(value7 == 0 && value8 == 0 && value9 == 0) stuur[2] = 0;
             //groen
         if(value7 == 1 && value8 == 1 && value9 == 1) stuur[2] = 1;
-        
             
         return stuur;
     }
