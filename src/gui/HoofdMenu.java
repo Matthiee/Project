@@ -40,20 +40,20 @@ public class HoofdMenu extends HBox implements View {
     Image stuur3Rood = new Image("resource/Hoofdmenu/stuur3Rood.png");
     
     //Images voor pijlen
-    Image pijl1Neutraal = new Image("resource/Hoofdmenu/stuur1Neutraal.png");
-    Image pijl1Groen = new Image("resource/Hoofdmenu/stuur1Groen.png");
-    Image pijl1Oranje = new Image("resource/Hoofdmenu/stuur1Oranje.png");
-    Image pijl1Rood = new Image("resource/Hoofdmenu/stuur1Rood.png");
+    Image pijl1Neutraal = new Image("resource/Hoofdmenu/pijl1Neutraal.png");
+    Image pijl1Groen = new Image("resource/Hoofdmenu/pijl1Groen.png");
+    Image pijl1Oranje = new Image("resource/Hoofdmenu/pijl1Oranje.png");
+    Image pijl1Rood = new Image("resource/Hoofdmenu/pijl1Rood.png");
         
-    Image pijl2Neutraal = new Image("resource/Hoofdmenu/stuur2Neutraal.png");
-    Image pijl2Groen = new Image("resource/Hoofdmenu/stuur2Groen.png");
-    Image pijl2Oranje = new Image("resource/Hoofdmenu/stuur2Oranje.png");
-    Image pijl2Rood = new Image("resource/Hoofdmenu/stuur2Rood.png");
+    Image pijl2Neutraal = new Image("resource/Hoofdmenu/pijl2Neutraal.png");
+    Image pijl2Groen = new Image("resource/Hoofdmenu/pijl2Groen.png");
+    Image pijl2Oranje = new Image("resource/Hoofdmenu/pijl2Oranje.png");
+    Image pijl2Rood = new Image("resource/Hoofdmenu/pijl2Rood.png");
         
-    Image pijl3Neutraal = new Image("resource/Hoofdmenu/stuur3Neutraal.png");
-    Image pijl3Groen = new Image("resource/Hoofdmenu/stuur3Groen.png");
-    Image pijl3Oranje = new Image("resource/Hoofdmenu/stuur3Oranje.png");
-    Image pijl3Rood = new Image("resource/Hoofdmenu/stuur3Rood.png");
+    Image pijl3Neutraal = new Image("resource/Hoofdmenu/pijl3Neutraal.png");
+    Image pijl3Groen = new Image("resource/Hoofdmenu/pijl3Groen.png");
+    Image pijl3Oranje = new Image("resource/Hoofdmenu/pijl3Oranje.png");
+    Image pijl3Rood = new Image("resource/Hoofdmenu/pijl3Rood.png");
 
     //objecten en controllers
     private LeerlingController llnController;
