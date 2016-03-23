@@ -21,7 +21,193 @@ public class EvaController {
     public void setSelectedEva(int selectedEva) {
         this.selectedEva = selectedEva;
         leerlingController.setLastSelectedEva(selectedEva);
-    }    
+    }
+    
+    public int[] loadPijlen(){
+        int [] pijl = {0, 0, 0};
+        int value1 = 0;
+        int value2 = 0; 
+        int value3 = 0; 
+        int value4 = 0; 
+        int value5 = 0; 
+        int value6 = 0; 
+        int value7 = 0; 
+        int value8 = 0; 
+        int value9 = 0; 
+        int value10 = 0;
+        
+        //inlezen van waarden
+        if(selectedEva == 1){
+            value1 = leerlingController.getEva1().getRechtsaf();
+            value2 = leerlingController.getEva1().getRichtingaanwijzers();
+            value3 = leerlingController.getEva1().getOpenbareWeg();
+            value4 = leerlingController.getEva1().getVoorrang();
+            value5 = leerlingController.getEva1().getVerkeerstekens();
+            value6 = leerlingController.getEva1().getSnelheid();
+            value7 = leerlingController.getEva1().getAfstand();
+            value8 = leerlingController.getEva1().getInhalen();
+            value9 = leerlingController.getEva1().getKruisen();
+            value10 = leerlingController.getEva1().getLinksaf();
+        }
+        if(selectedEva == 2){
+            value1 = leerlingController.getEva2().getRechtsaf();
+            value2 = leerlingController.getEva2().getRichtingaanwijzers();
+            value3 = leerlingController.getEva2().getOpenbareWeg();
+            value4 = leerlingController.getEva2().getVoorrang();
+            value5 = leerlingController.getEva2().getVerkeerstekens();
+            value6 = leerlingController.getEva2().getSnelheid();
+            value7 = leerlingController.getEva2().getAfstand();
+            value8 = leerlingController.getEva2().getInhalen();
+            value9 = leerlingController.getEva2().getKruisen();
+            value10 = leerlingController.getEva2().getLinksaf();
+        }
+        if(selectedEva == 3){
+            value1 = leerlingController.getEva3().getRechtsaf();
+            value2 = leerlingController.getEva3().getRichtingaanwijzers();
+            value3 = leerlingController.getEva3().getOpenbareWeg();
+            value4 = leerlingController.getEva3().getVoorrang();
+            value5 = leerlingController.getEva3().getVerkeerstekens();
+            value6 = leerlingController.getEva3().getSnelheid();
+            value7 = leerlingController.getEva3().getAfstand();
+            value8 = leerlingController.getEva3().getInhalen();
+            value9 = leerlingController.getEva3().getKruisen();
+            value10 = leerlingController.getEva3().getLinksaf();
+        }
+        
+        //pijl 1 value 1-3
+            //neutraal check 1
+        if(value1 == 0 || value2 == 0 || value3 == 0) pijl[0] = 0;
+            //oranje
+        if(value1 == 2 || value2 == 2 || value3 == 2) pijl[0] = 2;
+            //rood
+        if(value1 == 3 || value2 == 3 || value3 == 3) pijl[0] = 3;
+            //neutraal check 2
+        if(value1 == 0 && value2 == 0 && value3 == 0) pijl[0] = 0;
+            //Groen
+        if(value1 == 1 && value2 == 1 && value3 == 1) pijl[0] = 1;
+        
+        //pijl 2 value 4-6
+            //neutraal check 1
+        if(value4 == 0 || value5 == 0 || value6 == 0) pijl[1] = 0;
+            //oranje
+        if(value4 == 2 || value5 == 2 || value6 == 2) pijl[1] = 2;
+            //rood
+        if(value4 == 3 || value5 == 3 || value6 == 3) pijl[1] = 3;
+            //neutraal
+        if(value4 == 0 && value5 == 0 && value6 == 0) pijl[1] = 0;
+            //groen
+        if(value4 == 1 && value5 == 1 && value6 == 1) pijl[1] = 1;
+        
+        //pijl 3 value 7-10
+            //neutraal check 1
+        if(value7 == 0 || value8 == 0 || value9 == 0 || value10 == 0) pijl[2] = 0;
+            //oranje
+        if(value7 == 2 || value8 == 2 || value9 == 2 || value10 == 2) pijl[2] = 2;
+            //rood
+        if(value7 == 3 || value8 == 3 || value9 == 3 || value10 == 3) pijl[2] = 3;
+            //neutraal
+        if(value7 == 0 && value8 == 0 && value9 == 0 && value10 == 0) pijl[2] = 0;
+            //groen
+        if(value7 == 1 && value8 == 1 && value9 == 1 && value10 == 1) pijl[2] = 1;
+        
+        return pijl;
+    }
+
+    public int[] loadStuur(){
+        int [] stuur = {0, 0, 0};
+        int value1 = 0;
+        int value2 = 0; 
+        int value3 = 0; 
+        int value4 = 0; 
+        int value5 = 0; 
+        int value6 = 0; 
+        int value7 = 0; 
+        int value8 = 0; 
+        int value9 = 0; 
+        int value10 = 0; 
+        int value11 = 0; 
+        int value12 = 0;
+        //inlezen van waarden
+        if(selectedEva == 1){
+            value1 = leerlingController.getEva1().getHouding();
+            value2 = leerlingController.getEva1().getRemmen();
+            value3 = leerlingController.getEva1().getKoppeling();
+            value4 = leerlingController.getEva1().getSturen();
+            value5 = leerlingController.getEva1().getSchakelen();
+            value6 = leerlingController.getEva1().getKijken();
+            value7 = leerlingController.getEva1().getParkeren();
+            value8 = leerlingController.getEva1().getKeren();
+            value9 = leerlingController.getEva1().getGarage();
+            value10 = leerlingController.getEva1().getAchteruit();
+            value11 = leerlingController.getEva1().getStuuroef();
+            value12 = leerlingController.getEva1().getHelling();
+        }
+        if(selectedEva == 2){
+            value1 = leerlingController.getEva2().getHouding();
+            value2 = leerlingController.getEva2().getRemmen();
+            value3 = leerlingController.getEva2().getKoppeling();
+            value4 = leerlingController.getEva2().getSturen();
+            value5 = leerlingController.getEva2().getSchakelen();
+            value6 = leerlingController.getEva2().getKijken();
+            value7 = leerlingController.getEva2().getParkeren();
+            value8 = leerlingController.getEva2().getKeren();
+            value9 = leerlingController.getEva2().getGarage();
+            value10 = leerlingController.getEva2().getAchteruit();
+            value11 = leerlingController.getEva2().getStuuroef();
+            value12 = leerlingController.getEva2().getHelling();
+        }
+        if(selectedEva == 3){
+            value1 = leerlingController.getEva3().getHouding();
+            value2 = leerlingController.getEva3().getRemmen();
+            value3 = leerlingController.getEva3().getKoppeling();
+            value4 = leerlingController.getEva3().getSturen();
+            value5 = leerlingController.getEva3().getSchakelen();
+            value6 = leerlingController.getEva3().getKijken();
+            value7 = leerlingController.getEva3().getParkeren();
+            value8 = leerlingController.getEva3().getKeren();
+            value9 = leerlingController.getEva3().getGarage();
+            value10 = leerlingController.getEva3().getAchteruit();
+            value11 = leerlingController.getEva3().getStuuroef();
+            value12 = leerlingController.getEva3().getHelling();
+        }
+        //stuur 1 value 1-6
+            //neutraal check 1
+        if(value1 == 0 || value2 == 0 || value3 == 0 || value4 == 0 || value5 == 0 || value6 == 0) stuur[0] = 0;
+            //oranje
+        if(value1 == 2 || value2 == 2 || value3 == 2 || value4 == 2 || value5 == 2 || value6 == 2) stuur[0] = 2;
+            //rood
+        if(value1 == 3 || value2 == 3 || value3 == 3 || value4 == 3 || value5 == 3 || value6 == 3) stuur[0] = 3;
+            //neutraal check 2
+        if(value1 == 0 && value2 == 0 && value3 == 0 && value4 == 0 && value5 == 0 && value6 == 0) stuur[0] = 0;
+            //Groen
+        if(value1 == 1 && value2 == 1 && value3 == 1 && value4 == 1 && value5 == 1 && value6 == 1) stuur[0] = 1;
+        
+        //stuur 2 value 10-12
+            //neutraal check 1
+        if(value10 == 0 || value11 == 0 || value12 == 0) stuur[1] = 0;
+            //oranje
+        if(value10 == 2 || value11 == 2 || value12 == 2) stuur[1] = 2;
+            //rood
+        if(value10 == 3 || value11 == 3 || value12 == 3) stuur[1] = 3;
+            //neutraal check 2
+        if(value10 == 0 && value11 == 0 && value12 == 0) stuur[1] = 0;
+            //groen
+        if(value10 == 1 && value11 == 1 && value12 == 1) stuur[1] = 1;
+        
+        //stuur 3 value 7-9
+            //neutraal check 1
+        if(value7 == 0 || value8 == 0 || value9 == 0) stuur[2] = 0;
+            //oranje
+        if(value7 == 2 || value8 == 2 || value9 == 2) stuur[2] = 2;
+            //rood
+        if(value7 == 3 || value8 == 3 || value9 == 3) stuur[2] = 3;
+            //neutraal check 2
+        if(value7 == 0 && value8 == 0 && value9 == 0) stuur[2] = 0;
+            //groen
+        if(value7 == 1 && value8 == 1 && value9 == 1) stuur[2] = 1;
+            
+        return stuur;
+    }
     
     public void loadColorData(Onderdeel onderdeel){
         
@@ -31,7 +217,7 @@ public class EvaController {
         //Hoofdmenu
             //links
         if(base.equals("resource/Hoofdmenu/schakelaars")){
-            if(selectedEva == 1){status = leerlingController.getEva1().getSchakelaars();}
+            if(selectedEva == 1) status = leerlingController.getEva1().getSchakelaars();
             if(selectedEva == 2) status = leerlingController.getEva2().getSchakelaars();
             if(selectedEva == 3) status = leerlingController.getEva3().getSchakelaars();
         }     
@@ -149,52 +335,52 @@ public class EvaController {
         }
         
         //verkeerstechniek
-        if(base.equals("resource/Rijtechniek/openbareWeg")){
+        if(base.equals("resource/Verkeerstechniek/openbareWeg")){
             if(selectedEva == 1) status = leerlingController.getEva1().getOpenbareWeg();
             if(selectedEva == 2) status = leerlingController.getEva2().getOpenbareWeg();
             if(selectedEva == 3) status = leerlingController.getEva3().getOpenbareWeg();
         }
-        if(base.equals("resource/Rijtechniek/richtingaanwijzers")){
+        if(base.equals("resource/Verkeerstechniek/richtingaanwijzers")){
             if(selectedEva == 1) status = leerlingController.getEva1().getRichtingaanwijzers();
             if(selectedEva == 2) status = leerlingController.getEva2().getRichtingaanwijzers();
             if(selectedEva == 3) status = leerlingController.getEva3().getRichtingaanwijzers();
         }
-        if(base.equals("resource/Rijtechniek/rechtsaf")){
+        if(base.equals("resource/Verkeerstechniek/rechtsaf")){
             if(selectedEva == 1) status = leerlingController.getEva1().getRechtsaf();
             if(selectedEva == 2) status = leerlingController.getEva2().getRechtsaf();
             if(selectedEva == 3) status = leerlingController.getEva3().getRechtsaf();
         }
-        if(base.equals("resource/Rijtechniek/linksaf")){
+        if(base.equals("resource/Verkeerstechniek/linksaf")){
             if(selectedEva == 1) status = leerlingController.getEva1().getLinksaf();
             if(selectedEva == 2) status = leerlingController.getEva2().getLinksaf();
             if(selectedEva == 3) status = leerlingController.getEva3().getLinksaf();
         }
-        if(base.equals("resource/Rijtechniek/kruisen")){
+        if(base.equals("resource/Verkeerstechniek/kruisen")){
             if(selectedEva == 1) status = leerlingController.getEva1().getKruisen();
             if(selectedEva == 2) status = leerlingController.getEva2().getKruisen();
             if(selectedEva == 3) status = leerlingController.getEva3().getKruisen();
         }
-        if(base.equals("resource/Rijtechniek/voorrang")){
+        if(base.equals("resource/Verkeerstechniek/voorrang")){
             if(selectedEva == 1) status = leerlingController.getEva1().getVoorrang();
             if(selectedEva == 2) status = leerlingController.getEva2().getVoorrang();
             if(selectedEva == 3) status = leerlingController.getEva3().getVoorrang();
         }
-        if(base.equals("resource/Rijtechniek/verkeerstekens")){
+        if(base.equals("resource/Verkeerstechniek/verkeerstekens")){
             if(selectedEva == 1) status = leerlingController.getEva1().getVerkeerstekens();
             if(selectedEva == 2) status = leerlingController.getEva2().getVerkeerstekens();
             if(selectedEva == 3) status = leerlingController.getEva3().getVerkeerstekens();
         }
-        if(base.equals("resource/Rijtechniek/snelheid")){
+        if(base.equals("resource/Verkeerstechniek/snelheid")){
             if(selectedEva == 1) status = leerlingController.getEva1().getSnelheid();
             if(selectedEva == 2) status = leerlingController.getEva2().getSnelheid();
             if(selectedEva == 3) status = leerlingController.getEva3().getSnelheid();
         }
-        if(base.equals("resource/Rijtechniek/afstand")){
+        if(base.equals("resource/Verkeerstechniek/afstand")){
             if(selectedEva == 1) status = leerlingController.getEva1().getAfstand();
             if(selectedEva == 2) status = leerlingController.getEva2().getAfstand();
             if(selectedEva == 3) status = leerlingController.getEva3().getAfstand();
         }
-        if(base.equals("resource/Rijtechniek/inhalen")){
+        if(base.equals("resource/Verkeerstechniek/inhalen")){
             if(selectedEva == 1) status = leerlingController.getEva1().getInhalen();
             if(selectedEva == 2) status = leerlingController.getEva2().getInhalen();
             if(selectedEva == 3) status = leerlingController.getEva3().getInhalen();
@@ -483,7 +669,7 @@ public class EvaController {
         }
         
         //verkeerstechniek
-        if(base.equals("resource/Rijtechniek/openbareWeg")){
+        if(base.equals("resource/Verkeerstechniek/openbareWeg")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setOpenbareWeg(status);
                 if(leerlingController.getEva2().getOpenbareWeg() == 0)leerlingController.getEva2().setOpenbareWeg(status);
@@ -495,7 +681,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setOpenbareWeg(status);
         }
-        if(base.equals("resource/Rijtechniek/richtingaanwijzers")){
+        if(base.equals("resource/Verkeerstechniek/richtingaanwijzers")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setRichtingaanwijzers(status);
                 if(leerlingController.getEva2().getRichtingaanwijzers() == 0)leerlingController.getEva2().setRichtingaanwijzers(status);
@@ -507,7 +693,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setRichtingaanwijzers(status);
         }
-        if(base.equals("resource/Rijtechniek/rechtsaf")){
+        if(base.equals("resource/Verkeerstechniek/rechtsaf")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setRechtsaf(status);
                 if(leerlingController.getEva2().getRechtsaf() == 0)leerlingController.getEva2().setRechtsaf(status);
@@ -519,7 +705,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setRechtsaf(status);
         }
-        if(base.equals("resource/Rijtechniek/linksaf")){
+        if(base.equals("resource/Verkeerstechniek/linksaf")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setLinksaf(status);
                 if(leerlingController.getEva2().getLinksaf() == 0)leerlingController.getEva2().setLinksaf(status);
@@ -531,7 +717,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setLinksaf(status);
         }
-        if(base.equals("resource/Rijtechniek/kruisen")){
+        if(base.equals("resource/Verkeerstechniek/kruisen")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setKruisen(status);
                 if(leerlingController.getEva2().getKruisen() == 0)leerlingController.getEva2().setKruisen(status);
@@ -543,7 +729,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setKruisen(status);
         }
-        if(base.equals("resource/Rijtechniek/voorrang")){
+        if(base.equals("resource/Verkeerstechniek/voorrang")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setVoorrang(status);
                 if(leerlingController.getEva2().getVoorrang() == 0)leerlingController.getEva2().setVoorrang(status);
@@ -555,7 +741,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setVoorrang(status);
         }
-        if(base.equals("resource/Rijtechniek/verkeerstekens")){
+        if(base.equals("resource/Verkeerstechniek/verkeerstekens")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setVerkeerstekens(status);
                 if(leerlingController.getEva2().getVerkeerstekens() == 0)leerlingController.getEva2().setVerkeerstekens(status);
@@ -567,7 +753,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setVerkeerstekens(status);
         }
-        if(base.equals("resource/Rijtechniek/snelheid")){
+        if(base.equals("resource/Verkeerstechniek/snelheid")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setSnelheid(status);
                 if(leerlingController.getEva2().getSnelheid() == 0)leerlingController.getEva2().setSnelheid(status);
@@ -579,7 +765,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setSnelheid(status);
         }
-        if(base.equals("resource/Rijtechniek/afstand")){
+        if(base.equals("resource/Verkeerstechniek/afstand")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setAfstand(status);
                 if(leerlingController.getEva2().getAfstand() == 0)leerlingController.getEva2().setAfstand(status);
@@ -591,7 +777,7 @@ public class EvaController {
             }
             if(selectedEva == 3) leerlingController.getEva3().setAfstand(status);
         }
-        if(base.equals("resource/Rijtechniek/inhalen")){
+        if(base.equals("resource/Verkeerstechniek/inhalen")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setInhalen(status);
                 if(leerlingController.getEva2().getInhalen() == 0)leerlingController.getEva2().setInhalen(status);
