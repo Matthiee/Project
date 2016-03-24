@@ -13,27 +13,27 @@ public class Stuur extends GridPane{
     private final ImageView stuur1, stuur2, stuur3;
     
     //Images voor stuur
-    Image stuur1Neutraal = new Image("resource/Hoofdmenu/stuur1Neutraal.png");
-    Image stuur1Groen = new Image("resource/Hoofdmenu/stuur1Groen.png");
-    Image stuur1Oranje = new Image("resource/Hoofdmenu/stuur1Oranje.png");
-    Image stuur1Rood = new Image("resource/Hoofdmenu/stuur1Rood.png");
+    Image stuur1Neutraal = new Image("resource/Stuur/stuur1Neutraal.png");
+    Image stuur1Groen = new Image("resource/Stuur/stuur1Groen.png");
+    Image stuur1Oranje = new Image("resource/Stuur/stuur1Oranje.png");
+    Image stuur1Rood = new Image("resource/Stuur/stuur1Rood.png");
         
-    Image stuur2Neutraal = new Image("resource/Hoofdmenu/stuur2Neutraal.png");
-    Image stuur2Groen = new Image("resource/Hoofdmenu/stuur2Groen.png");
-    Image stuur2Oranje = new Image("resource/Hoofdmenu/stuur2Oranje.png");
-    Image stuur2Rood = new Image("resource/Hoofdmenu/stuur2Rood.png");
+    Image stuur2Neutraal = new Image("resource/Stuur/stuur2Neutraal.png");
+    Image stuur2Groen = new Image("resource/Stuur/stuur2Groen.png");
+    Image stuur2Oranje = new Image("resource/Stuur/stuur2Oranje.png");
+    Image stuur2Rood = new Image("resource/Stuur/stuur2Rood.png");
         
-    Image stuur3Neutraal = new Image("resource/Hoofdmenu/stuur3Neutraal.png");
-    Image stuur3Groen = new Image("resource/Hoofdmenu/stuur3Groen.png");
-    Image stuur3Oranje = new Image("resource/Hoofdmenu/stuur3Oranje.png");
-    Image stuur3Rood = new Image("resource/Hoofdmenu/stuur3Rood.png");
+    Image stuur3Neutraal = new Image("resource/Stuur/stuur3Neutraal.png");
+    Image stuur3Groen = new Image("resource/Stuur/stuur3Groen.png");
+    Image stuur3Oranje = new Image("resource/Stuur/stuur3Oranje.png");
+    Image stuur3Rood = new Image("resource/Stuur/stuur3Rood.png");
     
     public Stuur(EvaController evaCtrl) {
         evaController = evaCtrl;
         
-        stuur1 = new ImageView("resource/Hoofdmenu/stuur1Neutraal.png");
-        stuur2 = new ImageView("resource/Hoofdmenu/stuur2Neutraal.png");
-        stuur3 = new ImageView("resource/Hoofdmenu/stuur3Neutraal.png");
+        stuur1 = new ImageView("resource/Stuur/stuur1Neutraal.png");
+        stuur2 = new ImageView("resource/Stuur/stuur2Neutraal.png");
+        stuur3 = new ImageView("resource/Stuur/stuur3Neutraal.png");
         
         stuur1.setFitHeight(80);
         stuur1.setFitWidth(160);
