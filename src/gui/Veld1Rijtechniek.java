@@ -8,30 +8,12 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 public class Veld1Rijtechniek extends HBox implements View {
-    
-    //Images voor stuur
-    Image stuur1Neutraal = new Image("resource/Rijtechniek/stuur1Neutraal.png");
-    Image stuur1Groen = new Image("resource/Rijtechniek/stuur1Groen.png");
-    Image stuur1Oranje = new Image("resource/Rijtechniek/stuur1Oranje.png");
-    Image stuur1Rood = new Image("resource/Rijtechniek/stuur1Rood.png");
         
-    Image stuur2Neutraal = new Image("resource/Rijtechniek/stuur2Neutraal.png");
-    Image stuur2Groen = new Image("resource/Rijtechniek/stuur2Groen.png");
-    Image stuur2Oranje = new Image("resource/Rijtechniek/stuur2Oranje.png");
-    Image stuur2Rood = new Image("resource/Rijtechniek/stuur2Rood.png");
-        
-    Image stuur3Neutraal = new Image("resource/Rijtechniek/stuur3Neutraal.png");
-    Image stuur3Groen = new Image("resource/Rijtechniek/stuur3Groen.png");
-    Image stuur3Oranje = new Image("resource/Rijtechniek/stuur3Oranje.png");
-    Image stuur3Rood = new Image("resource/Rijtechniek/stuur3Rood.png");
-    
     //de controllers
     private final SchermController schermController;
     private final LeerlingController llnController;
@@ -39,9 +21,8 @@ public class Veld1Rijtechniek extends HBox implements View {
     //Afbeeldingen
     private Onderdeel hellingImg, houdingImg, kijkImg, koppelingImg, remImg, schakelImg, stuurImg;
     private Onderdeel stuuroefImg, achteruitImg, garageImg, kerenImg, parkerenImg;
-    private ImageView stuur1Img, stuur2Img, stuur3Img;
+    private Stuur stuur;
     //GridPanes
-    private GridPane stuurGp;
     private GridPane links;
     private GridPane rechts;
     private GridPane mainGP;
@@ -116,10 +97,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         schakelImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID));
         kijkImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID));
             //Stuur center
-        stuurGp = new GridPane();
-        stuur1Img = new ImageView("resource/Rijtechniek/stuur1Neutraal.png");
-        stuur2Img = new ImageView("resource/Rijtechniek/stuur2Neutraal.png");
-        stuur3Img = new ImageView("resource/Rijtechniek/stuur3Neutraal.png");
+        stuur = new Stuur(evaController, 250);
         
         //GridPane links
         links.add(remImg, 0, 0);
@@ -136,11 +114,6 @@ public class Veld1Rijtechniek extends HBox implements View {
         rechts.add(parkerenImg, 0, 3);
         rechts.add(kerenImg, 0, 4);
         rechts.add(garageImg, 0, 5);
-        
-        //GridPane stuurgp
-        stuurGp.add(stuur1Img, 0, 0, 2, 1);
-        stuurGp.add(stuur2Img, 0, 1);
-        stuurGp.add(stuur3Img, 1, 1);
         
         //Opmaak
             //algemeen
@@ -192,14 +165,8 @@ public class Veld1Rijtechniek extends HBox implements View {
         garageImg.setTranslateX(-180);
         garageImg.setTranslateY(-30);
             //Stuur center
-        stuurGp.setAlignment(Pos.CENTER);
-        stuur1Img.setFitHeight(125);
-        stuur1Img.setFitWidth(250);
-        stuur2Img.setFitHeight(125);
-        stuur2Img.setFitWidth(125);
-        stuur3Img.setFitHeight(125);
-        stuur3Img.setFitWidth(125);
-        stuurGp.setTranslateX(-15);
+        stuur.setAlignment(Pos.CENTER);
+        stuur.setTranslateX(-15);
         
         //exit button + evaSelector
         exit = new Button("ga terug");
@@ -215,7 +182,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         //Alle GridPanes toevoegen aan hoofd GridPane
             //moet in deze volgorde anders werkt kleurkiezer niet!!!!
         
-        mainGP.add(stuurGp, 2 ,0);
+        mainGP.add(stuur, 2 ,0);
         mainGP.add(rechts, 3, 0);
         mainGP.add(links, 1, 0);
         mainGP.add(exit, 3, 1);
@@ -289,27 +256,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         kerenImg.setVisible(false);
         parkerenImg.setVisible(false);
     }
-    
-    public void updateStuur(){
-        int stuur [] = evaController.loadStuur();
-                
-        //stuur1
-        if(stuur[0] == 0) stuur1Img.setImage(stuur1Neutraal);
-        if(stuur[0] == 1) stuur1Img.setImage(stuur1Groen);
-        if(stuur[0] == 2) stuur1Img.setImage(stuur1Oranje);
-        if(stuur[0] == 3) stuur1Img.setImage(stuur1Rood);
-        //stuur2
-        if(stuur[1] == 0) stuur2Img.setImage(stuur2Neutraal);
-        if(stuur[1] == 1) stuur2Img.setImage(stuur2Groen);
-        if(stuur[1] == 2) stuur2Img.setImage(stuur2Oranje);
-        if(stuur[1] == 3) stuur2Img.setImage(stuur2Rood);
-        //stuur3
-        if(stuur[2] == 0) stuur3Img.setImage(stuur3Neutraal);
-        if(stuur[2] == 1) stuur3Img.setImage(stuur3Groen);
-        if(stuur[2] == 2) stuur3Img.setImage(stuur3Oranje);
-        if(stuur[2] == 3) stuur3Img.setImage(stuur3Rood);
-    }
-    
+        
     public void updateLabels(){
         if(labelSelected == 0)selecteerKleur();
         if(labelSelected == 1)selecteerVenster();
@@ -340,7 +287,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         updateOnderdelen();
         updateEvaSelector();
         updateLabels();
-        updateStuur();
+        stuur.update();
     }
     
 }
