@@ -36,9 +36,10 @@ public class Veld2Verkeerstechniek extends HBox implements View {
     //Afbeeldingen
     private Onderdeel afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
             richtingaanwijzersImg, snelheidImg, verkeerstekensImg, voorrangImg;
-    private ImageView pijl1Img, pijl2Img, pijl3Img, achtergrond;
+    private ImageView achtergrond;
     //GridPanes
-    private GridPane pijlGp, links, rechts, mainGP;
+    private GridPane links, rechts, mainGP;
+    private Pijlen pijlen;
     //button
     private Button exit;
     //evaselector
@@ -111,10 +112,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         inhalenImg = new Onderdeel("resource/Verkeerstechniek/inhalen", -140, 160, evaController);
         inhalenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKINHALEN_ID));
             //pijlen center
-        pijlGp = new GridPane();
-        pijl1Img = new ImageView("resource/Verkeerstechniek/pijl1Neutraal.png");
-        pijl2Img = new ImageView("resource/Verkeerstechniek/pijl2Neutraal.png");
-        pijl3Img = new ImageView("resource/Verkeerstechniek/pijl3Neutraal.png");
+        pijlen = new Pijlen(evaController, 300);
         
         //GridPane links
         links.add(openbareWegImg, 0, 0);
@@ -129,11 +127,6 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         rechts.add(snelheidImg, 0, 2);
         rechts.add(afstandImg, 0, 3);
         rechts.add(inhalenImg, 0, 4);
-        
-        //GridPane pijlen
-        pijlGp.add(pijl1Img, 0, 0);
-        pijlGp.add(pijl2Img, 1, 0);
-        pijlGp.add(pijl3Img, 0, 1, 2, 1);
         
         //opmaak
             //algemeen
@@ -181,14 +174,8 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         inhalenImg.setFitWidth(80);
         inhalenImg.setTranslateX(-180);
             //pijlen center
-        pijlGp.setAlignment(Pos.CENTER);
-        pijlGp.setTranslateY(10);
-        pijl1Img.setFitHeight(150);
-        pijl1Img.setFitWidth(150);
-        pijl2Img.setFitHeight(150);
-        pijl2Img.setFitWidth(150);
-        pijl3Img.setFitHeight(150);
-        pijl3Img.setFitWidth(300);
+        pijlen.setAlignment(Pos.CENTER);
+        pijlen.setTranslateY(10);
         
         //Exit button
         exit = new Button("ga terug");
@@ -222,7 +209,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
        
         //Alle Gridpanes toevoegen an hoofd GridPane
             //volgorde is belangrijk, niet aanpassen!
-        mainGP.add(pijlGp, 2 ,0);
+        mainGP.add(pijlen, 2 ,0);
         mainGP.add(rechts, 3, 0);
         mainGP.add(links, 1, 0);
         mainGP.add(exit, 3, 1);
@@ -274,26 +261,6 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         inhalenImg.setOnMouseClicked(e -> this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKINHALEN_ID));
     }
     
-    public void updatePijlen(){
-        int pijl [] = evaController.loadPijlen();
-                
-        //stuur1
-        if(pijl[0] == 0) pijl1Img.setImage(pijl1Neutraal);
-        if(pijl[0] == 1) pijl1Img.setImage(pijl1Groen);
-        if(pijl[0] == 2) pijl1Img.setImage(pijl1Oranje);
-        if(pijl[0] == 3) pijl1Img.setImage(pijl1Rood);
-        //stuur2
-        if(pijl[1] == 0) pijl2Img.setImage(pijl2Neutraal);
-        if(pijl[1] == 1) pijl2Img.setImage(pijl2Groen);
-        if(pijl[1] == 2) pijl2Img.setImage(pijl2Oranje);
-        if(pijl[1] == 3) pijl2Img.setImage(pijl2Rood);
-        //stuur3
-        if(pijl[2] == 0) pijl3Img.setImage(pijl3Neutraal);
-        if(pijl[2] == 1) pijl3Img.setImage(pijl3Groen);
-        if(pijl[2] == 2) pijl3Img.setImage(pijl3Oranje);
-        if(pijl[2] == 3) pijl3Img.setImage(pijl3Rood);
-    }
-    
     public void updateLabels(){
         if(labelSelected == 0)selecteerKleur();
         if(labelSelected == 1)selecteerVenster();
@@ -321,7 +288,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         updateOnderdelen();
         updateLabels();
         updateEvaSelector();
-        updatePijlen();
+        pijlen.update();
     }
     
     
