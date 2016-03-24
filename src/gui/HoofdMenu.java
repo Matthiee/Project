@@ -186,8 +186,8 @@ public class HoofdMenu extends HBox implements View {
         pijl = new Pijl(evaController);
         
         //opmaak
-        stuur.setTranslateX(200);
-        pijl.setTranslateX(0);
+        stuur.setTranslateX(205);
+        pijl.setTranslateX(195);
         
         //eventhandler
         stuur.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
