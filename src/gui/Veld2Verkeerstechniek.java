@@ -197,7 +197,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
             if (c instanceof Onderdeel && labelSelected == 0)
                  c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
-        eva.setOnMouseClicked((e)->updateOnderdelen());
+        eva.setOnMouseClicked((e)->update());
         
         //achtergrond
         achtergrond = new ImageView("resource/Verkeerstechniek/achtergrondVerkeerstechniek.png");
@@ -283,12 +283,16 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         eva.update();
     }
     
+    public void updatePijlen(){
+        pijlen.update();
+    }
+    
     @Override
     public void update(){
         updateOnderdelen();
         updateLabels();
         updateEvaSelector();
-        pijlen.update();
+        updatePijlen();
     }
     
     

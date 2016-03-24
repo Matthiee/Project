@@ -52,6 +52,8 @@ public class Stuur extends GridPane{
         this.add(stuur2, 0, 1);
         this.add(stuur3, 1, 1);
         
+        update();
+        
     }
     
     public void update(){

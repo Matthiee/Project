@@ -305,14 +305,18 @@ public class HoofdMenu extends HBox implements View {
     public void updateGrafiek() {
         graphImg.update();
     }
+    
+    public void updateStuurEnPijlen(){
+        pijlen.update();
+        stuur.update();
+    }
 
     @Override
     public void update() {
         updateOnderdelen();
         updateEvaSelector();
         updateGrafiek();
-        pijlen.update();
-        stuur.update();
+        updateStuurEnPijlen();
     }
 
 }

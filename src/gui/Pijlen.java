@@ -50,6 +50,8 @@ public class Pijlen extends GridPane{
         this.add(pijl1, 0, 0);
         this.add(pijl2, 1, 0);
         this.add(pijl3, 0, 1, 2, 1);
+        
+        update();
     }
     
     public void update(){

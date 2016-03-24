@@ -43,7 +43,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         
         schermController = schermCtrl;
         evaController = evaCtrl;
-        llnController=llnCntrl;
+        llnController= llnCntrl;
         llnController.getLeerling().addView(this);
         hoogte = schermController.getHoogte();
         breedte = schermController.getBreedte();
@@ -282,12 +282,16 @@ public class Veld1Rijtechniek extends HBox implements View {
         evaSelector.update();
     }
     
+    public void updateStuur(){
+        stuur.update();
+    }
+    
     @Override
     public void update(){
         updateOnderdelen();
         updateEvaSelector();
         updateLabels();
-        stuur.update();
+        updateStuur();
     }
     
 }
