@@ -50,7 +50,7 @@ public class HoofdMenu extends HBox implements View {
     private Onderdeel rotonde, rijstroken, stad, snelweg;
     private ImageView attitudeImg;
     private Stuur stuur;
-    private Pijl pijl;
+    private Pijlen pijlen;
     //bottom
     private GridPane bottom;
     private EvaSelector evaSelector;
@@ -182,21 +182,21 @@ public class HoofdMenu extends HBox implements View {
         iconen.add(rijstroken, 3, 0);
         //evaluatie midden
         //de nodes
-        stuur = new Stuur(evaController);
-        pijl = new Pijl(evaController);
+        stuur = new Stuur(evaController, 160);
+        pijlen = new Pijlen(evaController, 160);
         
         //opmaak
         stuur.setTranslateX(205);
-        pijl.setTranslateX(195);
+        pijlen.setTranslateX(195);
         
         //eventhandler
         stuur.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
-        pijl.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+        pijlen.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
 
         //alle 3 de onderdelen toevoegen aan center
         //volgorde laten staan! anders werkt schermcontroller niet goed!
         center.add(iconen, 0, 0, 2, 1);
-        center.add(pijl, 1, 1);
+        center.add(pijlen, 1, 1);
         center.add(stuur, 0, 1);
 
         //Bottom of the borderpane
@@ -311,7 +311,7 @@ public class HoofdMenu extends HBox implements View {
         updateOnderdelen();
         updateEvaSelector();
         updateGrafiek();
-        pijl.update();
+        pijlen.update();
         stuur.update();
     }
 
