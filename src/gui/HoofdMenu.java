@@ -276,6 +276,7 @@ public class HoofdMenu extends HBox implements View {
                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel) c));
             }
         });
+        this.setOnMouseClicked((e) -> update());
 
         update();
 

@@ -2,8 +2,8 @@
 package gui;
 
 import controller.EvaController;
+import controller.LeerlingController;
 import controller.SchermController;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -14,25 +14,10 @@ import javafx.scene.layout.HBox;
 
 public class Veld2Verkeerstechniek extends HBox implements View {
     
-    //Images voor pijlen
-    Image pijl1Neutraal = new Image("resource/Verkeerstechniek/pijl1Neutraal.png");
-    Image pijl1Groen = new Image("resource/Verkeerstechniek/pijl1Groen.png");
-    Image pijl1Oranje = new Image("resource/Verkeerstechniek/pijl1Oranje.png");
-    Image pijl1Rood = new Image("resource/Verkeerstechniek/pijl1Rood.png");
-        
-    Image pijl2Neutraal = new Image("resource/Verkeerstechniek/pijl2Neutraal.png");
-    Image pijl2Groen = new Image("resource/Verkeerstechniek/pijl2Groen.png");
-    Image pijl2Oranje = new Image("resource/Verkeerstechniek/pijl2Oranje.png");
-    Image pijl2Rood = new Image("resource/Verkeerstechniek/pijl2Rood.png");
-        
-    Image pijl3Neutraal = new Image("resource/Verkeerstechniek/pijl3Neutraal.png");
-    Image pijl3Groen = new Image("resource/Verkeerstechniek/pijl3Groen.png");
-    Image pijl3Oranje = new Image("resource/Verkeerstechniek/pijl3Oranje.png");
-    Image pijl3Rood = new Image("resource/Verkeerstechniek/pijl3Rood.png");
-    
     //de controllers
     private final SchermController schermController;
     private final EvaController evaController;
+    private final LeerlingController llnController;
     //Afbeeldingen
     private Onderdeel afstandImg, inhalenImg, kruisenImg, linksafImg, rechtsafImg, openbareWegImg,
             richtingaanwijzersImg, snelheidImg, verkeerstekensImg, voorrangImg;
@@ -52,9 +37,11 @@ public class Veld2Verkeerstechniek extends HBox implements View {
     private int hoogte, breedte;
     
     
-    public Veld2Verkeerstechniek(SchermController schermCtrl, EvaController evaCtrl){
+    public Veld2Verkeerstechniek(LeerlingController llnCntrl, SchermController schermCtrl, EvaController evaCtrl){
         evaController = evaCtrl;
         schermController = schermCtrl;
+        llnController = llnCntrl;
+        llnController.getLeerling().addView(this);
         hoogte = schermController.getHoogte();
         breedte = schermController.getBreedte();
         mainGP = new GridPane();
@@ -186,7 +173,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         eva.setTranslateY(75);
         
         //eventhandler
-        exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
+        exit.setOnAction(e -> exitVerkeerstechniek());
         
         links.getChildren().forEach(c -> {
             if (c instanceof Onderdeel)
@@ -198,6 +185,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
                  c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
         eva.setOnMouseClicked((e)->update());
+        this.setOnMouseClicked((e)->update());
         
         //achtergrond
         achtergrond = new ImageView("resource/Verkeerstechniek/achtergrondVerkeerstechniek.png");
@@ -226,6 +214,11 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         selecteerKleur();
         update();
         
+    }
+    
+    public void exitVerkeerstechniek(){
+        llnController.getLeerling().update();
+        this.schermController.setScherm(MainApp.HOOFDMENU_ID);
     }
     
     public void selecteerKleur(){

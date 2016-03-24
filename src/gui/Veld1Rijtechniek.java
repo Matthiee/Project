@@ -174,7 +174,8 @@ public class Veld1Rijtechniek extends HBox implements View {
         evaSelector.setTranslateX(-50);
         exit.setTranslateX(50);
         //eventhandeler
-        exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
+        exit.setOnAction(e -> exitRijtechniek());
+                
         
         //Achtergrond
         achtergrond = new ImageView("resource/Rijtechniek/achtergrondRijtechniek.png");
@@ -210,9 +211,15 @@ public class Veld1Rijtechniek extends HBox implements View {
                  c.setOnMouseClicked((e) -> KleurKiezerHouder.show(rechts, (Onderdeel)c));
         });
         evaSelector.setOnMouseClicked((e)->update());
+        this.setOnMouseClicked((e)->update());
         
         selecteerKleur();
         update();
+    }
+    
+    public void exitRijtechniek(){
+        llnController.getLeerling().update();
+        this.schermController.setScherm(MainApp.HOOFDMENU_ID);
     }
     
     public void selecteerKleur(){
