@@ -22,38 +22,6 @@ import javafx.scene.layout.HBox;
  * @author simon
  */
 public class HoofdMenu extends HBox implements View {
-    
-    //Images voor stuur
-    Image stuur1Neutraal = new Image("resource/Hoofdmenu/stuur1Neutraal.png");
-    Image stuur1Groen = new Image("resource/Hoofdmenu/stuur1Groen.png");
-    Image stuur1Oranje = new Image("resource/Hoofdmenu/stuur1Oranje.png");
-    Image stuur1Rood = new Image("resource/Hoofdmenu/stuur1Rood.png");
-        
-    Image stuur2Neutraal = new Image("resource/Hoofdmenu/stuur2Neutraal.png");
-    Image stuur2Groen = new Image("resource/Hoofdmenu/stuur2Groen.png");
-    Image stuur2Oranje = new Image("resource/Hoofdmenu/stuur2Oranje.png");
-    Image stuur2Rood = new Image("resource/Hoofdmenu/stuur2Rood.png");
-        
-    Image stuur3Neutraal = new Image("resource/Hoofdmenu/stuur3Neutraal.png");
-    Image stuur3Groen = new Image("resource/Hoofdmenu/stuur3Groen.png");
-    Image stuur3Oranje = new Image("resource/Hoofdmenu/stuur3Oranje.png");
-    Image stuur3Rood = new Image("resource/Hoofdmenu/stuur3Rood.png");
-    
-    //Images voor pijlen
-    Image pijl1Neutraal = new Image("resource/Hoofdmenu/pijl1Neutraal.png");
-    Image pijl1Groen = new Image("resource/Hoofdmenu/pijl1Groen.png");
-    Image pijl1Oranje = new Image("resource/Hoofdmenu/pijl1Oranje.png");
-    Image pijl1Rood = new Image("resource/Hoofdmenu/pijl1Rood.png");
-        
-    Image pijl2Neutraal = new Image("resource/Hoofdmenu/pijl2Neutraal.png");
-    Image pijl2Groen = new Image("resource/Hoofdmenu/pijl2Groen.png");
-    Image pijl2Oranje = new Image("resource/Hoofdmenu/pijl2Oranje.png");
-    Image pijl2Rood = new Image("resource/Hoofdmenu/pijl2Rood.png");
-        
-    Image pijl3Neutraal = new Image("resource/Hoofdmenu/pijl3Neutraal.png");
-    Image pijl3Groen = new Image("resource/Hoofdmenu/pijl3Groen.png");
-    Image pijl3Oranje = new Image("resource/Hoofdmenu/pijl3Oranje.png");
-    Image pijl3Rood = new Image("resource/Hoofdmenu/pijl3Rood.png");
 
     //objecten en controllers
     private LeerlingController llnController;
@@ -78,9 +46,11 @@ public class HoofdMenu extends HBox implements View {
     private GridPane right;
     private Onderdeel gps, stop, tanken;
     //center
-    private GridPane center, iconen, evaluatieMid1, evaluatieMid2;
+    private GridPane center, iconen;
     private Onderdeel rotonde, rijstroken, stad, snelweg;
-    private ImageView attitudeImg, pijl1, pijl2, pijl3, stuur1, stuur2, stuur3;
+    private ImageView attitudeImg;
+    private Stuur stuur;
+    private Pijlen pijlen;
     //bottom
     private GridPane bottom;
     private EvaSelector evaSelector;
@@ -211,60 +181,23 @@ public class HoofdMenu extends HBox implements View {
         iconen.add(rotonde, 2, 0);
         iconen.add(rijstroken, 3, 0);
         //evaluatie midden
-        evaluatieMid1 = new GridPane();
-        evaluatieMid2 = new GridPane();
         //de nodes
-        pijl1 = new ImageView("resource/Hoofdmenu/pijl1Neutraal.png");
-        pijl2 = new ImageView("resource/Hoofdmenu/pijl2Neutraal.png");
-        pijl3 = new ImageView("resource/Hoofdmenu/pijl3Neutraal.png");
-        stuur1 = new ImageView("resource/Hoofdmenu/stuur1Neutraal.png");
-        stuur2 = new ImageView("resource/Hoofdmenu/stuur2Neutraal.png");
-        stuur3 = new ImageView("resource/Hoofdmenu/stuur3Neutraal.png");
+        stuur = new Stuur(evaController, 160);
+        pijlen = new Pijlen(evaController, 160);
+        
         //opmaak
-        pijl1.setFitHeight(80);
-        pijl1.setFitWidth(80);
-        pijl2.setFitHeight(80);
-        pijl2.setFitWidth(80);
-        pijl3.setFitHeight(80);
-        pijl3.setFitWidth(160);
-        stuur1.setFitHeight(80);
-        stuur1.setFitWidth(160);
-        stuur2.setFitHeight(80);
-        stuur2.setFitWidth(80);
-        stuur3.setFitHeight(80);
-        stuur3.setFitWidth(80);
-        evaluatieMid1.setMaxHeight(160);
-        evaluatieMid1.setMinHeight(160);
-        evaluatieMid1.setPadding(new Insets(5, 5, 5, 5));
-        evaluatieMid1.setAlignment(Pos.CENTER);
-        evaluatieMid1.setTranslateX(200);
-        evaluatieMid2.setMaxHeight(160);
-        evaluatieMid2.setMinHeight(160);
-        evaluatieMid2.setPadding(new Insets(5, 5, 5, 5));
-        evaluatieMid2.setAlignment(Pos.CENTER);
-        evaluatieMid2.setTranslateX(0);
-
-        //nodes toevoegen
-        evaluatieMid1.add(stuur1, 0, 0, 2, 1);
-        evaluatieMid1.add(stuur2, 0, 1);
-        evaluatieMid1.add(stuur3, 1, 1);
-        evaluatieMid2.add(pijl1, 0, 0);
-        evaluatieMid2.add(pijl2, 1, 0);
-        evaluatieMid2.add(pijl3, 0, 1, 2, 1);
+        stuur.setTranslateX(205);
+        pijlen.setTranslateX(195);
+        
         //eventhandler
-        stuur1.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
-        stuur2.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
-        stuur3.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
-        pijl1.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
-        pijl2.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
-        pijl3.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
-        evaluatieMid2.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+        stuur.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        pijlen.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
 
         //alle 3 de onderdelen toevoegen aan center
         //volgorde laten staan! anders werkt schermcontroller niet goed!
         center.add(iconen, 0, 0, 2, 1);
-        center.add(evaluatieMid2, 1, 1);
-        center.add(evaluatieMid1, 0, 1);
+        center.add(pijlen, 1, 1);
+        center.add(stuur, 0, 1);
 
         //Bottom of the borderpane
         bottom = new GridPane();
@@ -343,52 +276,13 @@ public class HoofdMenu extends HBox implements View {
                 c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel) c));
             }
         });
+        this.setOnMouseClicked((e) -> update());
 
         update();
 
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
     
-    public void updateStuur(){
-        int stuur [] = evaController.loadStuur();
-                
-        //stuur1
-        if(stuur[0] == 0) stuur1.setImage(stuur1Neutraal);
-        if(stuur[0] == 1) stuur1.setImage(stuur1Groen);
-        if(stuur[0] == 2) stuur1.setImage(stuur1Oranje);
-        if(stuur[0] == 3) stuur1.setImage(stuur1Rood);
-        //stuur2
-        if(stuur[1] == 0) stuur2.setImage(stuur2Neutraal);
-        if(stuur[1] == 1) stuur2.setImage(stuur2Groen);
-        if(stuur[1] == 2) stuur2.setImage(stuur2Oranje);
-        if(stuur[1] == 3) stuur2.setImage(stuur2Rood);
-        //stuur3
-        if(stuur[2] == 0) stuur3.setImage(stuur3Neutraal);
-        if(stuur[2] == 1) stuur3.setImage(stuur3Groen);
-        if(stuur[2] == 2) stuur3.setImage(stuur3Oranje);
-        if(stuur[2] == 3) stuur3.setImage(stuur3Rood);
-    }
-    
-    public void updatePijlen(){
-        int pijl [] = evaController.loadPijlen();
-                
-        //stuur1
-        if(pijl[0] == 0) pijl1.setImage(pijl1Neutraal);
-        if(pijl[0] == 1) pijl1.setImage(pijl1Groen);
-        if(pijl[0] == 2) pijl1.setImage(pijl1Oranje);
-        if(pijl[0] == 3) pijl1.setImage(pijl1Rood);
-        //stuur2
-        if(pijl[1] == 0) pijl2.setImage(pijl2Neutraal);
-        if(pijl[1] == 1) pijl2.setImage(pijl2Groen);
-        if(pijl[1] == 2) pijl2.setImage(pijl2Oranje);
-        if(pijl[1] == 3) pijl2.setImage(pijl2Rood);
-        //stuur3
-        if(pijl[2] == 0) pijl3.setImage(pijl3Neutraal);
-        if(pijl[2] == 1) pijl3.setImage(pijl3Groen);
-        if(pijl[2] == 2) pijl3.setImage(pijl3Oranje);
-        if(pijl[2] == 3) pijl3.setImage(pijl3Rood);
-    }
-
     public void updateOnderdelen() {
         //left
         evaController.loadColorData(schakelaars);
@@ -412,14 +306,18 @@ public class HoofdMenu extends HBox implements View {
     public void updateGrafiek() {
         graphImg.update();
     }
+    
+    public void updateStuurEnPijlen(){
+        pijlen.update();
+        stuur.update();
+    }
 
     @Override
     public void update() {
         updateOnderdelen();
         updateEvaSelector();
         updateGrafiek();
-        updateStuur();
-        updatePijlen();
+        updateStuurEnPijlen();
     }
 
 }

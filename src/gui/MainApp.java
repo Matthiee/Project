@@ -56,7 +56,7 @@ public class MainApp extends Application{
         InfoScherm info = new InfoScherm(controller, schermenCtrl);
         LoginScherm login = new LoginScherm(controller, schermenCtrl);
         Veld1Rijtechniek rijtechniek = new Veld1Rijtechniek(controller, schermenCtrl, evaController);
-        Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(schermenCtrl, evaController);
+        Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(controller, schermenCtrl, evaController);
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);
         
