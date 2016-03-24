@@ -11,6 +11,8 @@ public class Pijl extends GridPane{
     
     private ImageView pijl1, pijl2, pijl3;
     
+    private int zijde;
+    
     //Images voor pijlen
     Image pijl1Neutraal = new Image("resource/Pijlen/pijl1Neutraal.png");
     Image pijl1Groen = new Image("resource/Pijlen/pijl1Groen.png");
@@ -27,22 +29,23 @@ public class Pijl extends GridPane{
     Image pijl3Oranje = new Image("resource/Pijlen/pijl3Oranje.png");
     Image pijl3Rood = new Image("resource/Pijlen/pijl3Rood.png");
     
-    public Pijl(EvaController evaCtrl) {
+    public Pijl(EvaController evaCtrl, int size) {
         evaController = evaCtrl;
+        zijde = size;
         
         pijl1 = new ImageView("resource/Pijlen/pijl1Neutraal.png");
         pijl2 = new ImageView("resource/Pijlen/pijl2Neutraal.png");
         pijl3 = new ImageView("resource/Pijlen/pijl3Neutraal.png");
         
-        pijl1.setFitHeight(80);
-        pijl1.setFitWidth(80);
-        pijl2.setFitHeight(80);
-        pijl2.setFitWidth(80);
-        pijl3.setFitHeight(80);
-        pijl3.setFitWidth(160);
+        pijl1.setFitHeight(zijde/2);
+        pijl1.setFitWidth(zijde/2);
+        pijl2.setFitHeight(zijde/2);
+        pijl2.setFitWidth(zijde/2);
+        pijl3.setFitHeight(zijde/2);
+        pijl3.setFitWidth(zijde);
         
-        this.setMinSize(160, 160);
-        this.setMaxSize(160, 160);
+        this.setMinSize(zijde, zijde);
+        this.setMaxSize(zijde, zijde);
         
         this.add(pijl1, 0, 0);
         this.add(pijl2, 1, 0);
