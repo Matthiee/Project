@@ -11,6 +11,7 @@ public class Stuur extends GridPane{
     private EvaController evaController;
     
     private final ImageView stuur1, stuur2, stuur3;
+    private int zijde;
     
     //Images voor stuur
     Image stuur1Neutraal = new Image("resource/Stuur/stuur1Neutraal.png");
@@ -28,22 +29,24 @@ public class Stuur extends GridPane{
     Image stuur3Oranje = new Image("resource/Stuur/stuur3Oranje.png");
     Image stuur3Rood = new Image("resource/Stuur/stuur3Rood.png");
     
-    public Stuur(EvaController evaCtrl) {
+    public Stuur(EvaController evaCtrl, int size) {
         evaController = evaCtrl;
+        
+        zijde = size;
         
         stuur1 = new ImageView("resource/Stuur/stuur1Neutraal.png");
         stuur2 = new ImageView("resource/Stuur/stuur2Neutraal.png");
         stuur3 = new ImageView("resource/Stuur/stuur3Neutraal.png");
         
-        stuur1.setFitHeight(80);
-        stuur1.setFitWidth(160);
-        stuur2.setFitHeight(80);
-        stuur2.setFitWidth(80);
-        stuur3.setFitHeight(80);
-        stuur3.setFitWidth(80);
+        stuur1.setFitHeight(zijde/2);
+        stuur1.setFitWidth(zijde);
+        stuur2.setFitHeight(zijde/2);
+        stuur2.setFitWidth(zijde/2);
+        stuur3.setFitHeight(zijde/2);
+        stuur3.setFitWidth(zijde/2);
         
-        this.setMinSize(160, 160);
-        this.setMaxSize(160, 160);
+        this.setMinSize(zijde, zijde);
+        this.setMaxSize(zijde, zijde);
         
         this.add(stuur1, 0, 0, 2, 1);
         this.add(stuur2, 0, 1);
