@@ -395,12 +395,27 @@ public class EvaController {
         //hoofdmenu
             //links
             int selectedEva = getSelectedEva();
+            int code; //bepaald rangorde van de kleuren
             
         if(base.equals("resource/Hoofdmenu/schakelaars")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setSchakelaars(status);
-                if(leerlingController.getEva2().getSchakelaars() == 0)leerlingController.getEva2().setSchakelaars(status);
-                if(leerlingController.getEva3().getSchakelaars() == 0)leerlingController.getEva3().setSchakelaars(status);
+                if(leerlingController.getEva2().getSchakelaars() == 0){
+                    leerlingController.getEva2().setSchakelaars(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getSchakelaars()){
+                        leerlingController.getEva2().setSchakelaars(status);
+                    }
+                }
+                if(leerlingController.getEva3().getSchakelaars() == 0){
+                    leerlingController.getEva3().setSchakelaars(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getSchakelaars()){
+                        leerlingController.getEva3().setSchakelaars(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setSchakelaars(status);
@@ -412,8 +427,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/vloeistoffen")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setVloeistoffen(status);
-                if(leerlingController.getEva2().getVloeistoffen() == 0)leerlingController.getEva2().setVloeistoffen(status);
-                if(leerlingController.getEva3().getVloeistoffen() == 0)leerlingController.getEva3().setVloeistoffen(status);
+                if(leerlingController.getEva2().getVloeistoffen() == 0){
+                    leerlingController.getEva2().setVloeistoffen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getVloeistoffen()){
+                        leerlingController.getEva2().setVloeistoffen(status);
+                    }
+                }
+                if(leerlingController.getEva3().getVloeistoffen() == 0){
+                    leerlingController.getEva3().setVloeistoffen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getVloeistoffen()){
+                        leerlingController.getEva3().setVloeistoffen(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setVloeistoffen(status);
@@ -425,8 +454,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/banden")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setBanden(status);
-                if(leerlingController.getEva2().getBanden() == 0)leerlingController.getEva2().setBanden(status);
-                if(leerlingController.getEva3().getBanden() == 0)leerlingController.getEva3().setBanden(status);
+                if(leerlingController.getEva2().getBanden() == 0){
+                    leerlingController.getEva2().setBanden(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getBanden()){
+                        leerlingController.getEva2().setBanden(status);
+                    }
+                }
+                if(leerlingController.getEva3().getBanden() == 0){
+                    leerlingController.getEva3().setBanden(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getBanden()){
+                        leerlingController.getEva3().setBanden(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setBanden(status);
@@ -438,8 +481,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/tanken")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setTanken(status);
-                if(leerlingController.getEva2().getTanken() == 0)leerlingController.getEva2().setTanken(status);
-                if(leerlingController.getEva3().getTanken() == 0)leerlingController.getEva3().setTanken(status);
+                if(leerlingController.getEva2().getTanken() == 0){
+                    leerlingController.getEva2().setTanken(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getTanken()){
+                        leerlingController.getEva2().setTanken(status);
+                    }
+                }
+                if(leerlingController.getEva3().getTanken() == 0){
+                    leerlingController.getEva3().setTanken(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getTanken()){
+                        leerlingController.getEva3().setTanken(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setTanken(status);
@@ -451,8 +508,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/gps")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setGps(status);
-                if(leerlingController.getEva2().getGps() == 0)leerlingController.getEva2().setGps(status);
-                if(leerlingController.getEva3().getGps() == 0)leerlingController.getEva3().setGps(status);
+                if(leerlingController.getEva2().getGps() == 0){
+                    leerlingController.getEva2().setGps(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getGps()){
+                        leerlingController.getEva2().setGps(status);
+                    }
+                }
+                if(leerlingController.getEva3().getGps() == 0){
+                    leerlingController.getEva3().setGps(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getGps()){
+                        leerlingController.getEva3().setGps(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setGps(status);
@@ -464,8 +535,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/stop")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setNoodstop(status);
-                if(leerlingController.getEva2().getNoodstop() == 0)leerlingController.getEva2().setNoodstop(status);
-                if(leerlingController.getEva3().getNoodstop() == 0)leerlingController.getEva3().setNoodstop(status);
+                if(leerlingController.getEva2().getNoodstop() == 0){
+                    leerlingController.getEva2().setNoodstop(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getNoodstop()){
+                        leerlingController.getEva2().setNoodstop(status);
+                    }
+                }
+                if(leerlingController.getEva3().getNoodstop() == 0){
+                    leerlingController.getEva3().setNoodstop(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getNoodstop()){
+                        leerlingController.getEva3().setNoodstop(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setNoodstop(status);
@@ -477,8 +562,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/stad")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setStad(status);
-                if(leerlingController.getEva2().getStad() == 0)leerlingController.getEva2().setStad(status);
-                if(leerlingController.getEva3().getStad() == 0)leerlingController.getEva3().setStad(status);
+                if(leerlingController.getEva2().getStad() == 0){
+                    leerlingController.getEva2().setStad(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getStad()){
+                        leerlingController.getEva2().setStad(status);
+                    }
+                }
+                if(leerlingController.getEva3().getStad() == 0){
+                    leerlingController.getEva3().setStad(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getStad()){
+                        leerlingController.getEva3().setStad(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setStad(status);
@@ -489,8 +588,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/snelweg")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setAutosnelweg(status);
-                if(leerlingController.getEva2().getAutosnelweg() == 0)leerlingController.getEva2().setAutosnelweg(status);
-                if(leerlingController.getEva3().getAutosnelweg() == 0)leerlingController.getEva3().setAutosnelweg(status);
+                if(leerlingController.getEva2().getAutosnelweg() == 0){
+                    leerlingController.getEva2().setAutosnelweg(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getAutosnelweg()){
+                        leerlingController.getEva2().setAutosnelweg(status);
+                    }
+                }
+                if(leerlingController.getEva3().getAutosnelweg() == 0){
+                    leerlingController.getEva3().setAutosnelweg(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getAutosnelweg()){
+                        leerlingController.getEva3().setAutosnelweg(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setAutosnelweg(status);
@@ -501,8 +614,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/rotonde")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setRotonde(status);
-                if(leerlingController.getEva2().getRotonde() == 0)leerlingController.getEva2().setRotonde(status);
-                if(leerlingController.getEva3().getRotonde() == 0)leerlingController.getEva3().setRotonde(status);
+                if(leerlingController.getEva2().getRotonde() == 0){
+                    leerlingController.getEva2().setRotonde(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getRotonde()){
+                        leerlingController.getEva2().setRotonde(status);
+                    }
+                }
+                if(leerlingController.getEva3().getRotonde() == 0){
+                    leerlingController.getEva3().setRotonde(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getRotonde()){
+                        leerlingController.getEva3().setRotonde(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setRotonde(status);
@@ -513,8 +640,22 @@ public class EvaController {
         if(base.equals("resource/Hoofdmenu/rijstroken")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setRijstroken(status);
-                if(leerlingController.getEva2().getRijstroken() == 0)leerlingController.getEva2().setRijstroken(status);
-                if(leerlingController.getEva3().getRijstroken() == 0)leerlingController.getEva3().setRijstroken(status);
+                if(leerlingController.getEva2().getRijstroken() == 0){
+                    leerlingController.getEva2().setRijstroken(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getRijstroken()){
+                        leerlingController.getEva2().setRijstroken(status);
+                    }
+                }
+                if(leerlingController.getEva3().getRijstroken() == 0){
+                    leerlingController.getEva3().setRijstroken(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getRijstroken()){
+                        leerlingController.getEva3().setRijstroken(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setRijstroken(status);
@@ -526,8 +667,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/stuuroef")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setStuuroef(status);
-                if(leerlingController.getEva2().getStuuroef() == 0)leerlingController.getEva2().setStuuroef(status);
-                if(leerlingController.getEva3().getStuuroef() == 0)leerlingController.getEva3().setStuuroef(status);
+                if(leerlingController.getEva2().getStuuroef() == 0){
+                    leerlingController.getEva2().setStuuroef(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getStuuroef()){
+                        leerlingController.getEva2().setStuuroef(status);
+                    }
+                }
+                if(leerlingController.getEva3().getStuuroef() == 0){
+                    leerlingController.getEva3().setStuuroef(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getStuuroef()){
+                        leerlingController.getEva3().setStuuroef(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setStuuroef(status);
@@ -538,8 +693,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/keren")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setKeren(status);
-                if(leerlingController.getEva2().getKeren() == 0)leerlingController.getEva2().setKeren(status);
-                if(leerlingController.getEva3().getKeren() == 0)leerlingController.getEva3().setKeren(status);
+                if(leerlingController.getEva2().getKeren() == 0){
+                    leerlingController.getEva2().setKeren(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getKeren()){
+                        leerlingController.getEva2().setKeren(status);
+                    }
+                }
+                if(leerlingController.getEva3().getKeren() == 0){
+                    leerlingController.getEva3().setKeren(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getKeren()){
+                        leerlingController.getEva3().setKeren(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setKeren(status);
@@ -550,8 +719,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/garage")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setGarage(status);
-                if(leerlingController.getEva2().getGarage() == 0)leerlingController.getEva2().setGarage(status);
-                if(leerlingController.getEva3().getGarage() == 0)leerlingController.getEva3().setGarage(status);
+                if(leerlingController.getEva2().getGarage() == 0){
+                    leerlingController.getEva2().setGarage(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getGarage()){
+                        leerlingController.getEva2().setGarage(status);
+                    }
+                }
+                if(leerlingController.getEva3().getGarage() == 0){
+                    leerlingController.getEva3().setGarage(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getGarage()){
+                        leerlingController.getEva3().setGarage(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setGarage(status);
@@ -562,8 +745,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/parkeren")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setParkeren(status);
-                if(leerlingController.getEva2().getParkeren() == 0)leerlingController.getEva2().setParkeren(status);
-                if(leerlingController.getEva3().getParkeren() == 0)leerlingController.getEva3().setParkeren(status);
+                if(leerlingController.getEva2().getParkeren() == 0){
+                    leerlingController.getEva2().setParkeren(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getParkeren()){
+                        leerlingController.getEva2().setParkeren(status);
+                    }
+                }
+                if(leerlingController.getEva3().getParkeren() == 0){
+                    leerlingController.getEva3().setParkeren(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getParkeren()){
+                        leerlingController.getEva3().setParkeren(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setParkeren(status);
@@ -574,8 +771,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/achteruit")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setAchteruit(status);
-                if(leerlingController.getEva2().getAchteruit() == 0)leerlingController.getEva2().setAchteruit(status);
-                if(leerlingController.getEva3().getAchteruit() == 0)leerlingController.getEva3().setAchteruit(status);
+                if(leerlingController.getEva2().getAchteruit() == 0){
+                    leerlingController.getEva2().setAchteruit(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getAchteruit()){
+                        leerlingController.getEva2().setAchteruit(status);
+                    }
+                }
+                if(leerlingController.getEva3().getAchteruit() == 0){
+                    leerlingController.getEva3().setAchteruit(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getAchteruit()){
+                        leerlingController.getEva3().setAchteruit(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setAchteruit(status);
@@ -586,8 +797,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/rem")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setRemmen(status);
-                if(leerlingController.getEva2().getRemmen() == 0)leerlingController.getEva2().setRemmen(status);
-                if(leerlingController.getEva3().getRemmen() == 0)leerlingController.getEva3().setRemmen(status);
+                if(leerlingController.getEva2().getRemmen() == 0){
+                    leerlingController.getEva2().setRemmen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getRemmen()){
+                        leerlingController.getEva2().setRemmen(status);
+                    }
+                }
+                if(leerlingController.getEva3().getRemmen() == 0){
+                    leerlingController.getEva3().setRemmen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getRemmen()){
+                        leerlingController.getEva3().setRemmen(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setRemmen(status);
@@ -598,8 +823,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/koppeling")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setKoppeling(status);
-                if(leerlingController.getEva2().getKoppeling() == 0)leerlingController.getEva2().setKoppeling(status);
-                if(leerlingController.getEva3().getKoppeling() == 0)leerlingController.getEva3().setKoppeling(status);
+                if(leerlingController.getEva2().getKoppeling() == 0){
+                    leerlingController.getEva2().setKoppeling(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getKoppeling()){
+                        leerlingController.getEva2().setKoppeling(status);
+                    }
+                }
+                if(leerlingController.getEva3().getKoppeling() == 0){
+                    leerlingController.getEva3().setKoppeling(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getKoppeling()){
+                        leerlingController.getEva3().setKoppeling(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setKoppeling(status);
@@ -610,8 +849,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/helling")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setHelling(status);
-                if(leerlingController.getEva2().getHelling() == 0)leerlingController.getEva2().setHelling(status);
-                if(leerlingController.getEva3().getHelling() == 0)leerlingController.getEva3().setHelling(status);
+                if(leerlingController.getEva2().getHelling() == 0){
+                    leerlingController.getEva2().setHelling(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getHelling()){
+                        leerlingController.getEva2().setHelling(status);
+                    }
+                }
+                if(leerlingController.getEva3().getHelling() == 0){
+                    leerlingController.getEva3().setHelling(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getHelling()){
+                        leerlingController.getEva3().setHelling(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setHelling(status);
@@ -622,8 +875,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/kijk")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setKijken(status);
-                if(leerlingController.getEva2().getKijken() == 0)leerlingController.getEva2().setKijken(status);
-                if(leerlingController.getEva3().getKijken() == 0)leerlingController.getEva3().setKijken(status);
+                if(leerlingController.getEva2().getKijken() == 0){
+                    leerlingController.getEva2().setKijken(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getKijken()){
+                        leerlingController.getEva2().setKijken(status);
+                    }
+                }
+                if(leerlingController.getEva3().getKijken() == 0){
+                    leerlingController.getEva3().setKijken(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getKijken()){
+                        leerlingController.getEva3().setKijken(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setKijken(status);
@@ -634,8 +901,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/schakel")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setSchakelen(status);
-                if(leerlingController.getEva2().getSchakelen() == 0)leerlingController.getEva2().setSchakelen(status);
-                if(leerlingController.getEva3().getSchakelen() == 0)leerlingController.getEva3().setSchakelen(status);
+                if(leerlingController.getEva2().getSchakelen() == 0){
+                    leerlingController.getEva2().setSchakelen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getSchakelen()){
+                        leerlingController.getEva2().setSchakelen(status);
+                    }
+                }
+                if(leerlingController.getEva3().getSchakelen() == 0){
+                    leerlingController.getEva3().setSchakelen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getSchakelen()){
+                        leerlingController.getEva3().setSchakelen(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setSchakelen(status);
@@ -646,8 +927,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/stuur")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setSturen(status);
-                if(leerlingController.getEva2().getSturen() == 0)leerlingController.getEva2().setSturen(status);
-                if(leerlingController.getEva3().getSturen() == 0)leerlingController.getEva3().setSturen(status);
+                if(leerlingController.getEva2().getSturen() == 0){
+                    leerlingController.getEva2().setSturen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getSturen()){
+                        leerlingController.getEva2().setSturen(status);
+                    }
+                }
+                if(leerlingController.getEva3().getSturen() == 0){
+                    leerlingController.getEva3().setSturen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getSturen()){
+                        leerlingController.getEva3().setSturen(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setSturen(status);
@@ -658,8 +953,22 @@ public class EvaController {
         if(base.equals("resource/Rijtechniek/houding")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setHouding(status);
-                if(leerlingController.getEva2().getHouding() == 0)leerlingController.getEva2().setHouding(status);
-                if(leerlingController.getEva3().getHouding() == 0)leerlingController.getEva3().setHouding(status);
+                if(leerlingController.getEva2().getHouding() == 0){
+                    leerlingController.getEva2().setHouding(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getHouding()){
+                        leerlingController.getEva2().setHouding(status);
+                    }
+                }
+                if(leerlingController.getEva3().getHouding() == 0){
+                    leerlingController.getEva3().setHouding(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getHouding()){
+                        leerlingController.getEva3().setHouding(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setHouding(status);
@@ -672,8 +981,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/openbareWeg")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setOpenbareWeg(status);
-                if(leerlingController.getEva2().getOpenbareWeg() == 0)leerlingController.getEva2().setOpenbareWeg(status);
-                if(leerlingController.getEva3().getOpenbareWeg() == 0)leerlingController.getEva3().setOpenbareWeg(status);
+                if(leerlingController.getEva2().getOpenbareWeg() == 0){
+                    leerlingController.getEva2().setOpenbareWeg(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getOpenbareWeg()){
+                        leerlingController.getEva2().setOpenbareWeg(status);
+                    }
+                }
+                if(leerlingController.getEva3().getOpenbareWeg() == 0){
+                    leerlingController.getEva3().setOpenbareWeg(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getOpenbareWeg()){
+                        leerlingController.getEva3().setOpenbareWeg(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setOpenbareWeg(status);
@@ -684,8 +1007,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/richtingaanwijzers")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setRichtingaanwijzers(status);
-                if(leerlingController.getEva2().getRichtingaanwijzers() == 0)leerlingController.getEva2().setRichtingaanwijzers(status);
-                if(leerlingController.getEva3().getRichtingaanwijzers() == 0)leerlingController.getEva3().setRichtingaanwijzers(status);
+                if(leerlingController.getEva2().getRichtingaanwijzers() == 0){
+                    leerlingController.getEva2().setRichtingaanwijzers(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getRichtingaanwijzers()){
+                        leerlingController.getEva2().setRichtingaanwijzers(status);
+                    }
+                }
+                if(leerlingController.getEva3().getRichtingaanwijzers() == 0){
+                    leerlingController.getEva3().setRichtingaanwijzers(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getRichtingaanwijzers()){
+                        leerlingController.getEva3().setRichtingaanwijzers(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setRichtingaanwijzers(status);
@@ -696,8 +1033,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/rechtsaf")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setRechtsaf(status);
-                if(leerlingController.getEva2().getRechtsaf() == 0)leerlingController.getEva2().setRechtsaf(status);
-                if(leerlingController.getEva3().getRechtsaf() == 0)leerlingController.getEva3().setRechtsaf(status);
+                if(leerlingController.getEva2().getRechtsaf() == 0){
+                    leerlingController.getEva2().setRechtsaf(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getRechtsaf()){
+                        leerlingController.getEva2().setRechtsaf(status);
+                    }
+                }
+                if(leerlingController.getEva3().getRechtsaf() == 0){
+                    leerlingController.getEva3().setRechtsaf(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getRechtsaf()){
+                        leerlingController.getEva3().setRechtsaf(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setRechtsaf(status);
@@ -708,8 +1059,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/linksaf")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setLinksaf(status);
-                if(leerlingController.getEva2().getLinksaf() == 0)leerlingController.getEva2().setLinksaf(status);
-                if(leerlingController.getEva3().getLinksaf() == 0)leerlingController.getEva3().setLinksaf(status);
+                if(leerlingController.getEva2().getLinksaf() == 0){
+                    leerlingController.getEva2().setLinksaf(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getLinksaf()){
+                        leerlingController.getEva2().setLinksaf(status);
+                    }
+                }
+                if(leerlingController.getEva3().getLinksaf() == 0){
+                    leerlingController.getEva3().setLinksaf(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getLinksaf()){
+                        leerlingController.getEva3().setLinksaf(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setLinksaf(status);
@@ -720,8 +1085,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/kruisen")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setKruisen(status);
-                if(leerlingController.getEva2().getKruisen() == 0)leerlingController.getEva2().setKruisen(status);
-                if(leerlingController.getEva3().getKruisen() == 0)leerlingController.getEva3().setKruisen(status);
+                if(leerlingController.getEva2().getKruisen() == 0){
+                    leerlingController.getEva2().setKruisen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getKruisen()){
+                        leerlingController.getEva2().setKruisen(status);
+                    }
+                }
+                if(leerlingController.getEva3().getKruisen() == 0){
+                    leerlingController.getEva3().setKruisen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getKruisen()){
+                        leerlingController.getEva3().setKruisen(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setKruisen(status);
@@ -732,8 +1111,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/voorrang")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setVoorrang(status);
-                if(leerlingController.getEva2().getVoorrang() == 0)leerlingController.getEva2().setVoorrang(status);
-                if(leerlingController.getEva3().getVoorrang() == 0)leerlingController.getEva3().setVoorrang(status);
+                if(leerlingController.getEva2().getVoorrang() == 0){
+                    leerlingController.getEva2().setVoorrang(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getVoorrang()){
+                        leerlingController.getEva2().setVoorrang(status);
+                    }
+                }
+                if(leerlingController.getEva3().getVoorrang() == 0){
+                    leerlingController.getEva3().setVoorrang(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getVoorrang()){
+                        leerlingController.getEva3().setVoorrang(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setVoorrang(status);
@@ -744,8 +1137,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/verkeerstekens")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setVerkeerstekens(status);
-                if(leerlingController.getEva2().getVerkeerstekens() == 0)leerlingController.getEva2().setVerkeerstekens(status);
-                if(leerlingController.getEva3().getVerkeerstekens() == 0)leerlingController.getEva3().setVerkeerstekens(status);
+                if(leerlingController.getEva2().getVerkeerstekens() == 0){
+                    leerlingController.getEva2().setVerkeerstekens(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getVerkeerstekens()){
+                        leerlingController.getEva2().setVerkeerstekens(status);
+                    }
+                }
+                if(leerlingController.getEva3().getVerkeerstekens() == 0){
+                    leerlingController.getEva3().setVerkeerstekens(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getVerkeerstekens()){
+                        leerlingController.getEva3().setVerkeerstekens(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setVerkeerstekens(status);
@@ -756,8 +1163,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/snelheid")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setSnelheid(status);
-                if(leerlingController.getEva2().getSnelheid() == 0)leerlingController.getEva2().setSnelheid(status);
-                if(leerlingController.getEva3().getSnelheid() == 0)leerlingController.getEva3().setSnelheid(status);
+                if(leerlingController.getEva2().getSnelheid() == 0){
+                    leerlingController.getEva2().setSnelheid(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getSnelheid()){
+                        leerlingController.getEva2().setSnelheid(status);
+                    }
+                }
+                if(leerlingController.getEva3().getSnelheid() == 0){
+                    leerlingController.getEva3().setSnelheid(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getSnelheid()){
+                        leerlingController.getEva3().setSnelheid(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setSnelheid(status);
@@ -768,8 +1189,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/afstand")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setAfstand(status);
-                if(leerlingController.getEva2().getAfstand() == 0)leerlingController.getEva2().setAfstand(status);
-                if(leerlingController.getEva3().getAfstand() == 0)leerlingController.getEva3().setAfstand(status);
+                if(leerlingController.getEva2().getAfstand() == 0){
+                    leerlingController.getEva2().setAfstand(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getAfstand()){
+                        leerlingController.getEva2().setAfstand(status);
+                    }
+                }
+                if(leerlingController.getEva3().getAfstand() == 0){
+                    leerlingController.getEva3().setAfstand(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getAfstand()){
+                        leerlingController.getEva3().setAfstand(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setAfstand(status);
@@ -780,8 +1215,22 @@ public class EvaController {
         if(base.equals("resource/Verkeerstechniek/inhalen")){
             if(selectedEva == 1){
                 leerlingController.getEva1().setInhalen(status);
-                if(leerlingController.getEva2().getInhalen() == 0)leerlingController.getEva2().setInhalen(status);
-                if(leerlingController.getEva3().getInhalen() == 0)leerlingController.getEva3().setInhalen(status);
+                if(leerlingController.getEva2().getInhalen() == 0){
+                    leerlingController.getEva2().setInhalen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva2().getInhalen()){
+                        leerlingController.getEva2().setInhalen(status);
+                    }
+                }
+                if(leerlingController.getEva3().getInhalen() == 0){
+                    leerlingController.getEva3().setInhalen(status);
+                }
+                else{
+                    if(status < leerlingController.getEva3().getInhalen()){
+                        leerlingController.getEva3().setInhalen(status);
+                    }
+                }
             }
             if(selectedEva == 2) {
                 leerlingController.getEva2().setInhalen(status);
