@@ -7,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -16,15 +15,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
-/**
- *
- * @author Kenzo
- */
 public class Veld3Attitude extends Pane {
 
     //toonTable is de table die moet getoond worden
@@ -102,13 +98,17 @@ public class Veld3Attitude extends Pane {
                         addAttitude.getText()
                 ));
                 addAttitude.clear();
-
             }
         });
         addButton.setTranslateY(17);
 
         table.setItems(data);
-        table.setOnMouseClicked(e -> doorgaanAlsGeselecteerd());
+        table.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                doorgaanAlsGeselecteerd();
+            }
+        });
         table.setEditable(true);
         table.setMaxHeight(250);
         toonTable.setMaxHeight(250);
@@ -117,7 +117,12 @@ public class Veld3Attitude extends Pane {
         exit = new Button("ga terug");
         exit.setTranslateY(0);
 
-        exit.setOnAction(e -> this.schermController.setScherm(MainApp.HOOFDMENU_ID));
+        exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                Veld3Attitude.this.schermController.setScherm(MainApp.HOOFDMENU_ID);
+            }
+        });
         hBox1.getChildren().addAll(exit);
 
         toonTable.setMinWidth(150);
@@ -126,7 +131,12 @@ public class Veld3Attitude extends Pane {
         vBox1.getChildren().addAll(toonTable);
         vBox1.setTranslateX(10);
 
-        toonTable.setOnMouseClicked(e -> verwijder());
+        toonTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                verwijder();
+            }
+        });
         this.getChildren().addAll(vBox1, vBox2, hBox1);
         this.setMinWidth(600);
     }

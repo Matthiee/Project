@@ -3,6 +3,10 @@ package gui;
 import controller.SchermController;
 import domein.Leerling;
 import java.util.Date;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -17,11 +21,6 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import persistentie.LeerlingMapper;
 
-/**
- *
- * @author Kenzo
- * @author Matthias
- */
 public class NieuweLeerling extends StackPane {
 
     private final SchermController schermController;
@@ -38,10 +37,8 @@ public class NieuweLeerling extends StackPane {
     public NieuweLeerling(SchermController schermController1) {
         setPadding(new Insets(10));
 
-        
-        
-        this.setMaxSize(665, 440); 
- 
+        this.setMaxSize(665, 440);
+
         schermController = schermController1;
 
         lblNaam = new Label("Naam: ");
@@ -87,17 +84,29 @@ public class NieuweLeerling extends StackPane {
         this.getChildren().add(holder);
 
         //events
-        btnOpslaan.setOnAction(e -> opslaan());
-        btnTerug.setOnAction(e -> {
-            
-            ((View)schermController.getScherm(MainApp.LOGIN_ID)).update(); // work around om MVC view update te forceren!
-            
-            schermController.setScherm(MainApp.LOGIN_ID);
+        btnOpslaan.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                opslaan();
+            }
+        });
+        btnTerug.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                ((View) schermController.getScherm(MainApp.LOGIN_ID)).update(); // work around om MVC view update te forceren!
+
+                schermController.setScherm(MainApp.LOGIN_ID);
+            }
         });
 
         for (Node n : vbox2.getChildren()) {
             if (n instanceof TextField) {
-                ((TextField) n).textProperty().addListener((e) -> lblInfo.setVisible(false));
+                ((TextField) n).textProperty().addListener(new InvalidationListener() {
+                    @Override
+                    public void invalidated(Observable e) {
+                        lblInfo.setVisible(false);
+                    }
+                });
             }
         }
     }
@@ -148,9 +157,8 @@ public class NieuweLeerling extends StackPane {
             }
         }
     }
-    
-    public void update(){
-        
-    }
 
+    public void update() {
+
+    }
 }

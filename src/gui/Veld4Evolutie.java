@@ -2,19 +2,16 @@ package gui;
 
 import controller.LeerlingController;
 import controller.SchermController;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-/**
- *
- * @author Kenzo
- * @author Matthias
- */
 public class Veld4Evolutie extends VBox implements View {
 
     private int score = 0;
@@ -45,9 +42,19 @@ public class Veld4Evolutie extends VBox implements View {
         schermController = schermController1;
         leerlingController = llnCtrl;
 
-        min.setOnMouseClicked(e -> verminder());
+        min.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                verminder();
+            }
+        });
 
-        plus.setOnMouseClicked(e -> vermeerder());
+        plus.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                vermeerder();
+            }
+        });
 
         maakRects();
 
@@ -55,15 +62,15 @@ public class Veld4Evolutie extends VBox implements View {
         HBox hbox2 = new HBox(10, lblInfo);
         HBox hbox3 = new HBox(10, min, boxRects, plus);
         hbox2.setPadding(new Insets(10));
-        hbox3.setTranslateY(100*SCHAAL);
+        hbox3.setTranslateY(100 * SCHAAL);
 
-        min.setTranslateY(140*SCHAAL);
-        plus.setTranslateY(140*SCHAAL);
+        min.setTranslateY(140 * SCHAAL);
+        plus.setTranslateY(140 * SCHAAL);
         min.setMinSize(35, 35);
         min.setMaxSize(35, 35);
         plus.setMinSize(35, 35);
         plus.setMaxSize(35, 35);
-        
+
         lblInfo.setMinWidth(100);
         lblInfo.setMaxHeight(100);
         lblInfo.setTranslateX(0);
@@ -110,10 +117,9 @@ public class Veld4Evolutie extends VBox implements View {
                 rects[i].setFill(Color.WHITE);
             }
         }
-        
         updateLabel();
     }
-    
+
     private String verkort(String s) {
         return s.replaceAll("(.{30})", "$1\n");
     }

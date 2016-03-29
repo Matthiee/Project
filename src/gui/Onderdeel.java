@@ -2,18 +2,15 @@ package gui;
 
 import controller.EvaController;
 import java.util.HashMap;
+import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-/**
- *
- * @author Matthias
- */
 public class Onderdeel extends ImageView {
-    
+
     private EvaController evaController;
 
     public static final int NEUTRAAL = 0;
@@ -24,13 +21,13 @@ public class Onderdeel extends ImageView {
     private final IntegerProperty statusProperty = new SimpleIntegerProperty(NEUTRAAL);
 
     private final HashMap<String, Image> imageCache = new HashMap<>(4);
-    
+
     private int transX, transY;
-    
+
     private String base;
 
     public Onderdeel(String base, EvaController evaCtrl) {
-        
+
         this.base = base;
         this.evaController = evaCtrl;
 
@@ -38,33 +35,35 @@ public class Onderdeel extends ImageView {
         String gekend = this.base + "Groen.png";
         String gezien_niet_gekend = this.base + "Oranje.png";
         String niet_gekend = this.base + "Rood.png";
-        
+
         transX = 0;
         transY = 0;
 
-        statusProperty.addListener((Observable o) -> {
-            final int x = getStatus();
-            switch (x) {
-                case NEUTRAAL:
-                    setImage(neutraal);
-                    break;
-                case GEKEND:
-                    setImage(gekend);
-                    break;
-                case GEZIEN_NIET_GEKEND:
-                    setImage(gezien_niet_gekend);
-                    break;
-                case NIET_GEKEND:
-                    setImage(niet_gekend);
-                    break;
+        statusProperty.addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable o) {
+                final int x = getStatus();
+                switch (x) {
+                    case NEUTRAAL:
+                        setImage(neutraal);
+                        break;
+                    case GEKEND:
+                        setImage(gekend);
+                        break;
+                    case GEZIEN_NIET_GEKEND:
+                        setImage(gezien_niet_gekend);
+                        break;
+                    case NIET_GEKEND:
+                        setImage(niet_gekend);
+                        break;
+                }
             }
         });
-        
         setImage(neutraal);
     }
-    
+
     public Onderdeel(String base, int tx, int ty, EvaController evaCtrl) {
-        
+
         this.base = base;
         this.evaController = evaCtrl;
 
@@ -72,28 +71,30 @@ public class Onderdeel extends ImageView {
         String gekend = this.base + "Groen.png";
         String gezien_niet_gekend = this.base + "Oranje.png";
         String niet_gekend = this.base + "Rood.png";
-        
+
         transX = tx;
         transY = ty;
 
-        statusProperty.addListener((Observable o) -> {
-            final int x = getStatus();
-            switch (x) {
-                case NEUTRAAL:
-                    setImage(neutraal);
-                    break;
-                case GEKEND:
-                    setImage(gekend);
-                    break;
-                case GEZIEN_NIET_GEKEND:
-                    setImage(gezien_niet_gekend);
-                    break;
-                case NIET_GEKEND:
-                    setImage(niet_gekend);
-                    break;
+        statusProperty.addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable o) {
+                final int x = getStatus();
+                switch (x) {
+                    case NEUTRAAL:
+                        setImage(neutraal);
+                        break;
+                    case GEKEND:
+                        setImage(gekend);
+                        break;
+                    case GEZIEN_NIET_GEKEND:
+                        setImage(gezien_niet_gekend);
+                        break;
+                    case NIET_GEKEND:
+                        setImage(niet_gekend);
+                        break;
+                }
             }
         });
-        
         setImage(neutraal);
     }
 
@@ -112,7 +113,6 @@ public class Onderdeel extends ImageView {
             img = new Image(imageStr);
             imageCache.put(imageStr, img);
         }
-
         setImage(img);
     }
 
@@ -152,7 +152,4 @@ public class Onderdeel extends ImageView {
     public void setTransY(int transY) {
         this.transY = transY;
     }
-    
-    
-
 }

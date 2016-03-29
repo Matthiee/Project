@@ -1,7 +1,9 @@
 package gui;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -33,15 +35,41 @@ public class KleurKiezerHouder extends Pane {
         hbox.setPadding(new Insets(2));
         getChildren().add(hbox);
 
-        hbox.getChildren().forEach((Node n) -> n.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"));
+        for (Node node : hbox.getChildren()) {
+            node.setStyle("-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);");
+        }
 
         hbox.setStyle("-fx-border-color: black;");
         ISBEZET = true;
 
-        rectWit.setOnMouseClicked((e) -> setStatus(Onderdeel.NEUTRAAL));
-        rectGroen.setOnMouseClicked((e) -> setStatus(Onderdeel.GEKEND));
-        rectOrangje.setOnMouseClicked((e) -> setStatus(Onderdeel.GEZIEN_NIET_GEKEND));
-        rectRood.setOnMouseClicked((e) -> setStatus(Onderdeel.NIET_GEKEND));
+        rectWit.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                setStatus(Onderdeel.NEUTRAAL);
+            }
+        });
+        rectGroen.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                setStatus(Onderdeel.GEKEND);
+            }
+        });
+        rectOrangje.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                setStatus(Onderdeel.GEZIEN_NIET_GEKEND);
+            }
+        });
+        rectRood.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent event) {
+                setStatus(Onderdeel.NIET_GEKEND);
+            }
+        });
     }
 
     private void setStatus(int status) {

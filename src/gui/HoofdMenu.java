@@ -1,26 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import controller.EvaController;
 import controller.LeerlingController;
 import controller.SchermController;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.TextArea;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
-/**
- *
- * @author simon
- */
 public class HoofdMenu extends HBox implements View {
 
     //objecten en controllers
@@ -73,10 +66,20 @@ public class HoofdMenu extends HBox implements View {
         //de nodes
         llnInfo = new LeerlingInfoHouder(llnController);
 
-        llnInfo.setOnMouseClicked((e) -> schermController.setScherm(MainApp.INFO_LLN_ID));
+        llnInfo.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent me) {
+                schermController.setScherm(MainApp.INFO_LLN_ID);
+            }
+        });
 
         attitudeImg = new ImageView("resource/Hoofdmenu/attitude.png");
-        attitudeImg.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VELD3ATTITUDE_ID));
+        attitudeImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent me) {
+                schermController.setScherm(MainApp.VELD3ATTITUDE_ID);
+            }
+        });
 
         //de opmaak
         top.setPadding(new Insets(30, 20, 5, 20));
@@ -184,14 +187,24 @@ public class HoofdMenu extends HBox implements View {
         //de nodes
         stuur = new Stuur(evaController, 160);
         pijlen = new Pijlen(evaController, 160);
-        
+
         //opmaak
         stuur.setTranslateX(205);
         pijlen.setTranslateX(195);
-        
+
         //eventhandler
-        stuur.setOnMouseClicked((e) -> schermController.setScherm(MainApp.RIJTECHNIEK_ID));
-        pijlen.setOnMouseClicked((e) -> schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID));
+        stuur.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent me) {
+                schermController.setScherm(MainApp.RIJTECHNIEK_ID);
+            }
+        });
+        pijlen.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent me) {
+                schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID);
+            }
+        });
 
         //alle 3 de onderdelen toevoegen aan center
         //volgorde laten staan! anders werkt schermcontroller niet goed!
@@ -228,7 +241,12 @@ public class HoofdMenu extends HBox implements View {
         bottom.add(opmerkingenTxt, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
-        evaSelector.setOnMouseClicked((e) -> update());
+        evaSelector.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent me) {
+                update();
+            }
+        });
         //achtergrond
         //this.setStyle("-fx-background-image: url('resource/Hoofdmenu/achtergrondHoofdmenu.jpg')");
         achtergrond = new ImageView("resource/Hoofdmenu/achtergrondHoofdmenu.png");
@@ -259,30 +277,52 @@ public class HoofdMenu extends HBox implements View {
         center.setAlignment(Pos.CENTER);
         center.setTranslateY(-30);
 
-        left.getChildren().forEach(c -> {
-            if (c instanceof Onderdeel) {
-                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(left, (Onderdeel) c));
+        for (Node node : left.getChildren()) {
+            if (node instanceof Onderdeel) {
+                node.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent me) {
+                        KleurKiezerHouder.show(left, (Onderdeel) node);
+                    }
+                });
             }
-        });
+        };
 
-        right.getChildren().forEach(c -> {
-            if (c instanceof Onderdeel) {
-                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(right, (Onderdeel) c));
-            }
-        });
+        for (Node node : right.getChildren()) {
 
-        iconen.getChildren().forEach(c -> {
-            if (c instanceof Onderdeel) {
-                c.setOnMouseClicked((e) -> KleurKiezerHouder.show(center, (Onderdeel) c));
+            if (node instanceof Onderdeel) {
+                node.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent me) {
+                        KleurKiezerHouder.show(right, (Onderdeel) node);
+                    }
+                });
+            }
+        };
+
+        for (Node node : iconen.getChildren()) {
+
+            if (node instanceof Onderdeel) {
+                node.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent me) {
+                        KleurKiezerHouder.show(center, (Onderdeel) node);
+                    }
+                });
+            }
+        }
+        this.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent me) {
+                update();
             }
         });
-        this.setOnMouseClicked((e) -> update());
 
         update();
 
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
-    
+
     public void updateOnderdelen() {
         //left
         evaController.loadColorData(schakelaars);
@@ -306,8 +346,8 @@ public class HoofdMenu extends HBox implements View {
     public void updateGrafiek() {
         graphImg.update();
     }
-    
-    public void updateStuurEnPijlen(){
+
+    public void updateStuurEnPijlen() {
         pijlen.update();
         stuur.update();
     }
