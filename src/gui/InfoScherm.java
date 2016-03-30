@@ -3,6 +3,8 @@ package gui;
 import controller.LeerlingController;
 import controller.SchermController;
 import domein.Leerling;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,10 +15,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 
-/**
- *
- * @author Matthias
- */
 public class InfoScherm extends VBox implements View {
 
     private final Button btnAfmelden, btnTerug;
@@ -26,18 +24,18 @@ public class InfoScherm extends VBox implements View {
     private final LeerlingController llnController;
     private final SchermController schermController;
     private int breedte, hoogte;
-    
+
     public InfoScherm(LeerlingController controller, SchermController schermCtrl) {
         setPadding(new Insets(10));
         setSpacing(10);
 
         this.llnController = controller;
         this.llnController.getLeerling().addView(this);
-        this.schermController=schermCtrl;
-        
+        this.schermController = schermCtrl;
+
         breedte = schermController.getBreedte();
         hoogte = schermController.getHoogte();
-        
+
         imgView = new ImageView();
         imgView.maxHeight(128);
         imgView.maxWidth(128);
@@ -71,13 +69,25 @@ public class InfoScherm extends VBox implements View {
         placeHolder.setPrefSize(1000, 500);
 
         btnAfmelden = new Button("Afmelden");
-        btnAfmelden.setOnAction(e->schermController.setScherm(MainApp.LOGIN_ID));
-        
+        btnAfmelden.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                schermController.setScherm(MainApp.LOGIN_ID);
+            }
+        });
+
         btnTerug = new Button("Terug");
         btnTerug.setAlignment(Pos.BASELINE_RIGHT);
 
-        btnTerug.setOnAction(e->schermController.setScherm(MainApp.HOOFDMENU_ID));
-        
+        btnTerug.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                schermController.setScherm(MainApp.HOOFDMENU_ID);
+            }
+        });
+
         HBox knopHouder = new HBox(btnAfmelden, btnTerug);
         HBox.setHgrow(knopHouder, Priority.ALWAYS);
         knopHouder.setPadding(new Insets(10));
@@ -86,7 +96,7 @@ public class InfoScherm extends VBox implements View {
         getChildren().addAll(placeHolder, knopHouder);
         this.setPrefSize(breedte, hoogte);
         this.setStyle("-fx-background-image: url('resource/achtergrondStandaard.png')");
-        
+
         update();
     }
 

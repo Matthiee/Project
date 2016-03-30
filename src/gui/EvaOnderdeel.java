@@ -1,4 +1,3 @@
-
 package gui;
 
 import controller.EvaController;
@@ -6,31 +5,30 @@ import javafx.geometry.Pos;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import static javafx.scene.layout.Region.USE_PREF_SIZE;
 
-public class EvaOnderdeel extends HBox{
-    
+public class EvaOnderdeel extends HBox {
+
     private EvaController evaController;
-    
+
     private String base;
-    
+
     private GridPane rectGP;
     private ImageView rect1, rect2, rect3;
     private ImageView icon;
-    
-    public EvaOnderdeel(String base, EvaController evaController){
+
+    public EvaOnderdeel(String base, EvaController evaController) {
         //nodes aanmaken
         this.evaController = evaController;
-        
+
         this.base = base;
-        
+
         rectGP = new GridPane();
         rect1 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         rect2 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
         rect3 = new ImageView("resource/Hoofdmenu/evaluatieNeutraal.png");
-        
+
         icon = new ImageView(base);
-        
+
         //opmaak nodes
         icon.setFitHeight(60);
         icon.setFitWidth(60);
@@ -48,12 +46,12 @@ public class EvaOnderdeel extends HBox{
         this.setMinSize(80, 80);
         this.setSpacing(5);
         this.setAlignment(Pos.CENTER);
-        
+
         //nodes laden in GridPane
         rectGP.add(rect1, 0, 0);
         rectGP.add(rect2, 0, 1);
         rectGP.add(rect3, 0, 2);
         //nodes toevoegen aan HBox
-        this.getChildren().addAll(icon, rectGP);        
+        this.getChildren().addAll(icon, rectGP);
     }
 }

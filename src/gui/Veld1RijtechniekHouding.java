@@ -14,14 +14,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-/**
- *
- * @author Kenzo
- */
 public class Veld1RijtechniekHouding extends Pane {
 
     private final SchermController schermController;
@@ -99,9 +96,13 @@ public class Veld1RijtechniekHouding extends Pane {
                 addLastName.clear();
             }
         });
-
         table.setItems(data);
-        table.setOnMouseClicked(e -> doorgaanAlsGebruikerGeselecteerd());
+        table.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                doorgaanAlsGebruikerGeselecteerd();
+            }
+        });
         table.setEditable(true);
         table.setMaxHeight(250);
 
@@ -109,7 +110,12 @@ public class Veld1RijtechniekHouding extends Pane {
         exit = new Button("ga terug");
         exit.setTranslateY(12);
 
-        exit.setOnAction(e -> this.schermController.setScherm(MainApp.RIJTECHNIEK_ID));
+        exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                Veld1RijtechniekHouding.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
+            }
+        });
         hBox1.getChildren().addAll(exit);
 
         vBox2.setTranslateX(250);
