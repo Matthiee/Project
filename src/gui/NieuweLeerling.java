@@ -2,9 +2,15 @@ package gui;
 
 import controller.SchermController;
 import domein.Leerling;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,12 +19,15 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javax.imageio.ImageIO;
 import persistentie.LeerlingMapper;
 
 public class NieuweLeerling extends StackPane {
@@ -30,9 +39,9 @@ public class NieuweLeerling extends StackPane {
 
     private TextField txtNaam, txtInschrijvingsNr, txtInstructeur, txtVerval, txtType;
 
-    private Button btnOpslaan, btnTerug;
+    private Button btnUpload,btnOpslaan, btnTerug;
 
-    private VBox vbox2;
+    private VBox vbox2,vbox3;
 
     public NieuweLeerling(SchermController schermController1) {
         setPadding(new Insets(10));
@@ -56,20 +65,21 @@ public class NieuweLeerling extends StackPane {
 
         img = new ImageView("resource/man-icon.png");
 
+        btnUpload = new Button("Kies foto");
         btnOpslaan = new Button("Opslaan");
         btnTerug = new Button("Terug");
 
         VBox vbox1 = new VBox(15, lblNaam, lblInschrijvingsNr, lblInstructeur, lblVerval, lblType);
         vbox1.setPadding(new Insets(10));
 
-        HBox hboxKnoppen = new HBox(10, btnOpslaan, btnTerug);
+        HBox hboxKnoppen = new HBox(10,btnUpload,btnOpslaan, btnTerug);
 
         vbox2 = new VBox(10, txtNaam, txtInschrijvingsNr, txtInstructeur, txtVerval, txtType, lblInfo, hboxKnoppen);
         vbox1.setPadding(new Insets(10));
 
         lblInfo.setVisible(false);
 
-        VBox vbox3 = new VBox(10, img);
+        vbox3 = new VBox(10, img);
         vbox1.setPadding(new Insets(10));
         vbox3.setAlignment(Pos.BASELINE_RIGHT);
 
@@ -96,6 +106,15 @@ public class NieuweLeerling extends StackPane {
                 ((View) schermController.getScherm(MainApp.LOGIN_ID)).update(); // work around om MVC view update te forceren!
 
                 schermController.setScherm(MainApp.LOGIN_ID);
+            }
+        });
+        
+        btnUpload.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                uploadFoto();
+                img.setFitHeight(125);
+                img.setFitWidth(125);
             }
         });
 
@@ -129,6 +148,8 @@ public class NieuweLeerling extends StackPane {
                 lblInfo.setText("Leerling opgeslagen!");
                 lblInfo.setTextFill(Color.DARKGREEN);
                 lblInfo.setVisible(true);
+                vbox3.getChildren().clear();
+                vbox3.getChildren().add(new ImageView("resource/man-icon.png"));
 
             } else {
                 lblInfo.setText("Fout bij het toevoegen van de leerling!");
@@ -158,7 +179,25 @@ public class NieuweLeerling extends StackPane {
         }
     }
 
-    public void update() {
+    
+    private void uploadFoto() {
+        FileChooser fileChooser = new FileChooser();
 
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+
+        File file = fileChooser.showOpenDialog(null);
+
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            img.setImage(image);
+            
+            vbox3.getChildren().clear();
+            vbox3.getChildren().add(img);
+        } catch (IOException ex) {
+            Logger.getLogger(NieuweLeerling.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

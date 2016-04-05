@@ -136,6 +136,8 @@ public class LoginScherm extends StackPane implements View {
             lblInfo.setVisible(false);
             img.setImage(l.getImage());
             txtNaam.setText(l.getNaam());
+            img.setFitHeight(125);
+            img.setFitWidth(125);
         }
     }
 
