@@ -109,5 +109,7 @@ public class InfoScherm extends VBox implements View {
         lblVerval.setText("Verval: " + lln.getVerval().toString());
         lblType.setText("Type: " + lln.getType());
         imgView.setImage(lln.getImage());
+        imgView.setFitHeight(125);
+        imgView.setFitWidth(125);
     }
 }
