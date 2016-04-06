@@ -218,6 +218,7 @@ public class EvaController {
         
         if(selectedEva == 1){
             if(attribuut.equals("Houding")) list = leerlingController.getEva1().getHoudingOpm();
+            if(attribuut.equals("Helling")) list = leerlingController.getEva1().getHellingOpm();
             if(attribuut.equals("Kijktechniek")) list = leerlingController.getEva1().getKijkenOpm();
             if(attribuut.equals("Koppeling")) list = leerlingController.getEva1().getHoudingOpm();
             if(attribuut.equals("Remtechniek")) list = leerlingController.getEva1().getHoudingOpm();
@@ -226,6 +227,7 @@ public class EvaController {
         }
         if(selectedEva == 2){
             if(attribuut.equals("Houding")) list = leerlingController.getEva2().getHoudingOpm();
+            if(attribuut.equals("Helling")) list = leerlingController.getEva2().getHellingOpm();
             if(attribuut.equals("Kijktechniek")) list = leerlingController.getEva2().getKijkenOpm();
             if(attribuut.equals("Koppeling")) list = leerlingController.getEva2().getHoudingOpm();
             if(attribuut.equals("Remtechniek")) list = leerlingController.getEva2().getHoudingOpm();
@@ -234,6 +236,7 @@ public class EvaController {
         }
         if(selectedEva == 3){
             if(attribuut.equals("Houding")) list = leerlingController.getEva3().getHoudingOpm();
+            if(attribuut.equals("Helling")) list = leerlingController.getEva3().getHellingOpm();
             if(attribuut.equals("Kijktechniek")) list = leerlingController.getEva3().getKijkenOpm();
             if(attribuut.equals("Koppeling")) list = leerlingController.getEva3().getHoudingOpm();
             if(attribuut.equals("Remtechniek")) list = leerlingController.getEva3().getHoudingOpm();
@@ -248,6 +251,7 @@ public class EvaController {
         
         if(selectedEva == 1){
             if(attribuut.equals("Houding"))leerlingController.getEva1().setHoudingOpm(list);
+            if(attribuut.equals("Helling"))leerlingController.getEva1().setHoudingOpm(list);
             if(attribuut.equals("Kijktechniek"))leerlingController.getEva1().setKijkenOpm(list);
             if(attribuut.equals("Koppeling"))leerlingController.getEva1().setKoppelingOpm(list);
             if(attribuut.equals("Remtechniek"))leerlingController.getEva1().setRemmenOpm(list);
@@ -256,6 +260,7 @@ public class EvaController {
         }
         if(selectedEva == 2){
             if(attribuut.equals("Houding"))leerlingController.getEva2().setHoudingOpm(list);
+            if(attribuut.equals("Helling"))leerlingController.getEva2().setHoudingOpm(list);
             if(attribuut.equals("Kijktechniek"))leerlingController.getEva2().setKijkenOpm(list);
             if(attribuut.equals("Koppeling"))leerlingController.getEva2().setKoppelingOpm(list);
             if(attribuut.equals("Remtechniek"))leerlingController.getEva2().setRemmenOpm(list);
@@ -264,6 +269,7 @@ public class EvaController {
         }
         if(selectedEva == 3){
             if(attribuut.equals("Houding"))leerlingController.getEva3().setHoudingOpm(list);
+            if(attribuut.equals("Helling"))leerlingController.getEva3().setHoudingOpm(list);
             if(attribuut.equals("Kijktechniek"))leerlingController.getEva3().setKijkenOpm(list);
             if(attribuut.equals("Koppeling"))leerlingController.getEva3().setKoppelingOpm(list);
             if(attribuut.equals("Remtechniek"))leerlingController.getEva3().setRemmenOpm(list);
