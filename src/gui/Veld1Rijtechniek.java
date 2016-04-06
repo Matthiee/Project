@@ -380,6 +380,12 @@ public class Veld1Rijtechniek extends HBox implements View {
                 Veld1Rijtechniek.this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKIJKTECHNIEK_ID);
             }
         });
+        hellingImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Veld1Rijtechniek.this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKHELLING_ID);
+            }
+        });
         stuuroefImg.setVisible(false);
         achteruitImg.setVisible(false);
         garageImg.setVisible(false);
