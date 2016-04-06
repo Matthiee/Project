@@ -1,5 +1,7 @@
 package gui;
 
+import controller.EvaController;
+import controller.LeerlingController;
 import controller.SchermController;
 import domein.Verkeerstechniek;
 import javafx.collections.FXCollections;
@@ -19,9 +21,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class Veld2VerkeerstechniekVerkeerstekens extends Pane {
+public class Veld2VerkeerstechniekVerkeerstekens extends Pane implements View{
 
     private final SchermController schermController;
+    private EvaController evaController;
+    private LeerlingController llnController;
     private Button exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> houdingen = FXCollections.observableArrayList();
@@ -32,15 +36,15 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane {
 
     private TableView<Verkeerstechniek> table = new TableView<Verkeerstechniek>();
     private ObservableList<Verkeerstechniek> data
-            = FXCollections.observableArrayList(
-                    new Verkeerstechniek("Verkeerstekens", ""),
-                    new Verkeerstechniek("Bevelen van bevoegde personen", "")
-            );
+            = FXCollections.observableArrayList();
 
-    public Veld2VerkeerstechniekVerkeerstekens(SchermController schermCtrl) {
+    public Veld2VerkeerstechniekVerkeerstekens(SchermController schermCtrl, EvaController evaCtrl, LeerlingController llnCtrl) {
+        evaController = evaCtrl;
         schermController = schermCtrl;
+        llnController = llnCtrl;
         vBox1.getChildren().addAll(toon);
         houdingen.addAll("Verkeerstekens", "Bevelen van bevoegde personen");
+        this.llnController.getLeerling().addView(this);
 
         TableColumn algemeenCol = new TableColumn("Algemeen");
         algemeenCol.setMinWidth(100);
@@ -116,6 +120,7 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                evaController.saveListDataVerkeerstechniek("Verkeerstekens", data);
                 Veld2VerkeerstechniekVerkeerstekens.this.schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID);
             }
         });
@@ -126,6 +131,7 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane {
 
         this.getChildren().addAll(vBox1, vBox2, hBox1);
         this.setMinWidth(600);
+        update();
     }
 
     private void doorgaanAlsGebruikerGeselecteerd() {
@@ -135,5 +141,11 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane {
 
     private String verkort(String s) {
         return s.replaceAll("(.{37})", "$1\n");
+    }
+
+    @Override
+    public void update() {
+        data = evaController.loadListDataVerkeerstechniek("Verkeerstekens");
+        table.setItems(data);
     }
 }
