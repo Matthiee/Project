@@ -23,6 +23,7 @@ public class MainApp extends Application {
     public static final String NIEUWELEERLING_ID = "nieuweleerling";
 
     public static final String VELD1RIJTECHNIEKHOUDING_ID = "veld1rijtechniekhouding";
+    public static final String VELD1RIJTECHNIEKHELLING_ID = "veld1rijtechniekhelling";
     public static final String VELD1RIJTECHNIEKKIJKTECHNIEK_ID = "veld1rijtechniekkijktechniek";
     public static final String VELD1RIJTECHNIEKKOPPELING_ID = "veld1rijtechniekkoppeling";
     public static final String VELD1RIJTECHNIEKREMTECHNIEK_ID = "veld1rijtechniekremtechniek";
@@ -56,6 +57,7 @@ public class MainApp extends Application {
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);
 
         Veld1RijtechniekHouding veld1RijtechniekHouding = new Veld1RijtechniekHouding(schermenCtrl, evaController, controller);
+        Veld1RijtechniekHelling veld1RijtechniekHelling = new Veld1RijtechniekHelling(schermenCtrl, evaController, controller);
         Veld1RijtechniekKijktechniek veld1RijtechniekKijktechniek = new Veld1RijtechniekKijktechniek(schermenCtrl, evaController, controller);
         Veld1RijtechniekKoppeling veld1RijtechniekKoppeling = new Veld1RijtechniekKoppeling(schermenCtrl, evaController, controller);
         Veld1RijtechniekRemtechniek veld1RijtechniekRemtechniek = new Veld1RijtechniekRemtechniek(schermenCtrl, evaController, controller);
@@ -82,6 +84,7 @@ public class MainApp extends Application {
         schermenCtrl.addScherm(NIEUWELEERLING_ID, nieuweLeerling);
 
         schermenCtrl.addScherm(VELD1RIJTECHNIEKHOUDING_ID, veld1RijtechniekHouding);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKHELLING_ID, veld1RijtechniekHelling);
         schermenCtrl.addScherm(VELD1RIJTECHNIEKKIJKTECHNIEK_ID, veld1RijtechniekKijktechniek);
         schermenCtrl.addScherm(VELD1RIJTECHNIEKKOPPELING_ID, veld1RijtechniekKoppeling);
         schermenCtrl.addScherm(VELD1RIJTECHNIEKREMTECHNIEK_ID, veld1RijtechniekRemtechniek);
