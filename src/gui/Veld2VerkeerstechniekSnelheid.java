@@ -1,5 +1,7 @@
 package gui;
 
+import controller.EvaController;
+import controller.LeerlingController;
 import controller.SchermController;
 import domein.Verkeerstechniek;
 import javafx.collections.FXCollections;
@@ -19,9 +21,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class Veld2VerkeerstechniekSnelheid extends Pane {
+public class Veld2VerkeerstechniekSnelheid extends Pane implements View{
 
     private final SchermController schermController;
+    private EvaController evaController;
+    private LeerlingController llnController;
     private Button exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> houdingen = FXCollections.observableArrayList();
@@ -32,12 +36,13 @@ public class Veld2VerkeerstechniekSnelheid extends Pane {
 
     private TableView<Verkeerstechniek> table = new TableView<Verkeerstechniek>();
     private ObservableList<Verkeerstechniek> data
-            = FXCollections.observableArrayList(
-                    new Verkeerstechniek("Snelheid", "")
-            );
+            = FXCollections.observableArrayList();
 
-    public Veld2VerkeerstechniekSnelheid(SchermController schermCtrl) {
+    public Veld2VerkeerstechniekSnelheid(SchermController schermCtrl, EvaController evaCtrl, LeerlingController llnCtrl) {
+        evaController = evaCtrl;
         schermController = schermCtrl;
+        llnController = llnCtrl;
+        this.llnController.getLeerling().addView(this);
         vBox1.getChildren().addAll(toon);
         houdingen.addAll("Snelheid");
 
@@ -115,6 +120,7 @@ public class Veld2VerkeerstechniekSnelheid extends Pane {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                evaController.saveListDataVerkeerstechniek("Snelheid", data);
                 Veld2VerkeerstechniekSnelheid.this.schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID);
             }
         });
@@ -125,6 +131,7 @@ public class Veld2VerkeerstechniekSnelheid extends Pane {
 
         this.getChildren().addAll(vBox1, vBox2, hBox1);
         this.setMinWidth(600);
+        update();
     }
 
     private void doorgaanAlsGebruikerGeselecteerd() {
@@ -134,5 +141,11 @@ public class Veld2VerkeerstechniekSnelheid extends Pane {
 
     private String verkort(String s) {
         return s.replaceAll("(.{37})", "$1\n");
+    }
+
+    @Override
+    public void update() {
+        data = evaController.loadListDataVerkeerstechniek("Snelheid");
+        table.setItems(data);
     }
 }
