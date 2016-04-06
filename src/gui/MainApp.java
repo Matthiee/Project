@@ -64,16 +64,16 @@ public class MainApp extends Application {
         Veld1RijtechniekSchakeltechniek veld1RijtechniekSchakeltechniek = new Veld1RijtechniekSchakeltechniek(schermenCtrl, evaController, controller);
         Veld1RijtechniekStuurtechniek veld1RijtechniekStuurtechniek = new Veld1RijtechniekStuurtechniek(schermenCtrl, evaController, controller);
 
-        Veld2VerkeerstechniekAfstand veld2VerkeerstechniekAfstand = new Veld2VerkeerstechniekAfstand(schermenCtrl);
-        Veld2VerkeerstechniekInhalen veld2VerkeerstechniekInhalen = new Veld2VerkeerstechniekInhalen(schermenCtrl);
-        Veld2VerkeerstechniekKruisen veld2VerkeerstechniekKruisen = new Veld2VerkeerstechniekKruisen(schermenCtrl);
-        Veld2VerkeerstechniekLinksaf veld2VerkeerstechniekLinksaf = new Veld2VerkeerstechniekLinksaf(schermenCtrl);
-        Veld2VerkeerstechniekPlaats veld2VerkeerstechniekPlaats = new Veld2VerkeerstechniekPlaats(schermenCtrl);
-        Veld2VerkeerstechniekRechtsaf veld2VerkeerstechniekRechtsaf = new Veld2VerkeerstechniekRechtsaf(schermenCtrl);
-        Veld2VerkeerstechniekRichtingaanwijzers veld2VerkeerstechniekRichtingaanwijzers = new Veld2VerkeerstechniekRichtingaanwijzers(schermenCtrl);
-        Veld2VerkeerstechniekSnelheid veld2VerkeerstechniekSnelheid = new Veld2VerkeerstechniekSnelheid(schermenCtrl);
-        Veld2VerkeerstechniekVerkeerstekens veld2VerkeerstechniekVerkeerstekens = new Veld2VerkeerstechniekVerkeerstekens(schermenCtrl);
-        Veld2VerkeerstechniekVoorrang veld2VerkeerstechniekVoorrang = new Veld2VerkeerstechniekVoorrang(schermenCtrl);
+        Veld2VerkeerstechniekAfstand veld2VerkeerstechniekAfstand = new Veld2VerkeerstechniekAfstand(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekInhalen veld2VerkeerstechniekInhalen = new Veld2VerkeerstechniekInhalen(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekKruisen veld2VerkeerstechniekKruisen = new Veld2VerkeerstechniekKruisen(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekLinksaf veld2VerkeerstechniekLinksaf = new Veld2VerkeerstechniekLinksaf(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekPlaats veld2VerkeerstechniekPlaats = new Veld2VerkeerstechniekPlaats(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekRechtsaf veld2VerkeerstechniekRechtsaf = new Veld2VerkeerstechniekRechtsaf(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekRichtingaanwijzers veld2VerkeerstechniekRichtingaanwijzers = new Veld2VerkeerstechniekRichtingaanwijzers(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekSnelheid veld2VerkeerstechniekSnelheid = new Veld2VerkeerstechniekSnelheid(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekVerkeerstekens veld2VerkeerstechniekVerkeerstekens = new Veld2VerkeerstechniekVerkeerstekens(schermenCtrl, evaController, controller);
+        Veld2VerkeerstechniekVoorrang veld2VerkeerstechniekVoorrang = new Veld2VerkeerstechniekVoorrang(schermenCtrl, evaController, controller);
 
         schermenCtrl.addScherm(LOGIN_ID, login);
         schermenCtrl.addScherm(HOOFDMENU_ID, menu);
