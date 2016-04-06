@@ -55,12 +55,12 @@ public class MainApp extends Application {
         Veld3Attitude veld3Attitude = new Veld3Attitude(schermenCtrl);
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);
 
-        Veld1RijtechniekHouding veld1RijtechniekHouding = new Veld1RijtechniekHouding(schermenCtrl);
-        Veld1RijtechniekKijktechniek veld1RijtechniekKijktechniek = new Veld1RijtechniekKijktechniek(schermenCtrl);
-        Veld1RijtechniekKoppeling veld1RijtechniekKoppeling = new Veld1RijtechniekKoppeling(schermenCtrl);
-        Veld1RijtechniekRemtechniek veld1RijtechniekRemtechniek = new Veld1RijtechniekRemtechniek(schermenCtrl);
-        Veld1RijtechniekSchakeltechniek veld1RijtechniekSchakeltechniek = new Veld1RijtechniekSchakeltechniek(schermenCtrl);
-        Veld1RijtechniekStuurtechniek veld1RijtechniekStuurtechniek = new Veld1RijtechniekStuurtechniek(schermenCtrl);
+        Veld1RijtechniekHouding veld1RijtechniekHouding = new Veld1RijtechniekHouding(schermenCtrl, evaController, controller);
+        Veld1RijtechniekKijktechniek veld1RijtechniekKijktechniek = new Veld1RijtechniekKijktechniek(schermenCtrl, evaController, controller);
+        Veld1RijtechniekKoppeling veld1RijtechniekKoppeling = new Veld1RijtechniekKoppeling(schermenCtrl, evaController, controller);
+        Veld1RijtechniekRemtechniek veld1RijtechniekRemtechniek = new Veld1RijtechniekRemtechniek(schermenCtrl, evaController, controller);
+        Veld1RijtechniekSchakeltechniek veld1RijtechniekSchakeltechniek = new Veld1RijtechniekSchakeltechniek(schermenCtrl, evaController, controller);
+        Veld1RijtechniekStuurtechniek veld1RijtechniekStuurtechniek = new Veld1RijtechniekStuurtechniek(schermenCtrl, evaController, controller);
 
         Veld2VerkeerstechniekAfstand veld2VerkeerstechniekAfstand = new Veld2VerkeerstechniekAfstand(schermenCtrl);
         Veld2VerkeerstechniekInhalen veld2VerkeerstechniekInhalen = new Veld2VerkeerstechniekInhalen(schermenCtrl);
