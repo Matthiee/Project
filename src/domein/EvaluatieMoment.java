@@ -47,12 +47,12 @@ public class EvaluatieMoment {
         this.stuuroef = 0;
         this.achteruit = 0;
         this.houdingOpm = FXCollections.observableArrayList();
-        this.koppelingOpm = FXCollections.observableArrayList();;
-        this.remmenOpm = FXCollections.observableArrayList();;
-        this.schakelenOpm = FXCollections.observableArrayList();;
-        this.sturenOpm = FXCollections.observableArrayList();;
-        this.kijkenOpm = FXCollections.observableArrayList();;
-        this.hellingOpm = FXCollections.observableArrayList();;
+        this.koppelingOpm = FXCollections.observableArrayList();
+        this.remmenOpm = FXCollections.observableArrayList();
+        this.schakelenOpm = FXCollections.observableArrayList();
+        this.sturenOpm = FXCollections.observableArrayList();
+        this.kijkenOpm = FXCollections.observableArrayList();
+        this.hellingOpm = FXCollections.observableArrayList();
         this.richtingaanwijzers = 0;
         this.voorrang = 0;
         this.openbareWeg = 0;
@@ -84,7 +84,7 @@ public class EvaluatieMoment {
         this.tanken = 0;
         this.noodstop = 0;
         this.gps = 0;
-        this.hoofdmenuOpm = FXCollections.observableArrayList();;
+        this.hoofdmenuOpm = FXCollections.observableArrayList();
     }
     
 
