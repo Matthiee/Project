@@ -6,9 +6,11 @@ import be.matkensim.project.controller.SchermController;
 import be.matkensim.project.domein.Leerling;
 import java.util.Date;
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -44,6 +46,8 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws InterruptedException {
 
+        Rectangle2D r = Screen.getPrimary().getVisualBounds();
+        
         LeerlingController controller = new LeerlingController(new Leerling("Dummy leerling", "NULL", "NULL", new Date(), "NULL", new Image("resource/man-icon.png")));
         EvaController evaController = new EvaController(controller);
         SchermController schermenCtrl = new SchermController();
@@ -105,7 +109,7 @@ public class MainApp extends Application {
         schermenCtrl.setScherm(LOGIN_ID);
 
         Group root = new Group(schermenCtrl);
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, r.getWidth(), r.getHeight());
 
         stage.setScene(scene);
         stage.show();
