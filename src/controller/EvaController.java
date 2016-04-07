@@ -1,7 +1,11 @@
 
 package controller;
 
+import domein.Rijtechniek;
+import domein.Verkeerstechniek;
 import gui.Onderdeel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class EvaController {
     
@@ -207,6 +211,162 @@ public class EvaController {
         if(value7 == 1 && value8 == 1 && value9 == 1) stuur[2] = 1;
             
         return stuur;
+    }
+    
+    public ObservableList<Rijtechniek> loadListDataRijtechniek(String attribuut){
+        ObservableList<Rijtechniek> list = FXCollections.observableArrayList();
+        
+        if(selectedEva == 1){
+            if(attribuut.equals("Houding")) list = leerlingController.getEva1().getHoudingOpm();
+            if(attribuut.equals("Helling")) list = leerlingController.getEva1().getHellingOpm();
+            if(attribuut.equals("Kijktechniek")) list = leerlingController.getEva1().getKijkenOpm();
+            if(attribuut.equals("Koppeling")) list = leerlingController.getEva1().getKoppelingOpm();
+            if(attribuut.equals("Remtechniek")) list = leerlingController.getEva1().getRemmenOpm();
+            if(attribuut.equals("Schakeltechniek")) list = leerlingController.getEva1().getSchakelenOpm();
+            if(attribuut.equals("Stuurtechniek")) list = leerlingController.getEva1().getSturenOpm();
+        }
+        if(selectedEva == 2){
+            if(attribuut.equals("Houding")) list = leerlingController.getEva2().getHoudingOpm();
+            if(attribuut.equals("Helling")) list = leerlingController.getEva2().getHellingOpm();
+            if(attribuut.equals("Kijktechniek")) list = leerlingController.getEva2().getKijkenOpm();
+            if(attribuut.equals("Koppeling")) list = leerlingController.getEva2().getKoppelingOpm();
+            if(attribuut.equals("Remtechniek")) list = leerlingController.getEva2().getRemmenOpm();
+            if(attribuut.equals("Schakeltechniek")) list = leerlingController.getEva2().getSchakelenOpm();
+            if(attribuut.equals("Stuurtechniek")) list = leerlingController.getEva2().getSturenOpm();
+        }
+        if(selectedEva == 3){
+            if(attribuut.equals("Houding")) list = leerlingController.getEva3().getHoudingOpm();
+            if(attribuut.equals("Helling")) list = leerlingController.getEva3().getHellingOpm();
+            if(attribuut.equals("Kijktechniek")) list = leerlingController.getEva3().getKijkenOpm();
+            if(attribuut.equals("Koppeling")) list = leerlingController.getEva3().getKoppelingOpm();
+            if(attribuut.equals("Remtechniek")) list = leerlingController.getEva3().getRemmenOpm();
+            if(attribuut.equals("Schakeltechniek")) list = leerlingController.getEva3().getSchakelenOpm();
+            if(attribuut.equals("Stuurtechniek")) list = leerlingController.getEva3().getSturenOpm();
+        }
+        
+        return list;
+    }
+    
+    public void saveListDataRijtechniek(String attribuut, ObservableList<Rijtechniek> list){
+        
+        if(selectedEva == 1){
+            if(attribuut.equals("Houding"))leerlingController.getEva1().setHoudingOpm(list);
+            if(attribuut.equals("Helling"))leerlingController.getEva1().setHellingOpm(list);
+            if(attribuut.equals("Kijktechniek"))leerlingController.getEva1().setKijkenOpm(list);
+            if(attribuut.equals("Koppeling"))leerlingController.getEva1().setKoppelingOpm(list);
+            if(attribuut.equals("Remtechniek"))leerlingController.getEva1().setRemmenOpm(list);
+            if(attribuut.equals("Schakeltechniek"))leerlingController.getEva1().setSchakelenOpm(list);
+            if(attribuut.equals("Stuurtechniek"))leerlingController.getEva1().setSturenOpm(list);
+        }
+        if(selectedEva == 2){
+            if(attribuut.equals("Houding"))leerlingController.getEva2().setHoudingOpm(list);
+            if(attribuut.equals("Helling"))leerlingController.getEva2().setHellingOpm(list);
+            if(attribuut.equals("Kijktechniek"))leerlingController.getEva2().setKijkenOpm(list);
+            if(attribuut.equals("Koppeling"))leerlingController.getEva2().setKoppelingOpm(list);
+            if(attribuut.equals("Remtechniek"))leerlingController.getEva2().setRemmenOpm(list);
+            if(attribuut.equals("Schakeltechniek"))leerlingController.getEva2().setSchakelenOpm(list);
+            if(attribuut.equals("Stuurtechniek"))leerlingController.getEva2().setSturenOpm(list);
+        }
+        if(selectedEva == 3){
+            if(attribuut.equals("Houding"))leerlingController.getEva3().setHoudingOpm(list);
+            if(attribuut.equals("Helling"))leerlingController.getEva3().setHellingOpm(list);
+            if(attribuut.equals("Kijktechniek"))leerlingController.getEva3().setKijkenOpm(list);
+            if(attribuut.equals("Koppeling"))leerlingController.getEva3().setKoppelingOpm(list);
+            if(attribuut.equals("Remtechniek"))leerlingController.getEva3().setRemmenOpm(list);
+            if(attribuut.equals("Schakeltechniek"))leerlingController.getEva3().setSchakelenOpm(list);
+            if(attribuut.equals("Stuurtechniek"))leerlingController.getEva3().setSturenOpm(list);
+        }
+        
+    }
+    
+    public ObservableList<Verkeerstechniek> loadListDataVerkeerstechniek (String attribuut){
+        
+        ObservableList<Verkeerstechniek> list = FXCollections.observableArrayList();
+        
+        if(selectedEva == 1){
+            if(attribuut.equals("Afstand")) list = leerlingController.getEva1().getAfstandOpm();
+            if(attribuut.equals("Inhalen")) list = leerlingController.getEva1().getInhalenOpm();
+            if(attribuut.equals("Kruisen")) list = leerlingController.getEva1().getKruisenOpm();
+            if(attribuut.equals("Linksaf")) list = leerlingController.getEva1().getLinksafOpm();
+            if(attribuut.equals("Plaats")) list = leerlingController.getEva1().getOpenbareWegOpm();
+            if(attribuut.equals("Rechtsaf")) list = leerlingController.getEva1().getRechtsafOpm();
+            if(attribuut.equals("Richtingaanwijzers")) list = leerlingController.getEva1().getRichtingaanwijzersOpm();
+            if(attribuut.equals("Snelheid")) list = leerlingController.getEva1().getSnelheidOpm();
+            if(attribuut.equals("Verkeerstekens")) list = leerlingController.getEva1().getVerkeerstekensOpm();
+            if(attribuut.equals("Voorrang")) list = leerlingController.getEva1().getVoorrangOpm();
+        }
+        
+        if(selectedEva == 2){
+            if(attribuut.equals("Afstand")) list = leerlingController.getEva2().getAfstandOpm();
+            if(attribuut.equals("Inhalen")) list = leerlingController.getEva2().getInhalenOpm();
+            if(attribuut.equals("Kruisen")) list = leerlingController.getEva2().getKruisenOpm();
+            if(attribuut.equals("Linksaf")) list = leerlingController.getEva2().getLinksafOpm();
+            if(attribuut.equals("Plaats")) list = leerlingController.getEva2().getOpenbareWegOpm();
+            if(attribuut.equals("Rechtsaf")) list = leerlingController.getEva2().getRechtsafOpm();
+            if(attribuut.equals("Richtingaanwijzers")) list = leerlingController.getEva2().getRichtingaanwijzersOpm();
+            if(attribuut.equals("Snelheid")) list = leerlingController.getEva2().getSnelheidOpm();
+            if(attribuut.equals("Verkeerstekens")) list = leerlingController.getEva2().getVerkeerstekensOpm();
+            if(attribuut.equals("Voorrang")) list = leerlingController.getEva2().getVoorrangOpm();
+            
+        }
+        
+        if(selectedEva == 3){
+            if(attribuut.equals("Afstand")) list = leerlingController.getEva3().getAfstandOpm();
+            if(attribuut.equals("Inhalen")) list = leerlingController.getEva3().getInhalenOpm();
+            if(attribuut.equals("Kruisen")) list = leerlingController.getEva3().getKruisenOpm();
+            if(attribuut.equals("Linksaf")) list = leerlingController.getEva3().getLinksafOpm();
+            if(attribuut.equals("Plaats")) list = leerlingController.getEva3().getOpenbareWegOpm();
+            if(attribuut.equals("Rechtsaf")) list = leerlingController.getEva3().getRechtsafOpm();
+            if(attribuut.equals("Richtingaanwijzers")) list = leerlingController.getEva3().getRichtingaanwijzersOpm();
+            if(attribuut.equals("Snelheid")) list = leerlingController.getEva3().getSnelheidOpm();
+            if(attribuut.equals("Verkeerstekens")) list = leerlingController.getEva3().getVerkeerstekensOpm();
+            if(attribuut.equals("Voorrang")) list = leerlingController.getEva3().getVoorrangOpm();
+        }
+        
+        return list;
+    }
+    
+    public void saveListDataVerkeerstechniek (String attribuut, ObservableList<Verkeerstechniek> list){
+                
+        if(selectedEva == 1){
+            if(attribuut.equals("Afstand"))   leerlingController.getEva1().setAfstandOpm(list);
+            if(attribuut.equals("Inhalen"))   leerlingController.getEva1().setInhalenOpm(list);
+            if(attribuut.equals("Kruisen"))   leerlingController.getEva1().setKruisenOpm(list);
+            if(attribuut.equals("Linksaf"))   leerlingController.getEva1().setLinksafOpm(list);
+            if(attribuut.equals("Plaats"))   leerlingController.getEva1().setOpenbareWegOpm(list);
+            if(attribuut.equals("Rechtsaf"))   leerlingController.getEva1().setRechtsafOpm(list);
+            if(attribuut.equals("Richtingaanwijzers"))   leerlingController.getEva1().setRichtingaanwijzersOpm(list);
+            if(attribuut.equals("Snelheid"))   leerlingController.getEva1().setSnelheidOpm(list);
+            if(attribuut.equals("Verkeerstekens"))   leerlingController.getEva1().setVerkeerstekensOpm(list);
+            if(attribuut.equals("Voorrang"))   leerlingController.getEva1().setVoorrangOpm(list);
+        }
+        
+        if(selectedEva == 2){
+            if(attribuut.equals("Afstand"))leerlingController.getEva2().setAfstandOpm(list);
+            if(attribuut.equals("Inhalen"))leerlingController.getEva2().setInhalenOpm(list);
+            if(attribuut.equals("Kruisen"))leerlingController.getEva2().setKruisenOpm(list);
+            if(attribuut.equals("Linksaf"))leerlingController.getEva2().setLinksafOpm(list);
+            if(attribuut.equals("Plaats"))leerlingController.getEva2().setOpenbareWegOpm(list);
+            if(attribuut.equals("Rechtsaf"))leerlingController.getEva2().setRechtsafOpm(list);
+            if(attribuut.equals("Richtingaanwijzers"))leerlingController.getEva2().setRichtingaanwijzersOpm(list);
+            if(attribuut.equals("Snelheid"))leerlingController.getEva2().setSnelheidOpm(list);
+            if(attribuut.equals("Verkeerstekens"))leerlingController.getEva2().setVerkeerstekensOpm(list);
+            if(attribuut.equals("Voorrang"))leerlingController.getEva2().setVoorrangOpm(list);
+            
+        }
+        
+        if(selectedEva == 3){
+            if(attribuut.equals("Afstand"))leerlingController.getEva3().setAfstandOpm(list);
+            if(attribuut.equals("Inhalen"))leerlingController.getEva3().setInhalenOpm(list);
+            if(attribuut.equals("Kruisen"))leerlingController.getEva3().setKruisenOpm(list);
+            if(attribuut.equals("Linksaf"))leerlingController.getEva3().setLinksafOpm(list);
+            if(attribuut.equals("Plaats"))leerlingController.getEva3().setOpenbareWegOpm(list);
+            if(attribuut.equals("Rechtsaf"))leerlingController.getEva3().setRechtsafOpm(list);
+            if(attribuut.equals("Richtingaanwijzers"))leerlingController.getEva3().setRichtingaanwijzersOpm(list);
+            if(attribuut.equals("Snelheid"))leerlingController.getEva3().setSnelheidOpm(list);
+            if(attribuut.equals("Verkeerstekens"))leerlingController.getEva3().setVerkeerstekensOpm(list);
+            if(attribuut.equals("Voorrang"))leerlingController.getEva3().setVoorrangOpm(list);
+        }
     }
     
     public void loadColorData(Onderdeel onderdeel){

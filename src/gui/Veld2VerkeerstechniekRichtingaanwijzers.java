@@ -1,5 +1,7 @@
 package gui;
 
+import controller.EvaController;
+import controller.LeerlingController;
 import controller.SchermController;
 import domein.Verkeerstechniek;
 import javafx.collections.FXCollections;
@@ -19,9 +21,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane {
+public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane implements View{
 
     private final SchermController schermController;
+    private EvaController evaController;
+    private LeerlingController llnController;
     private Button exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> houdingen = FXCollections.observableArrayList();
@@ -32,13 +36,13 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane {
 
     private TableView<Verkeerstechniek> table = new TableView<Verkeerstechniek>();
     private ObservableList<Verkeerstechniek> data
-            = FXCollections.observableArrayList(
-                    new Verkeerstechniek("Gebruik richtingaanwijzers", ""),
-                    new Verkeerstechniek("Tijdig richting aangeven", "")
-            );
+            = FXCollections.observableArrayList();
 
-    public Veld2VerkeerstechniekRichtingaanwijzers(SchermController schermCtrl) {
+    public Veld2VerkeerstechniekRichtingaanwijzers(SchermController schermCtrl, EvaController evaCtrl, LeerlingController llnCtrl) {
+        evaController = evaCtrl;
         schermController = schermCtrl;
+        llnController = llnCtrl;
+        this.llnController.getLeerling().addView(this);
         vBox1.getChildren().addAll(toon);
         houdingen.addAll("Gebruik richtingaanwijzers", "Tijdig richting aangeven");
 
@@ -116,6 +120,7 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                evaController.saveListDataVerkeerstechniek("Richtingaanwijzers", data);
                 Veld2VerkeerstechniekRichtingaanwijzers.this.schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID);
             }
         });
@@ -126,6 +131,7 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane {
 
         this.getChildren().addAll(vBox1, vBox2, hBox1);
         this.setMinWidth(600);
+        update();
     }
 
     private void doorgaanAlsGebruikerGeselecteerd() {
@@ -135,5 +141,11 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane {
 
     private String verkort(String s) {
         return s.replaceAll("(.{37})", "$1\n");
+    }
+
+    @Override
+    public void update() {
+        data = evaController.loadListDataVerkeerstechniek("Richtingaanwijzers");
+        table.setItems(data);
     }
 }

@@ -1,5 +1,7 @@
 package gui;
 
+import controller.EvaController;
+import controller.LeerlingController;
 import controller.SchermController;
 import domein.Rijtechniek;
 import javafx.collections.FXCollections;
@@ -19,9 +21,11 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class Veld1RijtechniekKijktechniek extends Pane {
+public class Veld1RijtechniekKijktechniek extends Pane implements View{
 
     private final SchermController schermController;
+    private EvaController evaController;
+    private LeerlingController llnController;
     private Button exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> houdingen = FXCollections.observableArrayList();
@@ -32,17 +36,15 @@ public class Veld1RijtechniekKijktechniek extends Pane {
 
     private TableView<Rijtechniek> table = new TableView<Rijtechniek>();
     private ObservableList<Rijtechniek> data
-            = FXCollections.observableArrayList(
-                    new Rijtechniek("Beter vergewissen", ""),
-                    new Rijtechniek("Spiegels", ""),
-                    new Rijtechniek("Ver genoeg", ""),
-                    new Rijtechniek("Selecteren", "")
-            );
+            = FXCollections.observableArrayList();
 
-    public Veld1RijtechniekKijktechniek(SchermController schermCtrl) {
+    public Veld1RijtechniekKijktechniek(SchermController schermCtrl, EvaController evaCtrl, LeerlingController llnCtrl) {
+        evaController = evaCtrl;
         schermController = schermCtrl;
+        llnController = llnCtrl;
         vBox1.getChildren().addAll(toon);
         houdingen.addAll("Beter vergewissen", "Spiegelds", "Ver genoeg", "Selecteren");
+        this.llnController.getLeerling().addView(this);
 
         TableColumn algemeenCol = new TableColumn("Algemeen");
         algemeenCol.setMinWidth(100);
@@ -114,6 +116,7 @@ public class Veld1RijtechniekKijktechniek extends Pane {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                evaController.saveListDataRijtechniek("Kijktechniek", data);
                 Veld1RijtechniekKijktechniek.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
             }
         });
@@ -124,6 +127,7 @@ public class Veld1RijtechniekKijktechniek extends Pane {
 
         this.getChildren().addAll(vBox1, vBox2, hBox1);
         this.setMinWidth(600);
+        update();
     }
 
     private void doorgaanAlsGebruikerGeselecteerd() {
@@ -134,5 +138,11 @@ public class Veld1RijtechniekKijktechniek extends Pane {
     //wrap de commentaar elke 30 chars
     private String verkort(String s) {
         return s.replaceAll("(.{30})", "$1\n");
+    }
+
+    @Override
+    public void update() {
+        data = evaController.loadListDataRijtechniek("Kijktechniek");
+        table.setItems(data);
     }
 }

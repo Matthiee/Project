@@ -3,7 +3,7 @@ package gui;
 import controller.EvaController;
 import controller.LeerlingController;
 import controller.SchermController;
-import domein.Verkeerstechniek;
+import domein.Rijtechniek;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,7 +21,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class Veld2VerkeerstechniekAfstand extends Pane implements View{
+public class Veld1RijtechniekHelling extends Pane implements View{
 
     private final SchermController schermController;
     private EvaController evaController;
@@ -34,28 +34,27 @@ public class Veld2VerkeerstechniekAfstand extends Pane implements View{
     private VBox vBox2 = new VBox();
     private HBox hBox1 = new HBox();
 
-    private TableView<Verkeerstechniek> table = new TableView<Verkeerstechniek>();
-    private ObservableList<Verkeerstechniek> data
-            = FXCollections.observableArrayList();
+    private TableView<Rijtechniek> table = new TableView<Rijtechniek>();
+    private ObservableList<Rijtechniek> data = FXCollections.observableArrayList();
 
-    public Veld2VerkeerstechniekAfstand(SchermController schermCtrl, EvaController evaCtrl, LeerlingController llnCtrl) {
+    public Veld1RijtechniekHelling(SchermController schermCtrl, EvaController evaCtrl, LeerlingController llnCtrl) {
         evaController = evaCtrl;
         schermController = schermCtrl;
         llnController = llnCtrl;
-        this.llnController.getLeerling().addView(this);
         vBox1.getChildren().addAll(toon);
-        houdingen.addAll("Volgafstand", "Zijdelingse afstand");
+        houdingen.addAll("Zithouding", "Gordel", "Spiegel", "Handrem");
+        this.llnController.getLeerling().addView(this);
 
         TableColumn algemeenCol = new TableColumn("Algemeen");
         algemeenCol.setMinWidth(100);
         algemeenCol.setCellValueFactory(
-                new PropertyValueFactory<Verkeerstechniek, String>("algemeen"));
+                new PropertyValueFactory<Rijtechniek, String>("algemeen"));
         algemeenCol.setCellFactory(TextFieldTableCell.forTableColumn());
         algemeenCol.setOnEditCommit(
-                new EventHandler<CellEditEvent<Verkeerstechniek, String>>() {
+                new EventHandler<CellEditEvent<Rijtechniek, String>>() {
             @Override
-            public void handle(CellEditEvent<Verkeerstechniek, String> t) {
-                ((Verkeerstechniek) t.getTableView().getItems().get(
+            public void handle(CellEditEvent<Rijtechniek, String> t) {
+                ((Rijtechniek) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())).setAlgemeen(t.getNewValue());
             }
         }
@@ -64,13 +63,13 @@ public class Veld2VerkeerstechniekAfstand extends Pane implements View{
         TableColumn commentaarCol = new TableColumn("Commentaar");
         commentaarCol.setMinWidth(200);
         commentaarCol.setCellValueFactory(
-                new PropertyValueFactory<Verkeerstechniek, String>("commentaar"));
+                new PropertyValueFactory<Rijtechniek, String>("commentaar"));
         commentaarCol.setCellFactory(TextFieldTableCell.forTableColumn());
         commentaarCol.setOnEditCommit(
-                new EventHandler<CellEditEvent<Verkeerstechniek, String>>() {
+                new EventHandler<CellEditEvent<Rijtechniek, String>>() {
             @Override
-            public void handle(CellEditEvent<Verkeerstechniek, String> t) {
-                ((Verkeerstechniek) t.getTableView().getItems().get(
+            public void handle(CellEditEvent<Rijtechniek, String> t) {
+                ((Rijtechniek) t.getTableView().getItems().get(
                         t.getTablePosition().getRow())).setCommentaar(t.getNewValue());
             }
         }
@@ -78,31 +77,26 @@ public class Veld2VerkeerstechniekAfstand extends Pane implements View{
 
         table.setItems(data);
         table.getColumns().addAll(algemeenCol, commentaarCol);
-        table.setTranslateX(65);
 
-        TextField addAlgemeen = new TextField();
-        addAlgemeen.setPromptText("Algemeen");
-        addAlgemeen.setTranslateX(65);
-        addAlgemeen.setMaxWidth(150);
-        TextField addCommentaar = new TextField();
-        addCommentaar.setMaxWidth(400);
-        addCommentaar.setPromptText("Commentaar");
-        addCommentaar.setTranslateX(65);
+        TextField addFirstName = new TextField();
+        addFirstName.setPromptText("Algemeen");
+        addFirstName.setMaxWidth(150);
+        TextField addLastName = new TextField();
+        addLastName.setMaxWidth(400);
+        addLastName.setPromptText("Commentaar");
 
         final Button addButton = new Button("Voeg toe");
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                data.add(new Verkeerstechniek(
-                        addAlgemeen.getText(),
-                        addCommentaar.getText()
+                data.add(new Rijtechniek(
+                        addFirstName.getText(),
+                        addLastName.getText()
                 ));
-                addAlgemeen.clear();
-                addCommentaar.clear();
+                addFirstName.clear();
+                addLastName.clear();
             }
         });
-        addButton.setTranslateX(65);
-
         table.setItems(data);
         table.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -113,15 +107,15 @@ public class Veld2VerkeerstechniekAfstand extends Pane implements View{
         table.setEditable(true);
         table.setMaxHeight(250);
 
-        vBox2.getChildren().addAll(table, addAlgemeen, addCommentaar, addButton);
+        vBox2.getChildren().addAll(table, addFirstName, addLastName, addButton);
         exit = new Button("ga terug");
         exit.setTranslateY(12);
 
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                evaController.saveListDataVerkeerstechniek("Afstand", data);
-                Veld2VerkeerstechniekAfstand.this.schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID);
+                evaController.saveListDataRijtechniek("Helling", data);
+                Veld1RijtechniekHelling.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
             }
         });
         hBox1.getChildren().addAll(exit);
@@ -139,13 +133,16 @@ public class Veld2VerkeerstechniekAfstand extends Pane implements View{
                 + "\n" + verkort(table.getSelectionModel().getSelectedItem().getCommentaar()));
     }
 
+    //wrap de commentaar elke 30 chars
     private String verkort(String s) {
-        return s.replaceAll("(.{37})", "$1\n");
+        return s.replaceAll("(.{30})", "$1\n");
     }
-
+    
+    
     @Override
-    public void update() {
-        data = evaController.loadListDataVerkeerstechniek("Afstand");
+    public void update(){
+        data = evaController.loadListDataRijtechniek("Helling");
         table.setItems(data);
     }
 }
+
