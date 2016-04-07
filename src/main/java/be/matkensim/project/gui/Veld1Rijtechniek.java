@@ -245,33 +245,28 @@ public class Veld1Rijtechniek extends HBox implements View {
         this.getChildren().add(achtergrond);
         this.getChildren().add(mainGP);
 
-        links.getChildren().forEach(new Consumer<Node>() {
-            @Override
-            public void accept(Node c) {
-                if (c instanceof Onderdeel) {
-                    c.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent e) {
-                            KleurKiezerHouder.show(links, (Onderdeel) c);
-                        }
-                    });
-                }
+        for (Node c : links.getChildren()) {
+            if (c instanceof Onderdeel) {
+                c.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        KleurKiezerHouder.show(links, (Onderdeel) c);
+                    }
+                });
             }
-        });
+        }
 
-        rechts.getChildren().forEach(new Consumer<Node>() {
-            @Override
-            public void accept(Node c) {
-                if (c instanceof Onderdeel && labelSelected == 0) {
-                    c.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent e) {
-                            KleurKiezerHouder.show(rechts, (Onderdeel) c);
-                        }
-                    });
-                }
+        for (Node c : rechts.getChildren()) {
+            if (c instanceof Onderdeel) {
+                c.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        KleurKiezerHouder.show(rechts, (Onderdeel) c);
+                    }
+                });
             }
-        });
+        }
+
         evaSelector.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
@@ -299,32 +294,28 @@ public class Veld1Rijtechniek extends HBox implements View {
         kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
         labelSelected = 0;
 
-        links.getChildren().forEach(new Consumer<Node>() {
-            @Override
-            public void accept(Node c) {
-                if (c instanceof Onderdeel) {
-                    c.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent e) {
-                            KleurKiezerHouder.show(links, (Onderdeel) c);
-                        }
-                    });
-                }
+        for (Node c : links.getChildren()) {
+            if (c instanceof Onderdeel) {
+                c.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        KleurKiezerHouder.show(links, (Onderdeel) c);
+                    }
+                });
             }
-        });
-        rechts.getChildren().forEach(new Consumer<Node>() {
-            @Override
-            public void accept(Node c) {
-                if (c instanceof Onderdeel && labelSelected == 0) {
-                    c.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                        @Override
-                        public void handle(MouseEvent e) {
-                            KleurKiezerHouder.show(rechts, (Onderdeel) c);
-                        }
-                    });
-                }
+        }
+       
+        for (Node c : rechts.getChildren()) {
+            if (c instanceof Onderdeel) {
+                c.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        KleurKiezerHouder.show(rechts, (Onderdeel) c);
+                    }
+                });
             }
-        });
+        }
+        
         evaSelector.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {

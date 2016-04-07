@@ -176,7 +176,9 @@ public class Leerling implements Model{
 
     @Override
     public void update() {
-        views.forEach(View::update);
+        for(View v : views){
+            v.update();
+        }
     }
     
     public List<View> getViews(){
