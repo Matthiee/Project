@@ -28,21 +28,23 @@ public class LeerlingMapper {
     public static List<Leerling> getLeerlingenMetNaam(String naam) {
         // TODO: Database
 
-        return leerlingen.stream().filter(new Predicate<Leerling>() {
-            @Override
-            public boolean test(Leerling l) {
-                return l.getNaam().toLowerCase().contains(naam.toLowerCase());
-            }
-        }).collect(Collectors.toList());
+        List<Leerling> lln = new ArrayList<>();
+        
+        for(Leerling l : leerlingen){
+        if (l.getNaam().toLowerCase().contains(naam.toLowerCase()))
+            lln.add(l);
+        }
+        
+        return lln;
     }
 
     public static Leerling getLeerling(String naam) {
-        return leerlingen.stream().filter(new Predicate<Leerling>() {
-            @Override
-            public boolean test(Leerling l) {
-                return l.getNaam().equalsIgnoreCase(naam);
-            }
-        }).collect(Collectors.toList()).get(0);
+        for(Leerling l : leerlingen){
+            if (l.getNaam().equalsIgnoreCase(naam))
+                return l;
+        }
+        
+        return null;
     }
 
     public static boolean voegLeerlingToe(Leerling lln) {
@@ -50,11 +52,10 @@ public class LeerlingMapper {
     }
 
     public static boolean bestaat(String lln) {
-        return leerlingen.stream().anyMatch(new Predicate<Leerling>() {
-            @Override
-            public boolean test(Leerling l) {
-                return l.getNaam().equalsIgnoreCase(lln);
-            }
-        });
+        for(Leerling l : leerlingen){
+            if (l.getNaam().equalsIgnoreCase(lln))
+                return true;
+        }
+        return false;
     }
 }
