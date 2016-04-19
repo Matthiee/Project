@@ -45,24 +45,9 @@ public class Veld1RijtechniekSchakeltechniek extends Pane implements View{
         vBox1.getChildren().addAll(toon);
         houdingen.addAll("Dosering", "Aangepast", "Houding");
         this.llnController.getLeerling().addView(this);
-
-        TableColumn algemeenCol = new TableColumn("Algemeen");
-        algemeenCol.setMinWidth(100);
-        algemeenCol.setCellValueFactory(
-                new PropertyValueFactory<Rijtechniek, String>("algemeen"));
-        algemeenCol.setCellFactory(TextFieldTableCell.forTableColumn());
-        algemeenCol.setOnEditCommit(
-                new EventHandler<CellEditEvent<Rijtechniek, String>>() {
-            @Override
-            public void handle(CellEditEvent<Rijtechniek, String> t) {
-                ((Rijtechniek) t.getTableView().getItems().get(
-                        t.getTablePosition().getRow())).setAlgemeen(t.getNewValue());
-            }
-        }
-        );
-
+   
         TableColumn commentaarCol = new TableColumn("Commentaar");
-        commentaarCol.setMinWidth(200);
+        commentaarCol.setMinWidth(400);
         commentaarCol.setCellValueFactory(
                 new PropertyValueFactory<Rijtechniek, String>("commentaar"));
         commentaarCol.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -77,25 +62,20 @@ public class Veld1RijtechniekSchakeltechniek extends Pane implements View{
         );
 
         table.setItems(data);
-        table.getColumns().addAll(algemeenCol, commentaarCol);
+        table.getColumns().addAll(commentaarCol);
 
-        TextField addFirstName = new TextField();
-        addFirstName.setPromptText("Algemeen");
-        addFirstName.setMaxWidth(150);
-        TextField addLastName = new TextField();
-        addLastName.setMaxWidth(400);
-        addLastName.setPromptText("Commentaar");
+        TextField commentaarFld = new TextField();
+        commentaarFld.setMaxWidth(400);
+        commentaarFld.setPromptText("Commentaar");
 
         final Button addButton = new Button("Voeg toe");
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
                 data.add(new Rijtechniek(
-                        addFirstName.getText(),
-                        addLastName.getText()
+                        commentaarFld.getText()
                 ));
-                addFirstName.clear();
-                addLastName.clear();
+                commentaarFld.clear();
             }
         });
 
@@ -103,13 +83,13 @@ public class Veld1RijtechniekSchakeltechniek extends Pane implements View{
         table.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                doorgaanAlsGebruikerGeselecteerd();
+                commentaarGeselecteerd();
             }
         });
         table.setEditable(true);
         table.setMaxHeight(250);
 
-        vBox2.getChildren().addAll(table, addFirstName, addLastName, addButton);
+        vBox2.getChildren().addAll(table,commentaarFld, addButton);
         exit = new Button("ga terug");
         exit.setTranslateY(12);
 
@@ -130,9 +110,8 @@ public class Veld1RijtechniekSchakeltechniek extends Pane implements View{
         update();
     }
 
-    private void doorgaanAlsGebruikerGeselecteerd() {
-        toon.setText("Geselecteerd: " + verkort(table.getSelectionModel().getSelectedItem().getAlgemeen() + "\nCommentaar: ")
-                + "\n" + verkort(table.getSelectionModel().getSelectedItem().getCommentaar()));
+    private void commentaarGeselecteerd() {
+        toon.setText("Geselecteerd: \n" + verkort(table.getSelectionModel().getSelectedItem().getCommentaar()));
     }
 
     //wrap de commentaar elke 30 chars

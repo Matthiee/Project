@@ -1,26 +1,11 @@
-
 package be.matkensim.project.domein;
 
-/**
- *
- * @author Kenzo
- */
-public class Verkeerstechniek 
-{
-    private String algemeen;
+public class Verkeerstechniek {
+
     private String commentaar;
 
-    public Verkeerstechniek(String algemeen, String commentaar) {
-        this.algemeen = algemeen;
+    public Verkeerstechniek(String commentaar) {
         this.commentaar = commentaar;
-    }
-
-    public String getAlgemeen() {
-        return algemeen;
-    }
-
-    public void setAlgemeen(String algemeen) {
-        this.algemeen = algemeen;
     }
 
     public String getCommentaar() {
@@ -30,5 +15,4 @@ public class Verkeerstechniek
     public void setCommentaar(String commentaar) {
         this.commentaar = commentaar;
     }
-    
 }
