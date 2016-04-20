@@ -73,11 +73,11 @@ public class MainApp extends Application {
         Veld1RijtechniekRemtechniek veld1RijtechniekRemtechniek = new Veld1RijtechniekRemtechniek(schermenCtrl, evaController, controller);
         Veld1RijtechniekSchakeltechniek veld1RijtechniekSchakeltechniek = new Veld1RijtechniekSchakeltechniek(schermenCtrl, evaController, controller);
         Veld1RijtechniekStuurtechniek veld1RijtechniekStuurtechniek = new Veld1RijtechniekStuurtechniek(schermenCtrl, evaController, controller);
-        Veld1RijtechniekStuurtechniek veld1RijtechniekGarage = new veld1RijtechniekGarage(schermenCtrl, evaController, controller);
-        Veld1RijtechniekStuurtechniek veld1RijtechniekAchteruit = new veld1RijtechniekAchteruit(schermenCtrl, evaController, controller);
-        Veld1RijtechniekStuurtechniek veld1RijtechniekParkeren = new veld1RijtechniekParkeren(schermenCtrl, evaController, controller);
-        Veld1RijtechniekStuurtechniek veld1RijtechniekKeren = new veld1RijtechniekKeren(schermenCtrl, evaController, controller);
-        Veld1RijtechniekStuurtechniek veld1RijtechniekStuuroef = new veld1RijtechniekStuuroef(schermenCtrl, evaController, controller);
+        Veld1RijtechniekGarage veld1RijtechniekGarage = new Veld1RijtechniekGarage(schermenCtrl, evaController, controller);
+        Veld1RijtechniekAchteruit veld1RijtechniekAchteruit = new Veld1RijtechniekAchteruit(schermenCtrl, evaController, controller);
+        Veld1RijtechniekParkeren veld1RijtechniekParkeren = new Veld1RijtechniekParkeren(schermenCtrl, evaController, controller);
+        Veld1RijtechniekKeren veld1RijtechniekKeren = new Veld1RijtechniekKeren(schermenCtrl, evaController, controller);
+        Veld1RijtechniekStuuroef veld1RijtechniekStuuroef = new Veld1RijtechniekStuuroef(schermenCtrl, evaController, controller);
         
 
         Veld2VerkeerstechniekAfstand veld2VerkeerstechniekAfstand = new Veld2VerkeerstechniekAfstand(schermenCtrl, evaController, controller);
