@@ -31,6 +31,12 @@ public class MainApp extends Application {
     public static final String VELD1RIJTECHNIEKREMTECHNIEK_ID = "veld1rijtechniekremtechniek";
     public static final String VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID = "veld1rijtechniekschakeltechniek";
     public static final String VELD1RIJTECHNIEKSTUURTECHNIEK_ID = "veld1rijtechniekstuurtechniek";
+    public static final String VELD1RIJTECHNIEKSTUUROEF_ID = "veld1rijtechniekstuuroef";
+    public static final String VELD1RIJTECHNIEKACHTERUIT_ID = "veld1rijtechniekachteruit";
+    public static final String VELD1RIJTECHNIEKKEREN_ID = "veld1rijtechniekkeren";
+    public static final String VELD1RIJTECHNIEKPARKEREN_ID = "veld1rijtechniekparkeren";
+    public static final String VELD1RIJTECHNIEKGARAGE_ID = "veld1rijtechniekgarage";
+    
 
     public static final String VELD2VERKEERSTECHNIEKAFSTAND_ID = "veld2verkeerstechniekafstand";
     public static final String VELD2VERKEERSTECHNIEKINHALEN_ID = "veld2verkeerstechniekinhalen";
