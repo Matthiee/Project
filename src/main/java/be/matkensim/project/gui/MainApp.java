@@ -73,6 +73,12 @@ public class MainApp extends Application {
         Veld1RijtechniekRemtechniek veld1RijtechniekRemtechniek = new Veld1RijtechniekRemtechniek(schermenCtrl, evaController, controller);
         Veld1RijtechniekSchakeltechniek veld1RijtechniekSchakeltechniek = new Veld1RijtechniekSchakeltechniek(schermenCtrl, evaController, controller);
         Veld1RijtechniekStuurtechniek veld1RijtechniekStuurtechniek = new Veld1RijtechniekStuurtechniek(schermenCtrl, evaController, controller);
+        Veld1RijtechniekStuurtechniek veld1RijtechniekGarage = new veld1RijtechniekGarage(schermenCtrl, evaController, controller);
+        Veld1RijtechniekStuurtechniek veld1RijtechniekAchteruit = new veld1RijtechniekAchteruit(schermenCtrl, evaController, controller);
+        Veld1RijtechniekStuurtechniek veld1RijtechniekParkeren = new veld1RijtechniekParkeren(schermenCtrl, evaController, controller);
+        Veld1RijtechniekStuurtechniek veld1RijtechniekKeren = new veld1RijtechniekKeren(schermenCtrl, evaController, controller);
+        Veld1RijtechniekStuurtechniek veld1RijtechniekStuuroef = new veld1RijtechniekStuuroef(schermenCtrl, evaController, controller);
+        
 
         Veld2VerkeerstechniekAfstand veld2VerkeerstechniekAfstand = new Veld2VerkeerstechniekAfstand(schermenCtrl, evaController, controller);
         Veld2VerkeerstechniekInhalen veld2VerkeerstechniekInhalen = new Veld2VerkeerstechniekInhalen(schermenCtrl, evaController, controller);
@@ -100,6 +106,11 @@ public class MainApp extends Application {
         schermenCtrl.addScherm(VELD1RIJTECHNIEKREMTECHNIEK_ID, veld1RijtechniekRemtechniek);
         schermenCtrl.addScherm(VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID, veld1RijtechniekSchakeltechniek);
         schermenCtrl.addScherm(VELD1RIJTECHNIEKSTUURTECHNIEK_ID, veld1RijtechniekStuurtechniek);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKSTUUROEF_ID, veld1RijtechniekStuuroef);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKACHTERUIT_ID, veld1RijtechniekAchteruit);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKKEREN_ID, veld1RijtechniekKeren);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKPARKEREN_ID, veld1RijtechniekParkeren);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKGARAGE_ID, veld1RijtechniekGarage);
 
         schermenCtrl.addScherm(VELD2VERKEERSTECHNIEKAFSTAND_ID, veld2VerkeerstechniekAfstand);
         schermenCtrl.addScherm(VELD2VERKEERSTECHNIEKINHALEN_ID, veld2VerkeerstechniekInhalen);
