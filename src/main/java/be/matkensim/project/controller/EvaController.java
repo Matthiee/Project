@@ -224,6 +224,11 @@ public class EvaController {
             if(attribuut.equals("Remtechniek")) list = leerlingController.getEva1().getRemmenOpm();
             if(attribuut.equals("Schakeltechniek")) list = leerlingController.getEva1().getSchakelenOpm();
             if(attribuut.equals("Stuurtechniek")) list = leerlingController.getEva1().getSturenOpm();
+            if(attribuut.equals("Stuuroef")) list = leerlingController.getEva1().getStuuroefOpm();
+            if(attribuut.equals("Keren")) list = leerlingController.getEva1().getKerenOpm();
+            if(attribuut.equals("Parkeren")) list = leerlingController.getEva1().getParkerenOpm();
+            if(attribuut.equals("Garage")) list = leerlingController.getEva1().getGarageOpm();
+            if(attribuut.equals("Achteruit")) list = leerlingController.getEva1().getAchteruitOpm();
         }
         if(selectedEva == 2){
             if(attribuut.equals("Houding")) list = leerlingController.getEva2().getHoudingOpm();
@@ -233,6 +238,11 @@ public class EvaController {
             if(attribuut.equals("Remtechniek")) list = leerlingController.getEva2().getRemmenOpm();
             if(attribuut.equals("Schakeltechniek")) list = leerlingController.getEva2().getSchakelenOpm();
             if(attribuut.equals("Stuurtechniek")) list = leerlingController.getEva2().getSturenOpm();
+            if(attribuut.equals("Stuuroef")) list = leerlingController.getEva2().getStuuroefOpm();
+            if(attribuut.equals("Keren")) list = leerlingController.getEva2().getKerenOpm();
+            if(attribuut.equals("Parkeren")) list = leerlingController.getEva2().getParkerenOpm();
+            if(attribuut.equals("Garage")) list = leerlingController.getEva2().getGarageOpm();
+            if(attribuut.equals("Achteruit")) list = leerlingController.getEva2().getAchteruitOpm();
         }
         if(selectedEva == 3){
             if(attribuut.equals("Houding")) list = leerlingController.getEva3().getHoudingOpm();
@@ -242,6 +252,11 @@ public class EvaController {
             if(attribuut.equals("Remtechniek")) list = leerlingController.getEva3().getRemmenOpm();
             if(attribuut.equals("Schakeltechniek")) list = leerlingController.getEva3().getSchakelenOpm();
             if(attribuut.equals("Stuurtechniek")) list = leerlingController.getEva3().getSturenOpm();
+            if(attribuut.equals("Stuuroef")) list = leerlingController.getEva3().getStuuroefOpm();
+            if(attribuut.equals("Keren")) list = leerlingController.getEva3().getKerenOpm();
+            if(attribuut.equals("Parkeren")) list = leerlingController.getEva3().getParkerenOpm();
+            if(attribuut.equals("Garage")) list = leerlingController.getEva3().getGarageOpm();
+            if(attribuut.equals("Achteruit")) list = leerlingController.getEva3().getAchteruitOpm();
         }
         
         return list;
@@ -257,6 +272,11 @@ public class EvaController {
             if(attribuut.equals("Remtechniek"))leerlingController.getEva1().setRemmenOpm(list);
             if(attribuut.equals("Schakeltechniek"))leerlingController.getEva1().setSchakelenOpm(list);
             if(attribuut.equals("Stuurtechniek"))leerlingController.getEva1().setSturenOpm(list);
+            if(attribuut.equals("Stuuroef"))leerlingController.getEva1().setStuuroefOpm(list);
+            if(attribuut.equals("Keren"))leerlingController.getEva1().setKerenOpm(list);
+            if(attribuut.equals("Parkeren"))leerlingController.getEva1().setParkerenOpm(list);
+            if(attribuut.equals("Garage"))leerlingController.getEva1().setGarageOpm(list);
+            if(attribuut.equals("Achteruit"))leerlingController.getEva1().setAchteruitOpm(list);
         }
         if(selectedEva == 2){
             if(attribuut.equals("Houding"))leerlingController.getEva2().setHoudingOpm(list);
@@ -266,6 +286,11 @@ public class EvaController {
             if(attribuut.equals("Remtechniek"))leerlingController.getEva2().setRemmenOpm(list);
             if(attribuut.equals("Schakeltechniek"))leerlingController.getEva2().setSchakelenOpm(list);
             if(attribuut.equals("Stuurtechniek"))leerlingController.getEva2().setSturenOpm(list);
+            if(attribuut.equals("Stuuroef"))leerlingController.getEva2().setStuuroefOpm(list);
+            if(attribuut.equals("Keren"))leerlingController.getEva2().setKerenOpm(list);
+            if(attribuut.equals("Parkeren"))leerlingController.getEva2().setParkerenOpm(list);
+            if(attribuut.equals("Garage"))leerlingController.getEva2().setGarageOpm(list);
+            if(attribuut.equals("Achteruit"))leerlingController.getEva2().setAchteruitOpm(list);
         }
         if(selectedEva == 3){
             if(attribuut.equals("Houding"))leerlingController.getEva3().setHoudingOpm(list);
@@ -275,6 +300,11 @@ public class EvaController {
             if(attribuut.equals("Remtechniek"))leerlingController.getEva3().setRemmenOpm(list);
             if(attribuut.equals("Schakeltechniek"))leerlingController.getEva3().setSchakelenOpm(list);
             if(attribuut.equals("Stuurtechniek"))leerlingController.getEva3().setSturenOpm(list);
+            if(attribuut.equals("Stuuroef"))leerlingController.getEva3().setStuuroefOpm(list);
+            if(attribuut.equals("Keren"))leerlingController.getEva3().setKerenOpm(list);
+            if(attribuut.equals("Parkeren"))leerlingController.getEva3().setParkerenOpm(list);
+            if(attribuut.equals("Garage"))leerlingController.getEva3().setGarageOpm(list);
+            if(attribuut.equals("Achteruit"))leerlingController.getEva3().setAchteruitOpm(list);
         }
         
     }
