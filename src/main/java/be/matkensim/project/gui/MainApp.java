@@ -31,6 +31,12 @@ public class MainApp extends Application {
     public static final String VELD1RIJTECHNIEKREMTECHNIEK_ID = "veld1rijtechniekremtechniek";
     public static final String VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID = "veld1rijtechniekschakeltechniek";
     public static final String VELD1RIJTECHNIEKSTUURTECHNIEK_ID = "veld1rijtechniekstuurtechniek";
+    public static final String VELD1RIJTECHNIEKSTUUROEF_ID = "veld1rijtechniekstuuroef";
+    public static final String VELD1RIJTECHNIEKACHTERUIT_ID = "veld1rijtechniekachteruit";
+    public static final String VELD1RIJTECHNIEKKEREN_ID = "veld1rijtechniekkeren";
+    public static final String VELD1RIJTECHNIEKPARKEREN_ID = "veld1rijtechniekparkeren";
+    public static final String VELD1RIJTECHNIEKGARAGE_ID = "veld1rijtechniekgarage";
+    
 
     public static final String VELD2VERKEERSTECHNIEKAFSTAND_ID = "veld2verkeerstechniekafstand";
     public static final String VELD2VERKEERSTECHNIEKINHALEN_ID = "veld2verkeerstechniekinhalen";
@@ -67,6 +73,12 @@ public class MainApp extends Application {
         Veld1RijtechniekRemtechniek veld1RijtechniekRemtechniek = new Veld1RijtechniekRemtechniek(schermenCtrl, evaController, controller);
         Veld1RijtechniekSchakeltechniek veld1RijtechniekSchakeltechniek = new Veld1RijtechniekSchakeltechniek(schermenCtrl, evaController, controller);
         Veld1RijtechniekStuurtechniek veld1RijtechniekStuurtechniek = new Veld1RijtechniekStuurtechniek(schermenCtrl, evaController, controller);
+        Veld1RijtechniekGarage veld1RijtechniekGarage = new Veld1RijtechniekGarage(schermenCtrl, evaController, controller);
+        Veld1RijtechniekAchteruit veld1RijtechniekAchteruit = new Veld1RijtechniekAchteruit(schermenCtrl, evaController, controller);
+        Veld1RijtechniekParkeren veld1RijtechniekParkeren = new Veld1RijtechniekParkeren(schermenCtrl, evaController, controller);
+        Veld1RijtechniekKeren veld1RijtechniekKeren = new Veld1RijtechniekKeren(schermenCtrl, evaController, controller);
+        Veld1RijtechniekStuuroef veld1RijtechniekStuuroef = new Veld1RijtechniekStuuroef(schermenCtrl, evaController, controller);
+        
 
         Veld2VerkeerstechniekAfstand veld2VerkeerstechniekAfstand = new Veld2VerkeerstechniekAfstand(schermenCtrl, evaController, controller);
         Veld2VerkeerstechniekInhalen veld2VerkeerstechniekInhalen = new Veld2VerkeerstechniekInhalen(schermenCtrl, evaController, controller);
@@ -94,6 +106,11 @@ public class MainApp extends Application {
         schermenCtrl.addScherm(VELD1RIJTECHNIEKREMTECHNIEK_ID, veld1RijtechniekRemtechniek);
         schermenCtrl.addScherm(VELD1RIJTECHNIEKSCHAKELTECHNIEK_ID, veld1RijtechniekSchakeltechniek);
         schermenCtrl.addScherm(VELD1RIJTECHNIEKSTUURTECHNIEK_ID, veld1RijtechniekStuurtechniek);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKSTUUROEF_ID, veld1RijtechniekStuuroef);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKACHTERUIT_ID, veld1RijtechniekAchteruit);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKKEREN_ID, veld1RijtechniekKeren);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKPARKEREN_ID, veld1RijtechniekParkeren);
+        schermenCtrl.addScherm(VELD1RIJTECHNIEKGARAGE_ID, veld1RijtechniekGarage);
 
         schermenCtrl.addScherm(VELD2VERKEERSTECHNIEKAFSTAND_ID, veld2VerkeerstechniekAfstand);
         schermenCtrl.addScherm(VELD2VERKEERSTECHNIEKINHALEN_ID, veld2VerkeerstechniekInhalen);
