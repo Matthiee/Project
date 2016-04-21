@@ -1,9 +1,14 @@
 package be.matkensim.project.persistentie;
 
+import be.matkensim.project.async.GetLeerlingListTask;
 import be.matkensim.project.domein.Leerling;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 public class LeerlingMapper {
@@ -18,30 +23,58 @@ public class LeerlingMapper {
         leerlingen.add(new Leerling("Marissa Mayer", "1975-05-30", "Paul", new Date(), "Rijbewijs B", new Image("resource/marissa.jpg")));
     }
 
-    public static List<Leerling> getLeerlingen() {
-        // TODO: Database
-        return leerlingen;
+    public static void getLeerlingen(ObservableList<Leerling> lln) {
+
+        GetLeerlingListTask task = new GetLeerlingListTask();
+        task.setOnSucceeded(e -> {
+            lln.clear();
+            try {
+                lln.addAll(task.get());
+            } catch (InterruptedException ex) {
+                Logger.getLogger(LeerlingMapper.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                Logger.getLogger(LeerlingMapper.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        task.setOnFailed(e -> {
+            lln.clear();
+            lln.addAll(leerlingen);
+        });
     }
 
-    public static List<Leerling> getLeerlingenMetNaam(String naam) {
+    public static void getLeerlingenMetNaam(ObservableList<Leerling> lln, String naam) {
         // TODO: Database
+        GetLeerlingListTask task = new GetLeerlingListTask();
+        task.setOnSucceeded(e -> {
+            lln.clear();
+            try {
+                List<Leerling> llnreturn = task.get();
 
-        List<Leerling> lln = new ArrayList<>();
-        
-        for(Leerling l : leerlingen){
-        if (l.getNaam().toLowerCase().contains(naam.toLowerCase()))
-            lln.add(l);
-        }
-        
-        return lln;
+                for (Leerling l : llnreturn) {
+                    if (l.getNaam().toLowerCase().contains(naam.toLowerCase())) {
+                        lln.add(l);
+                    }
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(LeerlingMapper.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                Logger.getLogger(LeerlingMapper.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        task.setOnFailed(e -> {
+            lln.clear();
+            lln.addAll(leerlingen);
+        });
+
     }
 
     public static Leerling getLeerling(String naam) {
-        for(Leerling l : leerlingen){
-            if (l.getNaam().equalsIgnoreCase(naam))
+        for (Leerling l : leerlingen) {
+            if (l.getNaam().equalsIgnoreCase(naam)) {
                 return l;
+            }
         }
-        
+
         return null;
     }
 
@@ -50,9 +83,10 @@ public class LeerlingMapper {
     }
 
     public static boolean bestaat(String lln) {
-        for(Leerling l : leerlingen){
-            if (l.getNaam().equalsIgnoreCase(lln))
+        for (Leerling l : leerlingen) {
+            if (l.getNaam().equalsIgnoreCase(lln)) {
                 return true;
+            }
         }
         return false;
     }

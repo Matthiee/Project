@@ -147,15 +147,11 @@ public class LoginScherm extends StackPane implements View {
     }
 
     private void zoek(String txt) {
-        List<Leerling> resultaat;
         if (txt.isEmpty()) {
-            resultaat = LeerlingMapper.getLeerlingen();
+            LeerlingMapper.getLeerlingen(namen);
         } else {
-            resultaat = LeerlingMapper.getLeerlingenMetNaam(txt);
+            LeerlingMapper.getLeerlingenMetNaam(namen, txt);
         }
-
-        namen.clear();
-        namen.addAll(resultaat);
     }
 
     private void login() {
