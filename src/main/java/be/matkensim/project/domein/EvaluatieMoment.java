@@ -16,7 +16,8 @@ public class EvaluatieMoment {
     private int parkeren, garage, stuuroef, achteruit, keren;
     private int houding, remmen, koppeling,schakelen, sturen, kijken, helling;
     private ObservableList houdingOpm, koppelingOpm, remmenOpm, schakelenOpm,
-            sturenOpm, kijkenOpm, hellingOpm;
+            sturenOpm, kijkenOpm, hellingOpm, kerenOpm, parkerenOpm, achteruitOpm,
+            garageOpm, stuuroefOpm;
     //gegevens verkeerstechniek
     private int richtingaanwijzers, voorrang, openbareWeg, verkeerstekens, snelheid,
             afstand, inhalen, kruisen, linksaf, rechtsaf;
@@ -53,6 +54,11 @@ public class EvaluatieMoment {
         this.sturenOpm = FXCollections.observableArrayList();
         this.kijkenOpm = FXCollections.observableArrayList();
         this.hellingOpm = FXCollections.observableArrayList();
+        this.garageOpm = FXCollections.observableArrayList();
+        this.stuuroefOpm = FXCollections.observableArrayList();
+        this.parkerenOpm = FXCollections.observableArrayList();
+        this.kerenOpm = FXCollections.observableArrayList();
+        this.achteruitOpm = FXCollections.observableArrayList();
         this.richtingaanwijzers = 0;
         this.voorrang = 0;
         this.openbareWeg = 0;
@@ -92,7 +98,8 @@ public class EvaluatieMoment {
     public EvaluatieMoment(int houding, int koppeling, int remmen, int schakelen, int sturen, int kijken, 
             int keren, int parkeren, int garage, int helling, int stuuroef, int achteruit, ObservableList houdingOpm, 
             ObservableList koppelingOpm, ObservableList remmenOpm, ObservableList schakelenOpm, ObservableList sturenOpm, ObservableList kijkenOpm, 
-            ObservableList hellingOpm, int richtingaanwijzers, int voorrang, int openbareWeg, int verkeerstekens, 
+            ObservableList hellingOpm, ObservableList kerenOpm, ObservableList parkerenOpm, ObservableList achteruitOpm, ObservableList garageOpm, 
+            ObservableList stuuroefOpm, int richtingaanwijzers, int voorrang, int openbareWeg, int verkeerstekens, 
             int snelheid, int afstand, int inhalen, int kruisen, int linksaf, int rechtsaf, ObservableList richtingaanwijzersOpm, 
             ObservableList voorrangOpm, ObservableList openbareWegOpm, ObservableList verkeerstekensOpm, ObservableList snelheidOpm, ObservableList afstandOpm, 
             ObservableList inhalenOpm, ObservableList kruisenOpm, ObservableList linksafOpm, ObservableList rechtsafOpm, int grafiek, ObservableList attitudeOpm, 
@@ -117,6 +124,11 @@ public class EvaluatieMoment {
         this.sturenOpm = sturenOpm;
         this.kijkenOpm = kijkenOpm;
         this.hellingOpm = hellingOpm;
+        this.garageOpm = garageOpm;
+        this.stuuroefOpm = stuuroefOpm;
+        this.parkerenOpm = parkerenOpm;
+        this.kerenOpm = kerenOpm;
+        this.achteruitOpm = achteruitOpm;
         this.richtingaanwijzers = richtingaanwijzers;
         this.voorrang = voorrang;
         this.openbareWeg = openbareWeg;
@@ -151,14 +163,55 @@ public class EvaluatieMoment {
         this.gps = gps;
         this.hoofdmenuOpm = hoofdmenuOpm;
     }
+
+    //Getters en Setters
+
+    public void setAttitudeWoorden(ObservableList attitudeWoorden) {    
+        this.attitudeWoorden = attitudeWoorden;
+    }
     
     public ObservableList getAttitudeWoorden() {    
         return attitudeWoorden;
     }
+    
+    public ObservableList getKerenOpm() {    
+        return kerenOpm;
+    }
 
-    //Getters en Setters
-    public void setAttitudeWoorden(ObservableList attitudeWoorden) {    
-        this.attitudeWoorden = attitudeWoorden;
+    public void setKerenOpm(ObservableList kerenOpm) {
+        this.kerenOpm = kerenOpm;
+    }
+
+    public ObservableList getParkerenOpm() {
+        return parkerenOpm;
+    }
+
+    public void setParkerenOpm(ObservableList parkerenOpm) {
+        this.parkerenOpm = parkerenOpm;
+    }
+
+    public ObservableList getAchteruitOpm() {
+        return achteruitOpm;
+    }
+
+    public void setAchteruitOpm(ObservableList achteruitOpm) {
+        this.achteruitOpm = achteruitOpm;
+    }
+
+    public ObservableList getGarageOpm() {
+        return garageOpm;
+    }
+
+    public void setGarageOpm(ObservableList garageOpm) {
+        this.garageOpm = garageOpm;
+    }
+
+    public ObservableList getStuuroefOpm() {
+        return stuuroefOpm;
+    }
+
+    public void setStuuroefOpm(ObservableList stuuroefOpm) {    
+        this.stuuroefOpm = stuuroefOpm;
     }
 
     public int getHouding() {

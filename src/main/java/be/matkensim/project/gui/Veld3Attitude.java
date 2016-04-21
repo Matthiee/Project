@@ -1,5 +1,7 @@
 package be.matkensim.project.gui;
 
+import be.matkensim.project.controller.EvaController;
+import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
 import be.matkensim.project.domein.Attitude;
 import javafx.collections.FXCollections;
@@ -25,6 +27,8 @@ public class Veld3Attitude extends Pane {
 
     //toonTable is de table die moet getoond worden
     private final SchermController schermController;
+    private EvaController evaController;
+    private LeerlingController llnController;
     private Button exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> attitudes = FXCollections.observableArrayList();
@@ -52,9 +56,11 @@ public class Veld3Attitude extends Pane {
     private ObservableList<String> toonData
             = FXCollections.observableArrayList();
 
-    public Veld3Attitude(SchermController schermCtrl) {
+    public Veld3Attitude(LeerlingController llnCtrl, SchermController schermCtrl, EvaController evaCtrl) {
         schermController = schermCtrl;
-
+        evaController = evaCtrl;
+        llnController = llnCtrl;
+        
         attitudes.addAll("Zenuwachtig", "Concentratie", "Schrik", "Asociaal", "Verkeersgevaarlijk",
                 "Ongeduldig", "Agressief rijgedrag", "Goede inzet", "Verstrooid", "Eigenwijs");
 
@@ -121,6 +127,7 @@ public class Veld3Attitude extends Pane {
             @Override
             public void handle(ActionEvent e) {
                 Veld3Attitude.this.schermController.setScherm(MainApp.HOOFDMENU_ID);
+                
             }
         });
         hBox1.getChildren().addAll(exit);

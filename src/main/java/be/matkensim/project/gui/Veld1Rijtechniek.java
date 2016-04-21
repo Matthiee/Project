@@ -322,12 +322,6 @@ public class Veld1Rijtechniek extends HBox implements View {
                 update();
             }
         });
-
-        stuuroefImg.setVisible(true);
-        achteruitImg.setVisible(true);
-        garageImg.setVisible(true);
-        kerenImg.setVisible(true);
-        parkerenImg.setVisible(true);
     }
 
     public void selecteerVenster() {
@@ -377,11 +371,36 @@ public class Veld1Rijtechniek extends HBox implements View {
                 Veld1Rijtechniek.this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKHELLING_ID);
             }
         });
-        stuuroefImg.setVisible(false);
-        achteruitImg.setVisible(false);
-        garageImg.setVisible(false);
-        kerenImg.setVisible(false);
-        parkerenImg.setVisible(false);
+        stuuroefImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Veld1Rijtechniek.this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKSTUUROEF_ID);
+            }
+        });
+        achteruitImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Veld1Rijtechniek.this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKACHTERUIT_ID);
+            }
+        });
+        garageImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Veld1Rijtechniek.this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKGARAGE_ID);
+            }
+        });
+        kerenImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Veld1Rijtechniek.this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKKEREN_ID);
+            }
+        });
+        parkerenImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                Veld1Rijtechniek.this.schermController.setScherm(MainApp.VELD1RIJTECHNIEKPARKEREN_ID);
+            }
+        });
     }
 
     public void updateLabels() {
