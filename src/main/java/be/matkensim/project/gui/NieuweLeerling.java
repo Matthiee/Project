@@ -39,9 +39,9 @@ public class NieuweLeerling extends StackPane {
 
     private TextField txtNaam, txtInschrijvingsNr, txtInstructeur, txtVerval, txtType;
 
-    private Button btnUpload,btnOpslaan, btnTerug;
+    private Button btnUpload, btnOpslaan, btnTerug;
 
-    private VBox vbox2,vbox3;
+    private VBox vbox2, vbox3;
 
     public NieuweLeerling(SchermController schermController1) {
         setPadding(new Insets(10));
@@ -72,7 +72,7 @@ public class NieuweLeerling extends StackPane {
         VBox vbox1 = new VBox(15, lblNaam, lblInschrijvingsNr, lblInstructeur, lblVerval, lblType);
         vbox1.setPadding(new Insets(10));
 
-        HBox hboxKnoppen = new HBox(10,btnUpload,btnOpslaan, btnTerug);
+        HBox hboxKnoppen = new HBox(10, btnUpload, btnOpslaan, btnTerug);
 
         vbox2 = new VBox(10, txtNaam, txtInschrijvingsNr, txtInstructeur, txtVerval, txtType, lblInfo, hboxKnoppen);
         vbox1.setPadding(new Insets(10));
@@ -108,7 +108,7 @@ public class NieuweLeerling extends StackPane {
                 schermController.setScherm(MainApp.LOGIN_ID);
             }
         });
-        
+
         btnUpload.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -179,7 +179,6 @@ public class NieuweLeerling extends StackPane {
         }
     }
 
-    
     private void uploadFoto() {
         FileChooser fileChooser = new FileChooser();
 
@@ -189,15 +188,17 @@ public class NieuweLeerling extends StackPane {
 
         File file = fileChooser.showOpenDialog(null);
 
-        try {
-            BufferedImage bufferedImage = ImageIO.read(file);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            img.setImage(image);
-            
-            vbox3.getChildren().clear();
-            vbox3.getChildren().add(img);
-        } catch (IOException ex) {
-            Logger.getLogger(NieuweLeerling.class.getName()).log(Level.SEVERE, null, ex);
+        if (file != null) {
+            try {
+                BufferedImage bufferedImage = ImageIO.read(file);
+                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                img.setImage(image);
+
+                vbox3.getChildren().clear();
+                vbox3.getChildren().add(img);
+            } catch (IOException ex) {
+                Logger.getLogger(NieuweLeerling.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }
