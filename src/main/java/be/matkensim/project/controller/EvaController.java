@@ -1,6 +1,7 @@
 
 package be.matkensim.project.controller;
 
+import be.matkensim.project.domein.Attitude;
 import be.matkensim.project.domein.Rijtechniek;
 import be.matkensim.project.domein.Verkeerstechniek;
 import be.matkensim.project.gui.Onderdeel;
@@ -25,6 +26,32 @@ public class EvaController {
     public void setSelectedEva(int selectedEva) {
         this.selectedEva = selectedEva;
         leerlingController.setLastSelectedEva(selectedEva);
+    }
+    public void saveAttitude(ObservableList<Attitude> list1, ObservableList<String> list2){
+        if(selectedEva == 1){
+            leerlingController.getEva1().setAttitudeOpm(list1);
+            leerlingController.getEva1().setAttitudeWoorden(list2);
+        }
+        if(selectedEva == 2){
+            leerlingController.getEva2().setAttitudeOpm(list1);
+            leerlingController.getEva2().setAttitudeWoorden(list2);
+        }
+        if(selectedEva == 3){
+            leerlingController.getEva3().setAttitudeOpm(list1);
+            leerlingController.getEva3().setAttitudeWoorden(list2);
+        }
+    }
+    
+    public ObservableList<Attitude> loadAttitudeWoorden(){
+        ObservableList<Attitude> list = FXCollections.observableArrayList();
+        
+        return list ;
+    }
+    
+    public ObservableList<String> loadAttitudeOpm(){
+        ObservableList<String> list = FXCollections.observableArrayList();
+        
+        return list;
     }
     
     public int[] loadPijlen(){
