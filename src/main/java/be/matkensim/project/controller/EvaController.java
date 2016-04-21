@@ -28,32 +28,24 @@ public class EvaController {
         leerlingController.setLastSelectedEva(selectedEva);
     }
     public void saveAttitude(ObservableList<Attitude> list1, ObservableList<String> list2){
+        
+        leerlingController.setAttitudeWoorden(list1);
+        
         if(selectedEva == 1){
             leerlingController.getEva1().setAttitudeOpm(list2);
-            leerlingController.getEva1().setAttitudeWoorden(list1);
         }
         if(selectedEva == 2){
             leerlingController.getEva2().setAttitudeOpm(list2);
-            leerlingController.getEva2().setAttitudeWoorden(list1);
         }
         if(selectedEva == 3){
             leerlingController.getEva3().setAttitudeOpm(list2);
-            leerlingController.getEva3().setAttitudeWoorden(list1);
         }
     }
     
     public ObservableList<Attitude> loadAttitudeWoorden(){
         ObservableList<Attitude> list = FXCollections.observableArrayList();
         
-        if(selectedEva == 1){
-            list = leerlingController.getEva1().getAttitudeWoorden();
-        }
-        if(selectedEva == 2){
-            list = leerlingController.getEva2().getAttitudeWoorden();
-        }
-        if(selectedEva == 3){
-            list = leerlingController.getEva3().getAttitudeWoorden();
-        }
+        list = leerlingController.getAttitudeWoorden();
         
         return list ;
     }
