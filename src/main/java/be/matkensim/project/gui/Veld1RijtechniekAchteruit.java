@@ -26,7 +26,7 @@ public class Veld1RijtechniekAchteruit extends Pane implements View{
     private final SchermController schermController;
     private EvaController evaController;
     private LeerlingController llnController;
-    private Button exit;
+    private Button aandachtBtn,exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> houdingen = FXCollections.observableArrayList();
     private Label toon = new Label("Geselecteerd:");
@@ -44,8 +44,15 @@ public class Veld1RijtechniekAchteruit extends Pane implements View{
         vBox1.getChildren().addAll(toon);
         houdingen.addAll("Zithouding", "Gordel", "Spiegel", "Handrem");
         this.llnController.getLeerling().addView(this);
-
         
+        aandachtBtn = new Button("Aandachtspunt");
+        aandachtBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) 
+            {
+                aandacht();
+            }
+        });
 
         TableColumn commentaarCol = new TableColumn("Commentaar");
         commentaarCol.setMinWidth(400);
@@ -74,12 +81,13 @@ public class Veld1RijtechniekAchteruit extends Pane implements View{
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                data.add(new Rijtechniek(
-                        
+                if(!"".equals(commentaarFld.getText()))
+                {
+                    data.add(new Rijtechniek(
                         commentaarFld.getText()
                 ));
-                
                 commentaarFld.clear();
+                }
             }
         });
         table.setItems(data);
@@ -92,7 +100,7 @@ public class Veld1RijtechniekAchteruit extends Pane implements View{
         table.setEditable(true);
         table.setMaxHeight(250);
 
-        vBox2.getChildren().addAll(table, commentaarFld, addButton);
+        vBox2.getChildren().addAll(table, commentaarFld, addButton,aandachtBtn);
         exit = new Button("ga terug");
         exit.setTranslateY(12);
 
@@ -127,6 +135,12 @@ public class Veld1RijtechniekAchteruit extends Pane implements View{
     public void update(){
         data = evaController.loadListDataRijtechniek("Achteruit");
         table.setItems(data);
+    }
+    
+    private void aandacht()
+    {
+        if(table.getSelectionModel().getSelectedItem()!=null)
+            llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getCommentaar()); 
     }
 }
 

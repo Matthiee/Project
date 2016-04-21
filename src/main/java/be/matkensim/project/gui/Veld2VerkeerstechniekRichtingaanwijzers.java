@@ -26,7 +26,7 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane implements Vie
     private final SchermController schermController;
     private EvaController evaController;
     private LeerlingController llnController;
-    private Button exit;
+    private Button aandachtBtn,exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> houdingen = FXCollections.observableArrayList();
     private Label toon = new Label("Geselecteerd:");
@@ -46,6 +46,15 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane implements Vie
         vBox1.getChildren().addAll(toon);
         houdingen.addAll("Gebruik richtingaanwijzers", "Tijdig richting aangeven");
 
+        aandachtBtn = new Button("Aandachtspunt");
+        aandachtBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) 
+            {
+                aandacht();
+            }
+        });
+        
         TableColumn commentaarCol = new TableColumn("Commentaar");
         commentaarCol.setMinWidth(400);
         commentaarCol.setCellValueFactory(
@@ -74,10 +83,13 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane implements Vie
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                if(!"".equals(addCommentaar.getText()))
+                {
                 data.add(new Verkeerstechniek(
                         addCommentaar.getText()
                 ));
                 addCommentaar.clear();
+                }
             }
         });
         addButton.setTranslateX(65);
@@ -92,7 +104,7 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane implements Vie
         table.setEditable(true);
         table.setMaxHeight(250);
 
-        vBox2.getChildren().addAll(table,addCommentaar, addButton);
+        vBox2.getChildren().addAll(table,addCommentaar, addButton,aandachtBtn);
         exit = new Button("ga terug");
         exit.setTranslateY(12);
 
@@ -125,5 +137,11 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends Pane implements Vie
     public void update() {
         data = evaController.loadListDataVerkeerstechniek("Richtingaanwijzers");
         table.setItems(data);
+    }
+    
+    private void aandacht()
+    {
+        if(table.getSelectionModel().getSelectedItem()!=null)
+            llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getCommentaar()); 
     }
 }
