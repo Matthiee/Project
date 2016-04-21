@@ -24,7 +24,7 @@ public class EvaluatieMoment {
     private ObservableList richtingaanwijzersOpm, voorrangOpm, openbareWegOpm, verkeerstekensOpm, 
             snelheidOpm, afstandOpm, inhalenOpm, kruisenOpm, linksafOpm, rechtsafOpm;
     //gegevens attitude
-    private ObservableList attitudeOpm, attitudeWoorden;
+    private ObservableList attitudeOpm;
     //gegevens hoofdmenu;
     private int rotonde, rijstroken, stad, autosnelweg, schakelaars, vloeistoffen,
             banden, tanken, noodstop, gps;
@@ -80,7 +80,6 @@ public class EvaluatieMoment {
         this.linksafOpm = FXCollections.observableArrayList();
         this.rechtsafOpm = FXCollections.observableArrayList();
         this.attitudeOpm = FXCollections.observableArrayList();
-        this.attitudeWoorden = FXCollections.observableArrayList();
         this.rotonde = 0;
         this.rijstroken = 0;
         this.stad = 0;
@@ -103,7 +102,7 @@ public class EvaluatieMoment {
             int snelheid, int afstand, int inhalen, int kruisen, int linksaf, int rechtsaf, ObservableList richtingaanwijzersOpm, 
             ObservableList voorrangOpm, ObservableList openbareWegOpm, ObservableList verkeerstekensOpm, ObservableList snelheidOpm, ObservableList afstandOpm, 
             ObservableList inhalenOpm, ObservableList kruisenOpm, ObservableList linksafOpm, ObservableList rechtsafOpm, int grafiek, ObservableList attitudeOpm, 
-            ObservableList attitudeWoorden, int rotonde, int rijstroken, int stad, int autosnelweg, int schakelaars, int vloeistoffen, int banden, int tanken, 
+            int rotonde, int rijstroken, int stad, int autosnelweg, int schakelaars, int vloeistoffen, int banden, int tanken, 
             int noodstop, int gps, ObservableList hoofdmenuOpm) {
         this.houding = houding;
         this.koppeling = koppeling;
@@ -150,7 +149,6 @@ public class EvaluatieMoment {
         this.linksafOpm = linksafOpm;
         this.rechtsafOpm = rechtsafOpm;
         this.attitudeOpm = attitudeOpm;
-        this.attitudeWoorden = attitudeWoorden;
         this.rotonde = rotonde;
         this.rijstroken = rijstroken;
         this.stad = stad;
@@ -165,15 +163,6 @@ public class EvaluatieMoment {
     }
 
     //Getters en Setters
-
-    public void setAttitudeWoorden(ObservableList attitudeWoorden) {    
-        this.attitudeWoorden = attitudeWoorden;
-    }
-    
-    public ObservableList getAttitudeWoorden() {    
-        return attitudeWoorden;
-    }
-    
     public ObservableList getKerenOpm() {    
         return kerenOpm;
     }
