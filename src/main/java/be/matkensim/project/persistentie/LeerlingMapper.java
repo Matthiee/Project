@@ -2,6 +2,7 @@ package be.matkensim.project.persistentie;
 
 import be.matkensim.project.async.GetLeerlingListTask;
 import be.matkensim.project.domein.Leerling;
+import be.matkensim.project.gui.MainApp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -40,6 +41,8 @@ public class LeerlingMapper {
             lln.clear();
             lln.addAll(leerlingen);
         });
+        
+        MainApp.service.submit(task);
     }
 
     public static void getLeerlingenMetNaam(ObservableList<Leerling> lln, String naam) {
@@ -65,6 +68,8 @@ public class LeerlingMapper {
             lln.clear();
             lln.addAll(leerlingen);
         });
+        
+        MainApp.service.submit(task);
 
     }
 
