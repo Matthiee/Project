@@ -1,5 +1,7 @@
 package be.matkensim.project.gui;
 
+import be.matkensim.project.controller.EvaController;
+import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
 import be.matkensim.project.domein.Attitude;
 import javafx.collections.FXCollections;
@@ -21,10 +23,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
-public class Veld3Attitude extends Pane {
+public class Veld3Attitude extends Pane implements View{
 
     //toonTable is de table die moet getoond worden
     private final SchermController schermController;
+    private EvaController evaController;
+    private LeerlingController llnController;
     private Button exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> attitudes = FXCollections.observableArrayList();
@@ -52,9 +56,12 @@ public class Veld3Attitude extends Pane {
     private ObservableList<String> toonData
             = FXCollections.observableArrayList();
 
-    public Veld3Attitude(SchermController schermCtrl) {
+    public Veld3Attitude(LeerlingController llnCtrl, SchermController schermCtrl, EvaController evaCtrl) {
         schermController = schermCtrl;
-
+        evaController = evaCtrl;
+        llnController = llnCtrl;
+        this.llnController.getLeerling().addView(this);
+        
         attitudes.addAll("Zenuwachtig", "Concentratie", "Schrik", "Asociaal", "Verkeersgevaarlijk",
                 "Ongeduldig", "Agressief rijgedrag", "Goede inzet", "Verstrooid", "Eigenwijs");
 
@@ -120,6 +127,7 @@ public class Veld3Attitude extends Pane {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                evaController.saveAttitude(data, toonData);
                 Veld3Attitude.this.schermController.setScherm(MainApp.HOOFDMENU_ID);
             }
         });
@@ -139,6 +147,7 @@ public class Veld3Attitude extends Pane {
         });
         this.getChildren().addAll(vBox1, vBox2, hBox1);
         this.setMinWidth(600);
+        update();
     }
 
     private void doorgaanAlsGeselecteerd() {
@@ -148,5 +157,29 @@ public class Veld3Attitude extends Pane {
 
     private void verwijder() {
         toonData.remove(toonTable.getSelectionModel().getSelectedItem());
+    }
+    
+    @Override
+    public void update(){
+        data = evaController.loadAttitudeWoorden();
+        toonData = evaController.loadAttitudeOpm();
+        
+        if(data.isEmpty()){
+            data = FXCollections.observableArrayList(
+                    new Attitude("Zenuwachtig"),
+                    new Attitude("Concentratie"),
+                    new Attitude("Schrik"),
+                    new Attitude("Asociaal"),
+                    new Attitude("Verkeersgevaarlijk"),
+                    new Attitude("Ongeduldig"),
+                    new Attitude("Agressief rijgedrag"),
+                    new Attitude("Goede inzet"),
+                    new Attitude("Verstrooid"),
+                    new Attitude("Eigenwijs")
+            );
+        }
+        toonTable.setItems(toonData);
+        table.setItems(data);
+        
     }
 }

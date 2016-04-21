@@ -161,7 +161,8 @@ public class EvaluatieMoment {
         this.gps = gps;
         this.hoofdmenuOpm = hoofdmenuOpm;
     }
-    
+
+    //Getters en Setters
     public ObservableList getKerenOpm() {    
         return kerenOpm;
     }
@@ -198,7 +199,6 @@ public class EvaluatieMoment {
         return stuuroefOpm;
     }
 
-    //Getters en Setters
     public void setStuuroefOpm(ObservableList stuuroefOpm) {    
         this.stuuroefOpm = stuuroefOpm;
     }

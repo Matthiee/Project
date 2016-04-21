@@ -1,10 +1,12 @@
 package be.matkensim.project.controller;
 
+import be.matkensim.project.domein.Attitude;
 import be.matkensim.project.domein.EvaluatieMoment;
 import be.matkensim.project.domein.Leerling;
 import be.matkensim.project.gui.View;
 import java.util.Date;
 import java.util.List;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 /**
@@ -35,6 +37,14 @@ public class LeerlingController {
         this.leerling = leerling;
         
         this.leerling.update();
+    }
+    
+    public ObservableList<Attitude> getAttitudeWoorden() {
+        return leerling.getAttitudeWoorden();
+    }
+
+    public void setAttitudeWoorden(ObservableList<Attitude> attitudeWoorden) {
+        leerling.setAttitudeWoorden(attitudeWoorden);
     }
     
     public int getGrafiek(){
