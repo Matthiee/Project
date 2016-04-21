@@ -6,9 +6,11 @@
 package be.matkensim.project.async;
 
 import be.matkensim.project.domein.Leerling;
+import be.matkensim.project.json.LeerlingenListReader;
 import java.util.List;
 import javafx.concurrent.Task;
-import javafx.ws.rs.WebTarget;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 
 /**
  *
@@ -20,14 +22,14 @@ public class GetLeerlingListTask extends Task<List<Leerling>>{
 
     public GetLeerlingListTask() {
         userListResource = ClientBuilder.newClient()
-                .target("https://glassfish-svanimpe.rhcloud.com/reminders/api")
-                .path("users")
-                .register(UserListReader.class);
+                .target("http://localhost:8080/api/api/")
+                .path("leerlingen")
+                .register(LeerlingenListReader.class);
     }
     
     @Override
     protected List<Leerling> call() throws Exception {
-        
+        return null;
     }
     
 }
