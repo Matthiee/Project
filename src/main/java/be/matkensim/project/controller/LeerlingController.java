@@ -5,15 +5,14 @@ import be.matkensim.project.domein.Leerling;
 import be.matkensim.project.gui.View;
 import java.util.Date;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
-/**
- *
- * @author Matthias
- */
 public class LeerlingController {
     private Leerling leerling;
-    
+    private String aandachtsPunt;
+    private ObservableList<String> aandachtsPuntenLijst = FXCollections.observableArrayList();
     
     public LeerlingController(Leerling lln){
         this.leerling=lln;
@@ -124,8 +123,20 @@ public class LeerlingController {
 
     public void setType(String type) {
         leerling.setType(type);
+    } 
+
+   
+
+    public void setAandachtsPunt(String aandachtsPunt) {
+        this.aandachtsPunt = aandachtsPunt;
+        aandachtsPuntenLijst.add(aandachtsPunt);
     }
-    
+
+    public ObservableList<String> getAandachtsPuntenLijst() {
+        return aandachtsPuntenLijst;
+    }
+
+  
     
     
 }

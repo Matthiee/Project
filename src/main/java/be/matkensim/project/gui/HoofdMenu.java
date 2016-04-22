@@ -3,11 +3,13 @@ package be.matkensim.project.gui;
 import be.matkensim.project.controller.EvaController;
 import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
@@ -30,7 +32,7 @@ public class HoofdMenu extends HBox implements View {
     private ImageView achtergrond;
     //top
     private GridPane top;
-    private TextArea opmerkingenTxt;
+
     private LeerlingInfoHouder llnInfo;
     //Left
     private GridPane left;
@@ -48,9 +50,11 @@ public class HoofdMenu extends HBox implements View {
     private GridPane bottom;
     private EvaSelector evaSelector;
     private Veld4Evolutie graphImg;
+    private ListView<String> listViewCommentaar = new ListView<String>();
+    private ObservableList<String> listCommentaar = FXCollections.observableArrayList();
+    /*private String toestand="1";*/ //Is voor kleur te veranderen lijst
 
     public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaCtrl) {
-
         //hoogte en breedte
         hoogte = schermCtrl.getHoogte();
         breedte = schermCtrl.getBreedte();
@@ -217,9 +221,6 @@ public class HoofdMenu extends HBox implements View {
         //de nodes
         graphImg = new Veld4Evolutie(schermController, this.llnController);
         evaSelector = new EvaSelector(evaController);
-        opmerkingenTxt = new TextArea();
-        opmerkingenTxt.setPrefRowCount(10);
-        opmerkingenTxt.setWrapText(true);
 
         //de opmaak
         graphImg.minWidth(300);
@@ -230,15 +231,20 @@ public class HoofdMenu extends HBox implements View {
         evaSelector.setTranslateY(-60);
         attitudeImg.setFitHeight(50);
         attitudeImg.setFitWidth(50);
-        opmerkingenTxt.setMaxSize(350, 200);
-        opmerkingenTxt.setMinSize(350, 200);
-        opmerkingenTxt.setTranslateX(65);
-        opmerkingenTxt.setTranslateY(-20);
+
+        //de aandacht lijst
+        listCommentaar.addAll(llnController.getAandachtsPuntenLijst());
+
+        listViewCommentaar.setItems(listCommentaar);
+        listViewCommentaar.setMaxSize(350, 200);
+        listViewCommentaar.setMinSize(350, 200);
+        listViewCommentaar.setTranslateX(65);
+        listViewCommentaar.setTranslateY(-20);
         bottom.setAlignment(Pos.CENTER);
 
         //de nodes toevoegen      
         bottom.add(evaSelector, 0, 0);
-        bottom.add(opmerkingenTxt, 1, 0);
+        bottom.add(listViewCommentaar, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
         evaSelector.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -320,6 +326,15 @@ public class HoofdMenu extends HBox implements View {
 
         update();
 
+        /* //Is voor kleur te veranderen lijst
+        listViewCommentaar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent e) {
+                veranderKleurAandachtlijstItem();
+            }
+        });
+        */
+        
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
 
@@ -352,12 +367,35 @@ public class HoofdMenu extends HBox implements View {
         stuur.update();
     }
 
+    public void updateAandachtsLijst() {
+        listCommentaar.clear();
+        listCommentaar.addAll(llnController.getAandachtsPuntenLijst());
+    }
+
+    /* //Is voor kleur te veranderen lijst
+    private void veranderKleurAandachtlijstItem() {
+        //toestand 1= wit, 2= blauw
+        if ("1".equals(toestand)) 
+        {
+            listViewCommentaar.setStyle("-fx-background-color: #4682B4;");
+            listViewCommentaar.getSelectionModel().getSelectedItem();
+
+            toestand = "2";
+        }
+        else
+        {
+            listViewCommentaar.setStyle("-fx-background-color: white;");
+            toestand="1";
+        }
+    }*/
+
     @Override
     public void update() {
         updateOnderdelen();
         updateEvaSelector();
         updateGrafiek();
         updateStuurEnPijlen();
+        updateAandachtsLijst();
     }
 
 }
