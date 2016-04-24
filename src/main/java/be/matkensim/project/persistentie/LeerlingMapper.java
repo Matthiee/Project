@@ -18,26 +18,30 @@ public class LeerlingMapper {
 
     static {
         leerlingen = new ArrayList<Leerling>();
-        leerlingen.add(new Leerling("Lisa Su", "1969-11-01", "Paul", new Date(), "Rijbewijs B", new Image("resource/lisa.jpg")));
-        leerlingen.add(new Leerling("Mark Zuckerberg", "1984-05-14", "Paul", new Date(), "Rijbewijs B", new Image("resource/mark.jpg")));
-        leerlingen.add(new Leerling("Bill Gates", "1955-10-28", "Paul", new Date(), "Rijbewijs B", new Image("resource/bill.jpg")));
-        leerlingen.add(new Leerling("Marissa Mayer", "1975-05-30", "Paul", new Date(), "Rijbewijs B", new Image("resource/marissa.jpg")));
+//        leerlingen.add(new Leerling("Lisa Su", "1969-11-01", "Paul", new Date(), "Rijbewijs B", new Image("resource/lisa.jpg")));
+//        leerlingen.add(new Leerling("Mark Zuckerberg", "1984-05-14", "Paul", new Date(), "Rijbewijs B", new Image("resource/mark.jpg")));
+//        leerlingen.add(new Leerling("Bill Gates", "1955-10-28", "Paul", new Date(), "Rijbewijs B", new Image("resource/bill.jpg")));
+//        leerlingen.add(new Leerling("Marissa Mayer", "1975-05-30", "Paul", new Date(), "Rijbewijs B", new Image("resource/marissa.jpg")));
     }
 
     public static void getLeerlingen(ObservableList<Leerling> lln) {
 
         GetLeerlingListTask task = new GetLeerlingListTask();
         task.setOnSucceeded(e -> {
+            leerlingen.clear();
             lln.clear();
             try {
-                lln.addAll(task.get());
+                leerlingen.addAll(task.get());
+                lln.addAll(leerlingen);
             } catch (InterruptedException ex) {
                 Logger.getLogger(LeerlingMapper.class.getName()).log(Level.SEVERE, null, ex);
             } catch (ExecutionException ex) {
                 Logger.getLogger(LeerlingMapper.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+        
         task.setOnFailed(e -> {
+            leerlingen.clear();
             lln.clear();
             lln.addAll(leerlingen);
         });
@@ -50,9 +54,11 @@ public class LeerlingMapper {
         GetLeerlingListTask task = new GetLeerlingListTask();
         task.setOnSucceeded(e -> {
             lln.clear();
+            leerlingen.clear();
             try {
                 List<Leerling> llnreturn = task.get();
-
+                leerlingen.addAll(llnreturn);
+                
                 for (Leerling l : llnreturn) {
                     if (l.getNaam().toLowerCase().contains(naam.toLowerCase())) {
                         lln.add(l);
@@ -66,6 +72,7 @@ public class LeerlingMapper {
         });
         task.setOnFailed(e -> {
             lln.clear();
+            leerlingen.clear();
             lln.addAll(leerlingen);
         });
         

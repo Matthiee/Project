@@ -1,5 +1,6 @@
 package be.matkensim.project.gui;
 
+import be.matkensim.project.async.AddLeerlingTask;
 import be.matkensim.project.controller.SchermController;
 import be.matkensim.project.domein.Leerling;
 import java.awt.image.BufferedImage;
@@ -142,7 +143,9 @@ public class NieuweLeerling extends StackPane {
                     txtType.getText(),
                     img.getImage());
 
-            if (LeerlingMapper.voegLeerlingToe(lln)) {
+            AddLeerlingTask task = new AddLeerlingTask(lln);
+            
+            task.setOnSucceeded(e->{
                 clear();
 
                 lblInfo.setText("Leerling opgeslagen!");
@@ -150,12 +153,14 @@ public class NieuweLeerling extends StackPane {
                 lblInfo.setVisible(true);
                 vbox3.getChildren().clear();
                 vbox3.getChildren().add(new ImageView("resource/man-icon.png"));
-
-            } else {
+            });
+            task.setOnFailed(e->{
                 lblInfo.setText("Fout bij het toevoegen van de leerling!");
                 lblInfo.setTextFill(Color.DARKRED);
                 lblInfo.setVisible(true);
-            }
+            });
+            
+            MainApp.service.submit(task);
         } else {
             lblInfo.setVisible(true);
         }

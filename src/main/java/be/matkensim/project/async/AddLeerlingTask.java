@@ -6,6 +6,7 @@
 package be.matkensim.project.async;
 
 import be.matkensim.project.domein.Leerling;
+import be.matkensim.project.json.LeerlingWriter;
 import javafx.concurrent.Task;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
