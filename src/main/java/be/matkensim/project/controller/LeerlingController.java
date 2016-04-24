@@ -1,5 +1,6 @@
 package be.matkensim.project.controller;
 
+import be.matkensim.project.domein.Attitude;
 import be.matkensim.project.domein.EvaluatieMoment;
 import be.matkensim.project.domein.Leerling;
 import be.matkensim.project.gui.View;
@@ -34,6 +35,14 @@ public class LeerlingController {
         this.leerling = leerling;
         
         this.leerling.update();
+    }
+    
+    public ObservableList<Attitude> getAttitudeWoorden() {
+         return leerling.getAttitudeWoorden();
+    }
+ 
+    public void setAttitudeWoorden(ObservableList<Attitude> attitudeWoorden) {
+         leerling.setAttitudeWoorden(attitudeWoorden);
     }
     
     public int getGrafiek(){
