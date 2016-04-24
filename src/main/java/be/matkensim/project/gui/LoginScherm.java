@@ -1,5 +1,6 @@
 package be.matkensim.project.gui;
 
+import be.matkensim.project.async.GetEvaTask;
 import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
 import be.matkensim.project.domein.Leerling;
@@ -160,15 +161,28 @@ public class LoginScherm extends StackPane implements View {
             lblInfo.setText("Geen leerling geslecteerd!");
             lblInfo.setVisible(true);
         } else if (LeerlingMapper.bestaat(txt)) {
-
+            boolean error = false;
             Leerling lln = LeerlingMapper.getLeerling(txt);
-            llnCntrl.setLeerling(lln);
+            GetEvaTask task = new GetEvaTask(lln.getInschrijvingsnr(), 1);
+            GetEvaTask task1 = new GetEvaTask(lln.getInschrijvingsnr(), 2);
+            GetEvaTask task2 = new GetEvaTask(lln.getInschrijvingsnr(), 3);
 
-            schermController.setScherm(MainApp.HOOFDMENU_ID);
+            MainApp.service.submit(task);
+            task.setOnSucceeded((e) -> {
+                MainApp.service.submit(task1);
+            });
+            task1.setOnSucceeded((e) -> {
+                MainApp.service.submit(task2);
+            });
+            task2.setOnSucceeded((e) -> {
+                llnCntrl.setLeerling(lln);
 
-            lblInfo.setVisible(false);
-            txtNaam.clear();
-            zoek();
+                schermController.setScherm(MainApp.HOOFDMENU_ID);
+
+                lblInfo.setVisible(false);
+                txtNaam.clear();
+                zoek();
+            });
 
         } else {
             lblInfo.setText("Leerling bestaat niet!");
