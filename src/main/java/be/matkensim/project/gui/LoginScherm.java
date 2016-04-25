@@ -25,6 +25,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import be.matkensim.project.persistentie.LeerlingMapper;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginScherm extends StackPane implements View {
 
@@ -161,7 +164,6 @@ public class LoginScherm extends StackPane implements View {
             lblInfo.setText("Geen leerling geslecteerd!");
             lblInfo.setVisible(true);
         } else if (LeerlingMapper.bestaat(txt)) {
-            boolean error = false;
             Leerling lln = LeerlingMapper.getLeerling(txt);
             GetEvaTask task = new GetEvaTask(lln.getInschrijvingsnr(), 1);
             GetEvaTask task1 = new GetEvaTask(lln.getInschrijvingsnr(), 2);
@@ -169,19 +171,37 @@ public class LoginScherm extends StackPane implements View {
 
             MainApp.service.submit(task);
             task.setOnSucceeded((e) -> {
-                MainApp.service.submit(task1);
+                try {
+                    lln.setEva1(task.get());
+                    MainApp.service.submit(task1);
+                } catch (InterruptedException | ExecutionException ex) {
+                    lblInfo.setText("Fout bij het afhalen van evaluatiemomenten!");
+                    Logger.getLogger(LoginScherm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
             task1.setOnSucceeded((e) -> {
-                MainApp.service.submit(task2);
+                try {
+                    lln.setEva2(task1.get());
+                    MainApp.service.submit(task2);
+                } catch (InterruptedException | ExecutionException ex) {
+                    lblInfo.setText("Fout bij het afhalen van evaluatiemomenten!");
+                    Logger.getLogger(LoginScherm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
             task2.setOnSucceeded((e) -> {
-                llnCntrl.setLeerling(lln);
+                try {
+                    lln.setEva3(task2.get());
+                    llnCntrl.setLeerling(lln);
 
-                schermController.setScherm(MainApp.HOOFDMENU_ID);
+                    schermController.setScherm(MainApp.HOOFDMENU_ID);
 
-                lblInfo.setVisible(false);
-                txtNaam.clear();
-                zoek();
+                    lblInfo.setVisible(false);
+                    txtNaam.clear();
+                    zoek();
+                } catch (InterruptedException | ExecutionException ex) {
+                    lblInfo.setText("Fout bij het afhalen van evaluatiemomenten!");
+                    Logger.getLogger(LoginScherm.class.getName()).log(Level.SEVERE, null, ex);
+                }
             });
 
         } else {
