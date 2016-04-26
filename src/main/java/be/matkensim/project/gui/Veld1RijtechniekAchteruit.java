@@ -105,7 +105,7 @@ public class Veld1RijtechniekAchteruit extends VBox implements View{
         });
         table.setEditable(true);
 
-        vBox2.getChildren().addAll(table, commentaarFld);
+       
         exit = new Button("ga terug");
 
         exit.setOnAction(new EventHandler<ActionEvent>() {
