@@ -19,8 +19,8 @@ public class SchermController extends StackPane {
         super();
         
         Rectangle2D r = javafx.stage.Screen.getPrimary().getVisualBounds();
-        hoogte=(int)r.getHeight();
-        breedte=(int)r.getWidth();
+        //hoogte=(int)r.getHeight();
+        //breedte=(int)r.getWidth();
         
         schermen =new HashMap<>();
         this.setMaxHeight(hoogte);
