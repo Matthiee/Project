@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -33,6 +34,9 @@ public class Veld2VerkeerstechniekVoorrang extends Pane implements View{
     private VBox vBox1 = new VBox();
     private VBox vBox2 = new VBox();
     private HBox hBox1 = new HBox();
+    private HBox hBox2 = new HBox();
+    private Label titel = new Label("Voorrang");
+    private ImageView titelAfb = new ImageView("resource/Verkeerstechniek/voorrangNeutraal.png");
 
     private TableView<Verkeerstechniek> table = new TableView<Verkeerstechniek>();
     private ObservableList<Verkeerstechniek> data
@@ -116,11 +120,19 @@ public class Veld2VerkeerstechniekVoorrang extends Pane implements View{
             }
         });
         hBox1.getChildren().addAll(exit);
+        
+        titelAfb.setFitHeight(50);
+        titelAfb.setFitWidth(50);
+        titel.setMinSize(100, 50);
 
         vBox2.setTranslateX(250);
-        hBox1.setTranslateY(300);
+        vBox2.setTranslateY(100);
+        vBox1.setTranslateY(100);
+        hBox1.setTranslateY(400);
+        
+        hBox2.getChildren().addAll(titelAfb, titel);
 
-        this.getChildren().addAll(vBox1, vBox2, hBox1);
+        this.getChildren().addAll(hBox2,vBox1, vBox2, hBox1);
         this.setMinWidth(600);
         update();
     }

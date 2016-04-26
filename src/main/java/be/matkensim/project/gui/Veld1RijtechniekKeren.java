@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -33,6 +34,9 @@ public class Veld1RijtechniekKeren extends Pane implements View{
     private VBox vBox1 = new VBox();
     private VBox vBox2 = new VBox();
     private HBox hBox1 = new HBox();
+    private HBox hBox2 = new HBox();
+    private Label titel = new Label("Keren");
+    private ImageView titelAfb = new ImageView("resource/Rijtechniek/kerenNeutraal.png");
 
     private TableView<Rijtechniek> table = new TableView<Rijtechniek>();
     private ObservableList<Rijtechniek> data = FXCollections.observableArrayList();
@@ -44,7 +48,7 @@ public class Veld1RijtechniekKeren extends Pane implements View{
         vBox1.getChildren().addAll(toon);
         houdingen.addAll("Zithouding", "Gordel", "Spiegel", "Handrem");
         this.llnController.getLeerling().addView(this);
-
+        
         aandachtBtn = new Button("Aandachtspunt");
         aandachtBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -107,16 +111,24 @@ public class Veld1RijtechniekKeren extends Pane implements View{
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                evaController.saveListDataRijtechniek("Keren", data);
+                evaController.saveListDataRijtechniek("Achteruit", data);
                 Veld1RijtechniekKeren.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
             }
         });
+        titelAfb.setFitHeight(50);
+        titelAfb.setFitWidth(50);
+        titel.setMinSize(100, 50);
+        
         hBox1.getChildren().addAll(exit);
 
         vBox2.setTranslateX(250);
-        hBox1.setTranslateY(300);
+        vBox2.setTranslateY(100);
+        vBox1.setTranslateY(100);
+        hBox1.setTranslateY(400);
+        
+        hBox2.getChildren().addAll(titelAfb, titel);
 
-        this.getChildren().addAll(vBox1, vBox2, hBox1);
+        this.getChildren().addAll(hBox2, vBox1, vBox2, hBox1);
         this.setMinWidth(600);
         update();
     }
@@ -133,7 +145,7 @@ public class Veld1RijtechniekKeren extends Pane implements View{
     
     @Override
     public void update(){
-        data = evaController.loadListDataRijtechniek("Keren");
+        data = evaController.loadListDataRijtechniek("Achteruit");
         table.setItems(data);
     }
     
@@ -143,5 +155,3 @@ public class Veld1RijtechniekKeren extends Pane implements View{
             llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getCommentaar()); 
     }
 }
-
-
