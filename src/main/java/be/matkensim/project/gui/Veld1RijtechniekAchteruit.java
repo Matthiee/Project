@@ -78,6 +78,7 @@ public class Veld1RijtechniekAchteruit extends VBox implements View{
 
         table.setItems(data);
         table.getColumns().addAll(commentaarCol);
+        
 
         
         commentaarFld = new TextField();
@@ -116,6 +117,8 @@ public class Veld1RijtechniekAchteruit extends VBox implements View{
             }
         });
         
+        commentaarCol.setMaxWidth(298);
+        commentaarCol.setMinWidth(298);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);

@@ -117,7 +117,8 @@ public class Veld2VerkeerstechniekRechtsaf extends VBox implements View{
             }
         });
         hBox1.getChildren().addAll(exit);
-
+        commentaarCol.setMaxWidth(298);
+        commentaarCol.setMinWidth(298);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);

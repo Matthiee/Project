@@ -115,7 +115,8 @@ public class Veld1RijtechniekKeren extends VBox implements View{
                 Veld1RijtechniekKeren.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
             }
         });
-        
+        commentaarCol.setMaxWidth(298);
+        commentaarCol.setMinWidth(298);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);
