@@ -1,8 +1,11 @@
 package be.matkensim.project.gui;
 
+import be.matkensim.project.async.SaveEvaTask;
 import be.matkensim.project.controller.EvaController;
 import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
+import be.matkensim.project.domein.Leerling;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -248,6 +251,13 @@ public class HoofdMenu extends HBox implements View {
         bottom.add(opmerkingenTxt, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
+        saveImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                save();
+            }
+        });
+        
         evaSelector.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
@@ -330,6 +340,20 @@ public class HoofdMenu extends HBox implements View {
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
 
+    private void save(){
+        System.out.println("test");
+        
+         SaveEvaTask t1 = new SaveEvaTask(llnController.getInschrijvingsnr(), 1, llnController.getEva1());
+         SaveEvaTask t2 = new SaveEvaTask(llnController.getInschrijvingsnr(), 2, llnController.getEva2());
+         SaveEvaTask t3 = new SaveEvaTask(llnController.getInschrijvingsnr(), 3, llnController.getEva3());
+         
+         MainApp.service.submit(t1);
+         MainApp.service.submit(t2);
+         MainApp.service.submit(t3);
+         
+         System.out.println("test");
+    }
+    
     public void updateOnderdelen() {
         //left
         evaController.loadColorData(schakelaars);
