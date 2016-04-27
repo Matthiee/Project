@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -16,23 +17,30 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
-public class Veld2VerkeerstechniekVerkeerstekens extends Pane implements View{
+public class Veld2VerkeerstechniekVerkeerstekens extends VBox implements View{
 
     private final SchermController schermController;
     private EvaController evaController;
     private LeerlingController llnController;
-    private Button exit;
+    private Button aandachtBtn,exit,addButton;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> houdingen = FXCollections.observableArrayList();
     private Label toon = new Label("Geselecteerd:");
     private VBox vBox1 = new VBox();
     private VBox vBox2 = new VBox();
     private HBox hBox1 = new HBox();
+    private HBox hBox2 = new HBox();
+    private GridPane gp = new GridPane();
+    private Label titel = new Label("Verkeerstekens");
+    private ImageView titelAfb = new ImageView("resource/Verkeerstechniek/verkeerstekensNeutraal.png");
+    private TextField commentaarFld;
+    private TableColumn commentaarCol;
 
     private TableView<Verkeerstechniek> table = new TableView<Verkeerstechniek>();
     private ObservableList<Verkeerstechniek> data
@@ -42,11 +50,20 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane implements View{
         evaController = evaCtrl;
         schermController = schermCtrl;
         llnController = llnCtrl;
-        vBox1.getChildren().addAll(toon);
-        houdingen.addAll("Verkeerstekens", "Bevelen van bevoegde personen");
         this.llnController.getLeerling().addView(this);
+        vBox1.getChildren().addAll(toon);
+        houdingen.addAll("Volgafstand", "Zijdelingse afstand");
 
-        TableColumn commentaarCol = new TableColumn("Commentaar");
+        aandachtBtn = new Button("Aandachtspunt");
+        aandachtBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) 
+            {
+                aandacht();
+            }
+        });
+        
+        commentaarCol = new TableColumn("Commentaar");
         commentaarCol.setMinWidth(400);
         commentaarCol.setCellValueFactory(
                 new PropertyValueFactory<Verkeerstechniek, String>("commentaar"));
@@ -63,24 +80,23 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane implements View{
 
         table.setItems(data);
         table.getColumns().addAll(commentaarCol);
-        table.setTranslateX(65);
 
-        TextField addCommentaar = new TextField();
-        addCommentaar.setMaxWidth(400);
-        addCommentaar.setPromptText("Commentaar");
-        addCommentaar.setTranslateX(65);
+        commentaarFld = new TextField();
+        commentaarFld.setPromptText("Commentaar");
 
-        final Button addButton = new Button("Voeg toe");
+        addButton = new Button("Voeg toe");
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                if(!"".equals(commentaarFld.getText()))
+                {
                 data.add(new Verkeerstechniek(
-                        addCommentaar.getText()
+                        commentaarFld.getText()
                 ));
-                addCommentaar.clear();
+                commentaarFld.clear();
+                }
             }
         });
-        addButton.setTranslateX(65);
 
         table.setItems(data);
         table.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -90,11 +106,8 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane implements View{
             }
         });
         table.setEditable(true);
-        table.setMaxHeight(250);
 
-        vBox2.getChildren().addAll(table, addCommentaar, addButton);
         exit = new Button("ga terug");
-        exit.setTranslateY(12);
 
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -104,12 +117,71 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane implements View{
             }
         });
         hBox1.getChildren().addAll(exit);
-
-        vBox2.setTranslateX(250);
-        hBox1.setTranslateY(300);
-
-        this.getChildren().addAll(vBox1, vBox2, hBox1);
-        this.setMinWidth(600);
+        commentaarCol.setMaxWidth(298);
+        commentaarCol.setMinWidth(298);
+        hBox1.getChildren().addAll(titelAfb, titel);
+        hBox1.setMinHeight(50);
+        hBox1.setMaxHeight(50);
+        hBox1.setMinWidth(600);
+        hBox1.setMaxWidth(600);
+        hBox1.setSpacing(15);
+        hBox1.setAlignment(Pos.CENTER);
+        titelAfb.setFitHeight(50);
+        titelAfb.setFitWidth(50);
+        titel.setStyle("-fx-font: 40px Tahoma");
+        toon.setMinHeight(400);
+        toon.setMaxHeight(400);
+        toon.setMinWidth(300);
+        toon.setMaxWidth(300);
+        toon.setAlignment(Pos.TOP_LEFT);
+        table.setMinWidth(300);
+        table.setMaxWidth(300);
+        table.setMinHeight(400);
+        table.setMaxHeight(400);
+        addButton.setMinHeight(30);
+        addButton.setMaxHeight(30);
+        addButton.setMinWidth(150);
+        addButton.setMaxWidth(150);
+        addButton.setAlignment(Pos.CENTER);
+        aandachtBtn.setMinHeight(30);
+        aandachtBtn.setMaxHeight(30);
+        aandachtBtn.setMinWidth(150);
+        aandachtBtn.setMaxWidth(150);
+        aandachtBtn.setAlignment(Pos.CENTER);
+        exit.setMinHeight(30);
+        exit.setMaxHeight(30);
+        exit.setMinWidth(150);
+        exit.setMaxWidth(150);
+        exit.setAlignment(Pos.CENTER);
+        commentaarFld.setMinHeight(30);
+        commentaarFld.setMaxHeight(30);
+        commentaarFld.setMinWidth(250);
+        commentaarFld.setMaxWidth(250);
+        commentaarFld.setAlignment(Pos.CENTER);
+        
+        gp.setStyle("-fx-border-color: black;"
+                + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
+                + "-fx-background-color: lightgray;"
+                + "-fx-background-radius: 5;");
+        gp.setMaxWidth(900);
+        gp.setMinWidth(900);
+        gp.setMinHeight(600);
+        gp.setMaxHeight(600);
+        gp.setHgap(50);
+        gp.setVgap(20);
+        gp.setAlignment(Pos.CENTER);
+        gp.add(hBox1, 0, 0, 2, 1);
+        gp.add(toon, 0, 1);
+        gp.add(table, 1, 1);
+        gp.add(commentaarFld, 0, 2);
+        gp.add(addButton, 1, 2);
+        gp.add(aandachtBtn, 0, 3);
+        gp.add(exit, 1, 3);
+        
+        
+        this.setAlignment(Pos.CENTER);
+        this.getChildren().add(gp);
+        this.setStyle("-fx-background-image: url('resource/achtergrondStandaard.png')");
         update();
     }
 
@@ -125,5 +197,11 @@ public class Veld2VerkeerstechniekVerkeerstekens extends Pane implements View{
     public void update() {
         data = evaController.loadListDataVerkeerstechniek("Verkeerstekens");
         table.setItems(data);
+    }
+    
+    private void aandacht()
+    {
+        if(table.getSelectionModel().getSelectedItem()!=null)
+            llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getCommentaar()); 
     }
 }

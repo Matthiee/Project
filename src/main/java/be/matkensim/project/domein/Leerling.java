@@ -4,6 +4,8 @@ import be.matkensim.project.gui.View;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 /**
@@ -25,13 +27,14 @@ public class Leerling implements Model{
     private EvaluatieMoment eva2;
     private EvaluatieMoment eva3;
     private int lastSelectedEva; //1=eva1  2=eva2  3=eva3
+    private ObservableList<Attitude> attitudeWoorden;
     
     public Leerling(){
       views = new ArrayList<>();
     }
 
     public Leerling(String naam, String inschrijvingsnr, String instructeur, Date verval, String type, Image image, int grafiek, 
-            EvaluatieMoment eva1, EvaluatieMoment eva2, EvaluatieMoment eva3, int lastSelectedEva) {
+            EvaluatieMoment eva1, EvaluatieMoment eva2, EvaluatieMoment eva3, int lastSelectedEva, ObservableList attitudeWoorden) {
         this();
         
         this.naam = naam;
@@ -45,6 +48,7 @@ public class Leerling implements Model{
         this.eva2 = eva2;
         this.eva3 = eva3;
         this.lastSelectedEva = lastSelectedEva;
+        this.attitudeWoorden = attitudeWoorden;
     }
     
     public Leerling(String naam, String inschrijvingsnr, String instructeur, Date verval, String type, Image image) {
@@ -61,6 +65,15 @@ public class Leerling implements Model{
         this.eva2 = new EvaluatieMoment();
         this.eva3 = new EvaluatieMoment();
         this.lastSelectedEva = 1;
+        this.attitudeWoorden = FXCollections.observableArrayList();
+    }
+    
+    public ObservableList<Attitude> getAttitudeWoorden() {
+        return attitudeWoorden;
+    }
+
+    public void setAttitudeWoorden(ObservableList<Attitude> attitudeWoorden) {
+        this.attitudeWoorden = attitudeWoorden;
     }
 
     public int getGrafiek() {

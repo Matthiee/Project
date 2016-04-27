@@ -23,7 +23,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-public class Veld1RijtechniekKijktechniek extends VBox implements View{
+public class Veld1RijtechniekGarage extends VBox implements View{
 
     private final SchermController schermController;
     private EvaController evaController;
@@ -37,15 +37,15 @@ public class Veld1RijtechniekKijktechniek extends VBox implements View{
     private HBox hBox1 = new HBox();
     private HBox hBox2 = new HBox();
     private GridPane gp = new GridPane();
-    private Label titel = new Label("Kijktechniek");
-    private ImageView titelAfb = new ImageView("resource/Rijtechniek/kijkNeutraal.png");
+    private Label titel = new Label("Garage");
+    private ImageView titelAfb = new ImageView("resource/Rijtechniek/garageNeutraal.png");
     private TextField commentaarFld;
     private TableColumn commentaarCol;
 
     private TableView<Rijtechniek> table = new TableView<Rijtechniek>();
     private ObservableList<Rijtechniek> data = FXCollections.observableArrayList();
 
-    public Veld1RijtechniekKijktechniek(SchermController schermCtrl, EvaController evaCtrl, LeerlingController llnCtrl) {
+    public Veld1RijtechniekGarage(SchermController schermCtrl, EvaController evaCtrl, LeerlingController llnCtrl) {
         evaController = evaCtrl;
         schermController = schermCtrl;
         llnController = llnCtrl;
@@ -111,8 +111,8 @@ public class Veld1RijtechniekKijktechniek extends VBox implements View{
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                evaController.saveListDataRijtechniek("Achteruit", data);
-                Veld1RijtechniekKijktechniek.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
+                evaController.saveListDataRijtechniek("Garage", data);
+                Veld1RijtechniekGarage.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
             }
         });
         commentaarCol.setMaxWidth(298);
@@ -197,7 +197,7 @@ public class Veld1RijtechniekKijktechniek extends VBox implements View{
     
     @Override
     public void update(){
-        data = evaController.loadListDataRijtechniek("Achteruit");
+        data = evaController.loadListDataRijtechniek("Garage");
         table.setItems(data);
     }
     

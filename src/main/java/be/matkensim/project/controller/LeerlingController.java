@@ -1,19 +1,19 @@
 package be.matkensim.project.controller;
 
+import be.matkensim.project.domein.Attitude;
 import be.matkensim.project.domein.EvaluatieMoment;
 import be.matkensim.project.domein.Leerling;
 import be.matkensim.project.gui.View;
 import java.util.Date;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
-/**
- *
- * @author Matthias
- */
 public class LeerlingController {
     private Leerling leerling;
-    
+    private String aandachtsPunt;
+    private ObservableList<String> aandachtsPuntenLijst = FXCollections.observableArrayList();
     
     public LeerlingController(Leerling lln){
         this.leerling=lln;
@@ -35,6 +35,14 @@ public class LeerlingController {
         this.leerling = leerling;
         
         this.leerling.update();
+    }
+    
+    public ObservableList<Attitude> getAttitudeWoorden() {
+         return leerling.getAttitudeWoorden();
+    }
+ 
+    public void setAttitudeWoorden(ObservableList<Attitude> attitudeWoorden) {
+         leerling.setAttitudeWoorden(attitudeWoorden);
     }
     
     public int getGrafiek(){
@@ -124,8 +132,20 @@ public class LeerlingController {
 
     public void setType(String type) {
         leerling.setType(type);
+    } 
+
+   
+
+    public void setAandachtsPunt(String aandachtsPunt) {
+        this.aandachtsPunt = aandachtsPunt;
+        aandachtsPuntenLijst.add(aandachtsPunt);
     }
-    
+
+    public ObservableList<String> getAandachtsPuntenLijst() {
+        return aandachtsPuntenLijst;
+    }
+
+  
     
     
 }
