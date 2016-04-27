@@ -48,6 +48,7 @@ public class HoofdMenu extends HBox implements View {
     private GridPane bottom;
     private EvaSelector evaSelector;
     private Veld4Evolutie graphImg;
+    private ImageView saveImg;
 
     public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaCtrl) {
 
@@ -215,6 +216,7 @@ public class HoofdMenu extends HBox implements View {
         //Bottom of the borderpane
         bottom = new GridPane();
         //de nodes
+        saveImg = new ImageView("resource/Hoofdmenu/save.png");
         graphImg = new Veld4Evolutie(schermController, this.llnController);
         evaSelector = new EvaSelector(evaController);
         opmerkingenTxt = new TextArea();
@@ -222,11 +224,15 @@ public class HoofdMenu extends HBox implements View {
         opmerkingenTxt.setWrapText(true);
 
         //de opmaak
+        saveImg.setFitHeight(60);
+        saveImg.setFitWidth(60);
+        saveImg.setTranslateY(-60);
+        
         graphImg.minWidth(300);
         graphImg.maxWidth(300);
-        graphImg.setTranslateX(110);
+        graphImg.setTranslateX(100);
         graphImg.setTranslateY(-20);
-        evaSelector.setTranslateX(-100);
+        evaSelector.setTranslateX(-120);
         evaSelector.setTranslateY(-60);
         attitudeImg.setFitHeight(50);
         attitudeImg.setFitWidth(50);
@@ -238,6 +244,7 @@ public class HoofdMenu extends HBox implements View {
 
         //de nodes toevoegen      
         bottom.add(evaSelector, 0, 0);
+        bottom.add(saveImg, 0,0);
         bottom.add(opmerkingenTxt, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
