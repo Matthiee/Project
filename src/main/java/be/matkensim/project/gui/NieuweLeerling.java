@@ -1,7 +1,9 @@
 package be.matkensim.project.gui;
 
 import be.matkensim.project.async.AddLeerlingTask;
+import be.matkensim.project.async.SaveEvaTask;
 import be.matkensim.project.controller.SchermController;
+import be.matkensim.project.domein.EvaluatieMoment;
 import be.matkensim.project.domein.Leerling;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -142,24 +144,36 @@ public class NieuweLeerling extends StackPane {
                     new Date(),
                     txtType.getText(),
                     img.getImage());
+            
+            lln.setEva1(new EvaluatieMoment());
+            lln.setEva2(new EvaluatieMoment());
+            lln.setEva3(new EvaluatieMoment());
 
             AddLeerlingTask task = new AddLeerlingTask(lln);
-            
-            task.setOnSucceeded(e->{
+
+            task.setOnSucceeded(e -> {
                 clear();
 
+                SaveEvaTask t1 = new SaveEvaTask(lln.getInschrijvingsnr(), 1, lln.getEva1());
+                SaveEvaTask t2 = new SaveEvaTask(lln.getInschrijvingsnr(), 2, lln.getEva2());
+                SaveEvaTask t3 = new SaveEvaTask(lln.getInschrijvingsnr(), 3, lln.getEva3());
+
+                MainApp.service.submit(t1);
+                MainApp.service.submit(t2);
+                MainApp.service.submit(t3);
+                
                 lblInfo.setText("Leerling opgeslagen!");
                 lblInfo.setTextFill(Color.DARKGREEN);
                 lblInfo.setVisible(true);
                 vbox3.getChildren().clear();
                 vbox3.getChildren().add(new ImageView("resource/man-icon.png"));
             });
-            task.setOnFailed(e->{
+            task.setOnFailed(e -> {
                 lblInfo.setText("Fout bij het toevoegen van de leerling!");
                 lblInfo.setTextFill(Color.DARKRED);
                 lblInfo.setVisible(true);
             });
-            
+
             MainApp.service.submit(task);
         } else {
             lblInfo.setVisible(true);
