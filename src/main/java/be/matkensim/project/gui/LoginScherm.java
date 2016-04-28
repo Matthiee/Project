@@ -33,7 +33,7 @@ public class LoginScherm extends StackPane implements View {
 
     private final SchermController schermController;
 
-    private final ImageView img;
+    private final ImageView img, logo;
     private final TextField txtNaam;
     private final Button btnZoek, btnDoorgaan, btnNieuw;
     private final ListView<Leerling> lvNamen;
@@ -54,6 +54,7 @@ public class LoginScherm extends StackPane implements View {
         lblInfo.setTextFill(Color.RED);
         lblInfo.setVisible(false);
         img = new ImageView("resource/man-icon.png");
+        logo = new ImageView("resource/logo.png");
         btnDoorgaan = new Button("Doorgaan");
         btnZoek = new Button("Zoek");
         btnNieuw = new Button("Nieuw");
@@ -61,6 +62,9 @@ public class LoginScherm extends StackPane implements View {
         btnDoorgaan.setMinWidth(90);
         btnZoek.setMinWidth(90);
         btnNieuw.setMinWidth(90);
+        logo.setFitHeight(150);
+        logo.setFitWidth(150);
+        logo.setTranslateY(80);
 
         txtNaam = new TextField();
         namen = FXCollections.observableArrayList();
@@ -77,7 +81,7 @@ public class LoginScherm extends StackPane implements View {
 
         HBox hbox = new HBox(10, btnZoek, btnDoorgaan, btnNieuw);
 
-        VBox vbox = new VBox(10, txtNaam, lblInfo, hbox);
+        VBox vbox = new VBox(10, txtNaam, lblInfo, hbox, logo);
         vbox.setPadding(new Insets(10));
 
         HBox holder = new HBox(10, img, vbox, lvNamen);
