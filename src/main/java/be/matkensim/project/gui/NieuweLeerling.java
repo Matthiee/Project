@@ -1,6 +1,9 @@
 package be.matkensim.project.gui;
 
+import be.matkensim.project.async.AddLeerlingTask;
+import be.matkensim.project.async.SaveEvaTask;
 import be.matkensim.project.controller.SchermController;
+import be.matkensim.project.domein.EvaluatieMoment;
 import be.matkensim.project.domein.Leerling;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -39,9 +42,9 @@ public class NieuweLeerling extends StackPane {
 
     private TextField txtNaam, txtInschrijvingsNr, txtInstructeur, txtVerval, txtType;
 
-    private Button btnUpload,btnOpslaan, btnTerug;
+    private Button btnUpload, btnOpslaan, btnTerug;
 
-    private VBox vbox2,vbox3;
+    private VBox vbox2, vbox3;
 
     public NieuweLeerling(SchermController schermController1) {
         setPadding(new Insets(10));
@@ -72,7 +75,7 @@ public class NieuweLeerling extends StackPane {
         VBox vbox1 = new VBox(15, lblNaam, lblInschrijvingsNr, lblInstructeur, lblVerval, lblType);
         vbox1.setPadding(new Insets(10));
 
-        HBox hboxKnoppen = new HBox(10,btnUpload,btnOpslaan, btnTerug);
+        HBox hboxKnoppen = new HBox(10, btnUpload, btnOpslaan, btnTerug);
 
         vbox2 = new VBox(10, txtNaam, txtInschrijvingsNr, txtInstructeur, txtVerval, txtType, lblInfo, hboxKnoppen);
         vbox1.setPadding(new Insets(10));
@@ -108,7 +111,7 @@ public class NieuweLeerling extends StackPane {
                 schermController.setScherm(MainApp.LOGIN_ID);
             }
         });
-        
+
         btnUpload.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
@@ -141,21 +144,37 @@ public class NieuweLeerling extends StackPane {
                     new Date(),
                     txtType.getText(),
                     img.getImage());
+            
+            lln.setEva1(new EvaluatieMoment());
+            lln.setEva2(new EvaluatieMoment());
+            lln.setEva3(new EvaluatieMoment());
 
-            if (LeerlingMapper.voegLeerlingToe(lln)) {
+            AddLeerlingTask task = new AddLeerlingTask(lln);
+
+            task.setOnSucceeded(e -> {
                 clear();
 
+                SaveEvaTask t1 = new SaveEvaTask(lln.getInschrijvingsnr(), 1, lln.getEva1());
+                SaveEvaTask t2 = new SaveEvaTask(lln.getInschrijvingsnr(), 2, lln.getEva2());
+                SaveEvaTask t3 = new SaveEvaTask(lln.getInschrijvingsnr(), 3, lln.getEva3());
+
+                MainApp.service.submit(t1);
+                MainApp.service.submit(t2);
+                MainApp.service.submit(t3);
+                
                 lblInfo.setText("Leerling opgeslagen!");
                 lblInfo.setTextFill(Color.DARKGREEN);
                 lblInfo.setVisible(true);
                 vbox3.getChildren().clear();
                 vbox3.getChildren().add(new ImageView("resource/man-icon.png"));
-
-            } else {
+            });
+            task.setOnFailed(e -> {
                 lblInfo.setText("Fout bij het toevoegen van de leerling!");
                 lblInfo.setTextFill(Color.DARKRED);
                 lblInfo.setVisible(true);
-            }
+            });
+
+            MainApp.service.submit(task);
         } else {
             lblInfo.setVisible(true);
         }
@@ -179,7 +198,6 @@ public class NieuweLeerling extends StackPane {
         }
     }
 
-    
     private void uploadFoto() {
         FileChooser fileChooser = new FileChooser();
 
@@ -189,15 +207,17 @@ public class NieuweLeerling extends StackPane {
 
         File file = fileChooser.showOpenDialog(null);
 
-        try {
-            BufferedImage bufferedImage = ImageIO.read(file);
-            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            img.setImage(image);
-            
-            vbox3.getChildren().clear();
-            vbox3.getChildren().add(img);
-        } catch (IOException ex) {
-            Logger.getLogger(NieuweLeerling.class.getName()).log(Level.SEVERE, null, ex);
+        if (file != null) {
+            try {
+                BufferedImage bufferedImage = ImageIO.read(file);
+                Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+                img.setImage(image);
+
+                vbox3.getChildren().clear();
+                vbox3.getChildren().add(img);
+            } catch (IOException ex) {
+                Logger.getLogger(NieuweLeerling.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }

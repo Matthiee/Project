@@ -1,8 +1,11 @@
 package be.matkensim.project.gui;
 
+import be.matkensim.project.async.SaveEvaTask;
 import be.matkensim.project.controller.EvaController;
 import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
+import be.matkensim.project.domein.Leerling;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -50,9 +53,9 @@ public class HoofdMenu extends HBox implements View {
     private GridPane bottom;
     private EvaSelector evaSelector;
     private Veld4Evolutie graphImg;
+    private ImageView saveImg;
     private ListView<String> listViewCommentaar = new ListView<String>();
     private ObservableList<String> listCommentaar = FXCollections.observableArrayList();
-    /*private String toestand="1";*/ //Is voor kleur te veranderen lijst
 
     public HoofdMenu(LeerlingController llnController, SchermController schermCtrl, EvaController evaCtrl) {
         //hoogte en breedte
@@ -219,15 +222,20 @@ public class HoofdMenu extends HBox implements View {
         //Bottom of the borderpane
         bottom = new GridPane();
         //de nodes
+        saveImg = new ImageView("resource/Hoofdmenu/save.png");
         graphImg = new Veld4Evolutie(schermController, this.llnController);
         evaSelector = new EvaSelector(evaController);
 
         //de opmaak
+        saveImg.setFitHeight(60);
+        saveImg.setFitWidth(60);
+        saveImg.setTranslateY(-60);
+        
         graphImg.minWidth(300);
         graphImg.maxWidth(300);
-        graphImg.setTranslateX(110);
+        graphImg.setTranslateX(100);
         graphImg.setTranslateY(-20);
-        evaSelector.setTranslateX(-100);
+        evaSelector.setTranslateX(-120);
         evaSelector.setTranslateY(-60);
         attitudeImg.setFitHeight(50);
         attitudeImg.setFitWidth(50);
@@ -244,9 +252,17 @@ public class HoofdMenu extends HBox implements View {
 
         //de nodes toevoegen      
         bottom.add(evaSelector, 0, 0);
+        bottom.add(saveImg, 0,0);
         bottom.add(listViewCommentaar, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
+        saveImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                save();
+            }
+        });
+        
         evaSelector.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
@@ -338,6 +354,20 @@ public class HoofdMenu extends HBox implements View {
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
 
+    private void save(){
+        System.out.println("test");
+        
+         SaveEvaTask t1 = new SaveEvaTask(llnController.getInschrijvingsnr(), 1, llnController.getEva1());
+         SaveEvaTask t2 = new SaveEvaTask(llnController.getInschrijvingsnr(), 2, llnController.getEva2());
+         SaveEvaTask t3 = new SaveEvaTask(llnController.getInschrijvingsnr(), 3, llnController.getEva3());
+         
+         MainApp.service.submit(t1);
+         MainApp.service.submit(t2);
+         MainApp.service.submit(t3);
+         
+         System.out.println("test");
+    }
+    
     public void updateOnderdelen() {
         //left
         evaController.loadColorData(schakelaars);

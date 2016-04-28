@@ -1,6 +1,7 @@
 package be.matkensim.project.controller;
 
 import java.util.HashMap;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 
@@ -16,6 +17,10 @@ public class SchermController extends StackPane {
     
     public SchermController() {
         super();
+        
+        Rectangle2D r = javafx.stage.Screen.getPrimary().getVisualBounds();
+        //hoogte=(int)r.getHeight();
+        //breedte=(int)r.getWidth();
         
         schermen =new HashMap<>();
         this.setMaxHeight(hoogte);

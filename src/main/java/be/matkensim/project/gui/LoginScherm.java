@@ -1,5 +1,6 @@
 package be.matkensim.project.gui;
 
+import be.matkensim.project.async.GetEvaTask;
 import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
 import be.matkensim.project.domein.Leerling;
@@ -24,6 +25,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.util.Callback;
 import be.matkensim.project.persistentie.LeerlingMapper;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginScherm extends StackPane implements View {
 
@@ -147,15 +151,11 @@ public class LoginScherm extends StackPane implements View {
     }
 
     private void zoek(String txt) {
-        List<Leerling> resultaat;
         if (txt.isEmpty()) {
-            resultaat = LeerlingMapper.getLeerlingen();
+            LeerlingMapper.getLeerlingen(namen);
         } else {
-            resultaat = LeerlingMapper.getLeerlingenMetNaam(txt);
+            LeerlingMapper.getLeerlingenMetNaam(namen, txt);
         }
-
-        namen.clear();
-        namen.addAll(resultaat);
     }
 
     private void login() {
@@ -164,15 +164,45 @@ public class LoginScherm extends StackPane implements View {
             lblInfo.setText("Geen leerling geslecteerd!");
             lblInfo.setVisible(true);
         } else if (LeerlingMapper.bestaat(txt)) {
-
             Leerling lln = LeerlingMapper.getLeerling(txt);
-            llnCntrl.setLeerling(lln);
+            GetEvaTask task = new GetEvaTask(lln.getInschrijvingsnr(), 1);
+            GetEvaTask task1 = new GetEvaTask(lln.getInschrijvingsnr(), 2);
+            GetEvaTask task2 = new GetEvaTask(lln.getInschrijvingsnr(), 3);
 
-            schermController.setScherm(MainApp.HOOFDMENU_ID);
+            MainApp.service.submit(task);
+            task.setOnSucceeded((e) -> {
+                try {
+                    lln.setEva1(task.get());
+                    MainApp.service.submit(task1);
+                } catch (InterruptedException | ExecutionException ex) {
+                    lblInfo.setText("Fout bij het afhalen van evaluatiemomenten!");
+                    Logger.getLogger(LoginScherm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            task1.setOnSucceeded((e) -> {
+                try {
+                    lln.setEva2(task1.get());
+                    MainApp.service.submit(task2);
+                } catch (InterruptedException | ExecutionException ex) {
+                    lblInfo.setText("Fout bij het afhalen van evaluatiemomenten!");
+                    Logger.getLogger(LoginScherm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+            task2.setOnSucceeded((e) -> {
+                try {
+                    lln.setEva3(task2.get());
+                    llnCntrl.setLeerling(lln);
 
-            lblInfo.setVisible(false);
-            txtNaam.clear();
-            zoek();
+                    schermController.setScherm(MainApp.HOOFDMENU_ID);
+
+                    lblInfo.setVisible(false);
+                    txtNaam.clear();
+                    zoek();
+                } catch (InterruptedException | ExecutionException ex) {
+                    lblInfo.setText("Fout bij het afhalen van evaluatiemomenten!");
+                    Logger.getLogger(LoginScherm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
 
         } else {
             lblInfo.setText("Leerling bestaat niet!");

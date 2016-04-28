@@ -5,6 +5,8 @@ import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
 import be.matkensim.project.domein.Leerling;
 import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import javafx.application.Application;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -49,6 +51,8 @@ public class MainApp extends Application {
     public static final String VELD2VERKEERSTECHNIEKVERKEERSTEKENS_ID = "veld2verkeerstechniekverkeerstekens";
     public static final String VELD2VERKEERSTECHNIEKVOORRANG_ID = "veld2verkeerstechniekvoorrang";
 
+    public static ExecutorService service =Executors.newSingleThreadExecutor();
+    
     @Override
     public void start(Stage stage) throws InterruptedException {
 
@@ -130,6 +134,8 @@ public class MainApp extends Application {
 
         stage.setScene(scene);
         stage.show();
+        
+        stage.setOnCloseRequest(e->service.shutdownNow());
 
         // Scenic View voor GUI makkelijker te begrijpen en fouten te vinden
         // ScenicView.show(scene);

@@ -31,6 +31,7 @@ public class Leerling implements Model{
     
     public Leerling(){
       views = new ArrayList<>();
+      attitudeWoorden=FXCollections.observableArrayList();
     }
 
     public Leerling(String naam, String inschrijvingsnr, String instructeur, Date verval, String type, Image image, int grafiek, 
