@@ -25,6 +25,7 @@ public class MainApp extends Application {
     public static final String VELD3ATTITUDE_ID = "veld3attitude";
     public static final String VELD4EVOLUTIE_ID = "veld4evolutie";
     public static final String NIEUWELEERLING_ID = "nieuweleerling";
+    public static final String OPSLAANWAARSCHUWING_ID = "opslaanwaarschuwing";
 
     public static final String VELD1RIJTECHNIEKHOUDING_ID = "veld1rijtechniekhouding";
     public static final String VELD1RIJTECHNIEKHELLING_ID = "veld1rijtechniekhelling";
@@ -38,7 +39,6 @@ public class MainApp extends Application {
     public static final String VELD1RIJTECHNIEKKEREN_ID = "veld1rijtechniekkeren";
     public static final String VELD1RIJTECHNIEKPARKEREN_ID = "veld1rijtechniekparkeren";
     public static final String VELD1RIJTECHNIEKGARAGE_ID = "veld1rijtechniekgarage";
-    
 
     public static final String VELD2VERKEERSTECHNIEKAFSTAND_ID = "veld2verkeerstechniekafstand";
     public static final String VELD2VERKEERSTECHNIEKINHALEN_ID = "veld2verkeerstechniekinhalen";
@@ -51,13 +51,13 @@ public class MainApp extends Application {
     public static final String VELD2VERKEERSTECHNIEKVERKEERSTEKENS_ID = "veld2verkeerstechniekverkeerstekens";
     public static final String VELD2VERKEERSTECHNIEKVOORRANG_ID = "veld2verkeerstechniekvoorrang";
 
-    public static ExecutorService service =Executors.newSingleThreadExecutor();
-    
+    public static ExecutorService service = Executors.newSingleThreadExecutor();
+
     @Override
     public void start(Stage stage) throws InterruptedException {
 
         Rectangle2D r = Screen.getPrimary().getVisualBounds();
-        
+
         LeerlingController controller = new LeerlingController(new Leerling("Dummy leerling", "NULL", "NULL", new Date(), "NULL", new Image("resource/man-icon.png")));
         EvaController evaController = new EvaController(controller);
         SchermController schermenCtrl = new SchermController();
@@ -69,6 +69,7 @@ public class MainApp extends Application {
         Veld2Verkeerstechniek verkeerstechniek = new Veld2Verkeerstechniek(controller, schermenCtrl, evaController);
         Veld3Attitude veld3Attitude = new Veld3Attitude(controller, schermenCtrl, evaController);
         NieuweLeerling nieuweLeerling = new NieuweLeerling(schermenCtrl);
+        OpslaanWaarschuwing opslaanWaarschuwing = new OpslaanWaarschuwing(schermenCtrl, menu);
 
         Veld1RijtechniekHouding veld1RijtechniekHouding = new Veld1RijtechniekHouding(schermenCtrl, evaController, controller);
         Veld1RijtechniekHelling veld1RijtechniekHelling = new Veld1RijtechniekHelling(schermenCtrl, evaController, controller);
@@ -82,7 +83,6 @@ public class MainApp extends Application {
         Veld1RijtechniekParkeren veld1RijtechniekParkeren = new Veld1RijtechniekParkeren(schermenCtrl, evaController, controller);
         Veld1RijtechniekKeren veld1RijtechniekKeren = new Veld1RijtechniekKeren(schermenCtrl, evaController, controller);
         Veld1RijtechniekStuuroef veld1RijtechniekStuuroef = new Veld1RijtechniekStuuroef(schermenCtrl, evaController, controller);
-        
 
         Veld2VerkeerstechniekAfstand veld2VerkeerstechniekAfstand = new Veld2VerkeerstechniekAfstand(schermenCtrl, evaController, controller);
         Veld2VerkeerstechniekInhalen veld2VerkeerstechniekInhalen = new Veld2VerkeerstechniekInhalen(schermenCtrl, evaController, controller);
@@ -102,6 +102,7 @@ public class MainApp extends Application {
         schermenCtrl.addScherm(VERKEERSTECHNIEK_ID, verkeerstechniek);
         schermenCtrl.addScherm(VELD3ATTITUDE_ID, veld3Attitude);
         schermenCtrl.addScherm(NIEUWELEERLING_ID, nieuweLeerling);
+        schermenCtrl.addScherm(OPSLAANWAARSCHUWING_ID, opslaanWaarschuwing);
 
         schermenCtrl.addScherm(VELD1RIJTECHNIEKHOUDING_ID, veld1RijtechniekHouding);
         schermenCtrl.addScherm(VELD1RIJTECHNIEKHELLING_ID, veld1RijtechniekHelling);
@@ -134,8 +135,8 @@ public class MainApp extends Application {
 
         stage.setScene(scene);
         stage.show();
-        
-        stage.setOnCloseRequest(e->service.shutdownNow());
+
+        stage.setOnCloseRequest(e -> service.shutdownNow());
 
         // Scenic View voor GUI makkelijker te begrijpen en fouten te vinden
         // ScenicView.show(scene);

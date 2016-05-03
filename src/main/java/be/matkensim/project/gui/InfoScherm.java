@@ -73,7 +73,7 @@ public class InfoScherm extends VBox implements View {
 
             @Override
             public void handle(ActionEvent event) {
-                schermController.setScherm(MainApp.LOGIN_ID);
+                schermController.setScherm(MainApp.OPSLAANWAARSCHUWING_ID);
             }
         });
 
