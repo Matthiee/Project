@@ -117,8 +117,8 @@ public class Veld2VerkeerstechniekRechtsaf extends VBox implements View{
             }
         });
         hBox1.getChildren().addAll(exit);
-        commentaarCol.setMaxWidth(298);
-        commentaarCol.setMinWidth(298);
+        commentaarCol.setMaxWidth(498);
+        commentaarCol.setMinWidth(498);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);
@@ -134,8 +134,8 @@ public class Veld2VerkeerstechniekRechtsaf extends VBox implements View{
         toon.setMinWidth(300);
         toon.setMaxWidth(300);
         toon.setAlignment(Pos.TOP_LEFT);
-        table.setMinWidth(300);
-        table.setMaxWidth(300);
+        table.setMinWidth(500);
+        table.setMaxWidth(500);
         table.setMinHeight(400);
         table.setMaxHeight(400);
         addButton.setMinHeight(30);
@@ -158,6 +158,11 @@ public class Veld2VerkeerstechniekRechtsaf extends VBox implements View{
         commentaarFld.setMinWidth(250);
         commentaarFld.setMaxWidth(250);
         commentaarFld.setAlignment(Pos.CENTER);
+        table.setTranslateX(70);
+        commentaarFld.setTranslateX(90);
+        addButton.setTranslateX(90);
+        aandachtBtn.setTranslateX(90);
+        exit.setTranslateX(90);
         
         gp.setStyle("-fx-border-color: black;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
@@ -171,8 +176,7 @@ public class Veld2VerkeerstechniekRechtsaf extends VBox implements View{
         gp.setVgap(20);
         gp.setAlignment(Pos.CENTER);
         gp.add(hBox1, 0, 0, 2, 1);
-        gp.add(toon, 0, 1);
-        gp.add(table, 1, 1);
+        gp.add(table, 0, 1, 2, 1);
         gp.add(commentaarFld, 0, 2);
         gp.add(addButton, 1, 2);
         gp.add(aandachtBtn, 0, 3);
