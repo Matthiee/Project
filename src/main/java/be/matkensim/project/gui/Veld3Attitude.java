@@ -199,8 +199,8 @@ public class Veld3Attitude extends VBox implements View {
         
         gp.add(hBox1, 0, 0, 2, 1);
         
-        gp.add(vBox1, 0, 1);
-        gp.add(table, 1, 1);
+        gp.add(table, 0, 1);
+        gp.add(vBox1, 1, 1);
         
         gp.add(addAttitude, 0, 2);
         gp.add(addButton, 1, 2);
