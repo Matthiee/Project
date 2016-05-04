@@ -4,8 +4,6 @@ import be.matkensim.project.async.SaveEvaTask;
 import be.matkensim.project.controller.EvaController;
 import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
-import be.matkensim.project.domein.Leerling;
-import javafx.concurrent.WorkerStateEvent;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -230,7 +228,7 @@ public class HoofdMenu extends HBox implements View {
         saveImg.setFitHeight(60);
         saveImg.setFitWidth(60);
         saveImg.setTranslateY(-60);
-        
+
         graphImg.minWidth(300);
         graphImg.maxWidth(300);
         graphImg.setTranslateX(100);
@@ -252,7 +250,7 @@ public class HoofdMenu extends HBox implements View {
 
         //de nodes toevoegen      
         bottom.add(evaSelector, 0, 0);
-        bottom.add(saveImg, 0,0);
+        bottom.add(saveImg, 0, 0);
         bottom.add(listViewCommentaar, 1, 0);
         bottom.add(graphImg, 2, 0);
         //eventhandler
@@ -262,7 +260,7 @@ public class HoofdMenu extends HBox implements View {
                 save();
             }
         });
-        
+
         evaSelector.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
@@ -349,25 +347,24 @@ public class HoofdMenu extends HBox implements View {
                 veranderKleurAandachtlijstItem();
             }
         });
-        */
-        
+         */
         //bandenImg.setOnMousePressed((e) -> KleurKiezerHouder.show(left, bandenImg));
     }
 
-    private void save(){
+    public void save() {
         System.out.println("test");
-        
-         SaveEvaTask t1 = new SaveEvaTask(llnController.getInschrijvingsnr(), 1, llnController.getEva1());
-         SaveEvaTask t2 = new SaveEvaTask(llnController.getInschrijvingsnr(), 2, llnController.getEva2());
-         SaveEvaTask t3 = new SaveEvaTask(llnController.getInschrijvingsnr(), 3, llnController.getEva3());
-         
-         MainApp.service.submit(t1);
-         MainApp.service.submit(t2);
-         MainApp.service.submit(t3);
-         
-         System.out.println("test");
+
+        SaveEvaTask t1 = new SaveEvaTask(llnController.getInschrijvingsnr(), 1, llnController.getEva1());
+        SaveEvaTask t2 = new SaveEvaTask(llnController.getInschrijvingsnr(), 2, llnController.getEva2());
+        SaveEvaTask t3 = new SaveEvaTask(llnController.getInschrijvingsnr(), 3, llnController.getEva3());
+
+        MainApp.service.submit(t1);
+        MainApp.service.submit(t2);
+        MainApp.service.submit(t3);
+
+        System.out.println("test");
     }
-    
+
     public void updateOnderdelen() {
         //left
         evaController.loadColorData(schakelaars);
@@ -418,7 +415,6 @@ public class HoofdMenu extends HBox implements View {
             toestand="1";
         }
     }*/
-
     @Override
     public void update() {
         updateOnderdelen();
