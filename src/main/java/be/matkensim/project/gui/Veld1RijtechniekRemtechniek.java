@@ -162,6 +162,10 @@ public class Veld1RijtechniekRemtechniek extends VBox implements View{
         aandachtBtn.setTranslateX(90);
         exit.setTranslateX(90);
         
+        addButton.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        aandachtBtn.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        
         gp.setStyle("-fx-border-color: #282E54;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
                 + "-fx-background-color: #282B3A;"

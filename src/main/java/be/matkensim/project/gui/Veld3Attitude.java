@@ -146,6 +146,9 @@ public class Veld3Attitude extends VBox implements View {
             }
         });
         
+        addButton.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+                
         img.setFitHeight(50);
         img.setFitWidth(50);
         titel.setStyle("-fx-font: 40px Tahoma; -fx-text-fill: white;");
@@ -164,6 +167,7 @@ public class Veld3Attitude extends VBox implements View {
         
         geselecteerd.setMaxSize(300, 30);
         geselecteerd.setMinSize(300, 30);
+        geselecteerd.setStyle("-fx-text-fill:white");
         geselecteerd.setAlignment(Pos.CENTER_LEFT);
         toonTable.setMinSize(300, 360);
         toonTable.setMaxSize(300, 360);

@@ -56,10 +56,10 @@ public class Veld1Rijtechniek extends HBox implements View {
         kleur = new Button("Kleur kiezen");
         venster = new Button("Extra vensters");
 
-        kleur.setMinSize(80, 30);
-        kleur.setMaxSize(80, 30);
-        venster.setMinSize(80, 30);
-        venster.setMaxSize(80, 30);
+        kleur.setMinSize(120, 30);
+        kleur.setMaxSize(120, 30);
+        venster.setMinSize(120, 30);
+        venster.setMaxSize(120, 30);
 
         kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
         kleur.setAlignment(Pos.CENTER);
@@ -82,7 +82,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         labels = new HBox();
         labels.setSpacing(15);
         labels.setTranslateY(-hoogte * 0.83);
-        labels.setTranslateX(21);
+        labels.setTranslateX(-12);
         labels.getChildren().addAll(kleur, venster);
 
         //alle afbeeldingen aanmaken
@@ -221,6 +221,8 @@ public class Veld1Rijtechniek extends HBox implements View {
                 exitRijtechniek();
             }
         });
+        
+        exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         //Achtergrond
         achtergrond = new ImageView("resource/Rijtechniek/achtergrondRijtechniek.png");

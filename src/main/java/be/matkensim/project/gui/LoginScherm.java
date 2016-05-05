@@ -58,6 +58,10 @@ public class LoginScherm extends StackPane implements View {
         btnDoorgaan = new Button("Doorgaan");
         btnZoek = new Button("Zoek");
         btnNieuw = new Button("Nieuw");
+        
+        btnDoorgaan.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        btnZoek.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        btnNieuw.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         btnDoorgaan.setMinWidth(90);
         btnZoek.setMinWidth(90);

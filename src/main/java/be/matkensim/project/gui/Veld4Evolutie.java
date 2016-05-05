@@ -48,6 +48,8 @@ public class Veld4Evolutie extends VBox implements View {
                 verminder();
             }
         });
+        
+        min.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         plus.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -55,6 +57,8 @@ public class Veld4Evolutie extends VBox implements View {
                 vermeerder();
             }
         });
+        
+        plus.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         maakRects();
 

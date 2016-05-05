@@ -81,18 +81,18 @@ public class EvaSelector extends HBox {
     }
 
     public void update() {
-        lbl1.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: #5F6A95");
-        lbl2.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: #5F6A95");
-        lbl3.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: #5F6A95");
+        lbl1.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        lbl2.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        lbl3.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         if (evaCtrl.getSelectedEva() == 1) {
-            lbl1.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+            lbl1.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
         }
         if (evaCtrl.getSelectedEva() == 2) {
-            lbl2.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+            lbl2.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
         }
         if (evaCtrl.getSelectedEva() == 3) {
-            lbl3.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+            lbl3.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
         }
     }
 }
