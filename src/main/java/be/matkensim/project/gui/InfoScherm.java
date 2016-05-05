@@ -40,7 +40,7 @@ public class InfoScherm extends VBox implements View {
         imgView.maxHeight(128);
         imgView.maxWidth(128);
 
-        imgView.setStyle("-fx-border-color: black;"
+        imgView.setStyle("-fx-border-color: #282B3A;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
                 + "-fx-background-color: lightgray;"
                 + "-fx-background-radius: 5;");
@@ -64,8 +64,8 @@ public class InfoScherm extends VBox implements View {
 
         Pane placeHolder = new Pane(hbox);
         placeHolder.setPadding(new Insets(10));
-        placeHolder.setStyle("-fx-background-color: lightgray;"
-                + "-fx-border-color: black;");
+        placeHolder.setStyle("-fx-background-color: #282B3A;"
+                + "-fx-border-color: #282E54;");
         placeHolder.setPrefSize(1000, 500);
 
         btnAfmelden = new Button("Afmelden");

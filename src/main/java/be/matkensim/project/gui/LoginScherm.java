@@ -88,9 +88,9 @@ public class LoginScherm extends StackPane implements View {
         holder.setPadding(new Insets(10));
         holder.setMaxSize(665, 440);
 
-        holder.setStyle("-fx-border-color: black;"
+        holder.setStyle("-fx-border-color: #282E54;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
-                + "-fx-background-color: lightgray;"
+                + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
 
         img.setStyle("-fx-border-color: black;"

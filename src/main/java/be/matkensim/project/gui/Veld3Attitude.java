@@ -148,7 +148,7 @@ public class Veld3Attitude extends VBox implements View {
         
         img.setFitHeight(50);
         img.setFitWidth(50);
-        titel.setStyle("-fx-font: 40px Tahoma");
+        titel.setStyle("-fx-font: 40px Tahoma; -fx-text-fill: white;");
         hBox1.getChildren().addAll(img, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);
@@ -207,9 +207,9 @@ public class Veld3Attitude extends VBox implements View {
         
         gp.add(exit, 1, 3);
         
-        gp.setStyle("-fx-border-color: black;"
+        gp.setStyle("-fx-border-color: #282E54;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
-                + "-fx-background-color: lightgray;"
+                + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
         gp.setMaxWidth(900);
         gp.setMinWidth(900);

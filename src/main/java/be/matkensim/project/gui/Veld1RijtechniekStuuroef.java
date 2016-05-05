@@ -126,7 +126,7 @@ public class Veld1RijtechniekStuuroef extends VBox implements View{
         hBox1.setAlignment(Pos.CENTER);
         titelAfb.setFitHeight(50);
         titelAfb.setFitWidth(50);
-        titel.setStyle("-fx-font: 40px Tahoma");
+        titel.setStyle("-fx-font: 40px Tahoma; -fx-text-fill:white");
         toon.setMinHeight(400);
         toon.setMaxHeight(400);
         toon.setMinWidth(300);
@@ -162,9 +162,9 @@ public class Veld1RijtechniekStuuroef extends VBox implements View{
         aandachtBtn.setTranslateX(90);
         exit.setTranslateX(90);
         
-        gp.setStyle("-fx-border-color: black;"
+        gp.setStyle("-fx-border-color: #282E54;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
-                + "-fx-background-color: lightgray;"
+                + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
         gp.setMaxWidth(900);
         gp.setMinWidth(900);

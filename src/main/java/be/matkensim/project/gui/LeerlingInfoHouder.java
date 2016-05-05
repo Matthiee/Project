@@ -18,12 +18,13 @@ public class LeerlingInfoHouder extends VBox implements View {
         this.llnController = controller;
         this.llnController.getLeerling().addView(this);
 
-        setStyle("-fx-border-color: black;"
+        setStyle("-fx-border-color: #282E54;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 10, 0, 0, 0);"
-                + "-fx-background-color: lightgray;"
+                + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
 
         lblNaam = new Label();
+        lblNaam.setStyle("-fx-text-fill:white");
 
         this.getChildren().addAll(lblNaam);
     }
