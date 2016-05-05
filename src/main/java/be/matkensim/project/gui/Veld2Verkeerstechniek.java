@@ -33,7 +33,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
     //evaselector
     private EvaSelector eva;
     //labels
-    private Label kleur, venster;
+    private Button kleur, venster;
     private HBox labels;
     private int labelSelected;
     //hoogte breedte scherm
@@ -52,8 +52,8 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         eva = new EvaSelector(evaController);
 
         //labels
-        kleur = new Label("Kleur kiezen");
-        venster = new Label("Extra vensters");
+        kleur = new Button("Kleur kiezen");
+        venster = new Button("Extra vensters");
 
         kleur.setMinSize(80, 30);
         kleur.setMaxSize(80, 30);
@@ -309,8 +309,8 @@ public class Veld2Verkeerstechniek extends HBox implements View {
     }
 
     public void selecteerKleur() {
-        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
-        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+        venster.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        kleur.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
         labelSelected = 0;
 
         for (Node c : links.getChildren()) {
@@ -344,8 +344,8 @@ public class Veld2Verkeerstechniek extends HBox implements View {
     }
 
     public void selecteerVenster() {
-        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
-        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        venster.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
+        kleur.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         labelSelected = 1;
 
         openbareWegImg.setOnMouseClicked(new EventHandler<MouseEvent>() {

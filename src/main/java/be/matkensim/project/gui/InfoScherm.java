@@ -50,6 +50,12 @@ public class InfoScherm extends VBox implements View {
         lblInstructeur = new Label("Instructeur: ");
         lblVerval = new Label("Verval: ");
         lblType = new Label("Type: ");
+        
+        lblNaam.setStyle("-fx-text-fill: white");
+        lblInschrijving.setStyle("-fx-text-fill: white");
+        lblInstructeur.setStyle("-fx-text-fill: white");
+        lblVerval.setStyle("-fx-text-fill: white");
+        lblType.setStyle("-fx-text-fill: white");
 
         VBox vbox = new VBox(lblNaam, lblInschrijving, lblInstructeur, lblVerval, lblType);
         vbox.setPadding(new Insets(10));
