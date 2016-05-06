@@ -168,7 +168,7 @@ public class Veld2VerkeerstechniekRechtsaf extends VBox implements View{
         aandachtBtn.setTranslateX(90);
         exit.setTranslateX(90);
         
-        gp.setStyle("-fx-border-color: #282E54;"
+        gp.setStyle("-fx-border-color: #282E54; -fx-border-radius:10 10 10 10;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
                 + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");

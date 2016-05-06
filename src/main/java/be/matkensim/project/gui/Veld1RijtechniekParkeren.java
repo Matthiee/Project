@@ -166,7 +166,7 @@ public class Veld1RijtechniekParkeren extends VBox implements View{
         exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         aandachtBtn.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         
-        gp.setStyle("-fx-border-color: #282E54;"
+        gp.setStyle("-fx-border-color: #282E54; -fx-border-radius:10 10 10 10;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
                 + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
