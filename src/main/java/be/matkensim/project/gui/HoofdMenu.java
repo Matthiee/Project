@@ -74,7 +74,10 @@ public class HoofdMenu extends HBox implements View {
 
         //de nodes
         llnInfo = new LeerlingInfoHouder(llnController);
-
+        llnInfo.setMinHeight(100);
+        llnInfo.setMaxHeight(100);
+        llnInfo.setMinWidth(100);
+        llnInfo.setAlignment(Pos.CENTER);
         llnInfo.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
@@ -83,6 +86,12 @@ public class HoofdMenu extends HBox implements View {
         });
 
         attitudeImg = new ImageView("resource/Hoofdmenu/attitude.png");
+        attitudeImg.setFitHeight(100);
+        attitudeImg.setFitWidth(100);
+        attitudeImg.setStyle("-fx-border-color: #282E54; -fx-border-radius:10 10 10 10;"
+                + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
+                + "-fx-background-color: #282B3A;"
+                + "-fx-background-radius: 5;");
         attitudeImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent me) {
@@ -93,7 +102,8 @@ public class HoofdMenu extends HBox implements View {
         //de opmaak
         top.setPadding(new Insets(30, 20, 5, 20));
         top.setHgap(650);
-        top.setMinHeight(140);
+        top.setMinHeight(50);
+        top.setMaxHeight(140);
         //nodes toevoegen
 
         top.add(attitudeImg, 0, 0);
@@ -236,8 +246,6 @@ public class HoofdMenu extends HBox implements View {
         graphImg.maxWidth(300);
         graphImg.setTranslateX(100);
         graphImg.setTranslateY(-20);
-        attitudeImg.setFitHeight(50);
-        attitudeImg.setFitWidth(50);
 
         //de aandacht lijst
         listCommentaar.addAll(llnController.getAandachtsPuntenLijst());
@@ -256,6 +264,7 @@ public class HoofdMenu extends HBox implements View {
         save.setMaxSize(100, 50);
         save.setTranslateY(-15);
         save.setTranslateX(-30);
+        save.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         evaSelector.setTranslateY(-30);
         evaSelector.setTranslateX(-30);
         vBox = new VBox();
