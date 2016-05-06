@@ -69,11 +69,14 @@ public class LoginScherm extends StackPane implements View {
         logo.setFitHeight(150);
         logo.setFitWidth(150);
         logo.setTranslateY(80);
+        
+        
 
         txtNaam = new TextField();
+        txtNaam.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
         namen = FXCollections.observableArrayList();
         lvNamen = new ListView<>(namen);
-
+        lvNamen.getStylesheets().add("resource/listViewInlogScherm.css");
         lvNamen.setCellFactory(new Callback<ListView<Leerling>, ListCell<Leerling>>() {
             @Override
             public ListCell<Leerling> call(ListView<Leerling> e) {

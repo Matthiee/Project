@@ -116,9 +116,11 @@ public class Veld2VerkeerstechniekPlaats extends VBox implements View{
                 Veld2VerkeerstechniekPlaats.this.schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID);
             }
         });
+        table.getStylesheets().add("resource/tableView.css");
+        commentaarFld.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
         hBox1.getChildren().addAll(exit);
-        commentaarCol.setMaxWidth(498);
-        commentaarCol.setMinWidth(498);
+        commentaarCol.setMaxWidth(496);
+        commentaarCol.setMinWidth(496);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);

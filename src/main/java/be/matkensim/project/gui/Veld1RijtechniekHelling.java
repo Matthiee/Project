@@ -115,8 +115,10 @@ public class Veld1RijtechniekHelling extends VBox implements View{
                 Veld1RijtechniekHelling.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
             }
         });
-        commentaarCol.setMaxWidth(498);
-        commentaarCol.setMinWidth(498);
+        table.getStylesheets().add("resource/tableView.css");
+        commentaarFld.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
+        commentaarCol.setMaxWidth(496);
+        commentaarCol.setMinWidth(496);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);

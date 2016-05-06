@@ -116,9 +116,10 @@ public class Veld2VerkeerstechniekVoorrang extends VBox implements View{
                 Veld2VerkeerstechniekVoorrang.this.schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID);
             }
         });
+        table.getStylesheets().add("resource/tableView.css");
         hBox1.getChildren().addAll(exit);
-        commentaarCol.setMaxWidth(498);
-        commentaarCol.setMinWidth(498);
+        commentaarCol.setMaxWidth(496);
+        commentaarCol.setMinWidth(496);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);
@@ -158,6 +159,7 @@ public class Veld2VerkeerstechniekVoorrang extends VBox implements View{
         commentaarFld.setMinWidth(250);
         commentaarFld.setMaxWidth(250);
         commentaarFld.setAlignment(Pos.CENTER);
+        commentaarFld.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
         table.setTranslateX(70);
         commentaarFld.setTranslateX(90);
         addButton.setTranslateX(90);

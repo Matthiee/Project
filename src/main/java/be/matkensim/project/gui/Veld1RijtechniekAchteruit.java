@@ -116,9 +116,10 @@ public class Veld1RijtechniekAchteruit extends VBox implements View{
                 Veld1RijtechniekAchteruit.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
             }
         });
-        
-        commentaarCol.setMaxWidth(498);
-        commentaarCol.setMinWidth(498);
+        table.getStylesheets().add("resource/tableView.css");
+        commentaarFld.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
+        commentaarCol.setMaxWidth(496);
+        commentaarCol.setMinWidth(496);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);
@@ -163,7 +164,7 @@ public class Veld1RijtechniekAchteruit extends VBox implements View{
         addButton.setTranslateX(90);
         aandachtBtn.setTranslateX(90);
         exit.setTranslateX(90);
-        
+                
         addButton.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         aandachtBtn.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");

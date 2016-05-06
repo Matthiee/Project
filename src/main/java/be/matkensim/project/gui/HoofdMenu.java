@@ -247,7 +247,7 @@ public class HoofdMenu extends HBox implements View {
         listViewCommentaar.setMinSize(350, 200);
         listViewCommentaar.setTranslateX(65);
         listViewCommentaar.setTranslateY(-20);
-        listViewCommentaar.setStyle("-fx-border-radius: 10 10 10 10; -fx-background-color:#7AA0C1");
+        listViewCommentaar.getStylesheets().add("resource/tableView.css");
         bottom.setAlignment(Pos.CENTER);
         
         //evaselector en opslaan
@@ -413,6 +413,7 @@ public class HoofdMenu extends HBox implements View {
     public void updateAandachtsLijst() {
         listCommentaar.clear();
         listCommentaar.addAll(llnController.getAandachtsPuntenLijst());
+        
     }
 
     /* //Is voor kleur te veranderen lijst
