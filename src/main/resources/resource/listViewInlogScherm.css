@@ -1,0 +1,45 @@
+
+.root{
+    -fx-background-color: #282B3A;
+    -fx-text-fill: white;
+    -fx-border-color: #282E54; 
+    -fx-border-radius:10 10 10 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-radius: 5;
+}
+
+.list-view{
+   -fx-background-color: #282B3A;
+   -fx-text-fill: white;
+   -fx-border-color: #282E54; 
+   -fx-border-radius:10 10 10 10;
+   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+   -fx-background-radius: 5;
+}
+
+.list-view:focused{
+    -fx-background-color: #282B3A;
+    -fx-text-fill: white;
+}
+
+.list-view .list-cell{
+    -fx-text-fill: white;
+}
+
+.list-cell{
+    -fx-background-color:  #616C95;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.list-cell:odd{
+    -fx-background-color:  #708DB1;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.list-cell:selected {
+    -fx-background-color: #232749;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
