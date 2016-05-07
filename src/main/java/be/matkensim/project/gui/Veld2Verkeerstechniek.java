@@ -87,7 +87,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         //alle afbeeldingen
         //Links
         links = new GridPane();
-        openbareWegImg = new Onderdeel("resource/Verkeerstechniek/openbareWeg", 220, 160, evaController);
+        openbareWegImg = new Onderdeel("resource/Verkeerstechniek/openbareWeg", -140, 160, evaController);
         openbareWegImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
@@ -101,7 +101,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
                 Veld2Verkeerstechniek.this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKRICHTINGAANWIJZERS_ID);
             }
         });
-        rechtsafImg = new Onderdeel("resource/Verkeerstechniek/rechtsaf", 60, 155, evaController);
+        rechtsafImg = new Onderdeel("resource/Verkeerstechniek/rechtsaf", 220, 160, evaController);
         rechtsafImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
@@ -115,7 +115,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
                 Veld2Verkeerstechniek.this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKLINKSAF_ID);
             }
         });
-        kruisenImg = new Onderdeel("resource/Verkeerstechniek/kruisen", 220, 160, evaController);
+        kruisenImg = new Onderdeel("resource/Verkeerstechniek/kruisen", 60, 155, evaController);
         kruisenImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
@@ -152,7 +152,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
                 Veld2Verkeerstechniek.this.schermController.setScherm(MainApp.VELD2VERKEERSTECHNIEKAFSTAND_ID);
             }
         });
-        inhalenImg = new Onderdeel("resource/Verkeerstechniek/inhalen", -140, 160, evaController);
+        inhalenImg = new Onderdeel("resource/Verkeerstechniek/inhalen", 220, 160, evaController);
         inhalenImg.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
@@ -163,18 +163,18 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         pijlen = new Pijlen(evaController, 300);
 
         //GridPane links
-        links.add(openbareWegImg, 0, 0);
+        links.add(inhalenImg, 0, 0);
         links.add(richtingaanwijzersImg, 0, 1);
-        links.add(rechtsafImg, 0, 2);
+        links.add(kruisenImg, 0, 2);
         links.add(linksafImg, 0, 3);
-        links.add(kruisenImg, 0, 4);
+        links.add(rechtsafImg, 0, 4);
 
         //GridPane rechts
         rechts.add(voorrangImg, 0, 0);
         rechts.add(verkeerstekensImg, 0, 1);
         rechts.add(snelheidImg, 0, 2);
         rechts.add(afstandImg, 0, 3);
-        rechts.add(inhalenImg, 0, 4);
+        rechts.add(openbareWegImg, 0, 4);
 
         //opmaak
         //algemeen
@@ -183,23 +183,23 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         links.setAlignment(Pos.CENTER);
         links.setVgap(20);
         links.setMaxWidth(80);
-        openbareWegImg.setFitHeight(80);
-        openbareWegImg.setFitWidth(80);
-        openbareWegImg.setTranslateX(180);
+        inhalenImg.setFitHeight(80);
+        inhalenImg.setFitWidth(80);
+        inhalenImg.setTranslateX(180);
         richtingaanwijzersImg.setFitHeight(80);
         richtingaanwijzersImg.setFitWidth(80);
         richtingaanwijzersImg.setTranslateX(75);
         richtingaanwijzersImg.setTranslateY(-30);
-        rechtsafImg.setFitHeight(80);
-        rechtsafImg.setFitWidth(80);
-        rechtsafImg.setTranslateX(10);
+        kruisenImg.setFitHeight(80);
+        kruisenImg.setFitWidth(80);
+        kruisenImg.setTranslateX(10);
         linksafImg.setFitHeight(80);
         linksafImg.setFitWidth(80);
         linksafImg.setTranslateX(75);
         linksafImg.setTranslateY(30);
-        kruisenImg.setFitHeight(80);
-        kruisenImg.setFitWidth(80);
-        kruisenImg.setTranslateX(180);
+        rechtsafImg.setFitHeight(80);
+        rechtsafImg.setFitWidth(80);
+        rechtsafImg.setTranslateX(180);
         //rechts
         rechts.setAlignment(Pos.CENTER);
         rechts.setVgap(20);
@@ -218,9 +218,9 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         afstandImg.setFitWidth(80);
         afstandImg.setTranslateX(-75);
         afstandImg.setTranslateY(30);
-        inhalenImg.setFitHeight(80);
-        inhalenImg.setFitWidth(80);
-        inhalenImg.setTranslateX(-180);
+        openbareWegImg.setFitHeight(80);
+        openbareWegImg.setFitWidth(80);
+        openbareWegImg.setTranslateX(-180);
         //pijlen center
         pijlen.setAlignment(Pos.CENTER);
         pijlen.setTranslateY(10);
