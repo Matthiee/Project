@@ -278,7 +278,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
         });
 
         //achtergrond
-        achtergrond = new ImageView("resource/Verkeerstechniek/achtergrondVerkeerstechniek.png");
+        achtergrond = new ImageView("resource/Verkeerstechniek/achtergrondVt.png");
         achtergrond.setTranslateX(breedte / 2);
         mainGP.setTranslateX(-breedte * 0.53);
         mainGP.setTranslateY(5);

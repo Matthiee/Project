@@ -225,7 +225,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         //Achtergrond
-        achtergrond = new ImageView("resource/Rijtechniek/achtergrondRijtechniek.png");
+        achtergrond = new ImageView("resource/Rijtechniek/achtergrondRt.png");
 
         //Alle GridPanes toevoegen aan hoofd GridPane
         //moet in deze volgorde anders werkt kleurkiezer niet!!!!
