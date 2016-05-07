@@ -75,6 +75,7 @@ public class InfoScherm extends VBox implements View {
         placeHolder.setPrefSize(1000, 500);
 
         btnAfmelden = new Button("Afmelden");
+        btnAfmelden.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         btnAfmelden.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -84,6 +85,7 @@ public class InfoScherm extends VBox implements View {
         });
 
         btnTerug = new Button("Terug");
+        btnTerug.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         btnTerug.setAlignment(Pos.BASELINE_RIGHT);
 
         btnTerug.setOnAction(new EventHandler<ActionEvent>() {
