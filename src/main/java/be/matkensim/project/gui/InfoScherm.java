@@ -40,7 +40,7 @@ public class InfoScherm extends VBox implements View {
         imgView.maxHeight(128);
         imgView.maxWidth(128);
 
-        imgView.setStyle("-fx-border-color: black;"
+        imgView.setStyle("-fx-border-color: #282B3A;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
                 + "-fx-background-color: lightgray;"
                 + "-fx-background-radius: 5;");
@@ -50,6 +50,12 @@ public class InfoScherm extends VBox implements View {
         lblInstructeur = new Label("Instructeur: ");
         lblVerval = new Label("Verval: ");
         lblType = new Label("Type: ");
+        
+        lblNaam.setStyle("-fx-text-fill: white");
+        lblInschrijving.setStyle("-fx-text-fill: white");
+        lblInstructeur.setStyle("-fx-text-fill: white");
+        lblVerval.setStyle("-fx-text-fill: white");
+        lblType.setStyle("-fx-text-fill: white");
 
         VBox vbox = new VBox(lblNaam, lblInschrijving, lblInstructeur, lblVerval, lblType);
         vbox.setPadding(new Insets(10));
@@ -64,11 +70,12 @@ public class InfoScherm extends VBox implements View {
 
         Pane placeHolder = new Pane(hbox);
         placeHolder.setPadding(new Insets(10));
-        placeHolder.setStyle("-fx-background-color: lightgray;"
-                + "-fx-border-color: black;");
+        placeHolder.setStyle("-fx-background-color: #282B3A;"
+                + "-fx-border-color: #282E54;");
         placeHolder.setPrefSize(1000, 500);
 
         btnAfmelden = new Button("Afmelden");
+        btnAfmelden.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         btnAfmelden.setOnAction(new EventHandler<ActionEvent>() {
 
             @Override
@@ -78,6 +85,7 @@ public class InfoScherm extends VBox implements View {
         });
 
         btnTerug = new Button("Terug");
+        btnTerug.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         btnTerug.setAlignment(Pos.BASELINE_RIGHT);
 
         btnTerug.setOnAction(new EventHandler<ActionEvent>() {

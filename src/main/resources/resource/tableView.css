@@ -1,0 +1,93 @@
+
+.root{
+    -fx-background-color: #282B3A;
+    -fx-text-fill: white;
+    -fx-border-color: #282E54; 
+    -fx-border-radius:10 10 10 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+    -fx-background-radius: 5;
+}
+
+.table-view{
+   -fx-background-color: #282B3A;
+   -fx-text-fill: white;
+   -fx-border-color: #282E54; 
+   -fx-border-radius:10 10 10 10;
+   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+   -fx-background-radius: 5;
+}
+
+.table-view:focused{
+    -fx-background-color: #282B3A;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#30355B 0%, #394080 100%);
+    -fx-text-fill: white;
+}
+
+.table-view .column-header-background .label{
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-text-fill: white;
+    -fx-background-color: linear-gradient(#30355B 0%, #394080 100%);
+}
+
+.table-view .table-cell{
+    -fx-text-fill: white;
+}
+
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #616C95;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #708DB1;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #232749;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.list-view{
+   -fx-background-color: #282B3A;
+   -fx-text-fill: white;
+   -fx-border-color: #282E54; 
+   -fx-border-radius:10 10 10 10;
+   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+   -fx-background-radius: 5;
+}
+
+.list-view:focused{
+    -fx-background-color: #282B3A;
+   -fx-text-fill: white;
+   -fx-border-color: #282E54; 
+   -fx-border-radius:10 10 10 10;
+   -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);
+   -fx-background-radius: 5;
+}
+
+.list-view .list-cell{
+    -fx-text-fill: white;
+}
+
+.list-cell{
+    -fx-background-color:  transparant;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.list-cell:selected {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}

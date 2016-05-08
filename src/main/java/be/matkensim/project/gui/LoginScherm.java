@@ -58,6 +58,10 @@ public class LoginScherm extends StackPane implements View {
         btnDoorgaan = new Button("Doorgaan");
         btnZoek = new Button("Zoek");
         btnNieuw = new Button("Nieuw");
+        
+        btnDoorgaan.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        btnZoek.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        btnNieuw.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         btnDoorgaan.setMinWidth(90);
         btnZoek.setMinWidth(90);
@@ -65,11 +69,14 @@ public class LoginScherm extends StackPane implements View {
         logo.setFitHeight(150);
         logo.setFitWidth(150);
         logo.setTranslateY(80);
+        
+        
 
         txtNaam = new TextField();
+        txtNaam.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
         namen = FXCollections.observableArrayList();
         lvNamen = new ListView<>(namen);
-
+        lvNamen.getStylesheets().add("resource/listViewInlogScherm.css");
         lvNamen.setCellFactory(new Callback<ListView<Leerling>, ListCell<Leerling>>() {
             @Override
             public ListCell<Leerling> call(ListView<Leerling> e) {
@@ -88,9 +95,9 @@ public class LoginScherm extends StackPane implements View {
         holder.setPadding(new Insets(10));
         holder.setMaxSize(665, 440);
 
-        holder.setStyle("-fx-border-color: black;"
+        holder.setStyle("-fx-border-color: #282E54; -fx-border-radius: 10 10 10 10;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
-                + "-fx-background-color: lightgray;"
+                + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
 
         img.setStyle("-fx-border-color: black;"

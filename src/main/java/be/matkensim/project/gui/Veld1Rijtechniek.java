@@ -39,7 +39,7 @@ public class Veld1Rijtechniek extends HBox implements View {
     //hoogte en breedte scherm
     private int hoogte, breedte;
     //labels
-    private Label kleur, venster;
+    private Button kleur, venster;
     private int labelSelected;
     private HBox labels;
 
@@ -53,13 +53,13 @@ public class Veld1Rijtechniek extends HBox implements View {
         mainGP = new GridPane();
 
         //labels
-        kleur = new Label("Kleur kiezen");
-        venster = new Label("Extra vensters");
+        kleur = new Button("Kleur kiezen");
+        venster = new Button("Extra vensters");
 
-        kleur.setMinSize(80, 30);
-        kleur.setMaxSize(80, 30);
-        venster.setMinSize(80, 30);
-        venster.setMaxSize(80, 30);
+        kleur.setMinSize(120, 30);
+        kleur.setMaxSize(120, 30);
+        venster.setMinSize(120, 30);
+        venster.setMaxSize(120, 30);
 
         kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
         kleur.setAlignment(Pos.CENTER);
@@ -82,7 +82,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         labels = new HBox();
         labels.setSpacing(15);
         labels.setTranslateY(-hoogte * 0.83);
-        labels.setTranslateX(21);
+        labels.setTranslateX(-12);
         labels.getChildren().addAll(kleur, venster);
 
         //alle afbeeldingen aanmaken
@@ -221,9 +221,11 @@ public class Veld1Rijtechniek extends HBox implements View {
                 exitRijtechniek();
             }
         });
+        
+        exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         //Achtergrond
-        achtergrond = new ImageView("resource/Rijtechniek/achtergrondRijtechniek.png");
+        achtergrond = new ImageView("resource/Rijtechniek/achtergrondRt.png");
 
         //Alle GridPanes toevoegen aan hoofd GridPane
         //moet in deze volgorde anders werkt kleurkiezer niet!!!!
@@ -290,8 +292,8 @@ public class Veld1Rijtechniek extends HBox implements View {
     }
 
     public void selecteerKleur() {
-        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
-        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+        venster.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        kleur.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
         labelSelected = 0;
 
         for (Node c : links.getChildren()) {
@@ -325,8 +327,8 @@ public class Veld1Rijtechniek extends HBox implements View {
     }
 
     public void selecteerVenster() {
-        venster.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
-        kleur.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        venster.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
+        kleur.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         labelSelected = 1;
 
         remImg.setOnMouseClicked(new EventHandler<MouseEvent>() {

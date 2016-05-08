@@ -146,9 +146,16 @@ public class Veld3Attitude extends VBox implements View {
             }
         });
         
+        addButton.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+                
+        table.getStylesheets().add("resource/tableView.css");
+        toonTable.getStylesheets().add("resource/tableView.css");
+        addAttitude.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
+        
         img.setFitHeight(50);
         img.setFitWidth(50);
-        titel.setStyle("-fx-font: 40px Tahoma");
+        titel.setStyle("-fx-font: 40px Tahoma; -fx-text-fill: white;");
         hBox1.getChildren().addAll(img, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);
@@ -157,13 +164,14 @@ public class Veld3Attitude extends VBox implements View {
         hBox1.setSpacing(15);
         hBox1.setAlignment(Pos.CENTER);
         
-        algemeenCol.setMinWidth(298);
-        algemeenCol.setMaxWidth(298);
-        toonCol.setMinWidth(298);
-        toonCol.setMaxWidth(298);
+        algemeenCol.setMinWidth(296);
+        algemeenCol.setMaxWidth(296);
+        toonCol.setMinWidth(296);
+        toonCol.setMaxWidth(296);
         
         geselecteerd.setMaxSize(300, 30);
         geselecteerd.setMinSize(300, 30);
+        geselecteerd.setStyle("-fx-text-fill:white");
         geselecteerd.setAlignment(Pos.CENTER_LEFT);
         toonTable.setMinSize(300, 360);
         toonTable.setMaxSize(300, 360);
@@ -199,17 +207,17 @@ public class Veld3Attitude extends VBox implements View {
         
         gp.add(hBox1, 0, 0, 2, 1);
         
-        gp.add(vBox1, 0, 1);
-        gp.add(table, 1, 1);
+        gp.add(table, 0, 1);
+        gp.add(vBox1, 1, 1);
         
         gp.add(addAttitude, 0, 2);
         gp.add(addButton, 1, 2);
         
         gp.add(exit, 1, 3);
         
-        gp.setStyle("-fx-border-color: black;"
+        gp.setStyle("-fx-border-color: #282E54;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
-                + "-fx-background-color: lightgray;"
+                + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
         gp.setMaxWidth(900);
         gp.setMinWidth(900);

@@ -115,8 +115,10 @@ public class Veld1RijtechniekKijktechniek extends VBox implements View{
                 Veld1RijtechniekKijktechniek.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
             }
         });
-        commentaarCol.setMaxWidth(298);
-        commentaarCol.setMinWidth(298);
+        table.getStylesheets().add("resource/tableView.css");
+        commentaarFld.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
+        commentaarCol.setMaxWidth(496);
+        commentaarCol.setMinWidth(496);
         hBox1.getChildren().addAll(titelAfb, titel);
         hBox1.setMinHeight(50);
         hBox1.setMaxHeight(50);
@@ -126,14 +128,14 @@ public class Veld1RijtechniekKijktechniek extends VBox implements View{
         hBox1.setAlignment(Pos.CENTER);
         titelAfb.setFitHeight(50);
         titelAfb.setFitWidth(50);
-        titel.setStyle("-fx-font: 40px Tahoma");
+        titel.setStyle("-fx-font: 40px Tahoma; -fx-text-fill:white");
         toon.setMinHeight(400);
         toon.setMaxHeight(400);
         toon.setMinWidth(300);
         toon.setMaxWidth(300);
         toon.setAlignment(Pos.TOP_LEFT);
-        table.setMinWidth(300);
-        table.setMaxWidth(300);
+        table.setMinWidth(500);
+        table.setMaxWidth(500);
         table.setMinHeight(400);
         table.setMaxHeight(400);
         addButton.setMinHeight(30);
@@ -156,10 +158,19 @@ public class Veld1RijtechniekKijktechniek extends VBox implements View{
         commentaarFld.setMinWidth(250);
         commentaarFld.setMaxWidth(250);
         commentaarFld.setAlignment(Pos.CENTER);
+        table.setTranslateX(70);
+        commentaarFld.setTranslateX(90);
+        addButton.setTranslateX(90);
+        aandachtBtn.setTranslateX(90);
+        exit.setTranslateX(90);
         
-        gp.setStyle("-fx-border-color: black;"
+        addButton.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        aandachtBtn.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        
+        gp.setStyle("-fx-border-color: #282E54; -fx-border-radius:10 10 10 10;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
-                + "-fx-background-color: lightgray;"
+                + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
         gp.setMaxWidth(900);
         gp.setMinWidth(900);
@@ -169,8 +180,7 @@ public class Veld1RijtechniekKijktechniek extends VBox implements View{
         gp.setVgap(20);
         gp.setAlignment(Pos.CENTER);
         gp.add(hBox1, 0, 0, 2, 1);
-        gp.add(toon, 0, 1);
-        gp.add(table, 1, 1);
+        gp.add(table, 0, 1, 2, 1);
         gp.add(commentaarFld, 0, 2);
         gp.add(addButton, 1, 2);
         gp.add(aandachtBtn, 0, 3);

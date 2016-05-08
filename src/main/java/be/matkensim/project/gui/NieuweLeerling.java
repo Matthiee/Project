@@ -45,6 +45,8 @@ public class NieuweLeerling extends StackPane {
     private Button btnUpload, btnOpslaan, btnTerug;
 
     private VBox vbox2, vbox3;
+    
+    private int hoogte, breedte;
 
     public NieuweLeerling(SchermController schermController1) {
         setPadding(new Insets(10));
@@ -52,6 +54,8 @@ public class NieuweLeerling extends StackPane {
         this.setMaxSize(665, 440);
 
         schermController = schermController1;
+        hoogte = schermController.getHoogte();
+        breedte = schermController.getBreedte();
 
         lblNaam = new Label("Naam: ");
         lblInschrijvingsNr = new Label("Inschrijvingsnr: ");
@@ -59,42 +63,94 @@ public class NieuweLeerling extends StackPane {
         lblVerval = new Label("Verval: ");
         lblType = new Label("Type: ");
         lblInfo = new Label();
+        
+        lblNaam.setStyle("-fx-text-fill:white");
+        lblInschrijvingsNr.setStyle("-fx-text-fill:white");
+        lblInstructeur.setStyle("-fx-text-fill:white");
+        lblVerval.setStyle("-fx-text-fill:white");
+        lblType.setStyle("-fx-text-fill:white");
+        lblInfo.setStyle("-fx-text-fill:white");
+        
+        lblNaam.setMinHeight(30);
+        lblInschrijvingsNr.setMinHeight(30);
+        lblInstructeur.setMinHeight(30);
+        lblVerval.setMinHeight(30);
+        lblType.setMinHeight(30);
+        lblInfo.setMinHeight(30);
+        lblNaam.setMaxHeight(30);
+        lblInschrijvingsNr.setMaxHeight(30);
+        lblInstructeur.setMaxHeight(30);
+        lblVerval.setMaxHeight(30);
+        lblType.setMaxHeight(30);
+        lblInfo.setMaxHeight(30);
 
         txtInschrijvingsNr = new TextField();
         txtNaam = new TextField();
         txtInstructeur = new TextField();
         txtVerval = new TextField();
         txtType = new TextField();
+        
+        txtInschrijvingsNr.setMinHeight(30);
+        txtNaam.setMinHeight(30);
+        txtInstructeur.setMinHeight(30);
+        txtVerval.setMinHeight(30);
+        txtType.setMinHeight(30);
+        txtInschrijvingsNr.setMaxHeight(30);
+        txtNaam.setMaxHeight(30);
+        txtInstructeur.setMaxHeight(30);
+        txtVerval.setMaxHeight(30);
+        txtType.setMaxHeight(30);
+        
+        txtInschrijvingsNr.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
+        txtNaam.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
+        txtInstructeur.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
+        txtVerval.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
+        txtType.setStyle("-fx-background-color:#789EBF; -fx-text-fill:white");
 
         img = new ImageView("resource/man-icon.png");
 
         btnUpload = new Button("Kies foto");
         btnOpslaan = new Button("Opslaan");
         btnTerug = new Button("Terug");
+        
+        btnUpload.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        btnOpslaan.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        btnTerug.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         VBox vbox1 = new VBox(15, lblNaam, lblInschrijvingsNr, lblInstructeur, lblVerval, lblType);
         vbox1.setPadding(new Insets(10));
 
         HBox hboxKnoppen = new HBox(10, btnUpload, btnOpslaan, btnTerug);
 
-        vbox2 = new VBox(10, txtNaam, txtInschrijvingsNr, txtInstructeur, txtVerval, txtType, lblInfo, hboxKnoppen);
+        vbox2 = new VBox(15, txtNaam, txtInschrijvingsNr, txtInstructeur, txtVerval, txtType, lblInfo, hboxKnoppen);
         vbox1.setPadding(new Insets(10));
 
         lblInfo.setVisible(false);
 
-        vbox3 = new VBox(10, img);
+        vbox3 = new VBox(15, img);
         vbox1.setPadding(new Insets(10));
         vbox3.setAlignment(Pos.BASELINE_RIGHT);
+        
+        vbox1.setTranslateY(70);
+        vbox2.setTranslateY(80);
+        vbox3.setTranslateY(100);
 
-        HBox holder = new HBox(10, vbox1, vbox2, vbox3);
+        HBox holder = new HBox(30, vbox1, vbox2, vbox3);
         holder.setPadding(new Insets(10));
         HBox.setHgrow(holder, Priority.ALWAYS);
-        holder.setStyle("-fx-border-color: black;"
+        holder.setPadding(new Insets(10));
+        holder.setMaxSize(665, 440);
+        holder.setAlignment(Pos.CENTER);
+        holder.setStyle("-fx-border-color: #282E54; -fx-border-radius: 10 10 10 10;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
-                + "-fx-background-color: lightgray;"
+                + "-fx-background-color: #282B3A;"
                 + "-fx-background-radius: 5;");
 
         this.getChildren().add(holder);
+        this.setStyle("-fx-background-image: url('resource/achtergrondStandaard.png')");
+        this.setAlignment(Pos.CENTER);
+        this.setMinSize(breedte, hoogte);
+        this.setMinSize(breedte, hoogte);
 
         //events
         btnOpslaan.setOnAction(new EventHandler<ActionEvent>() {

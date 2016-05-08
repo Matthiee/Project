@@ -4,6 +4,7 @@ import be.matkensim.project.controller.EvaController;
 import be.matkensim.project.controller.LeerlingController;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -12,13 +13,13 @@ public class EvaSelector extends HBox {
 
     private LeerlingController llnCtrl;
     private EvaController evaCtrl;
-    private Label lbl1, lbl2, lbl3;
+    private Button lbl1, lbl2, lbl3;
 
     public EvaSelector(EvaController evaCtrl) {
         this.evaCtrl = evaCtrl;
-        lbl1 = new Label("1");
-        lbl2 = new Label("2");
-        lbl3 = new Label("3");
+        lbl1 = new Button("1");
+        lbl2 = new Button("2");
+        lbl3 = new Button("3");
 
         lbl1.setMaxSize(30, 30);
         lbl1.setMinSize(30, 30);
@@ -27,9 +28,9 @@ public class EvaSelector extends HBox {
         lbl3.setMaxSize(30, 30);
         lbl3.setMinSize(30, 30);
 
-        lbl1.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
-        lbl2.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
-        lbl3.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        lbl1.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        lbl2.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        lbl3.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         lbl1.setAlignment(Pos.CENTER);
         lbl2.setAlignment(Pos.CENTER);
@@ -80,18 +81,18 @@ public class EvaSelector extends HBox {
     }
 
     public void update() {
-        lbl1.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
-        lbl2.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
-        lbl3.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: WHITE");
+        lbl1.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        lbl2.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        lbl3.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
 
         if (evaCtrl.getSelectedEva() == 1) {
-            lbl1.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+            lbl1.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
         }
         if (evaCtrl.getSelectedEva() == 2) {
-            lbl2.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+            lbl2.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
         }
         if (evaCtrl.getSelectedEva() == 3) {
-            lbl3.setStyle("-fx-border-color: black; -fx-border-width:1; -fx-border-style: solid; -fx-background-color: GREEN");
+            lbl3.setStyle("-fx-background-color: GREEN; -fx-text-fill:white");
         }
     }
 }
