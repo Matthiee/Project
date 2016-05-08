@@ -30,9 +30,6 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
     private LeerlingController llnController;
     private Button aandachtBtn, exit, addButton;
     private TableView<String> list = new TableView<String>();
-    private ObservableList<String> houdingen = FXCollections.observableArrayList();
-    private Label toon = new Label("Geselecteerd:");
-    private VBox vBox1 = new VBox();
     private VBox vBox2 = new VBox();
     private HBox hBox1 = new HBox();
     private HBox hBox2 = new HBox();
@@ -49,8 +46,6 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
         evaController = evaCtrl;
         schermController = schermCtrl;
         llnController = llnCtrl;
-        vBox1.getChildren().addAll(toon);
-        houdingen.addAll("Zithouding", "Gordel", "Spiegel", "Handrem");
         this.llnController.getLeerling().addView(this);
         
         aandachtBtn = new Button("Aandachtspunt");
@@ -87,6 +82,7 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
+                resetAandachtBtn();
                 if(!"".equals(commentaarFld.getText()))
                 {
                     data.add(new Rijtechniek(
@@ -100,7 +96,7 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
         table.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                commentaarGeselecteerd();
+                resetAandachtBtn();
             }
         });
         table.setEditable(true);
@@ -111,8 +107,9 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                evaController.saveListDataRijtechniek("Koppeling", data);
+                evaController.saveListDataRijtechniek("Stuurtechniek", data);
                 Veld1RijtechniekKoppeling.this.schermController.setScherm(MainApp.RIJTECHNIEK_ID);
+                resetAandachtBtn();
             }
         });
         table.getStylesheets().add("resource/tableView.css");
@@ -129,11 +126,7 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
         titelAfb.setFitHeight(50);
         titelAfb.setFitWidth(50);
         titel.setStyle("-fx-font: 40px Tahoma; -fx-text-fill:white");
-        toon.setMinHeight(400);
-        toon.setMaxHeight(400);
-        toon.setMinWidth(300);
-        toon.setMaxWidth(300);
-        toon.setAlignment(Pos.TOP_LEFT);
+
         table.setMinWidth(500);
         table.setMaxWidth(500);
         table.setMinHeight(400);
@@ -158,6 +151,11 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
         commentaarFld.setMinWidth(250);
         commentaarFld.setMaxWidth(250);
         commentaarFld.setAlignment(Pos.CENTER);
+        table.setTranslateX(70);
+        commentaarFld.setTranslateX(90);
+        addButton.setTranslateX(90);
+        aandachtBtn.setTranslateX(90);
+        exit.setTranslateX(90);
         
         addButton.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
@@ -180,11 +178,6 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
         gp.add(addButton, 1, 2);
         gp.add(aandachtBtn, 0, 3);
         gp.add(exit, 1, 3);
-        table.setTranslateX(70);
-        commentaarFld.setTranslateX(90);
-        addButton.setTranslateX(90);
-        aandachtBtn.setTranslateX(90);
-        exit.setTranslateX(90);
         
         
         this.setAlignment(Pos.CENTER);
@@ -194,27 +187,24 @@ public class Veld1RijtechniekKoppeling extends VBox implements View{
         
         update();
     }
-
-    private void commentaarGeselecteerd() {
-        toon.setText("Geselecteerd: \n" +verkort(table.getSelectionModel().getSelectedItem().getCommentaar()));
+        private void aandacht()
+    {
+        if(table.getSelectionModel().getSelectedItem()!=null){
+            aandachtBtn.setText("Toegevoegd!");
+            aandachtBtn.setStyle("-fx-background-color: GREEN;");
+            llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getCommentaar());
+        }
     }
-
-    //wrap de commentaar elke 30 chars
-    private String verkort(String s) {
-        return s.replaceAll("(.{30})", "$1\n");
+    private void resetAandachtBtn()
+    {
+        aandachtBtn.setText("Aandachtspunt");
+        aandachtBtn.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
     }
-    
-    
     @Override
     public void update(){
         data = evaController.loadListDataRijtechniek("Koppeling");
         table.setItems(data);
     }
-    
-    private void aandacht()
-    {
-        if(table.getSelectionModel().getSelectedItem()!=null)
-            llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getCommentaar()); 
-    }
+
 }
 
