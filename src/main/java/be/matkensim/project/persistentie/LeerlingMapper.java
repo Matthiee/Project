@@ -1,6 +1,7 @@
 package be.matkensim.project.persistentie;
 
 import be.matkensim.project.async.GetLeerlingListTask;
+import be.matkensim.project.comparators.LeerlingComparator;
 import be.matkensim.project.domein.Leerling;
 import be.matkensim.project.gui.MainApp;
 import java.util.ArrayList;
@@ -15,8 +16,10 @@ import javafx.scene.image.Image;
 public class LeerlingMapper {
 
     private static List<Leerling> leerlingen;
-
+    private static LeerlingComparator vergelijker;
+    
     static {
+        vergelijker=new LeerlingComparator();
         leerlingen = new ArrayList<Leerling>();
 //        leerlingen.add(new Leerling("Lisa Su", "1969-11-01", "Paul", new Date(), "Rijbewijs B", new Image("resource/lisa.jpg")));
 //        leerlingen.add(new Leerling("Mark Zuckerberg", "1984-05-14", "Paul", new Date(), "Rijbewijs B", new Image("resource/mark.jpg")));
@@ -32,6 +35,7 @@ public class LeerlingMapper {
             lln.clear();
             try {
                 leerlingen.addAll(task.get());
+                leerlingen.sort(vergelijker);
                 lln.addAll(leerlingen);
             } catch (InterruptedException ex) {
                 Logger.getLogger(LeerlingMapper.class.getName()).log(Level.SEVERE, null, ex);
@@ -58,6 +62,7 @@ public class LeerlingMapper {
             try {
                 List<Leerling> llnreturn = task.get();
                 leerlingen.addAll(llnreturn);
+                leerlingen.sort(vergelijker);
                 
                 for (Leerling l : llnreturn) {
                     if (l.getNaam().toLowerCase().contains(naam.toLowerCase())) {
@@ -91,7 +96,9 @@ public class LeerlingMapper {
     }
 
     public static boolean voegLeerlingToe(Leerling lln) {
-        return leerlingen.add(lln);
+        boolean x = leerlingen.add(lln);
+        leerlingen.sort(vergelijker);
+        return x;
     }
 
     public static boolean bestaat(String lln) {
