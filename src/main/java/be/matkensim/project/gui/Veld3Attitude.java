@@ -32,7 +32,7 @@ public class Veld3Attitude extends VBox implements View {
     private final SchermController schermController;
     private EvaController evaController;
     private LeerlingController llnController;
-    private Button exit;
+    private Button aandachtBtn,exit;
     private TableView<String> list = new TableView<String>();
     private ObservableList<String> attitudes = FXCollections.observableArrayList();
     private ObservableList<String> toonAttitudes = FXCollections.observableArrayList();
@@ -111,9 +111,9 @@ public class Veld3Attitude extends VBox implements View {
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                data.add(new Attitude(
-                        addAttitude.getText()
-                ));
+                llnController.setAandachtsPunt(addAttitude.getText());
+                toonData.add(addAttitude.getText());
+                
                 addAttitude.clear();
             }
         });
@@ -127,7 +127,7 @@ public class Veld3Attitude extends VBox implements View {
         });
 
         
-        exit = new Button("ga terug");
+        exit = new Button("Ga terug");
         
 
         exit.setOnAction(new EventHandler<ActionEvent>() {
@@ -145,7 +145,7 @@ public class Veld3Attitude extends VBox implements View {
                 verwijder();
             }
         });
-        
+
         addButton.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
                 
@@ -194,8 +194,8 @@ public class Veld3Attitude extends VBox implements View {
         
         addButton.setMinHeight(30);
         addButton.setMaxHeight(30);
-        addButton.setMinWidth(150);
-        addButton.setMaxWidth(150);
+        addButton.setMinWidth(200);
+        addButton.setMaxWidth(200);
         addButton.setAlignment(Pos.CENTER);
         
         addAttitude.setMinHeight(30);
@@ -235,14 +235,19 @@ public class Veld3Attitude extends VBox implements View {
     }
 
     private void doorgaanAlsGeselecteerd() {
+        llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getAttitude());
         toonData.addAll(table.getSelectionModel().getSelectedItem().getAttitude());
-        toonTable.setItems(toonData);
+        data.remove(table.getSelectionModel().getSelectedItem());
     }
 
     private void verwijder() {
+        data.add(new Attitude(
+                        toonTable.getSelectionModel().getSelectedItem()
+                ));
+        
         toonData.remove(toonTable.getSelectionModel().getSelectedItem());
     }
-
+    
     @Override
     public void update() {
         data = evaController.loadAttitudeWoorden();

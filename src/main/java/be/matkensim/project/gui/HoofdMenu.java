@@ -260,8 +260,8 @@ public class HoofdMenu extends HBox implements View {
         
         //evaselector en opslaan
         save = new Button("opslaan", saveImg);
-        save.setMinSize(100, 50);
-        save.setMaxSize(100, 50);
+        save.setMinSize(120, 50);
+        save.setMaxSize(120, 50);
         save.setTranslateY(-15);
         save.setTranslateX(-30);
         save.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");

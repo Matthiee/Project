@@ -28,7 +28,7 @@ public class Veld1RijtechniekGarage extends VBox implements View {
     private final SchermController schermController;
     private EvaController evaController;
     private LeerlingController llnController;
-    private Button aandachtBtn, exit, addButton;
+    private Button aandachtBtn, exit, addButton,delBtn;
     private TableView<String> list = new TableView<String>();
     private VBox vBox2 = new VBox();
     private HBox hBox1 = new HBox();
@@ -97,10 +97,27 @@ public class Veld1RijtechniekGarage extends VBox implements View {
                 resetAandachtBtn();
             }
         });
+        delBtn= new Button("Verwijder");
+        delBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent e) {
+                resetAandachtBtn();
+                
+                table.getItems().remove(table.getSelectionModel().getSelectedItem());
+            }
+        });
+                delBtn.setMinHeight(30);
+        delBtn.setMaxHeight(30);
+        delBtn.setMinWidth(125);
+        delBtn.setMaxWidth(125);
+        delBtn.setAlignment(Pos.CENTER);
+        delBtn.setTranslateX(-47);
+        delBtn.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
+        
         table.setEditable(true);
 
         vBox2.getChildren().addAll(table, commentaarFld);
-        exit = new Button("ga terug");
+        exit = new Button("Ga terug");
 
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -176,6 +193,7 @@ public class Veld1RijtechniekGarage extends VBox implements View {
         gp.add(addButton, 1, 2);
         gp.add(aandachtBtn, 0, 3);
         gp.add(exit, 1, 3);
+        gp.add(delBtn, 1, 3);
 
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(gp);

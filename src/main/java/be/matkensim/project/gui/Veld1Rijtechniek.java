@@ -3,14 +3,12 @@ package be.matkensim.project.gui;
 import be.matkensim.project.controller.EvaController;
 import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
-import java.util.function.Consumer;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -210,7 +208,7 @@ public class Veld1Rijtechniek extends HBox implements View {
         stuur.setTranslateX(-15);
 
         //exit button + evaSelector
-        exit = new Button("ga terug");
+        exit = new Button("Ga terug");
         evaSelector = new EvaSelector(evaController);
         evaSelector.setTranslateX(-50);
         exit.setTranslateX(50);
