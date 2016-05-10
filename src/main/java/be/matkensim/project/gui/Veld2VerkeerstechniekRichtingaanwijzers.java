@@ -30,9 +30,6 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends VBox implements Vie
     private LeerlingController llnController;
     private Button aandachtBtn,exit,addButton;
     private TableView<String> list = new TableView<String>();
-    private ObservableList<String> houdingen = FXCollections.observableArrayList();
-    private Label toon = new Label("Geselecteerd:");
-    private VBox vBox1 = new VBox();
     private VBox vBox2 = new VBox();
     private HBox hBox1 = new HBox();
     private HBox hBox2 = new HBox();
@@ -51,18 +48,15 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends VBox implements Vie
         schermController = schermCtrl;
         llnController = llnCtrl;
         this.llnController.getLeerling().addView(this);
-        vBox1.getChildren().addAll(toon);
-        houdingen.addAll("Volgafstand", "Zijdelingse afstand");
 
         aandachtBtn = new Button("Aandachtspunt");
         aandachtBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
-            public void handle(ActionEvent e) 
-            {
+            public void handle(ActionEvent e) {
                 aandacht();
             }
         });
-        
+
         commentaarCol = new TableColumn("Commentaar");
         commentaarCol.setMinWidth(400);
         commentaarCol.setCellValueFactory(
@@ -88,12 +82,12 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends VBox implements Vie
         addButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                if(!"".equals(commentaarFld.getText()))
-                {
-                data.add(new Verkeerstechniek(
-                        commentaarFld.getText()
-                ));
-                commentaarFld.clear();
+                resetAandachtBtn();
+                if (!"".equals(commentaarFld.getText())) {
+                    data.add(new Verkeerstechniek(
+                            commentaarFld.getText()
+                    ));
+                    commentaarFld.clear();
                 }
             }
         });
@@ -102,7 +96,7 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends VBox implements Vie
         table.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent e) {
-                commentaarGeselecteerd();
+                resetAandachtBtn();
             }
         });
         table.setEditable(true);
@@ -112,7 +106,8 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends VBox implements Vie
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                evaController.saveListDataVerkeerstechniek("Richtingaanwijzers", data);
+                resetAandachtBtn();
+                evaController.saveListDataVerkeerstechniek("Afstand", data);
                 Veld2VerkeerstechniekRichtingaanwijzers.this.schermController.setScherm(MainApp.VERKEERSTECHNIEK_ID);
             }
         });
@@ -131,11 +126,6 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends VBox implements Vie
         titelAfb.setFitHeight(50);
         titelAfb.setFitWidth(50);
         titel.setStyle("-fx-font: 40px Tahoma; -fx-text-fill:white");
-        toon.setMinHeight(400);
-        toon.setMaxHeight(400);
-        toon.setMinWidth(300);
-        toon.setMaxWidth(300);
-        toon.setAlignment(Pos.TOP_LEFT);
         table.setMinWidth(500);
         table.setMaxWidth(500);
         table.setMinHeight(400);
@@ -165,11 +155,10 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends VBox implements Vie
         addButton.setTranslateX(90);
         aandachtBtn.setTranslateX(90);
         exit.setTranslateX(90);
-        
         addButton.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         exit.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
         aandachtBtn.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
-        
+
         gp.setStyle("-fx-border-color: #282E54; -fx-border-radius:10 10 10 10;"
                 + "-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);"
                 + "-fx-background-color: #282B3A;"
@@ -187,31 +176,28 @@ public class Veld2VerkeerstechniekRichtingaanwijzers extends VBox implements Vie
         gp.add(addButton, 1, 2);
         gp.add(aandachtBtn, 0, 3);
         gp.add(exit, 1, 3);
-        
-        
+
         this.setAlignment(Pos.CENTER);
         this.getChildren().add(gp);
         this.setStyle("-fx-background-image: url('resource/achtergrondStandaard.png')");
         update();
     }
 
-    private void commentaarGeselecteerd() {
-        toon.setText("Geselecteerd: \n" + verkort(table.getSelectionModel().getSelectedItem().getCommentaar()));
+    private void aandacht() {
+        if (table.getSelectionModel().getSelectedItem() != null) {
+            aandachtBtn.setText("Toegevoegd!");
+            aandachtBtn.setStyle("-fx-background-color: GREEN;");
+            llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getCommentaar());
+        }
     }
 
-    private String verkort(String s) {
-        return s.replaceAll("(.{30})", "$1\n");
+    private void resetAandachtBtn() {
+        aandachtBtn.setText("Aandachtspunt");
+        aandachtBtn.setStyle("-fx-background-color: #5F6A95; -fx-text-fill:white");
     }
-
     @Override
     public void update() {
         data = evaController.loadListDataVerkeerstechniek("Richtingaanwijzers");
         table.setItems(data);
-    }
-    
-    private void aandacht()
-    {
-        if(table.getSelectionModel().getSelectedItem()!=null)
-            llnController.setAandachtsPunt(table.getSelectionModel().getSelectedItem().getCommentaar()); 
     }
 }
