@@ -81,7 +81,7 @@
 }
 
 .list-cell{
-    -fx-background-color:  transparant;
+    -fx-background-color:  transparent;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }
