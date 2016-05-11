@@ -12,7 +12,9 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import javafx.collections.ObservableList;
 import javax.json.Json;
+import javax.json.JsonArrayBuilder;
 import javax.json.JsonObjectBuilder;
 import javax.json.JsonWriter;
 import javax.ws.rs.Produces;
@@ -52,9 +54,19 @@ public class LeerlingWriter implements MessageBodyWriter<Leerling>{
             DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd");
             b.add("verval", fmt.format(lln.getVerval()));
             b.add("instructeur", lln.getInstructeur());
+            b.add("aandachtspunten", getArr(lln.getAandachtsPuntenLijst()));
             
             out.writeObject(b.build());
         }
     }
     
+     private JsonArrayBuilder getArr(ObservableList<String> o){
+         JsonArrayBuilder b = Json.createArrayBuilder();
+       
+        for(String s : o){
+             b.add(s);
+         }
+         
+         return  b;
+     }
 }

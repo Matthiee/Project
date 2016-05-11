@@ -1,6 +1,7 @@
 package be.matkensim.project.gui;
 
 import be.matkensim.project.async.SaveEvaTask;
+import be.matkensim.project.async.SaveLeerlingTask;
 import be.matkensim.project.controller.EvaController;
 import be.matkensim.project.controller.LeerlingController;
 import be.matkensim.project.controller.SchermController;
@@ -379,10 +380,12 @@ public class HoofdMenu extends HBox implements View {
     public void save() {
         System.out.println("test");
 
+        SaveLeerlingTask t0 = new SaveLeerlingTask(llnController.getLeerling());
         SaveEvaTask t1 = new SaveEvaTask(llnController.getInschrijvingsnr(), 1, llnController.getEva1());
         SaveEvaTask t2 = new SaveEvaTask(llnController.getInschrijvingsnr(), 2, llnController.getEva2());
         SaveEvaTask t3 = new SaveEvaTask(llnController.getInschrijvingsnr(), 3, llnController.getEva3());
 
+        MainApp.service.submit(t0);
         MainApp.service.submit(t1);
         MainApp.service.submit(t2);
         MainApp.service.submit(t3);

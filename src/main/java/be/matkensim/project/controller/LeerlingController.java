@@ -12,8 +12,7 @@ import javafx.scene.image.Image;
 
 public class LeerlingController {
     private Leerling leerling;
-    private String aandachtsPunt;
-    private ObservableList<String> aandachtsPuntenLijst = FXCollections.observableArrayList();
+    
     
     public LeerlingController(Leerling lln){
         this.leerling=lln;
@@ -137,12 +136,11 @@ public class LeerlingController {
    
 
     public void setAandachtsPunt(String aandachtsPunt) {
-        this.aandachtsPunt = aandachtsPunt;
-        aandachtsPuntenLijst.add(aandachtsPunt);
+        leerling.getAandachtsPuntenLijst().add(aandachtsPunt);
     }
 
     public ObservableList<String> getAandachtsPuntenLijst() {
-        return aandachtsPuntenLijst;
+        return leerling.getAandachtsPuntenLijst();
     }
 
   

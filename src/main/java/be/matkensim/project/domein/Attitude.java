@@ -24,4 +24,11 @@ public class Attitude
     public void setAttitude(String attitude) {
         this.attitude = attitude;
     }
+
+    @Override
+    public String toString() {
+        return attitude;
+    }
+    
+    
 }

@@ -7,6 +7,8 @@ package be.matkensim.project.json;
 
 
 import be.matkensim.project.domein.EvaluatieMoment;
+import be.matkensim.project.domein.Rijtechniek;
+import be.matkensim.project.domein.Verkeerstechniek;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.annotation.Annotation;
@@ -58,13 +60,13 @@ public class EvaluatiemomentWriter implements MessageBodyWriter<EvaluatieMoment>
             b.add("sturen", eva.getSturen());
             b.add("kijken", eva.getKijken());
             b.add("helling", eva.getHelling());
-            b.add("houdingOpm", getArr(eva.getHoudingOpm()));
-            b.add("koppelingOpm", getArr(eva.getKoppelingOpm()));
-            b.add("remmenOpm", getArr(eva.getRemmenOpm()));
-            b.add("schakelenOpm", getArr(eva.getSchakelenOpm()));
-            b.add("sturenOpm", getArr(eva.getSturenOpm()));
-            b.add("kijkenOpm", getArr(eva.getKijkenOpm()));
-            b.add("hellingOpm", getArr(eva.getHellingOpm()));
+            b.add("houdingOpm", getArrRij(eva.getHoudingOpm()));
+            b.add("koppelingOpm", getArrRij(eva.getKoppelingOpm()));
+            b.add("remmenOpm", getArrRij(eva.getRemmenOpm()));
+            b.add("schakelenOpm", getArrRij(eva.getSchakelenOpm()));
+            b.add("sturenOpm", getArrRij(eva.getSturenOpm()));
+            b.add("kijkenOpm", getArrRij(eva.getKijkenOpm()));
+            b.add("hellingOpm", getArrRij(eva.getHellingOpm()));
                     
             //verkeerstechniek
             b.add("richtingaanwijzers", eva.getRichtingaanwijzers());
@@ -77,16 +79,16 @@ public class EvaluatiemomentWriter implements MessageBodyWriter<EvaluatieMoment>
             b.add("kruisen", eva.getKruisen());
             b.add("linksaf", eva.getLinksaf());
             b.add("rechtsaf", eva.getRechtsaf());
-            b.add("richtingaanwijzersOpm", getArr(eva.getRichtingaanwijzersOpm()));
-            b.add("voorrangOpm", getArr(eva.getVoorrangOpm()));
-            b.add("openbareWegOpm", getArr(eva.getOpenbareWegOpm()));
-            b.add("verkeerstekensOpm", getArr(eva.getVerkeerstekensOpm()));
-            b.add("snelheidOpm", getArr(eva.getSnelheidOpm()));
-            b.add("afstandOpm", getArr(eva.getAfstandOpm()));
-            b.add("inhalenOpm", getArr(eva.getInhalenOpm()));
-            b.add("kruisenOpm", getArr(eva.getKruisenOpm()));
-            b.add("linksafOpm", getArr(eva.getLinksafOpm()));
-            b.add("rechtsafOpm", getArr(eva.getRechtsafOpm()));
+            b.add("richtingaanwijzersOpm", getArrVerkeer(eva.getRichtingaanwijzersOpm()));
+            b.add("voorrangOpm", getArrVerkeer(eva.getVoorrangOpm()));
+            b.add("openbareWegOpm", getArrVerkeer(eva.getOpenbareWegOpm()));
+            b.add("verkeerstekensOpm", getArrVerkeer(eva.getVerkeerstekensOpm()));
+            b.add("snelheidOpm", getArrVerkeer(eva.getSnelheidOpm()));
+            b.add("afstandOpm", getArrVerkeer(eva.getAfstandOpm()));
+            b.add("inhalenOpm", getArrVerkeer(eva.getInhalenOpm()));
+            b.add("kruisenOpm", getArrVerkeer(eva.getKruisenOpm()));
+            b.add("linksafOpm", getArrVerkeer(eva.getLinksafOpm()));
+            b.add("rechtsafOpm", getArrVerkeer(eva.getRechtsafOpm()));
             
             //attitude
             b.add("attitudeOpm", getArr(eva.getAttitudeOpm()));
@@ -114,6 +116,26 @@ public class EvaluatiemomentWriter implements MessageBodyWriter<EvaluatieMoment>
         
         for(String s : o){
             b.add(s);
+        }
+        
+        return  b;
+    }
+    
+    private JsonArrayBuilder getArrRij(ObservableList<Rijtechniek> o){
+        JsonArrayBuilder b = Json.createArrayBuilder();
+        
+        for(Rijtechniek s : o){
+            b.add(s.toString());
+        }
+        
+        return  b;
+    }
+    
+    private JsonArrayBuilder getArrVerkeer(ObservableList<Verkeerstechniek> o){
+        JsonArrayBuilder b = Json.createArrayBuilder();
+        
+        for(Verkeerstechniek s : o){
+            b.add(s.toString());
         }
         
         return  b;

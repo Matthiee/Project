@@ -5,7 +5,9 @@
  */
 package be.matkensim.project.async;
 
+import be.matkensim.project.domein.EvaluatieMoment;
 import be.matkensim.project.domein.Leerling;
+import be.matkensim.project.json.EvaluatiemomentWriter;
 import be.matkensim.project.json.LeerlingWriter;
 import javafx.concurrent.Task;
 import javax.ws.rs.client.ClientBuilder;
@@ -18,22 +20,22 @@ import javax.ws.rs.core.Response;
  *
  * @author Matthias
  */
-public class AddLeerlingTask extends Task<Void>{
-
-    private final WebTarget userListResource;
-    private final Leerling lln;
+public class SaveLeerlingTask extends Task<Void> {
     
-    public AddLeerlingTask(Leerling lln){
-    this.lln = lln;
+    private final WebTarget userListResource;
+    private final Leerling eva;
+    
+    public SaveLeerlingTask(Leerling eva) {
+        this.eva = eva;
         userListResource = ClientBuilder.newClient()
                 .target("http://10.0.0.52:8080/api/api/")
-                .path("leerlingen")
+                .path("leerling/" + eva.getInschrijvingsnr())
                 .register(LeerlingWriter.class);
     }
     
     @Override
     protected Void call() throws Exception {
-        Response response = userListResource.request().post(Entity.entity(lln, MediaType.APPLICATION_JSON));
+        Response response = userListResource.request().put(Entity.entity(eva, MediaType.APPLICATION_JSON));
         switch (response.getStatus()) {
             case 201:
                 return null;
@@ -43,5 +45,4 @@ public class AddLeerlingTask extends Task<Void>{
                 throw new Exception();
         }
     }
-    
 }

@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -65,6 +67,7 @@ public class LeerlingenListReader implements MessageBodyReader<List<Leerling>> {
                 lln.setVerval(fmt.parse(j.getString("verval", "2000-01-01")));
                 lln.setInstructeur(j.getString("instructeur", null));
                 lln.setImage(i);
+                lln.setAandachtsPuntenLijst(GetList(j.getJsonArray("aandachtspunten")));
                 
                 leerlingen.add(lln);
             }
@@ -77,4 +80,13 @@ public class LeerlingenListReader implements MessageBodyReader<List<Leerling>> {
         return null;
     }
 
+    private ObservableList<String> GetList(JsonArray arr){
+        ObservableList<String> o =  FXCollections.observableArrayList();
+        for (int i = 0; i < arr.size(); i++) {
+            o.add(arr.getString(i));
+        }
+        
+        return o;
+    }
+    
 }

@@ -15,4 +15,11 @@ public class Verkeerstechniek {
     public void setCommentaar(String commentaar) {
         this.commentaar = commentaar;
     }
+
+    @Override
+    public String toString() {
+        return commentaar;
+    }
+    
+    
 }
