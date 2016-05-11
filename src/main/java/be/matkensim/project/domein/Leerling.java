@@ -28,6 +28,15 @@ public class Leerling implements Model{
     private EvaluatieMoment eva3;
     private int lastSelectedEva; //1=eva1  2=eva2  3=eva3
     private ObservableList<Attitude> attitudeWoorden;
+    private ObservableList<String> aandachtsPuntenLijst = FXCollections.observableArrayList();
+
+    public ObservableList<String> getAandachtsPuntenLijst() {
+        return aandachtsPuntenLijst;
+    }
+
+    public void setAandachtsPuntenLijst(ObservableList<String> aandachtsPuntenLijst) {
+        this.aandachtsPuntenLijst = aandachtsPuntenLijst;
+    }
     
     public Leerling(){
       views = new ArrayList<>();
