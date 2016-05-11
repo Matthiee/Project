@@ -1,6 +1,8 @@
 package be.matkensim.project.json;
 
 import be.matkensim.project.domein.EvaluatieMoment;
+import be.matkensim.project.domein.Rijtechniek;
+import be.matkensim.project.domein.Verkeerstechniek;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.annotation.Annotation;
@@ -52,13 +54,13 @@ public class EvaluatiemomentReader implements MessageBodyReader<EvaluatieMoment>
             eva.setSturen(j.getInt("sturen", 0));
             eva.setKijken(j.getInt("kijken", 0));
             eva.setHelling(j.getInt("helling", 0));
-            eva.setHoudingOpm(GetOpmerkingen(j.getJsonArray("houdingOpm")));
-            eva.setKoppelingOpm(GetOpmerkingen(j.getJsonArray("koppelingOpm")));
-            eva.setRemmenOpm(GetOpmerkingen(j.getJsonArray("remmenOpm")));
-            eva.setSchakelenOpm(GetOpmerkingen(j.getJsonArray("schakelenOpm")));
-            eva.setSturenOpm(GetOpmerkingen(j.getJsonArray("sturenOpm")));
-            eva.setKijkenOpm(GetOpmerkingen(j.getJsonArray("kijkenOpm")));
-            eva.setHellingOpm(GetOpmerkingen(j.getJsonArray("hellingOpm")));
+            eva.setHoudingOpm(GetOpmerkingenRij(j.getJsonArray("houdingOpm")));
+            eva.setKoppelingOpm(GetOpmerkingenRij(j.getJsonArray("koppelingOpm")));
+            eva.setRemmenOpm(GetOpmerkingenRij(j.getJsonArray("remmenOpm")));
+            eva.setSchakelenOpm(GetOpmerkingenRij(j.getJsonArray("schakelenOpm")));
+            eva.setSturenOpm(GetOpmerkingenRij(j.getJsonArray("sturenOpm")));
+            eva.setKijkenOpm(GetOpmerkingenRij(j.getJsonArray("kijkenOpm")));
+            eva.setHellingOpm(GetOpmerkingenRij(j.getJsonArray("hellingOpm")));
             
             //verkeerstechniek
             eva.setRichtingaanwijzers(j.getInt("richtingaanwijzers", 0));
@@ -71,16 +73,16 @@ public class EvaluatiemomentReader implements MessageBodyReader<EvaluatieMoment>
             eva.setKruisen(j.getInt("kruisen", 0));
             eva.setLinksaf(j.getInt("linksaf", 0));
             eva.setRechtsaf(j.getInt("rechtsaf", 0));
-            eva.setRichtingaanwijzersOpm(GetOpmerkingen(j.getJsonArray("richtingaanwijzersOpm")));
-            eva.setVoorrangOpm(GetOpmerkingen(j.getJsonArray("voorrangOpm")));
-            eva.setOpenbareWegOpm(GetOpmerkingen(j.getJsonArray("openbareWegOpm")));
-            eva.setVerkeerstekensOpm(GetOpmerkingen(j.getJsonArray("verkeerstekensOpm")));
-            eva.setSnelheidOpm(GetOpmerkingen(j.getJsonArray("snelheidOpm")));
-            eva.setAfstandOpm(GetOpmerkingen(j.getJsonArray("afstandOpm")));
-            eva.setInhalenOpm(GetOpmerkingen(j.getJsonArray("inhalenOpm")));
-            eva.setKruisenOpm(GetOpmerkingen(j.getJsonArray("kruisenOpm")));
-            eva.setLinksafOpm(GetOpmerkingen(j.getJsonArray("linksafOpm")));
-            eva.setRechtsafOpm(GetOpmerkingen(j.getJsonArray("rechtsafOpm")));
+            eva.setRichtingaanwijzersOpm(GetOpmerkingenVerk(j.getJsonArray("richtingaanwijzersOpm")));
+            eva.setVoorrangOpm(GetOpmerkingenVerk(j.getJsonArray("voorrangOpm")));
+            eva.setOpenbareWegOpm(GetOpmerkingenVerk(j.getJsonArray("openbareWegOpm")));
+            eva.setVerkeerstekensOpm(GetOpmerkingenVerk(j.getJsonArray("verkeerstekensOpm")));
+            eva.setSnelheidOpm(GetOpmerkingenVerk(j.getJsonArray("snelheidOpm")));
+            eva.setAfstandOpm(GetOpmerkingenVerk(j.getJsonArray("afstandOpm")));
+            eva.setInhalenOpm(GetOpmerkingenVerk(j.getJsonArray("inhalenOpm")));
+            eva.setKruisenOpm(GetOpmerkingenVerk(j.getJsonArray("kruisenOpm")));
+            eva.setLinksafOpm(GetOpmerkingenVerk(j.getJsonArray("linksafOpm")));
+            eva.setRechtsafOpm(GetOpmerkingenVerk(j.getJsonArray("rechtsafOpm")));
             
             //attitude
             eva.setAttitudeOpm(GetOpmerkingen(j.getJsonArray("attitudeOpm")));
@@ -108,6 +110,24 @@ public class EvaluatiemomentReader implements MessageBodyReader<EvaluatieMoment>
         ObservableList<String> o = FXCollections.observableArrayList();
         for (int i = 0; i < arr.size(); i++) {
             o.add(arr.getString(i));
+        }
+        
+        return o;
+    }
+    
+    private ObservableList<Rijtechniek> GetOpmerkingenRij(JsonArray arr){
+        ObservableList<Rijtechniek> o = FXCollections.observableArrayList();
+        for (int i = 0; i < arr.size(); i++) {
+            o.add(new Rijtechniek(arr.getString(i)));
+        }
+        
+        return o;
+    }
+    
+    private ObservableList<Verkeerstechniek> GetOpmerkingenVerk(JsonArray arr){
+        ObservableList<Verkeerstechniek> o = FXCollections.observableArrayList();
+        for (int i = 0; i < arr.size(); i++) {
+            o.add(new Verkeerstechniek(arr.getString(i)));
         }
         
         return o;

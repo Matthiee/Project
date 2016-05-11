@@ -16,4 +16,11 @@ public class Rijtechniek {
     public void setCommentaar(String commentaar) {
         this.commentaar = commentaar;
     }
+
+    @Override
+    public String toString() {
+        return commentaar;
+    }
+    
+    
 }
