@@ -4,9 +4,13 @@ import be.matkensim.project.async.GetLeerlingListTask;
 import be.matkensim.project.comparators.LeerlingComparator;
 import be.matkensim.project.domein.Leerling;
 import be.matkensim.project.gui.MainApp;
+import static java.lang.Math.E;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +39,7 @@ public class LeerlingMapper {
             lln.clear();
             try {
                 leerlingen.addAll(task.get());
-                leerlingen.sort(vergelijker);
+                sort(vergelijker, leerlingen);
                 lln.addAll(leerlingen);
             } catch (InterruptedException ex) {
                 Logger.getLogger(LeerlingMapper.class.getName()).log(Level.SEVERE, null, ex);
@@ -62,7 +66,7 @@ public class LeerlingMapper {
             try {
                 List<Leerling> llnreturn = task.get();
                 leerlingen.addAll(llnreturn);
-                leerlingen.sort(vergelijker);
+                sort(vergelijker, leerlingen);
                 
                 for (Leerling l : llnreturn) {
                     if (l.getNaam().toLowerCase().contains(naam.toLowerCase())) {
@@ -108,5 +112,14 @@ public class LeerlingMapper {
             }
         }
         return false;
+    }
+    
+    private static void sort(Comparator<Leerling> c, List<Leerling> l) {
+        Object[] a = l.toArray();
+        Arrays.sort(a, (Comparator) c);
+        l.clear();
+        for (Object e : a) {
+            l.add((Leerling)e);
+        }
     }
 }

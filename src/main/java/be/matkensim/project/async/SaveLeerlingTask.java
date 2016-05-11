@@ -28,7 +28,7 @@ public class SaveLeerlingTask extends Task<Void> {
     public SaveLeerlingTask(Leerling eva) {
         this.eva = eva;
         userListResource = ClientBuilder.newClient()
-                .target("http://localhost:8080/api/api/")
+                .target("http://10.0.0.52:8080/api/api/")
                 .path("leerling/" + eva.getInschrijvingsnr())
                 .register(LeerlingWriter.class);
     }

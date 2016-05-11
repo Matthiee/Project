@@ -25,7 +25,7 @@ public class GetLeerlingListTask extends Task<List<Leerling>>{
 
     public GetLeerlingListTask() {
         userListResource = ClientBuilder.newClient()
-                .target("http://localhost:8080/api/api/")
+                .target("http://10.0.0.52:8080/api/api/")
                 .path("leerlingen")
                 .register(LeerlingenListReader.class);
     }
