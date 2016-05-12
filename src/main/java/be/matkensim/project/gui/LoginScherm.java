@@ -55,7 +55,7 @@ public class LoginScherm extends StackPane implements View {
         lblInfo.setVisible(false);
         img = new ImageView("resource/man-icon.png");
         logo = new ImageView("resource/logo.png");
-        btnDoorgaan = new Button("Doorgaan");
+        btnDoorgaan = new Button("Login");
         btnZoek = new Button("Zoek");
         btnNieuw = new Button("Nieuw");
         

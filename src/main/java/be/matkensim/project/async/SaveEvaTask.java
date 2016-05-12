@@ -28,7 +28,7 @@ public class SaveEvaTask extends Task<Void> {
     public SaveEvaTask(String nr, int id, EvaluatieMoment eva) {
         this.eva = eva;
         userListResource = ClientBuilder.newClient()
-                .target("http://10.0.0.52:8080/api/api/")
+                .target("http://192.168.156.1:8080/api/api/")
                 .path("leerling/" + nr +"/eva" + id)
                 .register(EvaluatiemomentWriter.class);
     }

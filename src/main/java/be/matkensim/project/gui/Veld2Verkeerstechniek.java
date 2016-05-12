@@ -51,7 +51,7 @@ public class Veld2Verkeerstechniek extends HBox implements View {
 
         //labels
         kleur = new Button("Kleur kiezen");
-        venster = new Button("Extra vensters");
+        venster = new Button("Extra venster");
 
         kleur.setMinSize(120, 30);
         kleur.setMaxSize(120, 30);
