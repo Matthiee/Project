@@ -26,7 +26,7 @@ public class AddLeerlingTask extends Task<Void>{
     public AddLeerlingTask(Leerling lln){
     this.lln = lln;
         userListResource = ClientBuilder.newClient()
-                .target("http://192.168.156.1:8080/api/api/")
+                .target("http://evaapi-matthiee.rhcloud.com/api/")
                 .path("leerlingen")
                 .register(LeerlingWriter.class);
     }

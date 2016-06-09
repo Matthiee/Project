@@ -15,7 +15,6 @@ import javafx.scene.image.Image;
 public class Leerling implements Model{
     
     private final List<View> views;
-    
     private String naam;
     private String inschrijvingsnr;
     private String instructeur;

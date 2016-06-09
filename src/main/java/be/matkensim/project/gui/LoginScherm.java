@@ -214,6 +214,8 @@ public class LoginScherm extends StackPane implements View {
                     Logger.getLogger(LoginScherm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });
+            
+            
 
         } else {
             lblInfo.setText("Leerling bestaat niet!");

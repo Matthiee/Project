@@ -27,7 +27,6 @@ public class LeerlingMapper {
         leerlingen = new ArrayList<Leerling>();
 //        leerlingen.add(new Leerling("Lisa Su", "1969-11-01", "Paul", new Date(), "Rijbewijs B", new Image("resource/lisa.jpg")));
 //        leerlingen.add(new Leerling("Mark Zuckerberg", "1984-05-14", "Paul", new Date(), "Rijbewijs B", new Image("resource/mark.jpg")));
-//        leerlingen.add(new Leerling("Bill Gates", "1955-10-28", "Paul", new Date(), "Rijbewijs B", new Image("resource/bill.jpg")));
 //        leerlingen.add(new Leerling("Marissa Mayer", "1975-05-30", "Paul", new Date(), "Rijbewijs B", new Image("resource/marissa.jpg")));
     }
 
@@ -49,11 +48,14 @@ public class LeerlingMapper {
         });
         
         task.setOnFailed(e -> {
-            leerlingen.clear();
+            //leerlingen.clear();
             lln.clear();
             lln.addAll(leerlingen);
         });
         
+                lln.clear();
+              lln.addAll(leerlingen);
+
         MainApp.service.submit(task);
     }
 
